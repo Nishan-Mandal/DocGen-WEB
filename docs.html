@@ -1,0 +1,1798 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>DocGen Documentation | Developer Portal</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.css" rel="stylesheet" />
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-javascript.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-python.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-bash.min.js"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#191c1e",
+                        "secondary-fixed": "#eaddff",
+                        "primary": "#000000",
+                        "surface": "#f7f9fb",
+                        "on-secondary-fixed": "#25005a",
+                        "primary-fixed-dim": "#bec6e0",
+                        "secondary-fixed-dim": "#d2bbff",
+                        "secondary-container": "#8a4cfc",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#f7f9fb",
+                        "inverse-on-surface": "#eff1f3",
+                        "tertiary-fixed-dim": "#fda9ff",
+                        "outline-variant": "#c6c6cd",
+                        "primary-fixed": "#dae2fd",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-surface-variant": "#45464d",
+                        "inverse-surface": "#2d3133",
+                        "on-tertiary-fixed-variant": "#7d008c",
+                        "on-primary-container": "#7c839b",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#131b2e",
+                        "on-tertiary-container": "#d33de5",
+                        "background": "#f7f9fb",
+                        "on-primary-fixed": "#131b2e",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#d8dadc",
+                        "on-surface": "#191c1e",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#000000",
+                        "secondary": "#712ae2",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#bec6e0",
+                        "on-secondary-fixed-variant": "#5a00c6",
+                        "on-secondary-container": "#fffbff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#36003d",
+                        "tertiary-container": "#36003d",
+                        "outline": "#76777d",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-container-high": "#e6e8ea",
+                        "surface-container": "#eceef0",
+                        "surface-tint": "#565e74",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#e0e3e5",
+                        "tertiary-fixed": "#ffd6fb",
+                        "surface-variant": "#e0e3e5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "2.5rem",
+                        "md": "1rem",
+                        "gutter": "1.5rem",
+                        "container-max": "1280px",
+                        "xs": "0.25rem",
+                        "sm": "0.5rem",
+                        "lg": "1.5rem"
+                    },
+                    "fontFamily": {
+                        "h1": ["Inter"], "h3": ["Inter"], "body-sm": ["Inter"], "label-md": ["Inter"], "h2": ["Inter"], "code": ["JetBrains Mono"], "body-lg": ["Inter"], "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "h1": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "h2": ["30px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "h3": ["24px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "code": ["14px", { "lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-sidebar {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+        }
+
+        .code-block-header {
+            background: #1e293b;
+        }
+
+        .kinetic-gradient {
+            background: linear-gradient(135deg, #712ae2 0%, #8a4cfc 100%);
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px;
+            /* 👈 reduce this */
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #cbd5e1;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* Chrome, Edge, Safari */
+        .thin-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .thin-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .thin-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+        }
+
+        .thin-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.35);
+        }
+
+        /* Firefox */
+        .thin-scrollbar {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+        }
+
+        .code-block {
+            transition: opacity 0.2s ease;
+        }
+    </style>
+    <style>
+        /* Remove default prism bg */
+        pre[class*="language-"] {
+            background: transparent !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        code[class*="language-"] {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* CUSTOM COLORS (your hero style) */
+        .token.keyword {
+            color: #c084fc;
+        }
+
+        .token.function {
+            color: #fb923c;
+        }
+
+        .token.string {
+            color: #86efac;
+        }
+
+        .token.number {
+            color: #fca5a5;
+        }
+
+        .token.operator {
+            color: #93c5fd;
+        }
+
+        .token.punctuation {
+            color: #94a3b8;
+        }
+
+
+        .thin-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        /* FORCE thin scrollbar everywhere */
+        *::-webkit-scrollbar {
+            width: 4px !important;
+            height: 4px !important;
+        }
+
+        *::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.15) !important;
+            border-radius: 999px;
+        }
+    </style>
+    <style>
+        .nav-link {
+            position: relative;
+            color: #64748b;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0%;
+            height: 2px;
+            background: #6366f1;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link.active {
+            color: #6366f1;
+            font-weight: 600;
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body class="bg-surface font-body-md text-on-surface selection:bg-secondary-fixed">
+    <!-- TopNavBar from JSON -->
+    <div id="header"></div>
+    <div class="max-w-container-max mx-auto flex pt-16">
+        <!-- Sidebar Navigation -->
+        <aside
+            class="hidden lg:block w-[260px] sticky top-16 h-[calc(100vh-64px)] overflow-y-auto glass-sidebar border-r border-outline-variant/20 p-lg">
+            <nav class="space-y-sm">
+                <div class="py-sm">
+                    <p class="text-xs font-bold text-outline uppercase tracking-widest mb-md">Introduction</p>
+                    <a class="flex items-center gap-sm px-md py-sm rounded-lg bg-secondary-fixed text-on-secondary-fixed font-medium"
+                        href="#getting-started">
+                        <span class="material-symbols-outlined text-[20px]">rocket_launch</span>
+                        <span class="font-label-md text-label-md">Getting Started</span>
+                    </a>
+                </div>
+                <div class="py-sm">
+                    <p class="text-xs font-bold text-outline uppercase tracking-widest mb-md">Development</p>
+                    <a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors"
+                        href="#design-templates">
+                        <span class="material-symbols-outlined text-[20px]">dashboard_customize</span>
+                        <span class="font-label-md text-label-md">Template Design</span>
+                    </a>
+                    <a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors"
+                        href="#api-reference">
+                        <span class="material-symbols-outlined text-[20px]">api</span>
+                        <span class="font-label-md text-label-md">API Reference</span>
+                    </a>
+                    <a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors"
+                        href="#webhooks">
+                        <span class="material-symbols-outlined text-[20px]">webhook</span>
+                        <span class="font-label-md text-label-md">Webhooks</span>
+                    </a>
+                    <!-- <a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors"
+                        href="#examples">
+                        <span class="material-symbols-outlined text-[20px]">library_books</span>
+                        <span class="font-label-md text-label-md">Examples</span>
+                    </a> -->
+                </div>
+                <div class="py-sm">
+                    <p class="text-xs font-bold text-outline uppercase tracking-widest mb-md">Support</p>
+                    <a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors"
+                        href="#error-handling">
+                        <span class="material-symbols-outlined text-[20px]">error</span>
+                        <span class="font-label-md text-label-md">Error Handling</span>
+                    </a>
+                    <a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors"
+                        href="#common-mistakes">
+                        <span class="material-symbols-outlined text-[20px]">lightbulb</span>
+                        <span class="font-label-md text-label-md">Common Mistakes</span>
+                    </a>
+                </div>
+            </nav>
+        </aside>
+        <!-- Main Content Canvas -->
+        <main class="flex-1 px-gutter py-xl min-w-0">
+            <!-- Header Section -->
+            <header class="mb-xl flex flex-col md:flex-row md:items-start justify-between gap-lg">
+                <div>
+                    <h1 class="font-h1 text-h1 text-primary mb-sm">Documentation</h1>
+                    <p class="text-body-lg text-on-surface-variant max-w-2xl">
+                        Integrate DocGen API to programmatically create professional PDF documents from templates and
+                        JSON data in seconds.
+                    </p>
+                </div>
+                <div class="relative w-full md:w-80">
+                    <span
+                        class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">search</span>
+                    <input id="docSearch"
+                        class="w-full pl-xl pr-md py-sm bg-surface-container-low border border-outline-variant/30 rounded-xl focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all"
+                        placeholder="Search documentation..." type="text" />
+                    <div id="searchResults"
+                        class="absolute top-full left-0 w-full bg-white border border-outline-variant rounded-xl shadow-lg mt-2 hidden max-h-60 overflow-auto z-50">
+                    </div>
+                </div>
+            </header>
+            <!-- Quick Start Bento -->
+            <section class="mb-xl scroll-mt-24" id="getting-started">
+                <div class="flex items-center gap-sm mb-lg">
+                    <span class="material-symbols-outlined text-secondary">bolt</span>
+                    <h2 class="font-h2 text-h2">Quick Start</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-lg mb-xl">
+                    <div
+                        class="bg-surface-container-lowest border border-outline-variant/30 p-lg rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                        <div
+                            class="w-10 h-10 kinetic-gradient rounded-lg flex items-center justify-center text-on-primary mb-md">
+                            1</div>
+                        <h4 class="font-h3 text-[18px] mb-xs">Prepare Template</h4>
+                        <p class="text-body-sm text-on-surface-variant">Design your DOCX template with merge fields and
+                            upload it via API.</p>
+                    </div>
+                    <div
+                        class="bg-surface-container-lowest border border-outline-variant/30 p-lg rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                        <div
+                            class="w-10 h-10 kinetic-gradient rounded-lg flex items-center justify-center text-on-primary mb-md">
+                            2</div>
+                        <h4 class="font-h3 text-[18px] mb-xs">Post Data</h4>
+                        <p class="text-body-sm text-on-surface-variant">Send a POST request with your JSON data payload
+                            to our generation endpoint.</p>
+                    </div>
+                    <div
+                        class="bg-surface-container-lowest border border-outline-variant/30 p-lg rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                        <div
+                            class="w-10 h-10 kinetic-gradient rounded-lg flex items-center justify-center text-on-primary mb-md">
+                            3</div>
+                        <h4 class="font-h3 text-[18px] mb-xs">Get PDF or Docx</h4>
+                        <p class="text-body-sm text-on-surface-variant">Receive a signed URL or binary stream of your
+                            perfectly formatted PDF/Docx.</p>
+                    </div>
+                </div>
+                <div class="bg-primary-container rounded-xl overflow-hidden shadow-lg h-full flex flex-col">
+                    <div
+                        class="flex items-center justify-between px-md py-sm bg-primary-container/50 border-b border-on-primary-fixed-variant/20">
+                        <div class="flex items-center gap-sm">
+                            <div class="flex gap-xs">
+                                <div class="w-2 h-2 rounded-full bg-error"></div>
+                                <div class="w-2 h-2 rounded-full bg-secondary"></div>
+                                <div class="w-2 h-2 rounded-full bg-on-tertiary-container"></div>
+                            </div>
+                            <span class="font-code text-code text-on-primary-container ml-md">Quick Request</span>
+                        </div>
+                        <button
+                            class="text-on-primary-container hover:text-on-primary transition-colors flex items-center gap-xs">
+                            <span class="material-symbols-outlined text-[18px]">content_copy</span>
+                            <span class="text-[12px] font-medium">Copy</span>
+                        </button>
+                    </div>
+                    <div class="p-lg font-code text-code text-primary-fixed leading-relaxed">
+                        <pre><code class="language-bash">curl --location 'https://docgen-service-746637463346.us-central1.run.app/generate_document' \
+        --header 'x-api-key: $API_KEY' \
+        --form 'template=@"/Documents/docgen-api/functions/template.docx"' \
+        --form 'data="{
+            \"records\": [
+            {
+                \"fileName\": \"invoice_001\",
+                \"fields\":  {
+                \"name\": \"John Doe\",
+                }
+            }
+            ]
+            }"' \
+        --form 'document_format="pdf"'</code></pre>
+                    </div>
+                </div>
+
+                <!-- Visual Flow Diagram -->
+                <section
+                    class="mb-xl mt-xl bg-surface-container-high/30 rounded-xl p-xl border border-outline-variant/20">
+                    <div class="max-w-3xl mx-auto text-center mb-xl">
+                        <h3 class="font-h3 text-h3 mb-sm">Architecture Flow</h3>
+                        <p class="text-body-md text-on-surface-variant">How DocGen processes your requests</p>
+                    </div>
+                    <div class="flex flex-col md:flex-row items-center justify-center gap-md lg:gap-xl">
+                        <div class="flex flex-col items-center gap-sm w-32">
+                            <div
+                                class="w-16 h-16 bg-surface-container-lowest border border-outline-variant/50 rounded-xl flex items-center justify-center shadow-sm">
+                                <span class="material-symbols-outlined text-secondary text-[32px]">description</span>
+                            </div>
+                            <span
+                                class="font-label-md text-xs text-on-surface-variant uppercase tracking-tight">Template</span>
+                        </div>
+                        <span class="material-symbols-outlined text-outline-variant hidden md:block">add</span>
+                        <div class="flex flex-col items-center gap-sm w-32">
+                            <div
+                                class="w-16 h-16 bg-surface-container-lowest border border-outline-variant/50 rounded-xl flex items-center justify-center shadow-sm">
+                                <span class="material-symbols-outlined text-secondary text-[32px]">data_object</span>
+                            </div>
+                            <span class="font-label-md text-xs text-on-surface-variant uppercase tracking-tight">JSON
+                                Data</span>
+                        </div>
+                        <span
+                            class="material-symbols-outlined text-secondary rotate-90 md:rotate-0">trending_flat</span>
+                        <div class="flex flex-col items-center gap-sm w-48">
+                            <div
+                                class="w-full h-16 kinetic-gradient rounded-xl flex items-center justify-center shadow-lg relative">
+                                <span class="text-on-primary font-bold">DocGen Engine</span>
+                                <div class="absolute -bottom-1 w-1/2 h-1 bg-white/20 rounded-full"></div>
+                            </div>
+                            <span
+                                class="font-label-md text-xs text-on-surface-variant uppercase tracking-tight">Processing</span>
+                        </div>
+                        <span
+                            class="material-symbols-outlined text-secondary rotate-90 md:rotate-0">trending_flat</span>
+                        <div class="flex flex-col items-center gap-sm w-32">
+                            <div
+                                class="w-16 h-16 bg-surface-container-lowest border border-outline-variant/50 rounded-xl flex items-center justify-center shadow-sm">
+                                <span class="material-symbols-outlined text-secondary text-[32px]">picture_as_pdf</span>
+                            </div>
+                            <span class="font-label-md text-xs text-on-surface-variant uppercase tracking-tight">Final
+                                Document</span>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <section class="mb-xl scroll-mt-24" id="design-templates">
+
+                <!-- KEEP THIS SAME -->
+                <div class="flex items-center gap-sm mb-sm">
+                    <span class="material-symbols-outlined text-secondary">edit_document</span>
+                    <h2 class="font-h2 text-h2">Design Your Template Easily</h2>
+                </div>
+                <p class="text-body-xs text-on-surface-variant mb-xl">
+                    Use placeholders and structured data to generate dynamic PDF and DOCX documents.
+                </p>
+
+                <!-- 1. MERGE FIELDS (FIXED) -->
+                <div class="mb-xl">
+                    <h3 class="font-h3 text-h3 mb-md">Merge Fields Basics</h3>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+
+                        <!-- Card 1 -->
+                        <div class="bg-surface-container-lowest border border-outline-variant/30 p-md rounded-xl">
+                            <code class="font-code text-secondary font-bold">{{CustomerName}}</code>
+                            <p class="text-body-sm text-on-surface-variant mt-sm">
+                                Merge fields dynamically map values from the <code>fields</code> section of your JSON
+                                payload into the template.
+                                Each field name must match exactly.
+                            </p>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="bg-surface-container-lowest border border-outline-variant/30 p-md rounded-xl">
+                            <code class="font-code text-secondary font-bold">{{InvoiceId}}</code>
+                            <p class="text-body-sm text-on-surface-variant mt-sm">
+                                You can place merge fields anywhere in the template — headers, body, tables, or footers
+                                — and they will be replaced at runtime.
+                            </p>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="bg-surface-container-lowest border border-outline-variant/30 p-md rounded-xl">
+                            <code class="font-code text-secondary font-bold">{{Total}}</code>
+                            <p class="text-body-sm text-on-surface-variant mt-sm">
+                                Values are injected directly from your API request. The engine does not transform data —
+                                it simply replaces placeholders with provided values.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- 2. DYNAMIC TABLES (FIXED) -->
+                <div class="mb-xl">
+                    <h3 class="font-h3 text-h3 mb-md">Dynamic Tables</h3>
+
+                    <p class="text-body-sm text-on-surface-variant mb-md">
+                        Tables automatically repeat rows when bound to array data.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+
+                        <!-- TEMPLATE -->
+                        <div class="bg-surface-container-lowest border rounded-xl overflow-hidden">
+
+                            <div class="bg-surface-container px-md py-sm text-label-md">
+                                Template
+                            </div>
+
+                            <!-- Add padding wrapper -->
+                            <div class="p-md">
+                                <table class="w-full border border-gray-300 text-[12px]">
+                                    <thead class="bg-gray-100">
+                                        <tr>
+                                            <th class="p-2 border">Item</th>
+                                            <th class="p-2 border">Qty</th>
+                                            <th class="p-2 border">Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="p-2 border">{{item.name}}</td>
+                                            <td class="p-2 border">{{item.qty}}</td>
+                                            <td class="p-2 border">${{item.price}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+
+                        <!-- RESULT -->
+                        <div
+                            class="bg-surface-container-lowest border-2 border-secondary/10 rounded-xl overflow-hidden">
+                            <div class="bg-secondary/10 px-md py-sm text-label-md text-secondary">Rendered Output</div>
+                            <div class="p-md">
+                                <table class="w-full border border-gray-300 text-[12px]">
+                                    <thead class="bg-gray-100">
+                                        <tr>
+                                            <th class="p-2 border">Item</th>
+                                            <th class="p-2 border">Qty</th>
+                                            <th class="p-2 border">Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="p-2 border">Product 1</td>
+                                            <td class="p-2 border">100</td>
+                                            <td class="p-2 border">$99</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border">Product 2</td>
+                                            <td class="p-2 border">199</td>
+                                            <td class="p-2 border">$500</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-2 border">Product 2</td>
+                                            <td class="p-2 border">250</td>
+                                            <td class="p-2 border">$1000</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- 3. HEADERS & FOOTERS -->
+                <div class="mb-xl">
+                    <h3 class="font-h3 text-h3 mb-md">Headers & Footers</h3>
+
+                    <div class="bg-surface-container-lowest border rounded-xl p-lg">
+
+                        <div class="text-body-sm mb-sm text-on-surface-variant">
+                            Headers and footers are part of your template layout and support the same merge field
+                            system.
+                            You can place dynamic values anywhere to display consistent information across all pages.
+                        </div>
+
+                        <div class="font-code text-secondary text-sm leading-relaxed">
+                            Header: {{CompanyName}}<br>
+                            Footer: Page {{page_number}} of {{total_pages}}
+                        </div>
+
+                        <div class="text-body-sm mt-md text-on-surface-variant">
+                            Standard merge fields are resolved from the <code>fields</code> object, while system fields
+                            like
+                            <code>page_number</code> and <code>total_pages</code> are automatically generated during
+                            document creation.
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- 4. LIVE EXAMPLE (REALISTIC INVOICE FLOW) -->
+                <div class="mb-xl">
+                    <h3 class="font-h3 text-h3 mb-md">Live Example</h3>
+
+                    <div class="flex flex-col lg:flex-row items-center justify-center gap-lg">
+
+                        <!-- A4 TEMPLATE -->
+                        <div class="w-full lg:w-[30%] h-full relative">
+                            <div
+                                class="bg-white text-black shadow-xl border w-[270px] max-w-full aspect-[210/297] p-6 text-[11px] leading-tight h-full">
+
+                                <div class="flex justify-between mb-4">
+                                    <div>
+                                        <h2 class="font-bold text-lg">INVOICE</h2>
+                                        <p>Invoice #: {{InvoiceId}}</p>
+                                        <p>Date: {{date}}</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="font-semibold">{{CompanyName}}</p>
+                                        <p>{{CompanyAddress}}</p>
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <p class="font-semibold">Bill To:</p>
+                                    <p>{{CustomerName}}</p>
+                                    <p>{{CustomerEmail}}</p>
+                                </div>
+
+                                <table class="w-full border border-gray-300 text-[10px]">
+                                    <thead class="bg-gray-100">
+                                        <tr>
+                                            <th class="p-2 border">Item</th>
+                                            <th class="p-2 border">Qty</th>
+                                            <th class="p-2 border">Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="p-2 border">{{itm.name}}</td>
+                                            <td class="p-2 border">{{itm.qty}}</td>
+                                            <td class="p-2 border">${{itm.price}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <div class="mt-4 text-right">
+                                    <p>Subtotal: ${{Subtotal}}</p>
+                                    <p>Tax: ${{Tax}}</p>
+                                    <p class="font-bold text-sm">Total: ${{Total}}</p>
+                                </div>
+
+                                <div class="absolute bottom-6 left-0 right-0 text-center text-[10px] text-gray-500">
+                                    Page {{page_number}} of {{total_pages}}
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- ARROW -->
+                        <div class="flex items-center justify-center text-secondary">
+                            <span class="material-symbols-outlined text-1xl hidden lg:block">
+                                arrow_forward
+                            </span>
+                            <span class="material-symbols-outlined text-1xl lg:hidden rotate-90">
+                                arrow_downward
+                            </span>
+                        </div>
+
+                        <!-- JSON -->
+                        <div class="w-full lg:w-[30%] h-full flex justify-center">
+
+                            <div
+                                class="bg-primary-container rounded-xl overflow-hidden w-[270px] max-w-full aspect-[210/297] flex flex-col">
+
+                                <div class="px-md py-sm text-xs font-bold border-b">
+                                    <div class="flex items-center gap-sm">
+                                        <div class="flex gap-xs">
+                                            <div class="w-2 h-2 rounded-full bg-error"></div>
+                                            <div class="w-2 h-2 rounded-full bg-secondary"></div>
+                                            <div class="w-2 h-2 rounded-full bg-on-tertiary-container"></div>
+                                        </div>
+                                        <span class="font-code text-code text-on-primary-container ml-md">JSON
+                                            Sample</span>
+                                    </div>
+                                </div>
+
+
+                                <div
+                                    class="p-md font-code text-[12px] text-primary-fixed leading-tight overflow-auto max-h-[300px] thin-scrollbar">
+                                    <pre><code class="language-javascript">{
+    "records": [
+        {
+            "fileName": "invoice_001",
+            "fields": {
+                "InvoiceId": "INV-1001",
+                "date": "2026-05-09",
+                "CompanyName": "DocGen Inc.",
+                "CompanyAddress": "New York, USA",
+                "CustomerName": "Jane Doe",
+                "CustomerEmail": "jane@email.com",
+                "Subtotal": "130",
+                "Tax": "20",
+                "Total": "150",
+                "page_number": "1",
+                "total_pages": "1"
+            },
+            "tables": {
+                "itm": [
+                    {"name": "API Plan", "qty": 1, "price": 100},
+                    {"name": "Support", "qty": 1, "price": 50}
+                ]
+            }
+        }
+    ]
+}</code></pre>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- ARROW -->
+                        <div class="flex items-center justify-center text-secondary">
+                            <span class="material-symbols-outlined text-1xl hidden lg:block">
+                                arrow_forward
+                            </span>
+                            <span class="material-symbols-outlined text-1xl lg:hidden rotate-90">
+                                arrow_downward
+                            </span>
+                        </div>
+
+                        <!-- OUTPUT DOCUMENT -->
+                        <div class="w-full lg:w-[30%] h-full relative">
+                            <div
+                                class="bg-white text-black shadow-xl border w-[270px] max-w-full aspect-[210/297] p-6 text-[11px] leading-tight">
+
+                                <div class="flex justify-between mb-4">
+                                    <div>
+                                        <h2 class="font-bold text-lg">INVOICE</h2>
+                                        <p>Invoice #: INV-1001</p>
+                                        <p>Date: 2026-05-09</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="font-semibold">DocGen Inc.</p>
+                                        <p>New York, USA</p>
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <p class="font-semibold">Bill To:</p>
+                                    <p>Jane Doe</p>
+                                    <p>jane@email.com</p>
+                                </div>
+
+                                <table class="w-full border border-gray-300 text-[10px]">
+                                    <thead class="bg-gray-100">
+                                        <tr>
+                                            <th class="p-2 border">Item</th>
+                                            <th class="p-2 border">Qty</th>
+                                            <th class="p-2 border">Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tr>
+                                        <td class="p-2 border">API Plan</td>
+                                        <td class="p-2 border">100</td>
+                                        <td class="p-2 border">$100</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-2 border">Support</td>
+                                        <td class="p-2 border">50</td>
+                                        <td class="p-2 border">$50</td>
+                                    </tr>
+                                </table>
+
+                                <div class="mt-4 text-right">
+                                    <p>Subtotal: $130</p>
+                                    <p>Tax: $20</p>
+                                    <p class="font-bold text-sm">Total: $150</p>
+                                </div>
+
+                                <div class="absolute bottom-6 left-0 right-0 text-center text-[10px] text-gray-500">
+                                    Page 1 of 1
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- API Reference -->
+            <section class="mb-xl scroll-mt-24" id="api-reference">
+                <div class="flex items-center gap-sm mb-lg">
+                    <span class="material-symbols-outlined text-secondary">api</span>
+                    <h2 class="font-h2 text-h2">API Reference</h2>
+                </div>
+                <div class="space-y-lg mb-10">
+                    <!-- Analyse Template-API -->
+                    <div
+                        class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl overflow-hidden shadow-sm hover:border-secondary/30 transition-all">
+                        <div class="p-lg flex flex-col lg:flex-row gap-lg">
+                            <div class="flex-1">
+                                <div class="flex items-center gap-md mb-md">
+                                    <span
+                                        class="px-md py-1 bg-secondary text-on-secondary rounded text-[12px] font-bold">POST</span>
+                                    <code
+                                        class="font-code text-code text-primary font-semibold">/v1/analyze_template</code>
+                                </div>
+
+                                <p class="text-body-sm text-on-surface-variant mb-lg">
+                                    Upload a DOCX template to analyze and extract all dynamic placeholders (e.g.,
+                                    {{name}}, {{email}}).
+                                    This helps you understand what data is required before generating documents.
+                                </p>
+
+                                <h5 class="font-label-md text-label-md text-on-surface uppercase tracking-widest mb-md">
+                                    Endpoint
+                                </h5>
+
+                                <div class="space-y-sm mb-md">
+
+                                    <!-- FILE -->
+                                    <div class="flex items-start gap-md border-b border-outline-variant/10 pb-sm">
+                                        <div class="w-24 shrink-0">
+                                            <code class="text-secondary font-code text-[13px]">URL</code>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-body-sm">
+                                                <code class="bg-surface-container px-1">https://docgen-service-746637463346.us-central1.run.app/analyze_template</code>
+                                            
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <h5 class="font-label-md text-label-md text-on-surface uppercase tracking-widest mb-md">
+                                    Parameters
+                                </h5>
+
+                                <div class="space-y-sm">
+
+                                    <!-- FILE -->
+                                    <div class="flex items-start gap-md border-b border-outline-variant/10 pb-sm">
+                                        <div class="w-24 shrink-0">
+                                            <code class="text-secondary font-code text-[13px]">file</code>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-body-sm">
+                                                <span class="text-outline italic">file (required)</span> —
+                                                The DOCX template file to analyze. Must contain placeholders in
+                                                <code class="bg-surface-container px-1">{{ }}</code> format.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- API KEY -->
+                                    <div class="flex items-start gap-md pb-sm">
+                                        <div class="w-24 shrink-0">
+                                            <code class="text-secondary font-code text-[13px]">x-api-key</code>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-body-sm">
+                                                <span class="text-outline italic">header (required)</span> —
+                                                Your API key for authentication.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class=" code-container lg:w-[400px]">
+                                <div class="bg-primary-container rounded-lg overflow-hidden relative h-full">
+
+                                    <div
+                                        class="flex gap-md px-md py-sm bg-primary-container/80 border-b border-on-primary-fixed-variant/10">
+
+                                        <button data-tab="node"
+                                            class="tab-btn text-on-primary text-xs font-bold border-b-2 border-secondary-fixed-dim">
+                                            Node.js
+                                        </button>
+
+                                        <button data-tab="python"
+                                            class="tab-btn text-on-primary text-xs font-bold opacity-60">
+                                            Python
+                                        </button>
+
+                                        <button data-tab="curl"
+                                            class="tab-btn text-on-primary text-xs font-bold opacity-60">
+                                            cURL
+                                        </button>
+
+                                        <button data-tab="response"
+                                            class="tab-btn text-on-primary text-xs font-bold opacity-60">
+                                            Response
+                                        </button>
+                                        <div class="flex gap-xs ml-auto">
+                                            <div class="w-2 h-2 rounded-full bg-error"></div>
+                                            <div class="w-2 h-2 rounded-full bg-secondary"></div>
+                                            <div class="w-2 h-2 rounded-full bg-on-tertiary-container"></div>
+                                        </div>
+
+                                    </div>
+
+                                    <div
+                                        class="p-md font-code text-[13px] leading-relaxed text-primary-fixed h-[320px] overflow-hidden">
+
+                                        <!-- NODE -->
+                                        <pre data-content="node" class="code-block h-full overflow-auto thin-scrollbar"><code class="language-javascript">import axios from "axios";
+import fs from "fs";
+import FormData from "form-data";
+
+async function analyzeTemplate() {
+    try {
+    const form = new FormData();
+    form.append("file", fs.createReadStream("./template.docx"));
+
+    const response = await axios.post(
+        "https://docgen-service-746637463346.us-central1.run.app/analyze_template",
+        form,
+        {
+        headers: {
+            ...form.getHeaders(),
+            "x-api-key": "YOUR_API_KEY",
+        },
+        }
+    );
+
+    console.log("Response:", response.data);
+    } catch (error) {
+    console.error("Error:", error.response?.data || error.message);
+    }
+}
+
+analyzeTemplate();
+                                            </code>
+                                            </pre>
+
+                                        <!-- PYTHON -->
+                                        <pre data-content="python"
+                                            class="code-block hidden h-full overflow-auto thin-scrollbar"><code class="language-python">import requests
+
+url = "https://docgen-service-746637463346.us-central1.run.app/analyze_template"
+headers = {
+    "x-api-key": "YOUR_API_KEY"
+}
+files = {
+    "file": open("template.docx", "rb")
+}
+
+response = requests.post(url, headers=headers, files=files)
+
+print("Status Code:", response.status_code)
+print("Response:", response.json())
+                                            </code></pre>
+
+                                        <!-- CURL -->
+                                        <pre data-content="curl"
+                                            class="code-block hidden h-full overflow-auto thin-scrollbar"><code class="language-bash">curl --location 'https://docgen-service-746637463346.us-central1.run.app/analyze_template' \
+--header 'x-api-key: YOUR_API_KEY' \
+--form 'file=@template.docx'
+                                            </code></pre>
+
+                                        <!-- Response -->
+                                        <pre data-content="response"
+                                            class="code-block hidden h-full overflow-auto thin-scrollbar"><code class="language-bash">{
+    "fields": [
+        "name",
+        "address",
+        "mobile",
+    ],
+    "tables": {
+        "items": [
+            "price",
+            "qty",
+            "product"
+        ]
+    }
+}
+                                    </code></pre>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Generate Document-API  -->
+                <div class="space-y-lg mb-10">
+                    <!-- Endpoint Card -->
+                    <div
+                        class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl overflow-hidden shadow-sm hover:border-secondary/30 transition-all">
+                        <div class="p-lg flex flex-col lg:flex-row gap-lg">
+                            <div class="flex-1">
+                                <div class="flex items-center gap-md mb-md">
+                                    <span
+                                        class="px-md py-1 bg-secondary text-on-secondary rounded text-[12px] font-bold">POST</span>
+                                    <code
+                                        class="font-code text-code text-primary font-semibold">/v1/generate_document</code>
+                                </div>
+
+                                <p class="text-body-sm text-on-surface-variant mb-lg">
+                                    Generate documents from a DOCX template using dynamic data. This API processes
+                                    requests asynchronously
+                                    and returns a <code class="bg-surface-container px-1">job_id</code> immediately. You
+                                    can use this ID to track
+                                    the generation status and download the final output.
+                                </p>
+
+                                <h5 class="font-label-md text-label-md text-on-surface uppercase tracking-widest mb-md">
+                                    Endpoint
+                                </h5>
+
+                                <div class="space-y-sm mb-md">
+
+                                    <!-- FILE -->
+                                    <div class="flex items-start gap-md border-b border-outline-variant/10 pb-sm">
+                                        <div class="w-24 shrink-0">
+                                            <code class="text-secondary font-code text-[13px]">URL</code>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-body-sm">
+                                                <code class="bg-surface-container px-1">https://docgen-service-746637463346.us-central1.run.app/generate_document</code>
+                                            
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h5 class="font-label-md text-label-md text-on-surface uppercase tracking-widest mb-md">
+                                    Parameters
+                                </h5>
+
+                                <div class="space-y-sm">
+
+                                    <!-- TEMPLATE FILE -->
+                                    <div class="flex items-start gap-md border-b border-outline-variant/10 pb-sm">
+                                        <div class="w-24 shrink-0">
+                                            <code class="text-secondary font-code text-[13px]">template</code>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-body-sm">
+                                                <span class="text-outline italic">file (required)</span> —
+                                                The DOCX template file containing placeholders in
+                                                <code class="bg-surface-container px-1">{{ }}</code> format.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- DATA -->
+                                    <div class="flex items-start gap-md border-b border-outline-variant/10 pb-sm">
+                                        <div class="w-24 shrink-0">
+                                            <code class="text-secondary font-code text-[13px]">data</code>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-body-sm">
+                                                <span class="text-outline italic">string (required)</span> —
+                                                JSON string containing records to populate the template.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- FORMAT -->
+                                    <div class="flex items-start gap-md border-b border-outline-variant/10 pb-sm">
+                                        <div class="w-24 shrink-0">
+                                            <code class="text-secondary font-code text-[13px]">document_format</code>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-body-sm">
+                                                <span class="text-outline italic">string</span> —
+                                                Output format. Supported values:
+                                                <code class="bg-surface-container px-1">docx</code>,
+                                                <code class="bg-surface-container px-1">pdf</code>.
+                                                Defaults to <code class="bg-surface-container px-1">docx</code>.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- EMAIL -->
+                                    <div class="flex items-start gap-md border-b border-outline-variant/10 pb-sm">
+                                        <div class="w-24 shrink-0">
+                                            <code class="text-secondary font-code text-[13px]">email</code>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-body-sm">
+                                                <span class="text-outline italic">string</span> —
+                                                Optional email address to receive the generated ZIP file or download
+                                                link.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- WEBHOOK -->
+                                    <div class="flex items-start gap-md border-b border-outline-variant/10 pb-sm">
+                                        <div class="w-24 shrink-0">
+                                            <code class="text-secondary font-code text-[13px]">webhook_url</code>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-body-sm">
+                                                <span class="text-outline italic">string</span> —
+                                                Optional callback URL that will be triggered after document generation
+                                                is completed.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- API KEY -->
+                                    <div class="flex items-start gap-md pb-sm">
+                                        <div class="w-24 shrink-0">
+                                            <code class="text-secondary font-code text-[13px]">x-api-key</code>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-body-sm">
+                                                <span class="text-outline italic">header (required)</span> —
+                                                Your API key for authentication.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class=" code-container lg:w-[400px]">
+                                <div class="bg-primary-container rounded-lg overflow-hidden relative h-full">
+
+                                    <div
+                                        class="flex gap-md px-md py-sm bg-primary-container/80 border-b border-on-primary-fixed-variant/10">
+
+                                        <button data-tab="node"
+                                            class="tab-btn text-on-primary text-xs font-bold border-b-2 border-secondary-fixed-dim">
+                                            Node.js
+                                        </button>
+
+                                        <button data-tab="python"
+                                            class="tab-btn text-on-primary text-xs font-bold opacity-60">
+                                            Python
+                                        </button>
+
+                                        <button data-tab="curl"
+                                            class="tab-btn text-on-primary text-xs font-bold opacity-60">
+                                            cURL
+                                        </button>
+
+                                        <button data-tab="response"
+                                            class="tab-btn text-on-primary text-xs font-bold opacity-60">
+                                            Response
+                                        </button>
+                                        <div class="flex gap-xs ml-auto">
+                                            <div class="w-2 h-2 rounded-full bg-error"></div>
+                                            <div class="w-2 h-2 rounded-full bg-secondary"></div>
+                                            <div class="w-2 h-2 rounded-full bg-on-tertiary-container"></div>
+                                        </div>
+
+                                    </div>
+
+                                    <div
+                                        class="p-md font-code text-[13px] leading-relaxed text-primary-fixed h-[480px] overflow-hidden">
+
+                                        <!-- NODE -->
+                                        <pre data-content="node" class="code-block h-full overflow-auto thin-scrollbar"><code class="language-javascript">import axios from "axios";
+import fs from "fs";
+import FormData from "form-data";
+
+async function generateDocument() {
+    try {
+    const form = new FormData();
+
+    form.append("template", fs.createReadStream("./template.docx"));
+
+    form.append(
+        "data",
+        JSON.stringify({
+        records: [
+            {
+            fileName: "invoice_001",
+            fields: {
+                name: "John Doe",
+            },
+            },
+        ],
+        })
+    );
+
+    form.append("email", "test@gmail.com");
+    form.append("document_format", "pdf");
+    form.append("webhook_url", "https://test-webhook-url");
+
+    const response = await axios.post(
+        "https://docgen-service-746637463346.us-central1.run.app/generate_document",
+        form,
+        {
+        headers: {
+            ...form.getHeaders(),
+            "x-api-key": "YOUR_API_KEY",
+        },
+        }
+    );
+
+    console.log("Job Created:", response.data);
+    } catch (error) {
+    console.error("Error:", error.response?.data || error.message);
+    }
+}
+
+generateDocument();
+
+                                            </code>
+                                            </pre>
+
+                                        <!-- PYTHON -->
+                                        <pre data-content="python"
+                                            class="code-block hidden h-full overflow-auto thin-scrollbar"><code class="language-python">import requests
+import json
+
+url = "https://docgen-service-746637463346.us-central1.run.app/generate_document"
+
+headers = {
+    "x-api-key": "YOUR_API_KEY"
+}
+
+data = {
+    "records": [
+        {
+            "fileName": "invoice_001",
+            "fields": {
+                "name": "John Doe"
+            }
+        }
+    ]
+}
+
+files = {
+    "template": open("template.docx", "rb")
+}
+
+form_data = {
+    "data": json.dumps(data),
+    "email": "test@gmail.com",
+    "document_format": "pdf",
+    "webhook_url": "https://test-webhook-url"
+}
+
+response = requests.post(url, headers=headers, files=files, data=form_data)
+
+print("Status:", response.status_code)
+print("Response:", response.json())
+                                            </code></pre>
+
+                                        <!-- CURL -->
+                                        <pre data-content="curl"
+                                            class="code-block hidden h-full overflow-auto thin-scrollbar"><code class="language-bash">curl --location 'https://docgen-service-746637463346.us-central1.run.app/generate_document' \
+--header 'x-api-key: YOUR_API_KEY' \
+--form 'template=@template.docx' \
+--form 'data={
+    "records": [
+    {
+        "fileName": "invoice_001",
+        "fields": {
+        "name": "John Doe"
+        }
+    }
+    ]
+}' \
+--form 'email=test@gmail.com' \
+--form 'document_format=pdf' \
+--form 'webhook_url=https://test-webhook-url'
+                                            </code></pre>
+
+                                        <!-- Response -->
+                                        <pre data-content="response"
+                                            class="code-block hidden h-full overflow-auto thin-scrollbar"><code class="language-bash">{
+    "job_id": "51dc3548a6c34606b7e5b5c5c9de9050",
+    "status": "accepted"
+}
+                                        </code></pre>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Generate Document-API  -->
+                <div class="space-y-lg">
+                    <!-- Endpoint Card -->
+                    <div
+                        class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl overflow-hidden shadow-sm hover:border-secondary/30 transition-all">
+                        <div class="p-lg flex flex-col lg:flex-row gap-lg">
+                            <div class="flex-1">
+                                <div class="flex items-center gap-md mb-md">
+                                    <span
+                                        class="px-md py-1 bg-secondary text-on-secondary rounded text-[12px] font-bold">GET</span>
+                                    <code class="font-code text-code text-primary font-semibold">/v1/job_status</code>
+                                </div>
+                            
+                                <p class="text-body-sm text-on-surface-variant mb-lg">
+                                    Retrieve the current status of a document generation job using the
+                                    <code class="bg-surface-container px-1">job_id</code>. This endpoint allows you to track progress
+                                    and access the download link once the job is completed.
+                                </p>
+
+                                <h5 class="font-label-md text-label-md text-on-surface uppercase tracking-widest mb-md">
+                                    Endpoint
+                                </h5>
+
+                                <div class="space-y-sm mb-md">
+
+                                    <!-- FILE -->
+                                    <div class="flex items-start gap-md border-b border-outline-variant/10 pb-sm">
+                                        <div class="w-24 shrink-0">
+                                            <code class="text-secondary font-code text-[13px]">URL</code>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-body-sm">
+                                                <code class="bg-surface-container px-1">https://docgen-service-746637463346.us-central1.run.app/job_status?job_id=JOB_ID</code>
+                                            
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                                <h5 class="font-label-md text-label-md text-on-surface uppercase tracking-widest mb-md">
+                                    Query Parameters
+                                </h5>
+                            
+                                <div class="space-y-sm">
+                            
+                                    <!-- JOB ID -->
+                                    <div class="flex items-start gap-md border-b border-outline-variant/10 pb-sm">
+                                        <div class="w-24 shrink-0">
+                                            <code class="text-secondary font-code text-[13px]">job_id</code>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-body-sm">
+                                                <span class="text-outline italic">string (required)</span> —
+                                                The unique job ID returned from the
+                                                <code class="bg-surface-container px-1">/generate_document</code> API.
+                                            </p>
+                                        </div>
+                                    </div>
+                            
+                                </div>
+                            </div>
+                            <div class=" code-container lg:w-[400px]">
+                                <div class="bg-primary-container rounded-lg overflow-hidden relative h-full">
+
+                                    <div
+                                        class="flex gap-md px-md py-sm bg-primary-container/80 border-b border-on-primary-fixed-variant/10">
+
+                                        <button data-tab="node"
+                                            class="tab-btn text-on-primary text-xs font-bold border-b-2 border-secondary-fixed-dim">
+                                            Node.js
+                                        </button>
+
+                                        <button data-tab="python"
+                                            class="tab-btn text-on-primary text-xs font-bold opacity-60">
+                                            Python
+                                        </button>
+
+                                        <button data-tab="curl"
+                                            class="tab-btn text-on-primary text-xs font-bold opacity-60">
+                                            cURL
+                                        </button>
+
+                                        <button data-tab="response"
+                                            class="tab-btn text-on-primary text-xs font-bold opacity-60">
+                                            Response
+                                        </button>
+                                        <div class="flex gap-xs ml-auto">
+                                            <div class="w-2 h-2 rounded-full bg-error"></div>
+                                            <div class="w-2 h-2 rounded-full bg-secondary"></div>
+                                            <div class="w-2 h-2 rounded-full bg-on-tertiary-container"></div>
+                                        </div>
+
+                                    </div>
+
+                                    <div
+                                        class="p-md font-code text-[13px] leading-relaxed text-primary-fixed h-[320px] overflow-hidden">
+
+                                        <!-- NODE -->
+                                        <pre data-content="node" class="code-block h-full overflow-auto thin-scrollbar"><code class="language-javascript">import axios from "axios";
+
+async function getJobStatus() {
+    try {
+    const response = await axios.get(
+        "https://docgen-service-746637463346.us-central1.run.app/job_status",
+        {
+        params: {
+            job_id: "YOUR_JOB_ID",
+        },
+        }
+    );
+
+    console.log("Status:", response.data);
+    } catch (error) {
+    console.error("Error:", error.response?.data || error.message);
+    }
+}
+
+getJobStatus();
+                                                            </code>
+                                                            </pre>
+
+                                        <!-- PYTHON -->
+                                        <pre data-content="python"
+                                            class="code-block hidden h-full overflow-auto thin-scrollbar"><code class="language-python">import requests
+
+url = "https://docgen-service-746637463346.us-central1.run.app/job_status"
+
+params = {
+    "job_id": "YOUR_JOB_ID"
+}
+
+response = requests.get(url, params=params)
+
+print("Status Code:", response.status_code)
+print("Response:", response.json())
+                                                            </code></pre>
+
+                                        <!-- CURL -->
+                                        <pre data-content="curl"
+                                            class="code-block hidden h-full overflow-auto thin-scrollbar"><code class="language-bash">curl --location 'https://docgen-service-746637463346.us-central1.run.app/job_status?job_id=YOUR_JOB_ID'
+                                                            </code></pre>
+
+                                        <!-- Response -->
+                                        <pre data-content="response"
+                                            class="code-block hidden h-full overflow-auto thin-scrollbar"><code class="language-bash">{
+    "completedAt": "2026-05-10 13:25:22.550546+00:00",
+    "createdAt": "2026-05-10 13:24:58.900246+00:00",
+    "document_format": "pdf",
+    "download_url": "https://storage.googleapis.com/docgen-api-94fbd.firebasestorage.app/generated/7b4f56f78ab3427991d9f444bf96673b/....",
+    "job_id": "7b4f56f78ab3427991d9f444bf96673b",
+    "status": "completed"
+}
+                                        </code></pre>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Webhooks -->
+            <section class="mb-xl scroll-mt-24" id="webhooks">
+                <div class="flex items-center gap-sm mb-lg">
+                    <span class="material-symbols-outlined text-secondary">webhook</span>
+                    <h2 class="font-h2 text-h2">Webhooks</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-lg items-center">
+                    <div>
+                        <p class="text-body-md text-on-surface-variant mb-md">
+                            Receive real-time notifications when long-running document generation jobs are complete or
+                            if they fail.
+                        </p>
+                        <ul class="space-y-sm">
+                            <li class="flex items-center gap-md">
+                                <span class="material-symbols-outlined text-on-tertiary-container">check_circle</span>
+                                <span class="text-body-sm font-medium">Verify signatures with SHA-256</span>
+                            </li>
+                            <li class="flex items-center gap-md">
+                                <span class="material-symbols-outlined text-on-tertiary-container">check_circle</span>
+                                <span class="text-body-sm font-medium">Automatic retry with exponential backoff</span>
+                            </li>
+                            <li class="flex items-center gap-md">
+                                <span class="material-symbols-outlined text-on-tertiary-container">check_circle</span>
+                                <span class="text-body-sm font-medium">Support for multiple endpoint
+                                    subscriptions</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-primary-container rounded-xl p-lg font-code text-code text-primary-fixed">
+                        <div class="text-outline-variant mb-md">// Webhook Payload Example</div>
+                        <pre><code>{
+  <span class="text-secondary-fixed-dim">"event"</span>: <span class="text-tertiary-fixed-dim">"document.ready"</span>,
+  <span class="text-secondary-fixed-dim">"created"</span>: <span class="text-tertiary-fixed-dim">1672531200</span>,
+  <span class="text-secondary-fixed-dim">"data"</span>: {
+    <span class="text-secondary-fixed-dim">"id"</span>: <span class="text-tertiary-fixed-dim">"doc_abc123"</span>,
+    <span class="text-secondary-fixed-dim">"url"</span>: <span class="text-tertiary-fixed-dim">"https://s3.docgen.io/..."</span>,
+    <span class="text-secondary-fixed-dim">"status"</span>: <span class="text-tertiary-fixed-dim">"completed"</span>
+  }
+}</code></pre>
+                    </div>
+                </div>
+            </section>
+            <!-- Examples Grid -->
+            <!-- <section class="mb-xl scroll-mt-24" id="examples">
+                <div class="flex items-center gap-sm mb-lg">
+                    <span class="material-symbols-outlined text-secondary">auto_stories</span>
+                    <h2 class="font-h2 text-h2">Use Case Examples</h2>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-lg">
+                    <div
+                        class="group relative bg-surface-container-lowest border border-outline-variant/30 rounded-xl overflow-hidden h-64 shadow-sm hover:shadow-xl transition-all">
+                        <img class="w-full h-1/2 object-cover transition-transform group-hover:scale-105"
+                            data-alt="A clean, minimalist invoice document layout with crisp typography and professional branding. The setting is a bright, high-key home office with soft natural lighting coming through a window. The color palette features neutral greys with sharp black accents and a single vibrant purple brand highlight. The style is modern, technical, and high-quality digital photography."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnPj1ROKzQhFhVWxdxjzklvb2PtDKiArDrzDEgU8NjmIHQ6qMjrkd2hbEMkJ7g5ZvINiXWSoKMSS7-r_J-3fvh7WjM2eitEve9oYNlJTFiy3O4UeBR7KSBqHhAcEdZQJy0y2-966hfBtexmzajL3go3g_DiF4fIFZCJ74UErjKtl8_42YFSLSBce4u-VDJxmkUU3SBjcO0ScdIxZrdCZMTKMIk_KCBgXPfCeTuaFl9N0dKIFTQ6SiUJmNQ9NfSNtl-C2FX6V-F7Ms" />
+                        <div class="p-md">
+                            <h5 class="font-h3 text-[18px] mb-xs">Dynamic Invoices</h5>
+                            <p class="text-body-sm text-on-surface-variant">Automate billing with tax calculations and
+                                multi-currency support.</p>
+                        </div>
+                    </div>
+                    <div
+                        class="group relative bg-surface-container-lowest border border-outline-variant/30 rounded-xl overflow-hidden h-64 shadow-sm hover:shadow-xl transition-all">
+                        <img class="w-full h-1/2 object-cover transition-transform group-hover:scale-105"
+                            data-alt="A macro shot of a fountain pen resting on a sleek, high-end legal contract. The paper has a premium texture and clear, bold headings. The lighting is soft and cinematic, casting gentle shadows across a clean white desk surface. The aesthetic is professional, reliable, and authoritative, emphasizing a sophisticated black and white palette with subtle glass-like reflections."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGnz2wwPgkaFsVQEUaizwyIBYFTax14B4_cBskHu-DRyBuLgwLojxHVCDh81K_NjaGjRtafv0ZQqgDAIbe456ZavDEVuFu_2UYnMNkcvdF1MeBjWBqx9-WYIpOaAyBF8l1k_m0u1RcxufVZIkHz--nrmwIIgee6L74uFotdxvSOvkxQS9knsozDqmTDVdQmnffb1vDBv8CHop3LgmbQQhP4_TLDrGQ94VAsZB40JfB4M_aFkkR-nsm1RqhhCYm_thpXXHGJk-FNFw" />
+                        <div class="p-md">
+                            <h5 class="font-h3 text-[18px] mb-xs">Legal Contracts</h5>
+                            <p class="text-body-sm text-on-surface-variant">Generate complex legal documents with
+                                conditional paragraphs.</p>
+                        </div>
+                    </div>
+                    <div
+                        class="group relative bg-surface-container-lowest border border-outline-variant/30 rounded-xl overflow-hidden h-64 shadow-sm hover:shadow-xl transition-all">
+                        <img class="w-full h-1/2 object-cover transition-transform group-hover:scale-105"
+                            data-alt="A vibrant digital dashboard showing data visualization charts and financial reports on a modern monitor. The scene is illuminated by the cool blue light of the screen in a minimalist, dimly lit workspace. The composition focuses on clarity and technical precision, using a palette of deep navy blues, bright whites, and neon purple data points to create a high-tech developer aesthetic."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuClfzNjPzjCR_wd28KT3rt9FlxczJke_dpJcjMRizqHIealXIoOX71A1XEyCqbRWiypPyeneB0Sh1iWDBGT38CIifMRg5UDUNR2pioRBz-xe498sVg0YVuLYQbQi0KGzkfIZJyApAP2Q2VlwSkF0JNr5dmUrY9KvlhlzOk2E4430VNP2ZHWp1rwWVBfJT84EEzztddNDNJ_v3vsQ9fVSFFoxm7Gt4HJRpKZjSOTK2NTdnnPQ8gFttMEE4JD-X51WozwMT4bTIvliso" />
+                        <div class="p-md">
+                            <h5 class="font-h3 text-[18px] mb-xs">Monthly Reports</h5>
+                            <p class="text-body-sm text-on-surface-variant">Convert data dashboards into printable
+                                executive summaries.</p>
+                        </div>
+                    </div>
+                </div>
+            </section> -->
+            <!-- Error Handling Table -->
+            <section class="mb-xl scroll-mt-24" id="error-handling">
+                <div class="flex items-center gap-sm mb-lg">
+                    <span class="material-symbols-outlined text-secondary">bug_report</span>
+                    <h2 class="font-h2 text-h2">Error Handling</h2>
+                </div>
+                <div
+                    class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl overflow-hidden shadow-sm">
+                    <table class="w-full text-left border-collapse">
+                        <thead class="bg-surface-container">
+                            <tr>
+                                <th class="px-lg py-md font-label-md text-on-surface-variant">Code</th>
+                                <th class="px-lg py-md font-label-md text-on-surface-variant">Message</th>
+                                <th class="px-lg py-md font-label-md text-on-surface-variant">Solution</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-outline-variant/20">
+                            <tr class="hover:bg-surface-container-low transition-colors">
+                                <td class="px-lg py-md"><code class="text-error font-code">401_UNAUTHORIZED</code></td>
+                                <td class="px-lg py-md text-body-sm">Invalid API Key provided</td>
+                                <td class="px-lg py-md text-body-sm">Check your Authorization header for typos.</td>
+                            </tr>
+                            <tr class="hover:bg-surface-container-low transition-colors">
+                                <td class="px-lg py-md"><code class="text-error font-code">404_TEMPLATE_NOT_FOUND</code>
+                                </td>
+                                <td class="px-lg py-md text-body-sm">Template ID doesn't exist</td>
+                                <td class="px-lg py-md text-body-sm">Ensure the ID matches what is in your dashboard.
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-surface-container-low transition-colors">
+                                <td class="px-lg py-md"><code class="text-error font-code">422_VALIDATION_ERROR</code>
+                                </td>
+                                <td class="px-lg py-md text-body-sm">JSON data schema mismatch</td>
+                                <td class="px-lg py-md text-body-sm">Verify your payload against the template
+                                    requirements.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <section id="common-mistakes">
+                <div class="flex items-center gap-sm mb-lg">
+                    <span class="material-symbols-outlined text-secondary">lightbulb</span>
+                    <h2 class="font-h2 text-h2">Common Mistakes</h2>
+                </div>
+                <!-- 5. COMMON MISTAKES (REAL) -->
+                <div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+
+                        <!-- TEMPLATE ERROR -->
+                        <div class="bg-error/5 border border-error/20 p-md rounded-xl">
+                            <strong class="text-error">Template Issue</strong>
+                            <p class="text-body-sm mt-sm">
+                                Using incorrect field name: <code>{{fullname}}</code> instead of
+                                <code>{{customer.name}}</code>
+                            </p>
+                        </div>
+
+                        <!-- JSON ERROR -->
+                        <div class="bg-error/5 border border-error/20 p-md rounded-xl">
+                            <strong class="text-error">JSON Issue</strong>
+                            <p class="text-body-sm mt-sm">
+                                Missing required fields or wrong structure in payload.
+                            </p>
+                        </div>
+
+                        <!-- API ERROR -->
+                        <div class="bg-error/5 border border-error/20 p-md rounded-xl">
+                            <strong class="text-error">Request Issue</strong>
+                            <p class="text-body-sm mt-sm">
+                                Missing API key or incorrect template_id in request.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <!-- Footer from JSON -->
+    <div id="footer"></div>
+    <script src="/components/layout.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            // Handle ALL tab groups independently
+            document.querySelectorAll(".bg-primary-container").forEach(container => {
+
+                const tabs = container.querySelectorAll(".tab-btn");
+                const blocks = container.querySelectorAll(".code-block");
+
+                tabs.forEach(tab => {
+                    tab.addEventListener("click", () => {
+
+                        const target = tab.getAttribute("data-tab");
+
+                        // Reset tabs
+                        tabs.forEach(t => {
+                            t.classList.remove("border-b-2", "border-secondary-fixed-dim");
+                            t.classList.add("opacity-60");
+                        });
+
+                        // Activate tab
+                        tab.classList.add("border-b-2", "border-secondary-fixed-dim");
+                        tab.classList.remove("opacity-60");
+
+                        // Hide all blocks
+                        blocks.forEach(b => b.classList.add("hidden"));
+
+                        // Show selected block
+                        const active = container.querySelector(`[data-content="${target}"]`);
+                        if (active) active.classList.remove("hidden");
+
+                    });
+                });
+
+            });
+
+        });
+
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const sections = document.querySelectorAll("section[id]");
+            const navLinks = document.querySelectorAll("aside nav a");
+
+            // =========================
+            // 1. SMOOTH SCROLL
+            // =========================
+            navLinks.forEach(link => {
+                link.addEventListener("click", function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute("href").substring(1);
+                    const target = document.getElementById(targetId);
+
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80, // offset for navbar
+                            behavior: "smooth"
+                        });
+                    }
+                });
+            });
+
+            // =========================
+            // 2. ACTIVE TAB ON SCROLL
+            // =========================
+            function updateActiveLink() {
+                let current = "";
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    if (window.scrollY >= sectionTop) {
+                        current = section.getAttribute("id");
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove(
+                        "bg-secondary-fixed",
+                        "text-on-secondary-fixed",
+                        "font-medium"
+                    );
+
+                    if (link.getAttribute("href") === `#${current}`) {
+                        link.classList.add(
+                            "bg-secondary-fixed",
+                            "text-on-secondary-fixed",
+                            "font-medium"
+                        );
+                    }
+                });
+            }
+
+            window.addEventListener("scroll", updateActiveLink);
+
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const input = document.getElementById("docSearch");
+            const resultsBox = document.getElementById("searchResults");
+
+            const sections = Array.from(document.querySelectorAll("section[id]"));
+
+            // Build searchable data
+            const data = sections.map(section => ({
+                id: section.id,
+                title: section.querySelector("h2")?.innerText || section.id,
+                content: section.innerText.toLowerCase()
+            }));
+
+            input.addEventListener("input", () => {
+                const query = input.value.toLowerCase().trim();
+
+                if (!query) {
+                    resultsBox.classList.add("hidden");
+                    resultsBox.innerHTML = "";
+                    return;
+                }
+
+                const matches = data.filter(item =>
+                    item.title.toLowerCase().includes(query) ||
+                    item.content.includes(query)
+                ).slice(0, 5);
+
+                if (matches.length === 0) {
+                    resultsBox.innerHTML = `<div class="p-3 text-sm text-gray-500">No results found</div>`;
+                    resultsBox.classList.remove("hidden");
+                    return;
+                }
+
+                resultsBox.innerHTML = matches.map(item => `
+                        <div class="p-3 cursor-pointer hover:bg-gray-100 text-sm"
+                             data-id="${item.id}">
+                            ${item.title}
+                        </div>
+                    `).join("");
+
+                resultsBox.classList.remove("hidden");
+            });
+
+            // Click result → scroll
+            resultsBox.addEventListener("click", (e) => {
+                const target = e.target.closest("div[data-id]");
+                if (!target) return;
+
+                const section = document.getElementById(target.dataset.id);
+
+                if (section) {
+                    window.scrollTo({
+                        top: section.offsetTop - 80,
+                        behavior: "smooth"
+                    });
+
+                    // highlight effect
+                    section.classList.add("ring-2", "ring-secondary");
+                    setTimeout(() => {
+                        section.classList.remove("ring-2", "ring-secondary");
+                    }, 1500);
+                }
+
+                resultsBox.classList.add("hidden");
+                input.value = "";
+            });
+
+            // Close on outside click
+            document.addEventListener("click", (e) => {
+                if (!e.target.closest("#docSearch")) {
+                    resultsBox.classList.add("hidden");
+                }
+            });
+
+        });
+    </script>
+</body>
+
+</html>

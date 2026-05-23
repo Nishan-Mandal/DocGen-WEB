@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>DocGen Use Cases | Automate Document Generation</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#76777d",
+                        "on-secondary-container": "#fffbff",
+                        "surface-dim": "#d8dadc",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "background": "#f7f9fb",
+                        "secondary-container": "#8a4cfc",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "surface": "#f7f9fb",
+                        "secondary-fixed-dim": "#d2bbff",
+                        "on-tertiary-container": "#d33de5",
+                        "on-surface": "#191c1e",
+                        "primary-fixed-dim": "#bec6e0",
+                        "inverse-primary": "#bec6e0",
+                        "on-primary-fixed": "#131b2e",
+                        "tertiary": "#000000",
+                        "surface-container-highest": "#e0e3e5",
+                        "surface-container": "#eceef0",
+                        "secondary": "#712ae2",
+                        "on-tertiary-fixed-variant": "#7d008c",
+                        "error": "#ba1a1a",
+                        "primary": "#000000",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#565e74",
+                        "on-surface-variant": "#45464d",
+                        "tertiary-container": "#36003d",
+                        "surface-container-high": "#e6e8ea",
+                        "tertiary-fixed": "#ffd6fb",
+                        "tertiary-fixed-dim": "#fda9ff",
+                        "surface-container-low": "#f2f4f6",
+                        "on-secondary-fixed": "#25005a",
+                        "inverse-surface": "#2d3133",
+                        "secondary-fixed": "#eaddff",
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#7c839b",
+                        "primary-fixed": "#dae2fd",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-bright": "#f7f9fb",
+                        "surface-variant": "#e0e3e5",
+                        "on-secondary-fixed-variant": "#5a00c6",
+                        "on-background": "#191c1e",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#36003d",
+                        "outline-variant": "#c6c6cd",
+                        "on-error": "#ffffff",
+                        "primary-container": "#131b2e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "0.5rem",
+                        "xs": "0.25rem",
+                        "md": "1rem",
+                        "lg": "1.5rem",
+                        "gutter": "1.5rem",
+                        "xl": "2.5rem",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "code": ["JetBrains Mono"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "h2": ["Inter"],
+                        "body-md": ["Inter"],
+                        "h1": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "h3": ["Inter"]
+                    },
+                    "fontSize": {
+                        "code": ["14px", { "lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
+                        "h2": ["30px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
+                        "h1": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400" }],
+                        "h3": ["24px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .mesh-gradient {
+            background-color: #f7f9fb;
+            background-image: radial-gradient(at 0% 0%, rgba(138, 76, 252, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(113, 42, 226, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(138, 76, 252, 0.08) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(113, 42, 226, 0.05) 0px, transparent 50%);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .cta-gradient {
+            background: linear-gradient(135deg, #712ae2 0%, #8a4cfc 100%);
+        }
+    </style>
+    <style>
+        .nav-link {
+            position: relative;
+            color: #64748b;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0%;
+            height: 2px;
+            background: #6366f1;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link.active {
+            color: #6366f1;
+            font-weight: 600;
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-surface font-body-md antialiased overflow-x-hidden">
+    <!-- TopNavBar -->
+    <div id="header"></div>
+    <main class="pt-16">
+            <!-- Pricing Section -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="font-h2 text-h2 text-center mb-16">Simple, Scalable Pricing</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Free -->
+                <div class="glass-card p-xl rounded-2xl flex flex-col">
+                    <div class="mb-8">
+                        <span
+                            class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Free</span>
+                        <div class="flex items-baseline mt-4">
+                            <span class="text-h1 font-bold">$0</span>
+                            <span class="font-body-sm text-on-surface-variant ml-2">/month</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 mb-12 flex-1">
+                        <li class="flex gap-2 items-center text-body-sm"><span
+                                class="material-symbols-outlined text-emerald-500">check</span> 1000 documents/mo</li>
+                        <li class="flex gap-2 items-center text-body-sm"><span
+                                class="material-symbols-outlined text-emerald-500">check</span> Public Templates</li>
+                                <li class="flex gap-2 items-center text-body-sm"><span
+                                    class="material-symbols-outlined text-emerald-500">check</span> 2 API Keys</li>
+                        <li class="flex gap-2 items-center text-body-sm text-on-surface-variant opacity-50"><span
+                                class="material-symbols-outlined">close</span> Custom Webhooks</li>
+                    </ul>
+                    <button class="w-full border border-outline-variant py-3 rounded-xl font-label-md">Start
+                        Free</button>
+                </div>
+                <!-- Pro -->
+                <div
+                    class="glass-card p-xl rounded-2xl border-secondary-container ring-2 ring-secondary-container flex flex-col relative scale-105 z-10">
+                    <div
+                        class="absolute -top-4 left-1/2 -translate-x-1/2 bg-secondary text-white px-4 py-1 rounded-full font-label-md">
+                        Most Popular</div>
+                    <div class="mb-8">
+                        <span class="font-label-md text-label-md text-secondary uppercase tracking-wider">Pro</span>
+                        <div class="flex items-baseline mt-4">
+                            <span class="text-h1 font-bold text-secondary">$49</span>
+                            <span class="font-body-sm text-on-surface-variant ml-2">/month</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 mb-12 flex-1">
+                        <li class="flex gap-2 items-center text-body-sm"><span
+                                class="material-symbols-outlined text-secondary">check</span> 5,000 documents/mo</li>
+                        <li class="flex gap-2 items-center text-body-sm"><span
+                                class="material-symbols-outlined text-secondary">check</span> Private Templates</li>
+                        <li class="flex gap-2 items-center text-body-sm"><span
+                                class="material-symbols-outlined text-secondary">check</span> Custom Webhooks</li>
+                        <li class="flex gap-2 items-center text-body-sm"><span
+                                class="material-symbols-outlined text-secondary">check</span> Team Access</li>
+                    </ul>
+                    <button
+                        class="w-full bg-secondary text-white py-3 rounded-xl font-label-md shadow-lg shadow-secondary/20">Get
+                        Started</button>
+                </div>
+                <!-- Enterprise -->
+                <div class="glass-card p-xl rounded-2xl flex flex-col">
+                    <div class="mb-8">
+                        <span
+                            class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Enterprise</span>
+                        <div class="flex items-baseline mt-4">
+                            <span class="text-h1 font-bold">Custom</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 mb-12 flex-1">
+                        <li class="flex gap-2 items-center text-body-sm"><span
+                                class="material-symbols-outlined text-emerald-500">check</span> Unlimited documents</li>
+                        <li class="flex gap-2 items-center text-body-sm"><span
+                                class="material-symbols-outlined text-emerald-500">check</span> Dedicated Support</li>
+                        <li class="flex gap-2 items-center text-body-sm"><span
+                                class="material-symbols-outlined text-emerald-500">check</span> Custom Integration</li>
+                    </ul>
+                    <button class="w-full border border-outline-variant py-3 rounded-xl font-label-md">Contact
+                        Sales</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    </main>
+    <!-- Footer -->
+    <div id="footer"></div>
+    <script src="/components/layout.js"></script>
+</body>
+
+</html>

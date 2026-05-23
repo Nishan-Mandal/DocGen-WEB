@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-javascript.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-python.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-bash.min.js"></script>
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#45464d",
+                        "surface": "#f7f9fb",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-primary-container": "#7c839b",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-container": "#131b2e",
+                        "surface-container-high": "#e6e8ea",
+                        "background": "#f7f9fb",
+                        "surface-container": "#eceef0",
+                        "tertiary-container": "#36003d",
+                        "tertiary-fixed": "#ffd6fb",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#e0e3e5",
+                        "tertiary-fixed-dim": "#fda9ff",
+                        "on-secondary-fixed-variant": "#5a00c6",
+                        "on-secondary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#bec6e0",
+                        "on-secondary-fixed": "#25005a",
+                        "on-surface": "#191c1e",
+                        "primary-fixed-dim": "#bec6e0",
+                        "inverse-surface": "#2d3133",
+                        "on-background": "#191c1e",
+                        "on-error": "#ffffff",
+                        "surface-container-low": "#f2f4f6",
+                        "secondary-container": "#8a4cfc",
+                        "surface-variant": "#e0e3e5",
+                        "surface-dim": "#d8dadc",
+                        "surface-bright": "#f7f9fb",
+                        "tertiary": "#000000",
+                        "secondary": "#712ae2",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#dae2fd",
+                        "on-tertiary-container": "#d33de5",
+                        "secondary-fixed-dim": "#d2bbff",
+                        "primary": "#000000",
+                        "outline-variant": "#c6c6cd",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#7d008c",
+                        "on-secondary-container": "#fffbff",
+                        "surface-tint": "#565e74",
+                        "outline": "#76777d",
+                        "on-primary-fixed": "#131b2e",
+                        "secondary-fixed": "#eaddff",
+                        "on-tertiary-fixed": "#36003d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "1rem",
+                        "container-max": "1280px",
+                        "lg": "1.5rem",
+                        "sm": "0.5rem",
+                        "xl": "2.5rem",
+                        "gutter": "1.5rem",
+                        "xs": "0.25rem"
+                    },
+                    "fontFamily": {
+                        "h3": ["Inter"],
+                        "h2": ["Inter"],
+                        "code": ["JetBrains Mono"],
+                        "body-sm": ["Inter"],
+                        "h1": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "h3": ["24px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "h2": ["30px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "code": ["14px", { "lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400" }],
+                        "h1": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+
+    </script>
+
+
+
+
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .code-container {
+            background-color: #0F172A;
+        }
+
+        .hero-gradient {
+            background: radial-gradient(circle at top right, rgba(138, 76, 252, 0.08), transparent 40%),
+                radial-gradient(circle at bottom left, rgba(113, 42, 226, 0.05), transparent 40%);
+        }
+
+        pre[class*="language-"] {
+            margin: 0 !important;
+            padding: 0 !important;
+            background: transparent !important;
+        }
+
+        code[class*="language-"] {
+            padding: 0 !important;
+            margin: 0 !important;
+            display: block;
+        }
+
+        /* Remove Prism background */
+        pre[class*="language-"] {
+            background: transparent !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        /* Base text color */
+        code[class*="language-"] {
+            color: #c7d2fe;
+            /* indigo-300 */
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Custom token colors (MATCH YOUR HERO) */
+        .token.keyword {
+            color: #c084fc;
+        }
+
+        /* purple */
+        .token.function {
+            color: #fb923c;
+        }
+
+        /* orange */
+        .token.string {
+            color: #86efac;
+        }
+
+        /* green */
+        .token.number {
+            color: #fca5a5;
+        }
+
+        /* red */
+        .token.operator {
+            color: #93c5fd;
+        }
+
+        /* blue */
+        .token.punctuation {
+            color: #94a3b8;
+        }
+
+        /* gray */
+    </style>
+    <style>
+        .nav-link {
+            position: relative;
+            color: #64748b;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0%;
+            height: 2px;
+            background: #6366f1;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link.active {
+            color: #6366f1;
+            font-weight: 600;
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+        }
+    </style>
+</head>
+
+
+
+<body class="bg-background font-body-md text-on-surface">
+    <!-- TopNavBar -->
+    <div id="header"></div>
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 hero-gradient">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="space-y-8">
+                <h1 class="font-h1 text-h1 text-on-surface leading-tight">
+                    Generate Documents at Scale with a Simple API
+                </h1>
+                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                    Automate document generation with a simple API.
+                    Upload templates, send data, and generate PDF or DOCX files with async processing and webhook-based
+                    delivery.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <button
+                        id="get-api-key"
+                        class="bg-secondary px-8 py-3 rounded-xl text-white font-label-md text-label-md hover:opacity-90 transition-all shadow-lg shadow-secondary/20">
+                        Get API Key
+                    </button>
+                    <button
+                        onclick="window.location.href='/docs.html'"
+                        class="border border-outline-variant px-8 py-3 rounded-xl text-on-surface font-label-md text-label-md hover:bg-surface-container transition-all">
+                        View Docs
+                    </button>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="glass-card rounded-2xl p-4 shadow-2xl space-y-4">
+                    <div class="flex gap-2">
+                        <div class="w-3 h-3 rounded-full bg-error"></div>
+                        <div class="w-3 h-3 rounded-full bg-secondary-container"></div>
+                        <div class="w-3 h-3 rounded-full bg-primary-container"></div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="code-container rounded-xl p-4 overflow-hidden">
+                            <pre class="font-code text-code text-indigo-300 leading-relaxed"><span class="text-pink-400">POST</span> /v1/generate
+{
+    <span class="text-emerald-400">"template"</span>: <span class="text-orange-300">"inv_2024"</span>,
+    <span class="text-emerald-400">"data"</span>: {
+        <span class="text-emerald-400">"name"</span>: <span class="text-orange-300">"Jane Doe"</span>,
+        <span class="text-emerald-400">"amount"</span>: <span class="text-orange-300">250.00</span>
+    }
+}</pre>
+                        </div>
+                        <div class="bg-white rounded-xl border border-slate-100 p-4 shadow-inner">
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between border-b pb-2">
+                                    <div class="h-4 w-24 bg-slate-100 rounded"></div>
+                                    <div class="h-4 w-12 bg-indigo-100 rounded"></div>
+                                </div>
+                                <div class="space-y-2">
+                                    <div class="h-2 w-full bg-slate-50 rounded"></div>
+                                    <div class="h-2 w-full bg-slate-50 rounded"></div>
+                                    <div class="h-2 w-2/3 bg-slate-50 rounded"></div>
+                                </div>
+                                <div class="flex justify-end gap-2 pt-4">
+                                    <div class="h-6 w-16 bg-slate-100 rounded"></div>
+                                    <div class="h-6 w-16 bg-indigo-500 rounded"></div>
+                                </div>
+                            </div>
+                            <img class="mt-4 rounded shadow-sm w-full h-24 object-cover"
+                                data-alt="A sleek minimalist document preview showing a professional invoice layout with clean typography and subtle purple accents. The image has a bright light-mode aesthetic with soft shadows and high-quality rendering. The composition is modern and tech-focused, perfectly aligned with a high-performance developer tool branding."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8iiG8hgU54zU5u7TT5wY17syIqxa_REiIalUZArp1XakAxCHUCxLZCK076neeo5D3OpRwXjRJui_QpRvWolEIUpU7p1VupuHFNfUydtlyWUJb7lyE1J1PrLdjJk2XVmPgw_ChGrJEvYQIO-AVGRMG0FQoQ6yDA3EttdcCl7UTxPjgfnBbsvXC98wVJtTjsRq4XvFdxHjSZHVJmzpruh72VHQuZvwwtSKlw7zbXp6Kd7ypSZbr58athvsIoxfyrBFPuymmwdtirfM" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Trust Section -->
+    <section class="py-20 border-y border-outline-variant/30 bg-surface-container-low/30">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="font-h2 text-h2 text-center mb-4 text-on-surface">
+                Turn Data into Documents in Seconds
+            </h2>
+            <p class="text-center text-body-md text-on-surface-variant max-w-2xl mx-auto mb-8">
+                Transform your data into professional PDFs and DOCX files using powerful API and
+                asynchronous processing.
+            </p>
+
+            <!-- FIXED: items-stretch -->
+            <div class="flex flex-col lg:flex-row items-center justify-center gap-8">
+
+                <!-- Step 1 -->
+                <div class="flex-1 w-full max-w-xs flex">
+                    <div
+                        class="glass-card p-6 rounded-2xl text-center flex flex-col items-center gap-4 h-full w-full min-h-[440px] hover:shadow-lg transition-shadow border-secondary/20">
+
+                        <!-- Icons -->
+                        <div class="flex gap-4 mb-1">
+                            <div class="w-14 h-14 rounded-full bg-secondary-fixed flex items-center justify-center">
+                                <span class="material-symbols-outlined text-secondary text-3xl">data_object</span>
+                            </div>
+                            <div class="w-14 h-14 rounded-full bg-secondary-fixed flex items-center justify-center">
+                                <span class="material-symbols-outlined text-secondary text-3xl">description</span>
+                            </div>
+                        </div>
+
+                        <!-- Title -->
+                        <div>
+                            <h4 class="font-h3 text-body-lg font-semibold mb-1">Data & Template</h4>
+                            <p class="text-body-sm text-on-surface-variant">
+                                Input JSON and select your layout
+                            </p>
+                        </div>
+
+                        <!-- JSON Box -->
+                        <div
+                            class="flex-1 w-full bg-primary-container rounded-xl overflow-hidden shadow-lg flex flex-col">
+
+                            <!-- Header -->
+                            <div
+                                class="flex items-center justify-between px-md py-sm bg-primary-container/80 border-b border-on-primary-fixed-variant/10">
+                                <span class="text-[10px] uppercase font-bold text-on-primary-container">
+                                    Input JSON
+                                </span>
+                                <button class="text-on-primary-container hover:text-on-primary transition-colors">
+                                    <span class="material-symbols-outlined text-[16px]">content_copy</span>
+                                </button>
+                            </div>
+
+                            <!-- Code -->
+                            <div
+                                class="p-md font-code text-[12px] text-primary-fixed leading-tight overflow-auto flex-1 text-left">
+                                <pre class="whitespace-pre text-left m-0 text-indigo-300"><code><span class="text-pink-400">POST</span> /v1/generate
+{
+    <span class="text-emerald-400">"template"</span>: <span class="text-orange-300"> 📄 Template</span>,
+    <span class="text-emerald-400">"format"</span>: <span class="text-orange-300">"pdf"</span>,
+    <span class="text-emerald-400">"data"</span>: {
+        <span class="text-emerald-400">"customer"</span>: <span class="text-orange-300">"Jane Doe"</span>,
+        <span class="text-emerald-400">"access"</span>: <span class="text-orange-300">12000.00</span>,
+        <span class="text-emerald-400">"subtotal"</span>: <span class="text-orange-300">15049.00</span>,
+        <span class="text-emerald-400">"tax"</span>: <span class="text-orange-300">1956.38</span>,
+        <span class="text-emerald-400">"total"</span>: <span class="text-orange-300">17005.38</span>
+    }
+}</code></pre>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Arrow -->
+                <div class="hidden lg:flex items-center text-primary">
+                    <span class="material-symbols-outlined text-3xl">arrow_forward</span>
+                </div>
+                <div class="lg:hidden text-outline-variant rotate-90">
+                    <span class="material-symbols-outlined text-3xl">arrow_forward</span>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="w-full lg:w-[320px] xl:w-[360px] flex justify-center">
+                    <div
+                        class="glass-card p-6 rounded-2xl flex flex-col items-center h-full w-full min-h-[560px] bg-secondary shadow-xl shadow-secondary/20 border-none relative overflow-hidden">
+
+                        <!-- Glow Background -->
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent pointer-events-none">
+                        </div>
+
+                        <!-- Animated Core -->
+                        <div class="flex items-center justify-center relative z-10 py-4">
+                            <div
+                                class="w-20 h-20 rounded-full bg-white/20 flex items-center justify-center shadow-inner">
+                                <span
+                                    class="material-symbols-outlined text-white text-4xl animate-spin-slow">settings</span>
+                            </div>
+                        </div>
+
+                        <!-- Title -->
+                        <div class="text-white text-center mb-4 relative z-10">
+                            <h4 class="font-h3 text-body-lg font-semibold">DocGen Engine</h4>
+                            <p class="text-body-sm opacity-80">Real-time document processing</p>
+                        </div>
+
+                        <!-- Pipeline -->
+                        <div class="flex flex-col items-center gap-2 w-full relative z-10">
+
+                            <!-- Step -->
+                            <div class="flex items-center gap-3 w-full bg-white/10 rounded-xl px-4 py-2 backdrop-blur">
+                                <span class="material-symbols-outlined text-white text-sm">merge</span>
+                                <span class="text-xs text-white/90">Merge Data</span>
+                            </div>
+
+                            <!-- Connector -->
+                            <div class="h-4 w-[2px] bg-white/30"></div>
+
+                            <div class="flex items-center gap-3 w-full bg-white/10 rounded-xl px-4 py-2 backdrop-blur">
+                                <span class="material-symbols-outlined text-white text-sm">auto_fix_high</span>
+                                <span class="text-xs text-white/90">Apply Template</span>
+                            </div>
+
+                            <div class="h-4 w-[2px] bg-white/30"></div>
+
+                            <div class="flex items-center gap-3 w-full bg-white/10 rounded-xl px-4 py-2 backdrop-blur">
+                                <span class="material-symbols-outlined text-white text-sm">description</span>
+                                <span class="text-xs text-white/90">Generate Document</span>
+                            </div>
+
+                            <div class="h-4 w-[2px] bg-white/30"></div>
+
+                            <div class="flex items-center gap-3 w-full bg-white/10 rounded-xl px-4 py-2 backdrop-blur">
+                                <span class="material-symbols-outlined text-white text-sm">bolt</span>
+                                <span class="text-xs text-white/90">Deliver Output</span>
+                            </div>
+
+                        </div>
+
+
+                        <!-- Footer -->
+                        <div class="mt-auto text-[10px] text-white/70 uppercase tracking-wide text-center">
+                            Async • Queue-based • Scalable
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Arrow -->
+                <div class="hidden lg:flex items-center text-primary">
+                    <span class="material-symbols-outlined text-3xl">arrow_forward</span>
+                </div>
+                <div class="lg:hidden text-outline-variant rotate-90">
+                    <span class="material-symbols-outlined text-3xl">arrow_forward</span>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="flex-1 w-full max-w-xs flex">
+                    <div
+                        class="glass-card p-6 rounded-2xl text-center flex flex-col items-center gap-4 h-full w-full min-h-[440px] hover:shadow-lg transition-shadow border-secondary/20">
+
+                        <div class="flex gap-3 items-center justify-center">
+
+                            <!-- PDF Icon -->
+                            <div
+                                class="w-14 h-14 rounded-full bg-secondary-fixed flex items-center justify-center shadow-sm">
+                                <span class="material-symbols-outlined text-secondary text-2xl">picture_as_pdf</span>
+                            </div>
+
+                            <!-- DOCX Icon -->
+                            <div
+                                class="w-14 h-14 rounded-full bg-secondary-fixed flex items-center justify-center shadow-sm">
+                                <span class="material-symbols-outlined text-secondary text-2xl">description</span>
+                            </div>
+
+                        </div>
+
+                        <div>
+                            <h4 class="font-h3 text-body-lg font-semibold mb-1">Stunning PDF or DOCX</h4>
+                            <p class="text-body-sm text-on-surface-variant">Ready to deliver</p>
+                        </div>
+
+                        <!-- Preview -->
+                        <div class="w-full mt-0 px-0">
+                            <div
+                                class="bg-white rounded-t-lg border border-outline-variant/30 shadow-sm overflow-hidden text-[7px] text-left leading-tight font-sans">
+
+                                <!-- Header -->
+                                <div class="p-2 border-b flex justify-between items-start">
+                                    <div>
+                                        <div class="font-bold text-[8px] text-primary">DocGen Pro</div>
+                                        <div class="text-[6px] text-gray-500">123 Business Street</div>
+                                        <div class="text-[6px] text-gray-500">San Francisco, CA</div>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="font-bold text-primary uppercase text-[8px]">Invoice</div>
+                                        <div class="text-[6px] text-gray-500">INV-2024-0042</div>
+                                        <div class="text-[6px] text-gray-500">Aug 12, 2024</div>
+                                    </div>
+                                </div>
+
+                                <!-- Client Info -->
+                                <div class="p-2 grid grid-cols-2 gap-2 border-b">
+                                    <div>
+                                        <div class="font-semibold text-[6px] text-gray-600">Bill To</div>
+                                        <div class="font-bold">Jane Doe</div>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="font-semibold text-[6px] text-gray-600">Payment Terms</div>
+                                        <div>Due on Receipt</div>
+                                    </div>
+                                </div>
+
+                                <!-- Table -->
+                                <div class="p-2 space-y-1">
+                                    <div class="flex justify-between font-bold border-b pb-1 text-[6px] text-gray-600">
+                                        <span>DESCRIPTION</span>
+                                        <span>AMOUNT</span>
+                                    </div>
+
+                                    <div class="flex justify-between py-1 border-b">
+                                        <div class="w-2/3">
+                                            <div class="font-semibold">Enterprise API Access</div>
+                                            <div class="text-gray-500 truncate">
+                                                Includes 1M document generations/month
+                                            </div>
+                                        </div>
+                                        <div class="font-mono">$12,000.00</div>
+                                    </div>
+
+                                    <div class="flex justify-between py-1 border-b">
+                                        <div class="w-2/3">
+                                            <div class="font-semibold">Custom Template Design</div>
+                                        </div>
+                                        <div class="font-mono">$2,250.00</div>
+                                    </div>
+
+                                    <div class="flex justify-between py-1">
+                                        <div class="w-2/3">
+                                            <div class="font-semibold">Priority Support</div>
+                                        </div>
+                                        <div class="font-mono">$799.00</div>
+                                    </div>
+                                </div>
+
+                                <!-- Totals -->
+                                <div class="p-2 border-t space-y-1 text-[6px]">
+                                    <div class="flex justify-between">
+                                        <span>Subtotal</span>
+                                        <span>$15,049.00</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Tax (13%)</span>
+                                        <span>$1,956.38</span>
+                                    </div>
+                                </div>
+
+                                <!-- Final Total -->
+                                <div
+                                    class="p-2 bg-secondary text-white flex justify-between items-center text-[8px] font-bold">
+                                    <span>TOTAL DUE</span>
+                                    <span>$17,005.38</span>
+                                </div>
+
+                                <!-- Footer -->
+                                <div class="p-2 text-center text-[5px] text-gray-400 border-t">
+                                    Thank you for your business • support@docgen.io
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Animation -->
+            <style>
+                @keyframes spin-slow {
+                    from {
+                        transform: rotate(0deg);
+                    }
+
+                    to {
+                        transform: rotate(360deg);
+                    }
+                }
+
+                .animate-spin-slow {
+                    animation: spin-slow 8s linear infinite;
+                }
+            </style>
+
+        </div>
+    </section>
+    <!-- Features Bento Grid -->
+    <section class="py-20 bg-primary-container text-white overflow-hidden relative">
+        <div
+            class="absolute inset-0 opacity-10 pointer-events-none bg-[radial-gradient(circle_at_50%_120%,#712ae2,transparent)]">
+        </div>
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="space-y-6">
+                <h2 class="font-h2 text-h2">Developer Experience First</h2>
+                <p class="font-body-lg text-body-lg opacity-80">We've simplified the entire document lifecycle into a
+                    single POST request. No complex libraries, no server-side rendering issues.</p>
+                <ul class="space-y-4">
+                    <li class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-secondary-container">check_circle</span>
+                        <span class="font-body-md">Simple REST API with multi-language support</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-secondary-container">check_circle</span>
+                        <span class="font-body-md">Works with Node, Python, and any backend via REST APIs</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-secondary-container">check_circle</span>
+                        <span class="font-body-md">Language-agnostic API — integrate with any stack</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-secondary-container">check_circle</span>
+                        <span class="font-body-md">Comprehensive API Reference docs</span>
+                    </li>
+                </ul>
+            </div>
+            <div data-tabs class="code-container rounded-2xl shadow-2xl border border-white/10 overflow-hidden">
+                <div class="flex bg-white/5 border-b border-white/10 px-4">
+                    <button data-tab="node"
+                        class="tab-btn px-6 py-3 text-white border-b-2 border-secondary-container transition-all">
+                        Node.js
+                    </button>
+
+                    <button data-tab="python" class="tab-btn px-6 py-3 text-gray-400 transition-all">
+                        Python
+                    </button>
+
+                    <button data-tab="curl" class="tab-btn px-6 py-3 text-gray-400 transition-all">
+                        cURL
+                    </button>
+                </div>
+                <div class="p-8 h-[420px] overflow-auto font-code text-[14px] leading-relaxed text-indigo-300">
+
+                    <!-- Node -->
+                    <pre data-content="node" class="code-block"><code class="language-javascript">const docgen = require('@docgen/sdk');
+const client = new docgen.Client('YOUR_API_KEY');
+
+async function createInvoice() {
+const doc = await client.generate({
+    template: 'inv_4582',
+    format: 'pdf',
+    data: {
+    id: '#9942',
+    date: '2024-10-24',
+    items: [{ name: 'Pro Plan', price: 49.00 }]
+    }
+});
+console.log(doc.url);
+}
+                </code></pre>
+
+                    <!-- Python -->
+                    <pre data-content="python" class="code-block"><code class="language-javascript">from docgen import Client
+
+client = Client("YOUR_API_KEY")
+
+doc = client.generate({
+    "template": "inv_4582",
+    "format": "pdf",
+    "data": {
+        "id": "#9942",
+        "date": "2024-10-24",
+        "items": [{"name": "Pro Plan", "price": 49.00}]
+    }
+})
+
+print(doc["url"])
+</code></pre>
+
+                    <!-- cURL -->
+                    <pre data-content="curl" class="code-block"><code class="language-javascript">curl -X POST https://api.docgen.com/v1/generate \
+-H "Authorization: Bearer YOUR_API_KEY" \
+-H "Content-Type: application/json" \
+-d '{
+    "template": "inv_4582",
+    "format": "pdf",
+    "data": {
+    "id": "#9942",
+    "date": "2024-10-24"
+    }
+}'
+</code></pre>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-20 bg-surface-container-low">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="font-h2 text-h2 text-on-surface mb-4">See It in Action</h2>
+                <p class="font-body-lg text-body-lg text-on-surface-variant">Watch how easy it is to integrate DocGen
+                    into your system</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Video Card 1 -->
+                <div
+                    class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="relative aspect-video overflow-hidden">
+                        <img alt="Getting Started"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDrKExzEd8mzYO7gQokKF6VFalyaVsZi5sfqR2sjnBaRrVRx1Oa_zD_d-8L6zzDNJ9fVEaVLb0sUvvEWbPPW4ZEnDqCE36BxAlD0eDjt43xQU6ppGGcKzm8oRR9EronVk_kAphbZqHW5Ty1g8PSOrLJMnYD4X2tpfsRMOStxOxSKloB9AUYTEs5DhT8IY_LjW4VAnx6VeKN0w0qq8tISfGuC70y4LoS4RO-etX3tqqWWP0Me153qVGrPWTIkgWq8bgKU_xO1ruDxE" />
+                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center">
+                            <div
+                                class="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center text-secondary shadow-lg group-hover:scale-110 transition-transform cursor-pointer">
+                                <span class="material-symbols-outlined text-4xl fill-1">play_arrow</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-h3 text-body-lg font-semibold mb-2">Getting Started with API</h3>
+                        <p class="font-body-sm text-on-surface-variant">Learn how to set up your first API call in under
+                            5 minutes.</p>
+                    </div>
+                </div>
+                <!-- Video Card 2 -->
+                <div
+                    class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="relative aspect-video overflow-hidden">
+                        <img alt="Template Customization"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDW4SRcxrpJxBns453raVgR6q1pOWfJ3uuFzp_fphOcU_YOlXk0V_FcSqQfnDrfRb6cQKcWglJt2xQWlM2OiOdOd5HQ_RX_96yUZDoYgBOnQaHMYAkikZr1d1qN7LP545dNdrNcl3etBqZBrrjFmpI7tJGkpuPKo6WUNqu8S5m_xdWVMdwOq1lTP_4HNAPDgpYu2be5GEScutHUk_JnTjRDhyCe3F7NpmHF2FOQqnSkjaw72C5JW225BbmNsJA0FDqnYlo3u8JehU4" />
+                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center">
+                            <div
+                                class="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center text-secondary shadow-lg group-hover:scale-110 transition-transform cursor-pointer">
+                                <span class="material-symbols-outlined text-4xl fill-1">play_arrow</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-h3 text-body-lg font-semibold mb-2">Template Customization</h3>
+                        <p class="font-body-sm text-on-surface-variant">Master our dynamic templating engine to build
+                            complex layouts.</p>
+                    </div>
+                </div>
+                <!-- Video Card 3 -->
+                <div
+                    class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    <div class="relative aspect-video overflow-hidden">
+                        <img alt="Handling Webhooks"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuABz7ThbJt7oCVzDv9iJk-FLhbWoDAs9ACKm_JjHy52E1i95QHdgF8-eM36EFwegeAji3h0t-Ir9Y6G8asKgHRjVZwVIHsG88OQLgqMR8tYZQ00gtESEoE7aA4yqlh0cd4J51otBGJW63C9eJNMuVfyHIQ3qZn1e7ARu-41MvjCragElmddzyVAqo-mOaQH3zrqD29Yk0-oRJx7GDzZNxRIL2rYz14fzWU2HGsE7zGN1hi2KscDQiOv-99AmKQP-wcWHIRqEaNRbog" />
+                        <div class="absolute inset-0 bg-black/20 flex items-center justify-center">
+                            <div
+                                class="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center text-secondary shadow-lg group-hover:scale-110 transition-transform cursor-pointer">
+                                <span class="material-symbols-outlined text-4xl fill-1">play_arrow</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-h3 text-body-lg font-semibold mb-2">Handling Webhooks</h3>
+                        <p class="font-body-sm text-on-surface-variant">Integrate real-time notifications into your
+                            document workflow.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 bg-surface/50 border-y border-outline-variant/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-h2 text-h3 text-on-surface mb-2">Works Seamlessly With Your Favorite Tools</h2>
+                <p class="text-body-sm text-on-surface-variant opacity-70">Native integrations for every stage of your
+                    document workflow</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto">
+                <!-- Salesforce -->
+                <div
+                    class="group relative flex items-center gap-4 px-6 py-4 rounded-2xl bg-white/40 backdrop-blur-md border border-white/60 shadow-sm hover:shadow-xl hover:border-blue-400/30 hover:-translate-y-1 transition-all duration-300 cursor-default">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-2xl">cloud</span>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-sm text-on-surface leading-tight">Salesforce</p>
+                        <p class="text-[11px] font-medium text-on-surface-variant/60 uppercase tracking-widest mt-0.5">
+                            CRM</p>
+                    </div>
+                </div>
+                <!-- Zapier -->
+                <div
+                    class="group relative flex items-center gap-4 px-6 py-4 rounded-2xl bg-white/40 backdrop-blur-md border border-white/60 shadow-sm hover:shadow-xl hover:border-orange-400/30 hover:-translate-y-1 transition-all duration-300 cursor-default">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-orange-50 flex items-center justify-center text-orange-600 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-2xl">bolt</span>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-sm text-on-surface leading-tight">Zapier</p>
+                        <p class="text-[11px] font-medium text-on-surface-variant/60 uppercase tracking-widest mt-0.5">
+                            Automation</p>
+                    </div>
+                </div>
+                <!-- Make -->
+                <div
+                    class="group relative flex items-center gap-4 px-6 py-4 rounded-2xl bg-white/40 backdrop-blur-md border border-white/60 shadow-sm hover:shadow-xl hover:border-purple-400/30 hover:-translate-y-1 transition-all duration-300 cursor-default">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center text-purple-600 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-2xl">hub</span>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-sm text-on-surface leading-tight">Make</p>
+                        <p class="text-[11px] font-medium text-on-surface-variant/60 uppercase tracking-widest mt-0.5">
+                            Workflow</p>
+                    </div>
+                </div>
+                <!-- Node.js -->
+                <div
+                    class="group relative flex items-center gap-4 px-6 py-4 rounded-2xl bg-white/40 backdrop-blur-md border border-white/60 shadow-sm hover:shadow-xl hover:border-emerald-400/30 hover:-translate-y-1 transition-all duration-300 cursor-default">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-2xl">code</span>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-sm text-on-surface leading-tight">Node.js</p>
+                        <p class="text-[11px] font-medium text-on-surface-variant/60 uppercase tracking-widest mt-0.5">
+                            Runtime</p>
+                    </div>
+                </div>
+                <!-- Python -->
+                <div
+                    class="group relative flex items-center gap-4 px-6 py-4 rounded-2xl bg-white/40 backdrop-blur-md border border-white/60 shadow-sm hover:shadow-xl hover:border-blue-500/30 hover:-translate-y-1 transition-all duration-300 cursor-default">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-500 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-2xl">terminal</span>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-sm text-on-surface leading-tight">Python</p>
+                        <p class="text-[11px] font-medium text-on-surface-variant/60 uppercase tracking-widest mt-0.5">
+                            Scripting</p>
+                    </div>
+                </div>
+                <!-- REST API -->
+                <div
+                    class="group relative flex items-center gap-4 px-6 py-4 rounded-2xl bg-white/40 backdrop-blur-md border border-white/60 shadow-sm hover:shadow-xl hover:border-indigo-400/30 hover:-translate-y-1 transition-all duration-300 cursor-default">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-2xl">api</span>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-sm text-on-surface leading-tight">REST API</p>
+                        <p class="text-[11px] font-medium text-on-surface-variant/60 uppercase tracking-widest mt-0.5">
+                            Protocol</p>
+                    </div>
+                </div>
+                <!-- Google Sheets -->
+                <div
+                    class="group relative flex items-center gap-4 px-6 py-4 rounded-2xl bg-white/40 backdrop-blur-md border border-white/60 shadow-sm hover:shadow-xl hover:border-green-400/30 hover:-translate-y-1 transition-all duration-300 cursor-default">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-green-50 flex items-center justify-center text-green-600 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-2xl">table_chart</span>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-sm text-on-surface leading-tight">Google Sheets</p>
+                        <p class="text-[11px] font-medium text-on-surface-variant/60 uppercase tracking-widest mt-0.5">
+                            Spreadsheet</p>
+                    </div>
+                </div>
+                <!-- AWS -->
+                <div
+                    class="group relative flex items-center gap-4 px-6 py-4 rounded-2xl bg-white/40 backdrop-blur-md border border-white/60 shadow-sm hover:shadow-xl hover:border-yellow-400/30 hover:-translate-y-1 transition-all duration-300 cursor-default">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-yellow-50 flex items-center justify-center text-yellow-600 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-2xl">storage</span>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-sm text-on-surface leading-tight">AWS</p>
+                        <p class="text-[11px] font-medium text-on-surface-variant/60 uppercase tracking-widest mt-0.5">
+                            Cloud</p>
+                    </div>
+                </div>
+                <!-- Firebase -->
+                <div
+                    class="group relative flex items-center gap-4 px-6 py-4 rounded-2xl bg-white/40 backdrop-blur-md border border-white/60 shadow-sm hover:shadow-xl hover:border-orange-500/30 hover:-translate-y-1 transition-all duration-300 cursor-default">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-orange-50 flex items-center justify-center text-orange-500 group-hover:scale-110 transition-transform">
+                        <span class="material-symbols-outlined text-2xl">local_fire_department</span>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-sm text-on-surface leading-tight">Firebase</p>
+                        <p class="text-[11px] font-medium text-on-surface-variant/60 uppercase tracking-widest mt-0.5">
+                            Backend</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-20 bg-surface">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="font-h2 text-h2 text-on-surface mb-4">Built for Engineering Excellence</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant">The tools you need to integrate document
+                    generation directly into your application stack without the overhead.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"><!-- Card 1: RESTful API First -->
+                <div
+                    class="group glass-card bg-white/80 backdrop-blur-xl p-8 rounded-2xl border border-white/20 hover:border-secondary/30 hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-xl">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary-fixed to-primary-fixed-dim flex items-center justify-center mb-8 shadow-inner">
+                        <span class="material-symbols-outlined text-on-primary-fixed text-3xl">api</span>
+                    </div>
+                    <h3 class="font-h3 text-h3 mb-4 group-hover:text-secondary transition-colors">RESTful API First</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Standardized endpoints
+                        for seamless integration with any language or framework. Built with developers in mind.</p>
+                </div>
+                <!-- Card 2: Template Upload -->
+                <div
+                    class="group glass-card bg-white/80 backdrop-blur-xl p-8 rounded-2xl border border-white/20 hover:border-secondary/30 hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-xl">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-gradient-to-br from-secondary-fixed to-secondary-fixed-dim flex items-center justify-center mb-8 shadow-inner">
+                        <span class="material-symbols-outlined text-on-secondary-fixed text-3xl">cloud_upload</span>
+                    </div>
+                    <h3 class="font-h3 text-h3 mb-4 group-hover:text-secondary transition-colors">Template Upload</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Upload your DOCX
+                        templates easily in API request and start generating documents instantly.</p>
+                </div>
+                <!-- Card 3: High-Res PDF -->
+                <div
+                    class="group glass-card bg-white/80 backdrop-blur-xl p-8 rounded-2xl border border-white/20 hover:border-secondary/30 hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-xl">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-gradient-to-br from-tertiary-fixed to-tertiary-fixed-dim flex items-center justify-center mb-8 shadow-inner">
+                        <span class="material-symbols-outlined text-on-tertiary-fixed text-3xl">picture_as_pdf</span>
+                    </div>
+                    <h3 class="font-h3 text-h3 mb-4 group-hover:text-secondary transition-colors">High-Res PDF</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Perfect rendering for
+                        any complex layout, ensuring your documents look professional every time.</p>
+                </div>
+                <!-- Card 4: Real-time Webhooks -->
+                <div
+                    class="group glass-card bg-white/80 backdrop-blur-xl p-8 rounded-2xl border border-white/20 hover:border-secondary/30 hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-xl">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary-fixed to-primary-fixed-dim flex items-center justify-center mb-8 shadow-inner">
+                        <span class="material-symbols-outlined text-on-primary-fixed text-3xl">webhook</span>
+                    </div>
+                    <h3 class="font-h3 text-h3 mb-4 group-hover:text-secondary transition-colors">Real-time Webhooks
+                    </h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Get notified instantly
+                        when documents are ready with our robust webhook notification system.</p>
+                </div>
+                <!-- Card 5: Async Architecture -->
+                <div
+                    class="group glass-card bg-white/80 backdrop-blur-xl p-8 rounded-2xl border border-white/20 hover:border-secondary/30 hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-xl">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-gradient-to-br from-secondary-fixed to-secondary-fixed-dim flex items-center justify-center mb-8 shadow-inner">
+                        <span class="material-symbols-outlined text-on-secondary-fixed text-3xl">speed</span>
+                    </div>
+                    <h3 class="font-h3 text-h3 mb-4 group-hover:text-secondary transition-colors">Async Architecture
+                    </h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Handle thousands of
+                        concurrent requests without blocking your application's main thread.</p>
+                </div>
+                <!-- Card 6: Email Delivery -->
+                <div
+                    class="group glass-card bg-white/80 backdrop-blur-xl p-8 rounded-2xl border border-white/20 hover:border-secondary/30 hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-xl">
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-gradient-to-br from-tertiary-fixed to-tertiary-fixed-dim flex items-center justify-center mb-8 shadow-inner">
+                        <span class="material-symbols-outlined text-on-tertiary-fixed text-3xl">mail</span>
+                    </div>
+                    <h3 class="font-h3 text-h3 mb-4 group-hover:text-secondary transition-colors">Email Delivery</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Auto-send documents
+                        directly to your users' inboxes with customizable email templates.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- How It Works -->
+    <!-- Code Snippet Section -->
+    <!-- Use Cases -->
+    <section class="py-20 bg-surface">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="font-h2 text-h2 text-center mb-16">Universal Utility</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-lg rounded-xl shadow-sm border border-outline-variant/50">
+                    <img class="w-full h-40 object-cover rounded-lg mb-6"
+                        data-alt="A minimalist 3D render of a digital invoice floating in a clean white studio with soft purple lighting. The image is highly detailed showing text alignment and modern UI elements. It represents the efficiency and professionalism of document generation for business transactions in a sleek light-mode aesthetic."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDrKExzEd8mzYO7gQokKF6VFalyaVsZi5sfqR2sjnBaRrVRx1Oa_zD_d-8L6zzDNJ9fVEaVLb0sUvvEWbPPW4ZEnDqCE36BxAlD0eDjt43xQU6ppGGcKzm8oRR9EronVk_kAphbZqHW5Ty1g8PSOrLJMnYD4X2tpfsRMOStxOxSKloB9AUYTEs5DhT8IY_LjW4VAnx6VeKN0w0qq8tISfGuC70y4LoS4RO-etX3tqqWWP0Me153qVGrPWTIkgWq8bgKU_xO1ruDxE" />
+                    <h4 class="font-h3 text-h3 mb-2">Invoices</h4>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">Automate billing and receipts at scale.
+                    </p>
+                </div>
+                <div class="bg-white p-lg rounded-xl shadow-sm border border-outline-variant/50">
+                    <img class="w-full h-40 object-cover rounded-lg mb-6"
+                        data-alt="A clean modern contract document with a digital signature line floating in a bright architectural space. The lighting is soft and diffused with a minimalist professional look. This visual emphasizes the security and formality of legal documents generated through the DocGen API platform."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDW4SRcxrpJxBns453raVgR6q1pOWfJ3uuFzp_fphOcU_YOlXk0V_FcSqQfnDrfRb6cQKcWglJt2xQWlM2OiOdOd5HQ_RX_96yUZDoYgBOnQaHMYAkikZr1d1qN7LP545dNdrNcl3etBqZBrrjFmpI7tJGkpuPKo6WUNqu8S5m_xdWVMdwOq1lTP_4HNAPDgpYu2be5GEScutHUk_JnTjRDhyCe3F7NpmHF2FOQqnSkjaw72C5JW225BbmNsJA0FDqnYlo3u8JehU4" />
+                    <h4 class="font-h3 text-h3 mb-2">Contracts</h4>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">Generate legal agreements dynamically.
+                    </p>
+                </div>
+                <div class="bg-white p-lg rounded-xl shadow-sm border border-outline-variant/50">
+                    <img class="w-full h-40 object-cover rounded-lg mb-6"
+                        data-alt="An offer letter template with placeholder data visualized as glowing digital fields in a bright office environment. Minimalist design with high-key lighting creates a positive and welcoming aesthetic. It showcases the human resources automation capabilities of the document generation engine."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuABz7ThbJt7oCVzDv9iJk-FLhbWoDAs9ACKm_JjHy52E1i95QHdgF8-eM36EFwegeAji3h0t-Ir9Y6G8asKgHRjVZwVIHsG88OQLgqMR8tYZQ00gtESEoE7aA4yqlh0cd4J51otBGJW63C9eJNMuVfyHIQ3qZn1e7ARu-41MvjCragElmddzyVAqo-mOaQH3zrqD29Yk0-oRJx7GDzZNxRIL2rYz14fzWU2HGsE7zGN1hi2KscDQiOv-99AmKQP-wcWHIRqEaNRbog" />
+                    <h4 class="font-h3 text-h3 mb-2">Offer Letters</h4>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">Personalized HR docs for new hires.</p>
+                </div>
+                <div class="bg-white p-lg rounded-xl shadow-sm border border-outline-variant/50">
+                    <img class="w-full h-40 object-cover rounded-lg mb-6"
+                        data-alt="A complex data report with charts and graphs rendered beautifully on a digital PDF page. The style is Vercel-inspired minimalist tech clean, with deep purples and blacks against a pristine white background. This visual highlights the platform's ability to handle data-heavy reporting requirements."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6idJbUqFIJe9pWQ-nLCHUOyopmU5RgaOGIJL4QDQ6AhlXw6mGifaD1O3RNeL8gLkQW1KmYJQHZJlbkLbsn2rj4Sp2ebqn7GqzbBSWImEsdWG90ZcLjGLz5XMrNXq3LXSc7KzUzEPSswiRFGWrquN0v9ArZOUjriSgLXWgqyGL-EaRGer1k7mjcQUGFTv4ji6Q5ErmlhqzxguBf0g5rGt1_zrf57NVo0tOU29w-HMFkcwr75DeMCCHrc2K6gBgwIS8YoVJmJtZAFc" />
+                    <h4 class="font-h3 text-h3 mb-2">Reports</h4>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">Beautiful data-driven PDF reports.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Pricing Section -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="font-h2 text-h2 text-center mb-16">Simple, Scalable Pricing</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Free -->
+                <div class="glass-card p-xl rounded-2xl flex flex-col">
+                    <div class="mb-8">
+                        <span
+                            class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Free</span>
+                        <div class="flex items-baseline mt-4">
+                            <span class="text-h1 font-bold">$0</span>
+                            <span class="font-body-sm text-on-surface-variant ml-2">/month</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 mb-12 flex-1">
+                        <li class="flex gap-2 items-center text-body-sm"><span
+                                class="material-symbols-outlined text-emerald-500">check</span> 50 documents/mo</li>
+                        <li class="flex gap-2 items-center text-body-sm"><span
+                                class="material-symbols-outlined text-emerald-500">check</span> Public Templates</li>
+                        <li class="flex gap-2 items-center text-body-sm text-on-surface-variant opacity-50"><span
+                                class="material-symbols-outlined">close</span> Custom Webhooks</li>
+                    </ul>
+                    <button class="w-full border border-outline-variant py-3 rounded-xl font-label-md">Start
+                        Free</button>
+                </div>
+                <!-- Pro -->
+                <div
+                    class="glass-card p-xl rounded-2xl border-secondary-container ring-2 ring-secondary-container flex flex-col relative scale-105 z-10">
+                    <div
+                        class="absolute -top-4 left-1/2 -translate-x-1/2 bg-secondary text-white px-4 py-1 rounded-full font-label-md">
+                        Most Popular</div>
+                    <div class="mb-8">
+                        <span class="font-label-md text-label-md text-secondary uppercase tracking-wider">Pro</span>
+                        <div class="flex items-baseline mt-4">
+                            <span class="text-h1 font-bold text-secondary">$49</span>
+                            <span class="font-body-sm text-on-surface-variant ml-2">/month</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 mb-12 flex-1">
+                        <li class="flex gap-2 items-center text-body-sm"><span
+                                class="material-symbols-outlined text-secondary">check</span> 5,000 documents/mo</li>
+                        <li class="flex gap-2 items-center text-body-sm"><span
+                                class="material-symbols-outlined text-secondary">check</span> Private Templates</li>
+                        <li class="flex gap-2 items-center text-body-sm"><span
+                                class="material-symbols-outlined text-secondary">check</span> Custom Webhooks</li>
+                        <li class="flex gap-2 items-center text-body-sm"><span
+                                class="material-symbols-outlined text-secondary">check</span> Team Access</li>
+                    </ul>
+                    <button
+                        class="w-full bg-secondary text-white py-3 rounded-xl font-label-md shadow-lg shadow-secondary/20">Get
+                        Started</button>
+                </div>
+                <!-- Enterprise -->
+                <div class="glass-card p-xl rounded-2xl flex flex-col">
+                    <div class="mb-8">
+                        <span
+                            class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Enterprise</span>
+                        <div class="flex items-baseline mt-4">
+                            <span class="text-h1 font-bold">Custom</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 mb-12 flex-1">
+                        <li class="flex gap-2 items-center text-body-sm"><span
+                                class="material-symbols-outlined text-emerald-500">check</span> Unlimited documents</li>
+                        <li class="flex gap-2 items-center text-body-sm"><span
+                                class="material-symbols-outlined text-emerald-500">check</span> Dedicated Support</li>
+                        <li class="flex gap-2 items-center text-body-sm"><span
+                                class="material-symbols-outlined text-emerald-500">check</span> Custom Integration</li>
+                    </ul>
+                    <button class="w-full border border-outline-variant py-3 rounded-xl font-label-md">Contact
+                        Sales</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Final CTA -->
+    <section class="py-24 text-center">
+        <div
+            class="max-w-4xl mx-auto px-6 glass-card p-xl rounded-3xl border-none bg-gradient-to-br from-indigo-500 to-purple-600 text-white shadow-2xl">
+            <h2 class="font-h1 text-h2 mb-6">Start Generating Documents in Minutes</h2>
+            <p class="font-body-lg text-body-lg opacity-90 mb-10 max-w-xl mx-auto">Join over 10,000 developers building
+                the future of automated business operations.</p>
+            <button
+                id="get-api-key-btn"
+                class="bg-white text-secondary px-12 py-4 rounded-xl font-h3 text-h3 hover:bg-slate-50 transition-all shadow-xl">
+                Get Your API Key Now
+            </button>
+        </div>
+    </section>
+    <!-- Footer -->
+    <div id="footer"></div>
+    <script src="/components/layout.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            document.querySelectorAll("[data-tabs]").forEach(container => {
+
+                const tabs = container.querySelectorAll(".tab-btn");
+                const blocks = container.querySelectorAll(".code-block");
+
+                tabs.forEach(tab => {
+                    tab.addEventListener("click", () => {
+
+                        console.log("clicked");
+
+                        const target = tab.getAttribute("data-tab");
+
+                        tabs.forEach(t => {
+                            t.classList.remove("border-b-2", "border-secondary-container");
+                            t.classList.add("opacity-50");
+                        });
+
+                        tab.classList.add("border-b-2", "border-secondary-container");
+                        tab.classList.remove("opacity-50");
+
+                        blocks.forEach(block => block.classList.add("hidden"));
+
+                        const active = container.querySelector(`[data-content="${target}"]`);
+
+                        if (active) {
+                            active.classList.remove("hidden");
+                        }
+
+                        Prism.highlightAll();
+
+                    });
+                });
+
+            });
+
+        });
+    </script>
+</body>
+
+</html>

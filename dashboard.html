@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>DocGen Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#fffbff",
+                        "tertiary-container": "#36003d",
+                        "on-secondary-fixed-variant": "#5a00c6",
+                        "surface-container-highest": "#e0e3e5",
+                        "surface": "#f7f9fb",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed": "#36003d",
+                        "inverse-primary": "#bec6e0",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "background": "#f7f9fb",
+                        "surface-container": "#eceef0",
+                        "on-primary-container": "#7c839b",
+                        "primary-fixed": "#dae2fd",
+                        "on-tertiary-container": "#d33de5",
+                        "primary": "#000000",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-variant": "#e0e3e5",
+                        "surface-bright": "#f7f9fb",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#fda9ff",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-container": "#131b2e",
+                        "surface-tint": "#565e74",
+                        "secondary-fixed-dim": "#d2bbff",
+                        "secondary": "#712ae2",
+                        "on-surface": "#191c1e",
+                        "inverse-surface": "#2d3133",
+                        "on-primary-fixed": "#131b2e",
+                        "secondary-container": "#8a4cfc",
+                        "on-error": "#ffffff",
+                        "surface-container-low": "#f2f4f6",
+                        "tertiary": "#000000",
+                        "outline-variant": "#c6c6cd",
+                        "tertiary-fixed": "#ffd6fb",
+                        "outline": "#76777d",
+                        "on-tertiary-fixed-variant": "#7d008c",
+                        "on-secondary-fixed": "#25005a",
+                        "on-surface-variant": "#45464d",
+                        "secondary-fixed": "#eaddff",
+                        "surface-container-high": "#e6e8ea",
+                        "primary-fixed-dim": "#bec6e0",
+                        "error": "#ba1a1a",
+                        "on-background": "#191c1e",
+                        "surface-dim": "#d8dadc"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "1rem",
+                        "gutter": "1.5rem",
+                        "container-max": "1280px",
+                        "lg": "1.5rem",
+                        "xs": "0.25rem",
+                        "xl": "2.5rem",
+                        "sm": "0.5rem"
+                    },
+                    "fontFamily": {
+                        "h1": ["Inter"],
+                        "code": ["JetBrains Mono"],
+                        "body-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "h3": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "h2": ["Inter"]
+                    },
+                    "fontSize": {
+                        "h1": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "code": ["14px", { "lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "h3": ["24px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
+                        "h2": ["30px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid #E2E8F0;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+
+    <style>
+        /* ===============================
+   TOAST
+=============================== */
+
+        #toastContainer {
+
+            position: fixed;
+
+            top: 88px;
+
+            right: 24px;
+
+            z-index: 9999;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+
+        }
+
+        .toast {
+
+            opacity: 0;
+
+            transform:
+                translateX(40px);
+
+            transition:
+                all .3s ease;
+
+        }
+
+        .toast.show {
+
+            opacity: 1;
+
+            transform:
+                translateX(0);
+
+        }
+
+        .toast-inner {
+
+            position: relative;
+
+            overflow: hidden;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            min-width: 320px;
+
+            max-width: 420px;
+
+            padding: 16px 18px;
+
+            border-radius: 18px;
+
+            backdrop-filter:
+                blur(16px);
+
+            background:
+                rgba(255,
+                    255,
+                    255,
+                    0.88);
+
+            box-shadow:
+                0 12px 40px rgba(0,
+                    0,
+                    0,
+                    .08);
+
+        }
+
+        .toast-icon {
+
+            width: 42px;
+
+            height: 42px;
+
+            border-radius: 12px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+        .toast-content {
+
+            flex: 1;
+
+            font-size: 14px;
+
+            font-weight: 500;
+
+        }
+
+        .toast-progress {
+
+            position: absolute;
+
+            bottom: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 3px;
+
+            transform-origin: left;
+
+            animation:
+                shrink linear forwards;
+
+        }
+
+        /* COLORS */
+
+        .toast.success .toast-icon {
+
+            background:
+                rgba(34,
+                    197,
+                    94,
+                    .12);
+
+            color:
+                #16a34a;
+
+        }
+
+        .toast.success .toast-progress {
+
+            background:
+                #16a34a;
+
+        }
+
+        .toast.error .toast-icon {
+
+            background:
+                rgba(239,
+                    68,
+                    68,
+                    .12);
+
+            color:
+                #dc2626;
+
+        }
+
+        .toast.error .toast-progress {
+
+            background:
+                #dc2626;
+
+        }
+
+        .toast.warning .toast-icon {
+
+            background:
+                rgba(245,
+                    158,
+                    11,
+                    .12);
+
+            color:
+                #d97706;
+
+        }
+
+        .toast.warning .toast-progress {
+
+            background:
+                #d97706;
+
+        }
+
+        .toast.info .toast-icon {
+
+            background:
+                rgba(113,
+                    42,
+                    226,
+                    .12);
+
+            color:
+                #712ae2;
+
+        }
+
+        .toast.info .toast-progress {
+
+            background:
+                #712ae2;
+
+        }
+
+        @keyframes shrink {
+
+            from {
+
+                transform:
+                    scaleX(1);
+
+            }
+
+            to {
+
+                transform:
+                    scaleX(0);
+
+            }
+
+        }
+    </style>
+</head>
+
+<body class="bg-background font-body-md text-on-surface">
+
+    <!-- TopNavBar from JSON -->
+    <div id="header"></div>
+
+    <div id="dashboard-loader" class="absolute top-24 left-[260px] right-0 bottom-0 z-[90]
+    bg-white/10 backdrop-blur-md
+    flex items-center justify-center
+    transition-all duration-300">
+
+        <div class="flex flex-col items-center gap-md glass-card px-8 py-7 rounded-2xl">
+
+            <div class="w-12 h-12 border-4 border-secondary/20 border-t-secondary rounded-full animate-spin">
+            </div>
+
+            <p class="text-on-surface font-medium">
+                Loading dashboard...
+            </p>
+
+        </div>
+
+    </div>
+    <aside
+        class="fixed top-16 left-0 h-[calc(100vh-64px)] w-[260px] bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-r border-slate-200 dark:border-slate-800 z-40 flex flex-col">
+
+        <nav class="flex-1 py-lg px-md space-y-xs overflow-y-auto">
+            <a class="flex items-center gap-sm px-md py-sm rounded-lg bg-secondary/10 text-secondary font-bold transition-colors"
+                href="#">
+                <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                <span class="font-body-md">Dashboard</span>
+            </a>
+
+            <a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors"
+                href="#">
+                <span class="material-symbols-outlined" data-icon="history">history</span>
+                <span class="font-body-md">Logs</span>
+            </a>
+            <a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors"
+                href="#">
+                <span class="material-symbols-outlined" data-icon="key">key</span>
+                <span class="font-body-md">API Keys</span>
+            </a>
+        </nav>
+        <div class="p-lg border-t border-outline-variant/10 space-y-xs">
+
+            <a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors"
+                href="/docs.html">
+                <span class="material-symbols-outlined" data-icon="description">description</span>
+                <span class="font-body-md">Documentation</span>
+            </a>
+
+            <a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors"
+                href="#">
+                <span class="material-symbols-outlined" data-icon="help">help</span>
+                <span class="font-body-md">Help Center</span>
+            </a>
+
+            <!-- Logout -->
+            <button id="sidebar-logout-btn"
+                class="w-full flex items-center gap-sm px-md py-sm rounded-lg text-red-500 hover:bg-red-50 transition-colors">
+
+                <span class="material-symbols-outlined" data-icon="logout">logout</span>
+
+                <span class="font-body-md">Logout</span>
+
+            </button>
+
+        </div>
+    </aside>
+    <!-- Main Content -->
+    <main id="dashboard-content" class="hidden pt-24 px-gutter pb-xl max-w-container-max mx-auto ml-[260px]">
+        <div class="flex flex-col gap-xl">
+            <!-- User & Plan Header Section -->
+            <section class="grid grid-cols-1 lg:grid-cols-2 gap-xl">
+                <!-- User Card -->
+                <div class="glass-card rounded-xl p-lg flex items-center gap-lg">
+                    <img id="user-photo" alt="User Photo"
+                        class="w-24 h-24 rounded-xl object-cover border-2 border-secondary-fixed"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIBMjF7hs_FjwFhLIflktiVdRpeZthoK2I-ITcYBKls1JGx_LjG3D-JSrMU73P-BVOICboB4NlgwfrzvIxPmJLwrtIGryowjEii54-wUroGrlfh9zZVjaxxqiW_-ZGxx5N5fCOmjDSdz5zrG0L29hiZB4KzrbKBbvVzM_dCeuzBzayEBo9dG6tdO7kmbcSp7fVhn39KgfRXFAls3UTF9P-e7HkmOqwlUDTv5XuIXyzqHqBZrAO7tJtRV-3MyM7AxLt8ZRYbRwJeIA" />
+                    <div class="flex-1">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="font-h3 text-h3">Alex Smith</h3>
+                                <p class="text-on-surface-variant font-body-md">alex@example.com</p>
+                            </div>
+                            <span
+                                class="bg-secondary-fixed text-on-secondary-fixed px-sm py-xs rounded-lg text-label-md font-semibold">Pro
+                                Plan</span>
+                        </div>
+                        <div class="mt-md flex gap-xl text-body-sm text-on-surface-variant">
+
+                            <div>
+                                <p class="font-semibold text-primary">Joined</p>
+                                <p id="joined-date">—</p>
+                            </div>
+
+                            <div>
+                                <p class="font-semibold text-primary">Documents Generated</p>
+                                <p id="documents-generated">0</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Plan & Usage Card -->
+                <div class="glass-card rounded-xl p-lg flex flex-col justify-between">
+                    <div class="flex justify-between items-center mb-md">
+                        <div>
+                            <h4 class="font-label-md text-on-surface-variant uppercase">Current Plan</h4>
+                            <h3 id="current-plan" class="font-h3 text-h3 text-secondary">Pro Tier</h3>
+                        </div>
+                        <button
+                            onclick="window.location.href='/pricing.html'"
+                            class="bg-primary text-on-primary px-md py-sm rounded-lg font-label-md font-semibold hover:opacity-90 transition-all">Upgrade
+                            Plan</button>
+                    </div>
+                    <div class="space-y-sm">
+                        <div class="flex justify-between text-label-md">
+                            <span class="text-on-surface-variant">Monthly Usage</span>
+                            <span class="font-bold">850 / 1000 docs</span>
+                        </div>
+                        <div class="w-full bg-surface-container-high h-3 rounded-full overflow-hidden">
+                            <div class="bg-secondary h-full rounded-full" style="width: 85%"></div>
+                        </div>
+                        <p class="text-body-sm text-on-surface-variant">150 documents remaining until Oct 31, 2023.</p>
+                    </div>
+                </div>
+            </section>
+            <!-- Usage Overview Grid -->
+            <section>
+                <h2 class="font-h3 text-h3 mb-md">Usage Overview</h2>
+
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-md">
+
+                    <div
+                        class="glass-card p-lg rounded-xl shadow-sm hover:shadow-md transition-shadow border-l-4 border-secondary">
+                        <div class="flex justify-between items-start mb-md">
+                            <span class="material-symbols-outlined text-secondary text-[32px]"
+                                data-icon="api">api</span>
+                        </div>
+                        <h4 class="font-label-md text-on-surface-variant uppercase tracking-wider">Total API Calls</h4>
+                        <div class="mt-sm">
+                            <p class="font-h2 text-h2 font-bold">4.2k</p>
+                            <p class="text-body-sm text-on-surface-variant mt-xs">Today: <span
+                                    class="font-semibold text-primary">142</span></p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-lg rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex justify-between items-start mb-md">
+                            <span class="material-symbols-outlined text-secondary text-[32px]"
+                                data-icon="analytics">analytics</span>
+                        </div>
+                        <h4 class="font-label-md text-on-surface-variant uppercase tracking-wider">Template Analysis
+                        </h4>
+                        <div class="mt-sm">
+                            <p class="font-h2 text-h2 font-bold">8.2k</p>
+                            <p class="text-body-sm text-on-surface-variant mt-xs">Today: <span
+                                    class="font-semibold text-primary">310</span></p>
+                        </div>
+                    </div>
+                    <!-- Total DOCX Card -->
+                    <div class="glass-card p-lg rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex justify-between items-start mb-md">
+                            <span class="material-symbols-outlined text-secondary text-[32px]"
+                                data-icon="description">description</span>
+                        </div>
+                        <h4 class="font-label-md text-on-surface-variant uppercase tracking-wider">Total DOCX</h4>
+                        <div class="mt-sm">
+                            <p class="font-h2 text-h2 font-bold">4.2k</p>
+                            <p class="text-body-sm text-on-surface-variant mt-xs">Today: <span
+                                    class="font-semibold text-primary">142</span></p>
+                        </div>
+                    </div>
+                    <!-- Total PDFs Card -->
+                    <div class="glass-card p-lg rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex justify-between items-start mb-md">
+                            <span class="material-symbols-outlined text-secondary text-[32px]"
+                                data-icon="picture_as_pdf">picture_as_pdf</span>
+                        </div>
+                        <h4 class="font-label-md text-on-surface-variant uppercase tracking-wider">Total PDFs</h4>
+                        <div class="mt-sm">
+                            <p class="font-h2 text-h2 font-bold">8.2k</p>
+                            <p class="text-body-sm text-on-surface-variant mt-xs">Today: <span
+                                    class="font-semibold text-primary">310</span></p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+            <!-- API Key Usage Section -->
+            <section class="glass-card rounded-xl shadow-sm overflow-hidden">
+                <div class="px-lg py-md border-b border-outline-variant/30 flex justify-between items-center">
+                    <h2 class="font-h3 text-h3">API Key Usage</h2>
+                    <button id="generate-api-btn"
+                        class="text-secondary font-semibold font-label-md flex items-center gap-xs hover:underline">
+
+                        <span class="material-symbols-outlined text-[18px]">
+
+                            add
+
+                        </span>
+
+                        Generate New Key
+
+                    </button>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse min-w-[800px]">
+                        <thead class="bg-surface-container-low">
+                            <tr>
+                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Key Name</th>
+                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Total Requests
+                                </th>
+                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Requests Today
+                                </th>
+                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">PDFs</th>
+                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">DOCx</th>
+                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Template</th>
+                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Status</th>
+                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Actions</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-outline-variant/20">
+                            <tr class="hover:bg-surface-container-lowest transition-colors">
+                                <td class="px-lg py-md">
+                                    <div class="flex flex-col">
+                                        <span class="font-semibold">Production_Main</span>
+                                        <span
+                                            class="font-code text-body-sm text-on-surface-variant">pk_live_49...x202</span>
+                                    </div>
+                                </td>
+                                <td class="px-lg py-md font-body-md">245,901</td>
+                                <td class="px-lg py-md font-body-md">1,240</td>
+                                <td class="px-lg py-md font-body-md">8,204</td>
+                                <td class="px-lg py-md">
+                                    <span
+                                        class="inline-flex items-center gap-xs px-sm py-xs rounded-full bg-secondary-container/10 text-secondary text-label-md font-semibold">
+                                        <span class="w-2 h-2 rounded-full bg-secondary"></span> Active
+                                    </span>
+                                </td>
+                                <td class="px-lg py-md">
+                                    <button
+                                        class="bg-surface-container-high p-sm rounded-lg hover:bg-outline-variant/30 transition-all active:scale-95">
+                                        <span class="material-symbols-outlined text-[18px]"
+                                            data-icon="content_copy">content_copy</span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-surface-container-lowest transition-colors">
+                                <td class="px-lg py-md">
+                                    <div class="flex flex-col">
+                                        <span class="font-semibold">Staging_Env</span>
+                                        <span
+                                            class="font-code text-body-sm text-on-surface-variant">pk_test_12...k882</span>
+                                    </div>
+                                </td>
+                                <td class="px-lg py-md font-body-md">12,430</td>
+                                <td class="px-lg py-md font-body-md">84</td>
+                                <td class="px-lg py-md font-body-md">452</td>
+                                <td class="px-lg py-md">
+                                    <span
+                                        class="inline-flex items-center gap-xs px-sm py-xs rounded-full bg-surface-container-highest text-on-surface-variant text-label-md font-semibold">
+                                        <span class="w-2 h-2 rounded-full bg-outline"></span> Disabled
+                                    </span>
+                                </td>
+                                <td class="px-lg py-md">
+                                    <div class="relative flex items-center gap-2">
+                                
+                                        <!-- Copy -->
+                                        <button
+                                            class="copy-key-btn bg-surface-container-high p-sm rounded-lg hover:bg-outline-variant/30 transition-all">
+                                
+                                            <span class="material-symbols-outlined text-[18px]">
+                                                content_copy
+                                            </span>
+                                
+                                        </button>
+                                
+                                        <!-- Menu -->
+                                        <button
+                                            class="menu-toggle bg-surface-container-high p-sm rounded-lg hover:bg-outline-variant/30 transition-all">
+                                
+                                            <span class="material-symbols-outlined text-[18px]">
+                                                more_vert
+                                            </span>
+                                
+                                        </button>
+                                
+                                        <!-- Dropdown -->
+                                        <div
+                                            class="menu hidden absolute right-0 top-12 w-44 rounded-xl border border-outline-variant bg-white shadow-lg overflow-hidden z-50">
+                                
+                                            <button
+                                                class="disable-key w-full text-left px-4 py-3 hover:bg-surface-container flex items-center gap-2">
+                                
+                                                <span class="material-symbols-outlined text-[18px]">
+                                                    block
+                                                </span>
+                                
+                                                Disable
+                                
+                                            </button>
+                                
+                                            <button
+                                                class="delete-key w-full text-left px-4 py-3 text-red-500 hover:bg-red-50 flex items-center gap-2">
+                                
+                                                <span class="material-symbols-outlined text-[18px]">
+                                                    delete
+                                                </span>
+                                
+                                                Delete
+                                
+                                            </button>
+                                
+                                        </div>
+                                
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <!-- Recent Jobs Section -->
+            <section class="glass-card rounded-xl shadow-sm overflow-hidden">
+                <div class="px-lg py-md border-b border-outline-variant/30">
+                    <h2 class="font-h3 text-h3">Recent Jobs</h2>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse min-w-[800px]">
+                        <thead class="bg-surface-container-low">
+                            <tr>
+                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Job ID</th>
+                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Status</th>
+                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Doc Type</th>
+                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Records</th>
+                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Created At</th>
+                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Completed At
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-outline-variant/20">
+                            <tr class="hover:bg-surface-container-lowest transition-colors">
+                                <td class="px-lg py-md font-code text-body-sm">job_849201kx</td>
+                                <td class="px-lg py-md">
+                                    <span
+                                        class="inline-flex items-center gap-xs px-sm py-xs rounded-full bg-green-100 text-green-800 text-label-md font-semibold">
+                                        <span class="material-symbols-outlined text-[16px]"
+                                            data-icon="check_circle">check_circle</span> Success
+                                    </span>
+                                </td>
+                                <td class="px-lg py-md font-body-md">1,250</td>
+                                <td class="px-lg py-md font-body-md text-on-surface-variant">Oct 24, 14:20</td>
+                                <td class="px-lg py-md font-body-md text-on-surface-variant">Oct 24, 14:22</td>
+                            </tr>
+                            <tr class="hover:bg-surface-container-lowest transition-colors">
+                                <td class="px-lg py-md font-code text-body-sm">job_990122pq</td>
+                                <td class="px-lg py-md">
+                                    <span
+                                        class="inline-flex items-center gap-xs px-sm py-xs rounded-full bg-amber-100 text-amber-800 text-label-md font-semibold">
+                                        <span class="material-symbols-outlined text-[16px]"
+                                            data-icon="pending">pending</span> Pending
+                                    </span>
+                                </td>
+                                <td class="px-lg py-md font-body-md">42</td>
+                                <td class="px-lg py-md font-body-md text-on-surface-variant">Oct 24, 15:01</td>
+                                <td class="px-lg py-md font-body-md text-on-surface-variant">—</td>
+                            </tr>
+                            <tr class="hover:bg-surface-container-lowest transition-colors">
+                                <td class="px-lg py-md font-code text-body-sm">job_102837vy</td>
+                                <td class="px-lg py-md">
+                                    <span
+                                        class="inline-flex items-center gap-xs px-sm py-xs rounded-full bg-error-container text-on-error-container text-label-md font-semibold">
+                                        <span class="material-symbols-outlined text-[16px]"
+                                            data-icon="error">error</span> Failed
+                                    </span>
+                                </td>
+                                <td class="px-lg py-md font-body-md">204</td>
+                                <td class="px-lg py-md font-body-md text-on-surface-variant">Oct 23, 09:12</td>
+                                <td class="px-lg py-md font-body-md text-on-surface-variant">Oct 23, 09:13</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="flex items-center justify-center gap-sm px-lg py-sm border-t border-outline-variant/20">
+
+                    <button id="jobs-prev"
+                        class="px-3 py-1.5 text-sm rounded-md bg-surface-container-high hover:bg-surface-container disabled:opacity-40 disabled:cursor-not-allowed transition-all">
+
+                        Previous
+
+                    </button>
+
+                    <span id="jobs-page" class="min-w-[64px] text-center text-sm font-medium">
+
+                        Page 1
+
+                    </span>
+
+                    <button id="jobs-next"
+                        class="px-3 py-1.5 text-sm rounded-md bg-secondary text-white hover:opacity-90 disabled:opacity-40 transition-all">
+
+                        Next
+
+                    </button>
+
+                </div>
+            </section>
+            <!-- Logs Section -->
+            <section class="glass-card rounded-xl shadow-sm overflow-hidden">
+
+                <div class="px-lg py-md border-b border-outline-variant/30">
+
+                    <h2 class="font-h3 text-h3">
+                        Activity Logs
+                    </h2>
+
+                </div>
+
+                <div class="overflow-x-auto">
+
+                    <table class="w-full text-left border-collapse min-w-[1000px]">
+
+                        <thead class="bg-surface-container-low">
+
+                            <tr>
+
+                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">
+                                    Status
+                                </th>
+
+                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">
+                                    Feature
+                                </th>
+
+                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">
+                                    API Key
+                                </th>
+
+                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">
+                                    Records
+                                </th>
+
+                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">
+                                    Message
+                                </th>
+
+                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">
+                                    Time
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="logs-table" class="divide-y divide-outline-variant/20">
+
+                        </tbody>
+
+                    </table>
+
+
+                </div>
+                <div class="flex items-center justify-center gap-sm px-lg py-sm border-t border-outline-variant/20">
+
+                    <button id="logs-prev"
+                        class="px-3 py-1.5 text-sm rounded-md bg-surface-container-high hover:bg-surface-container disabled:opacity-40 disabled:cursor-not-allowed transition-all">
+
+                        Previous
+
+                    </button>
+
+                    <span id="logs-page" class="min-w-[64px] text-center text-sm font-medium">
+
+                        Page 1
+
+                    </span>
+
+                    <button id="logs-next"
+                        class="px-3 py-1.5 text-sm rounded-md bg-secondary text-white hover:opacity-90 disabled:opacity-40 transition-all">
+
+                        Next
+
+                    </button>
+
+                </div>
+
+            </section>
+        </div>
+    </main>
+    <!-- Floating Action Button -->
+    <div class="fixed bottom-8 right-8 z-50">
+        <button
+            class="w-14 h-14 bg-secondary text-on-secondary rounded-full shadow-lg flex items-center justify-center hover:scale-110 active:scale-95 transition-all">
+            <span class="material-symbols-outlined text-[32px]" data-icon="add"
+                style="font-variation-settings: 'FILL' 0;">add</span>
+        </button>
+    </div>
+
+    <!-- Logout Confirmation Modal -->
+    <div id="logout-modal"
+        class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/40 backdrop-blur-sm">
+
+        <div
+            class="w-full max-w-md mx-4 bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in zoom-in duration-200">
+
+            <!-- Header -->
+            <div class="p-6 border-b border-slate-100">
+                <div class="flex items-center gap-3">
+
+                    <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center">
+
+                        <span class="material-symbols-outlined text-red-500">
+                            logout
+                        </span>
+
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-semibold text-slate-900">
+                            Logout
+                        </h3>
+
+                        <p class="text-sm text-slate-500 mt-1">
+                            Are you sure you want to logout?
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center justify-end gap-3 p-5 bg-slate-50">
+
+                <button id="cancel-logout-btn"
+                    class="px-4 py-2 rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-100 transition-all">
+
+                    Cancel
+
+                </button>
+
+                <button id="confirm-logout-btn"
+                    class="px-4 py-2 rounded-xl bg-red-500 text-white hover:bg-red-600 transition-all shadow-sm">
+
+                    Logout
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="api-key-modal"
+        class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/40 backdrop-blur-sm">
+
+        <div class="w-full max-w-md mx-4 bg-white rounded-2xl shadow-2xl overflow-hidden">
+
+            <!-- Header -->
+            <div class="p-6 border-b">
+
+                <h3 class="text-lg font-semibold">
+
+                    Generate API Key
+
+                </h3>
+
+                <p class="text-sm text-on-surface-variant mt-1">
+
+                    Enter a name for the new API key.
+
+                </p>
+
+            </div>
+
+            <!-- Content -->
+            <div class="p-6">
+
+                <label class="block text-sm font-medium mb-2">
+
+                    API Key Name
+
+                </label>
+
+                <input id="api-key-name" type="text" placeholder="Eg. Production" maxlength="50"
+                    class="w-full rounded-xl border border-outline-variant px-4 py-3 focus:outline-none focus:ring-2 focus:ring-secondary" />
+
+            </div>
+
+
+
+            <!-- Footer -->
+            <div class="flex justify-end gap-3 p-5 bg-surface-container-low">
+
+                <button id="cancel-api-key" class="px-4 py-2 rounded-xl border">
+
+                    Cancel
+
+                </button>
+
+                <button id="confirm-api-key"
+                    class="min-w-[120px] px-4 py-2 rounded-xl bg-secondary text-white flex items-center justify-center gap-2">
+
+                    <span id="generate-text">
+
+                        Generate
+
+                    </span>
+
+                    <div id="generate-loader"
+                        class="hidden w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin">
+
+                    </div>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Toast -->
+    <div id="toastContainer"></div>
+
+    <!-- Footer from JSON -->
+    <div class="ml-[260px]">
+        <div id="footer"></div>
+    </div>
+    <script type="module" src="/components/auth-navbar.js"></script>
+    <script src="/components/layout.js"></script>
+
+    <script type="module" src="dashboard.js"></script>
+
+
+</body>
+
+</html>
