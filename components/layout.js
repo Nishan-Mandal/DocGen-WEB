@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("click", async (e) => {
 
-    if (e.target.id === "get-api-key-btn" || e.target.id === "get-api-key" || e.target.id === "start-building") {
+    if (e.target.id === "get-api-key-btn" || e.target.id === "get-api-key" || e.target.id === "start-building" || e.target.id === "dashboard-tab") {
 
         const { auth } = await import("./firebase.js");
 

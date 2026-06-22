@@ -2,7 +2,7 @@
 
 import { auth, googleProvider } from "./firebase.js";
 import { createUserDocument } from "./user-service.js";
-import { showToast } from "../dashboard.js";
+import { showToast } from "./util.js";
 
 
 import {
