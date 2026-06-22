@@ -372,21 +372,18 @@
         class="fixed top-16 left-0 h-[calc(100vh-64px)] w-[260px] bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-r border-slate-200 dark:border-slate-800 z-40 flex flex-col">
 
         <nav class="flex-1 py-lg px-md space-y-xs overflow-y-auto">
-            <a class="flex items-center gap-sm px-md py-sm rounded-lg bg-secondary/10 text-secondary font-bold transition-colors"
+            <a id="dashboard-nav"
+                class="nav-link active-nav flex items-center gap-sm px-md py-sm rounded-lg bg-secondary/10 text-secondary font-bold transition-colors"
                 href="#">
                 <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
                 <span class="font-body-md">Dashboard</span>
             </a>
 
-            <a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors"
+            <a id="templates-nav"
+                class="nav-link flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors"
                 href="#">
-                <span class="material-symbols-outlined" data-icon="history">history</span>
-                <span class="font-body-md">Logs</span>
-            </a>
-            <a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors"
-                href="#">
-                <span class="material-symbols-outlined" data-icon="key">key</span>
-                <span class="font-body-md">API Keys</span>
+                <span class="material-symbols-outlined" data-icon="dashboard">description</span>
+                <span class="font-body-md">Templates</span>
             </a>
         </nav>
         <div class="p-lg border-t border-outline-variant/10 space-y-xs">
@@ -416,437 +413,308 @@
         </div>
     </aside>
     <!-- Main Content -->
-    <main id="dashboard-content" class="hidden pt-24 px-gutter pb-xl max-w-container-max mx-auto ml-[260px]">
-        <div class="flex flex-col gap-xl">
-            <!-- User & Plan Header Section -->
-            <section class="grid grid-cols-1 lg:grid-cols-2 gap-xl">
-                <!-- User Card -->
-                <div class="glass-card rounded-xl p-lg flex items-center gap-lg">
-                    <img id="user-photo" alt="User Photo"
-                        class="w-24 h-24 rounded-xl object-cover border-2 border-secondary-fixed"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIBMjF7hs_FjwFhLIflktiVdRpeZthoK2I-ITcYBKls1JGx_LjG3D-JSrMU73P-BVOICboB4NlgwfrzvIxPmJLwrtIGryowjEii54-wUroGrlfh9zZVjaxxqiW_-ZGxx5N5fCOmjDSdz5zrG0L29hiZB4KzrbKBbvVzM_dCeuzBzayEBo9dG6tdO7kmbcSp7fVhn39KgfRXFAls3UTF9P-e7HkmOqwlUDTv5XuIXyzqHqBZrAO7tJtRV-3MyM7AxLt8ZRYbRwJeIA" />
-                    <div class="flex-1">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <h3 class="font-h3 text-h3">Alex Smith</h3>
-                                <p class="text-on-surface-variant font-body-md">alex@example.com</p>
+    <main id="page-content" class="pt-24 px-gutter pb-xl max-w-container-max mx-auto ml-[260px]">
+        <div id="dashboard-page">
+            <div class="flex flex-col gap-xl">
+                <!-- User & Plan Header Section -->
+                <section class="grid grid-cols-1 lg:grid-cols-2 gap-xl">
+                    <!-- User Card -->
+                    <div class="glass-card rounded-xl p-lg flex items-center gap-lg">
+                        <img id="user-photo" alt="User Photo"
+                            class="w-24 h-24 rounded-xl object-cover border-2 border-secondary-fixed"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIBMjF7hs_FjwFhLIflktiVdRpeZthoK2I-ITcYBKls1JGx_LjG3D-JSrMU73P-BVOICboB4NlgwfrzvIxPmJLwrtIGryowjEii54-wUroGrlfh9zZVjaxxqiW_-ZGxx5N5fCOmjDSdz5zrG0L29hiZB4KzrbKBbvVzM_dCeuzBzayEBo9dG6tdO7kmbcSp7fVhn39KgfRXFAls3UTF9P-e7HkmOqwlUDTv5XuIXyzqHqBZrAO7tJtRV-3MyM7AxLt8ZRYbRwJeIA" />
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="font-h3 text-h3">Alex Smith</h3>
+                                    <p class="text-on-surface-variant font-body-md">alex@example.com</p>
+                                </div>
+                                <span
+                                    class="bg-secondary-fixed text-on-secondary-fixed px-sm py-xs rounded-lg text-label-md font-semibold">Pro
+                                    Plan</span>
                             </div>
-                            <span
-                                class="bg-secondary-fixed text-on-secondary-fixed px-sm py-xs rounded-lg text-label-md font-semibold">Pro
-                                Plan</span>
-                        </div>
-                        <div class="mt-md flex gap-xl text-body-sm text-on-surface-variant">
+                            <div class="mt-md flex gap-xl text-body-sm text-on-surface-variant">
 
-                            <div>
-                                <p class="font-semibold text-primary">Joined</p>
-                                <p id="joined-date">—</p>
+                                <div>
+                                    <p class="font-semibold text-primary">Joined</p>
+                                    <p id="joined-date">—</p>
+                                </div>
+
+                                <div>
+                                    <p class="font-semibold text-primary">Documents Generated</p>
+                                    <p id="documents-generated">0</p>
+                                </div>
+
                             </div>
-
+                        </div>
+                    </div>
+                    <!-- Plan & Usage Card -->
+                    <div class="glass-card rounded-xl p-lg flex flex-col justify-between">
+                        <div class="flex justify-between items-center mb-md">
                             <div>
-                                <p class="font-semibold text-primary">Documents Generated</p>
-                                <p id="documents-generated">0</p>
+                                <h4 class="font-label-md text-on-surface-variant uppercase">Current Plan</h4>
+                                <h3 id="current-plan" class="font-h3 text-h3 text-secondary">Pro Tier</h3>
                             </div>
-
+                            <button onclick="window.location.href='/pricing.html'"
+                                class="bg-primary text-on-primary px-md py-sm rounded-lg font-label-md font-semibold hover:opacity-90 transition-all">Upgrade
+                                Plan</button>
+                        </div>
+                        <div class="space-y-sm">
+                            <div class="flex justify-between text-label-md">
+                                <span class="text-on-surface-variant">Monthly Usage</span>
+                                <span class="font-bold">850 / 1000 docs</span>
+                            </div>
+                            <div class="w-full bg-surface-container-high h-3 rounded-full overflow-hidden">
+                                <div class="bg-secondary h-full rounded-full" style="width: 85%"></div>
+                            </div>
+                            <p class="text-body-sm text-on-surface-variant">150 documents remaining until Oct 31, 2023.
+                            </p>
                         </div>
                     </div>
-                </div>
-                <!-- Plan & Usage Card -->
-                <div class="glass-card rounded-xl p-lg flex flex-col justify-between">
-                    <div class="flex justify-between items-center mb-md">
-                        <div>
-                            <h4 class="font-label-md text-on-surface-variant uppercase">Current Plan</h4>
-                            <h3 id="current-plan" class="font-h3 text-h3 text-secondary">Pro Tier</h3>
+                </section>
+                <!-- Usage Overview Grid -->
+                <section>
+                    <h2 class="font-h3 text-h3 mb-md">Usage Overview</h2>
+
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-md">
+
+                        <div
+                            class="glass-card p-lg rounded-xl shadow-sm hover:shadow-md transition-shadow border-l-4 border-secondary">
+                            <div class="flex justify-between items-start mb-md">
+                                <span class="material-symbols-outlined text-secondary text-[32px]"
+                                    data-icon="api">api</span>
+                            </div>
+                            <h4 class="font-label-md text-on-surface-variant uppercase tracking-wider">Total API Calls
+                            </h4>
+                            <div class="mt-sm">
+                                <p class="font-h2 text-h2 font-bold">4.2k</p>
+                                <p class="text-body-sm text-on-surface-variant mt-xs">Today: <span
+                                        class="font-semibold text-primary">142</span></p>
+                            </div>
                         </div>
-                        <button
-                            onclick="window.location.href='/pricing.html'"
-                            class="bg-primary text-on-primary px-md py-sm rounded-lg font-label-md font-semibold hover:opacity-90 transition-all">Upgrade
-                            Plan</button>
+
+                        <div class="glass-card p-lg rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                            <div class="flex justify-between items-start mb-md">
+                                <span class="material-symbols-outlined text-secondary text-[32px]"
+                                    data-icon="analytics">analytics</span>
+                            </div>
+                            <h4 class="font-label-md text-on-surface-variant uppercase tracking-wider">Template Analysis
+                            </h4>
+                            <div class="mt-sm">
+                                <p class="font-h2 text-h2 font-bold">8.2k</p>
+                                <p class="text-body-sm text-on-surface-variant mt-xs">Today: <span
+                                        class="font-semibold text-primary">310</span></p>
+                            </div>
+                        </div>
+                        <!-- Total DOCX Card -->
+                        <div class="glass-card p-lg rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                            <div class="flex justify-between items-start mb-md">
+                                <span class="material-symbols-outlined text-secondary text-[32px]"
+                                    data-icon="description">description</span>
+                            </div>
+                            <h4 class="font-label-md text-on-surface-variant uppercase tracking-wider">Total DOCX</h4>
+                            <div class="mt-sm">
+                                <p class="font-h2 text-h2 font-bold">4.2k</p>
+                                <p class="text-body-sm text-on-surface-variant mt-xs">Today: <span
+                                        class="font-semibold text-primary">142</span></p>
+                            </div>
+                        </div>
+                        <!-- Total PDFs Card -->
+                        <div class="glass-card p-lg rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                            <div class="flex justify-between items-start mb-md">
+                                <span class="material-symbols-outlined text-secondary text-[32px]"
+                                    data-icon="picture_as_pdf">picture_as_pdf</span>
+                            </div>
+                            <h4 class="font-label-md text-on-surface-variant uppercase tracking-wider">Total PDFs</h4>
+                            <div class="mt-sm">
+                                <p class="font-h2 text-h2 font-bold">8.2k</p>
+                                <p class="text-body-sm text-on-surface-variant mt-xs">Today: <span
+                                        class="font-semibold text-primary">310</span></p>
+                            </div>
+                        </div>
+
                     </div>
-                    <div class="space-y-sm">
-                        <div class="flex justify-between text-label-md">
-                            <span class="text-on-surface-variant">Monthly Usage</span>
-                            <span class="font-bold">850 / 1000 docs</span>
-                        </div>
-                        <div class="w-full bg-surface-container-high h-3 rounded-full overflow-hidden">
-                            <div class="bg-secondary h-full rounded-full" style="width: 85%"></div>
-                        </div>
-                        <p class="text-body-sm text-on-surface-variant">150 documents remaining until Oct 31, 2023.</p>
+                </section>
+                <!-- API Key Usage Section -->
+                <section class="glass-card rounded-xl shadow-sm overflow-hidden">
+                    <div class="px-lg py-md border-b border-outline-variant/30 flex justify-between items-center">
+                        <h2 class="font-h3 text-h3">API Key Usage</h2>
+                        <button id="generate-api-btn"
+                            class="text-secondary font-semibold font-label-md flex items-center gap-xs hover:underline">
+
+                            <span class="material-symbols-outlined text-[18px]">
+
+                                add
+
+                            </span>
+
+                            Generate New Key
+
+                        </button>
                     </div>
-                </div>
-            </section>
-            <!-- Usage Overview Grid -->
-            <section>
-                <h2 class="font-h3 text-h3 mb-md">Usage Overview</h2>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse min-w-[800px]">
+                            <thead class="bg-surface-container-low">
+                                <tr>
+                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Key Name
+                                    </th>
+                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Total
+                                        Requests
+                                    </th>
+                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Requests
+                                        Today
+                                    </th>
+                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">PDFs</th>
+                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">DOCx</th>
+                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Template
+                                    </th>
+                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Status</th>
+                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Actions</th>
+
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-outline-variant/20">
 
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-md">
-
-                    <div
-                        class="glass-card p-lg rounded-xl shadow-sm hover:shadow-md transition-shadow border-l-4 border-secondary">
-                        <div class="flex justify-between items-start mb-md">
-                            <span class="material-symbols-outlined text-secondary text-[32px]"
-                                data-icon="api">api</span>
-                        </div>
-                        <h4 class="font-label-md text-on-surface-variant uppercase tracking-wider">Total API Calls</h4>
-                        <div class="mt-sm">
-                            <p class="font-h2 text-h2 font-bold">4.2k</p>
-                            <p class="text-body-sm text-on-surface-variant mt-xs">Today: <span
-                                    class="font-semibold text-primary">142</span></p>
-                        </div>
+                            </tbody>
+                        </table>
                     </div>
-
-                    <div class="glass-card p-lg rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                        <div class="flex justify-between items-start mb-md">
-                            <span class="material-symbols-outlined text-secondary text-[32px]"
-                                data-icon="analytics">analytics</span>
-                        </div>
-                        <h4 class="font-label-md text-on-surface-variant uppercase tracking-wider">Template Analysis
-                        </h4>
-                        <div class="mt-sm">
-                            <p class="font-h2 text-h2 font-bold">8.2k</p>
-                            <p class="text-body-sm text-on-surface-variant mt-xs">Today: <span
-                                    class="font-semibold text-primary">310</span></p>
-                        </div>
+                </section>
+                <!-- Recent Jobs Section -->
+                <section class="glass-card rounded-xl shadow-sm overflow-hidden">
+                    <div class="px-lg py-md border-b border-outline-variant/30">
+                        <h2 class="font-h3 text-h3">Recent Jobs</h2>
                     </div>
-                    <!-- Total DOCX Card -->
-                    <div class="glass-card p-lg rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                        <div class="flex justify-between items-start mb-md">
-                            <span class="material-symbols-outlined text-secondary text-[32px]"
-                                data-icon="description">description</span>
-                        </div>
-                        <h4 class="font-label-md text-on-surface-variant uppercase tracking-wider">Total DOCX</h4>
-                        <div class="mt-sm">
-                            <p class="font-h2 text-h2 font-bold">4.2k</p>
-                            <p class="text-body-sm text-on-surface-variant mt-xs">Today: <span
-                                    class="font-semibold text-primary">142</span></p>
-                        </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse min-w-[800px]">
+                            <thead class="bg-surface-container-low">
+                                <tr>
+                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Job ID</th>
+                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Status</th>
+                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Doc Type
+                                    </th>
+                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Records</th>
+                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Created At
+                                    </th>
+                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Completed At
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-outline-variant/20">
+                            </tbody>
+                        </table>
                     </div>
-                    <!-- Total PDFs Card -->
-                    <div class="glass-card p-lg rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                        <div class="flex justify-between items-start mb-md">
-                            <span class="material-symbols-outlined text-secondary text-[32px]"
-                                data-icon="picture_as_pdf">picture_as_pdf</span>
-                        </div>
-                        <h4 class="font-label-md text-on-surface-variant uppercase tracking-wider">Total PDFs</h4>
-                        <div class="mt-sm">
-                            <p class="font-h2 text-h2 font-bold">8.2k</p>
-                            <p class="text-body-sm text-on-surface-variant mt-xs">Today: <span
-                                    class="font-semibold text-primary">310</span></p>
-                        </div>
-                    </div>
+                    <div class="flex items-center justify-center gap-sm px-lg py-sm border-t border-outline-variant/20">
 
-                </div>
-            </section>
-            <!-- API Key Usage Section -->
-            <section class="glass-card rounded-xl shadow-sm overflow-hidden">
-                <div class="px-lg py-md border-b border-outline-variant/30 flex justify-between items-center">
-                    <h2 class="font-h3 text-h3">API Key Usage</h2>
-                    <button id="generate-api-btn"
-                        class="text-secondary font-semibold font-label-md flex items-center gap-xs hover:underline">
+                        <button id="jobs-prev"
+                            class="px-3 py-1.5 text-sm rounded-md bg-surface-container-high hover:bg-surface-container disabled:opacity-40 disabled:cursor-not-allowed transition-all">
 
-                        <span class="material-symbols-outlined text-[18px]">
+                            Previous
 
-                            add
+                        </button>
+
+                        <span id="jobs-page" class="min-w-[64px] text-center text-sm font-medium">
+
+                            Page 1
 
                         </span>
 
-                        Generate New Key
+                        <button id="jobs-next"
+                            class="px-3 py-1.5 text-sm rounded-md bg-secondary text-white hover:opacity-90 disabled:opacity-40 transition-all">
 
-                    </button>
-                </div>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse min-w-[800px]">
-                        <thead class="bg-surface-container-low">
-                            <tr>
-                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Key Name</th>
-                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Total Requests
-                                </th>
-                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Requests Today
-                                </th>
-                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">PDFs</th>
-                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">DOCx</th>
-                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Template</th>
-                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Status</th>
-                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Actions</th>
-                                
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-outline-variant/20">
-                            <tr class="hover:bg-surface-container-lowest transition-colors">
-                                <td class="px-lg py-md">
-                                    <div class="flex flex-col">
-                                        <span class="font-semibold">Production_Main</span>
-                                        <span
-                                            class="font-code text-body-sm text-on-surface-variant">pk_live_49...x202</span>
-                                    </div>
-                                </td>
-                                <td class="px-lg py-md font-body-md">245,901</td>
-                                <td class="px-lg py-md font-body-md">1,240</td>
-                                <td class="px-lg py-md font-body-md">8,204</td>
-                                <td class="px-lg py-md">
-                                    <span
-                                        class="inline-flex items-center gap-xs px-sm py-xs rounded-full bg-secondary-container/10 text-secondary text-label-md font-semibold">
-                                        <span class="w-2 h-2 rounded-full bg-secondary"></span> Active
-                                    </span>
-                                </td>
-                                <td class="px-lg py-md">
-                                    <button
-                                        class="bg-surface-container-high p-sm rounded-lg hover:bg-outline-variant/30 transition-all active:scale-95">
-                                        <span class="material-symbols-outlined text-[18px]"
-                                            data-icon="content_copy">content_copy</span>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-surface-container-lowest transition-colors">
-                                <td class="px-lg py-md">
-                                    <div class="flex flex-col">
-                                        <span class="font-semibold">Staging_Env</span>
-                                        <span
-                                            class="font-code text-body-sm text-on-surface-variant">pk_test_12...k882</span>
-                                    </div>
-                                </td>
-                                <td class="px-lg py-md font-body-md">12,430</td>
-                                <td class="px-lg py-md font-body-md">84</td>
-                                <td class="px-lg py-md font-body-md">452</td>
-                                <td class="px-lg py-md">
-                                    <span
-                                        class="inline-flex items-center gap-xs px-sm py-xs rounded-full bg-surface-container-highest text-on-surface-variant text-label-md font-semibold">
-                                        <span class="w-2 h-2 rounded-full bg-outline"></span> Disabled
-                                    </span>
-                                </td>
-                                <td class="px-lg py-md">
-                                    <div class="relative flex items-center gap-2">
-                                
-                                        <!-- Copy -->
-                                        <button
-                                            class="copy-key-btn bg-surface-container-high p-sm rounded-lg hover:bg-outline-variant/30 transition-all">
-                                
-                                            <span class="material-symbols-outlined text-[18px]">
-                                                content_copy
-                                            </span>
-                                
-                                        </button>
-                                
-                                        <!-- Menu -->
-                                        <button
-                                            class="menu-toggle bg-surface-container-high p-sm rounded-lg hover:bg-outline-variant/30 transition-all">
-                                
-                                            <span class="material-symbols-outlined text-[18px]">
-                                                more_vert
-                                            </span>
-                                
-                                        </button>
-                                
-                                        <!-- Dropdown -->
-                                        <div
-                                            class="menu hidden absolute right-0 top-12 w-44 rounded-xl border border-outline-variant bg-white shadow-lg overflow-hidden z-50">
-                                
-                                            <button
-                                                class="disable-key w-full text-left px-4 py-3 hover:bg-surface-container flex items-center gap-2">
-                                
-                                                <span class="material-symbols-outlined text-[18px]">
-                                                    block
-                                                </span>
-                                
-                                                Disable
-                                
-                                            </button>
-                                
-                                            <button
-                                                class="delete-key w-full text-left px-4 py-3 text-red-500 hover:bg-red-50 flex items-center gap-2">
-                                
-                                                <span class="material-symbols-outlined text-[18px]">
-                                                    delete
-                                                </span>
-                                
-                                                Delete
-                                
-                                            </button>
-                                
-                                        </div>
-                                
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-            <!-- Recent Jobs Section -->
-            <section class="glass-card rounded-xl shadow-sm overflow-hidden">
-                <div class="px-lg py-md border-b border-outline-variant/30">
-                    <h2 class="font-h3 text-h3">Recent Jobs</h2>
-                </div>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse min-w-[800px]">
-                        <thead class="bg-surface-container-low">
-                            <tr>
-                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Job ID</th>
-                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Status</th>
-                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Doc Type</th>
-                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Records</th>
-                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Created At</th>
-                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Completed At
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-outline-variant/20">
-                            <tr class="hover:bg-surface-container-lowest transition-colors">
-                                <td class="px-lg py-md font-code text-body-sm">job_849201kx</td>
-                                <td class="px-lg py-md">
-                                    <span
-                                        class="inline-flex items-center gap-xs px-sm py-xs rounded-full bg-green-100 text-green-800 text-label-md font-semibold">
-                                        <span class="material-symbols-outlined text-[16px]"
-                                            data-icon="check_circle">check_circle</span> Success
-                                    </span>
-                                </td>
-                                <td class="px-lg py-md font-body-md">1,250</td>
-                                <td class="px-lg py-md font-body-md text-on-surface-variant">Oct 24, 14:20</td>
-                                <td class="px-lg py-md font-body-md text-on-surface-variant">Oct 24, 14:22</td>
-                            </tr>
-                            <tr class="hover:bg-surface-container-lowest transition-colors">
-                                <td class="px-lg py-md font-code text-body-sm">job_990122pq</td>
-                                <td class="px-lg py-md">
-                                    <span
-                                        class="inline-flex items-center gap-xs px-sm py-xs rounded-full bg-amber-100 text-amber-800 text-label-md font-semibold">
-                                        <span class="material-symbols-outlined text-[16px]"
-                                            data-icon="pending">pending</span> Pending
-                                    </span>
-                                </td>
-                                <td class="px-lg py-md font-body-md">42</td>
-                                <td class="px-lg py-md font-body-md text-on-surface-variant">Oct 24, 15:01</td>
-                                <td class="px-lg py-md font-body-md text-on-surface-variant">—</td>
-                            </tr>
-                            <tr class="hover:bg-surface-container-lowest transition-colors">
-                                <td class="px-lg py-md font-code text-body-sm">job_102837vy</td>
-                                <td class="px-lg py-md">
-                                    <span
-                                        class="inline-flex items-center gap-xs px-sm py-xs rounded-full bg-error-container text-on-error-container text-label-md font-semibold">
-                                        <span class="material-symbols-outlined text-[16px]"
-                                            data-icon="error">error</span> Failed
-                                    </span>
-                                </td>
-                                <td class="px-lg py-md font-body-md">204</td>
-                                <td class="px-lg py-md font-body-md text-on-surface-variant">Oct 23, 09:12</td>
-                                <td class="px-lg py-md font-body-md text-on-surface-variant">Oct 23, 09:13</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="flex items-center justify-center gap-sm px-lg py-sm border-t border-outline-variant/20">
+                            Next
 
-                    <button id="jobs-prev"
-                        class="px-3 py-1.5 text-sm rounded-md bg-surface-container-high hover:bg-surface-container disabled:opacity-40 disabled:cursor-not-allowed transition-all">
+                        </button>
 
-                        Previous
+                    </div>
+                </section>
+                <!-- Logs Section -->
+                <section class="glass-card rounded-xl shadow-sm overflow-hidden">
 
-                    </button>
+                    <div class="px-lg py-md border-b border-outline-variant/30">
 
-                    <span id="jobs-page" class="min-w-[64px] text-center text-sm font-medium">
+                        <h2 class="font-h3 text-h3">
+                            Activity Logs
+                        </h2>
 
-                        Page 1
+                    </div>
 
-                    </span>
+                    <div class="overflow-x-auto">
 
-                    <button id="jobs-next"
-                        class="px-3 py-1.5 text-sm rounded-md bg-secondary text-white hover:opacity-90 disabled:opacity-40 transition-all">
+                        <table class="w-full text-left border-collapse min-w-[1000px]">
 
-                        Next
+                            <thead class="bg-surface-container-low">
 
-                    </button>
+                                <tr>
 
-                </div>
-            </section>
-            <!-- Logs Section -->
-            <section class="glass-card rounded-xl shadow-sm overflow-hidden">
+                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">
+                                        Status
+                                    </th>
 
-                <div class="px-lg py-md border-b border-outline-variant/30">
+                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">
+                                        Feature
+                                    </th>
 
-                    <h2 class="font-h3 text-h3">
-                        Activity Logs
-                    </h2>
+                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">
+                                        API Key
+                                    </th>
 
-                </div>
+                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">
+                                        Records
+                                    </th>
 
-                <div class="overflow-x-auto">
+                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">
+                                        Message
+                                    </th>
 
-                    <table class="w-full text-left border-collapse min-w-[1000px]">
+                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">
+                                        Time
+                                    </th>
 
-                        <thead class="bg-surface-container-low">
+                                </tr>
 
-                            <tr>
+                            </thead>
 
-                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">
-                                    Status
-                                </th>
+                            <tbody id="logs-table" class="divide-y divide-outline-variant/20">
 
-                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">
-                                    Feature
-                                </th>
+                            </tbody>
 
-                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">
-                                    API Key
-                                </th>
-
-                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">
-                                    Records
-                                </th>
-
-                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">
-                                    Message
-                                </th>
-
-                                <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">
-                                    Time
-                                </th>
-
-                            </tr>
-
-                        </thead>
-
-                        <tbody id="logs-table" class="divide-y divide-outline-variant/20">
-
-                        </tbody>
-
-                    </table>
+                        </table>
 
 
-                </div>
-                <div class="flex items-center justify-center gap-sm px-lg py-sm border-t border-outline-variant/20">
+                    </div>
+                    <div class="flex items-center justify-center gap-sm px-lg py-sm border-t border-outline-variant/20">
 
-                    <button id="logs-prev"
-                        class="px-3 py-1.5 text-sm rounded-md bg-surface-container-high hover:bg-surface-container disabled:opacity-40 disabled:cursor-not-allowed transition-all">
+                        <button id="logs-prev"
+                            class="px-3 py-1.5 text-sm rounded-md bg-surface-container-high hover:bg-surface-container disabled:opacity-40 disabled:cursor-not-allowed transition-all">
 
-                        Previous
+                            Previous
 
-                    </button>
+                        </button>
 
-                    <span id="logs-page" class="min-w-[64px] text-center text-sm font-medium">
+                        <span id="logs-page" class="min-w-[64px] text-center text-sm font-medium">
 
-                        Page 1
+                            Page 1
 
-                    </span>
+                        </span>
 
-                    <button id="logs-next"
-                        class="px-3 py-1.5 text-sm rounded-md bg-secondary text-white hover:opacity-90 disabled:opacity-40 transition-all">
+                        <button id="logs-next"
+                            class="px-3 py-1.5 text-sm rounded-md bg-secondary text-white hover:opacity-90 disabled:opacity-40 transition-all">
 
-                        Next
+                            Next
 
-                    </button>
+                        </button>
 
-                </div>
+                    </div>
 
-            </section>
+                </section>
+            </div>
         </div>
+        <div id="templates-page" class="hidden">
+        </div>
+
     </main>
-    <!-- Floating Action Button -->
-    <div class="fixed bottom-8 right-8 z-50">
-        <button
-            class="w-14 h-14 bg-secondary text-on-secondary rounded-full shadow-lg flex items-center justify-center hover:scale-110 active:scale-95 transition-all">
-            <span class="material-symbols-outlined text-[32px]" data-icon="add"
-                style="font-variation-settings: 'FILL' 0;">add</span>
-        </button>
-    </div>
 
     <!-- Logout Confirmation Modal -->
     <div id="logout-modal"

@@ -23,9 +23,10 @@ import { auth, db } from "./components/firebase.js";
 
 import {
     generateApiKey
-}
-    from "./components/user-service.js";
+} from "./components/user-service.js";
 
+import { initializeTemplateUpload, initializeTemplateUpdate, loadTemplates } from "./components/templates.js";
+import { showToast } from "./components/util.js";
 
 const PAGE_SIZE = 5;
 
@@ -230,6 +231,8 @@ async function loadUserDashboard(user) {
             ${formatNumber(usage.pdf?.today || 0)}
         </span>`;
 
+    
+    hideLoader();
 
     // ===============================
     // API KEYS TABLE
@@ -1193,131 +1196,6 @@ function setupApiModal(
 }
 
 
-// ===============================
-// TOAST
-// ===============================
-export function showToast(
-    message,
-    type = "info",
-    duration = 3000
-) {
-
-    const container =
-        document.getElementById(
-            "toastContainer"
-        );
-
-    const icons = {
-
-        success:
-            "check_circle",
-
-        error:
-            "error",
-
-        warning:
-            "warning",
-
-        info:
-            "info"
-
-    };
-
-    const toast =
-        document.createElement(
-            "div"
-        );
-
-    toast.className =
-        `toast ${type}`;
-
-
-    toast.innerHTML = `
-
-        <div class="toast-inner">
-
-            <div class="toast-icon">
-
-                <span
-                    class="material-symbols-outlined">
-
-                    ${icons[type]}
-
-                </span>
-
-            </div>
-
-            <div class="toast-content">
-
-                ${message}
-
-            </div>
-
-            <div
-                class="toast-progress"
-                style="
-                    animation-duration:
-                    ${duration}ms
-                ">
-            </div>
-
-        </div>
-
-    `;
-
-
-    container.appendChild(
-        toast
-    );
-
-
-    setTimeout(
-        () =>
-            toast.classList.add(
-                "show"
-            ),
-        10
-    );
-
-
-    const removeToast =
-        () => {
-
-            toast.classList.remove(
-                "show"
-            );
-
-            setTimeout(
-                () =>
-                    toast.remove(),
-                300
-            );
-
-        };
-
-
-    const timeout =
-        setTimeout(
-            removeToast,
-            duration
-        );
-
-
-    toast.addEventListener(
-        "click",
-        () => {
-
-            clearTimeout(
-                timeout
-            );
-
-            removeToast();
-
-        }
-    );
-
-}
-
 
 document.addEventListener("click", async (e) => {
 
@@ -1480,3 +1358,73 @@ async function updateApiKeyStatus(
     await batch.commit();
 
 }
+
+
+function setActiveTab(activeId) {
+
+    document.querySelectorAll(".nav-link").forEach(link => {
+
+        link.classList.remove(
+            "bg-secondary/10",
+            "text-secondary",
+            "font-bold"
+        );
+
+        link.classList.add(
+            "text-on-surface-variant"
+        );
+    });
+
+    const active = document.getElementById(activeId);
+
+    active.classList.remove(
+        "text-on-surface-variant"
+    );
+
+    active.classList.add(
+        "bg-secondary/10",
+        "text-secondary",
+        "font-bold"
+    );
+}
+
+
+const dashboardPage = document.getElementById("dashboard-page");
+const templatesPage = document.getElementById("templates-page");
+
+let templateLoaded = false;
+
+document.getElementById("templates-nav")
+    .addEventListener("click", async (e) => {
+
+        e.preventDefault();
+
+        setActiveTab("templates-nav");
+
+        dashboardPage.classList.add("hidden");
+        templatesPage.classList.remove("hidden");
+
+        if (!templateLoaded) {
+
+            const res = await fetch("/components/templates.html");
+            templatesPage.innerHTML = await res.text();
+
+            initializeTemplateUpload();
+            initializeTemplateUpdate();
+
+            await loadTemplates();
+
+            templateLoaded = true;
+        }
+    });
+
+    document.getElementById("dashboard-nav")
+    .addEventListener("click", (e) => {
+
+        e.preventDefault();
+
+        setActiveTab("dashboard-nav");
+
+        templatesPage.classList.add("hidden");
+        dashboardPage.classList.remove("hidden");
+    });
