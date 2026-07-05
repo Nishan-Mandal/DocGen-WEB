@@ -1,1 +1,1 @@
-# DocGen-WEB
+# EveryPapers-WEB

@@ -19,19 +19,29 @@ async function loadComponent(id, file) {
 
 function setActiveNav() {
 
-    const links = document.querySelectorAll(".nav-link");
+    const currentPath = window.location.pathname
+        .split("/")
+        .pop()
+        .split("?")[0]
+        .split("#")[0];
 
-    const currentPage =
-        window.location.pathname.split("/").pop() || "index.html";
+    document.querySelectorAll(".nav-link").forEach(link => {
 
-    links.forEach(link => {
+        const href = link
+            .getAttribute("href")
+            ?.split("/")
+            .pop()
+            .split("?")[0]
+            .split("#")[0];
 
-        const href = link.getAttribute("href");
-
-        if (href === currentPage) {
+        if (href === currentPath) {
             link.classList.add("active");
+        } else {
+            link.classList.remove("active");
         }
+
     });
+
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -46,7 +56,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("click", async (e) => {
 
-    if (e.target.id === "get-api-key-btn" || e.target.id === "get-api-key" || e.target.id === "start-building" || e.target.id === "dashboard-tab") {
+    if (e.target.id === "get-api-key-btn" 
+        || e.target.id === "get-api-key" 
+        || e.target.id === "start-building" 
+        || e.target.id === "dashboard-tab" 
+        || e.target.id === "freePlanBtn"
+        ) {
 
         const { auth } = await import("./firebase.js");
 

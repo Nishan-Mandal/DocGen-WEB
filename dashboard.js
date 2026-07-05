@@ -1,8 +1,6 @@
 import {
-    getFirestore,
     doc,
     getDoc,
-    setDoc,
     collection,
     getDocs,
     query,
@@ -21,12 +19,11 @@ import {
 
 import { auth, db } from "./components/firebase.js";
 
-import {
-    generateApiKey
-} from "./components/user-service.js";
-
 import { initializeTemplateUpload, initializeTemplateUpdate, loadTemplates } from "./components/templates.js";
 import { showToast } from "./components/util.js";
+import {
+    loadTransactions
+} from "./components/transactions.js";
 
 const PAGE_SIZE = 5;
 
@@ -91,6 +88,42 @@ function getStatusBadge(status) {
     `;
 }
 
+function getInitials(name = "") {
+
+    const words = name.trim().split(/\s+/);
+
+    if (words.length === 1) {
+        return words[0].substring(0, 2).toUpperCase();
+    }
+
+    return (
+        words[0][0] +
+        words[words.length - 1][0]
+    ).toUpperCase();
+}
+
+function getAvatarColor(text) {
+
+    const colors = [
+        "#712AE2",
+        "#2563EB",
+        "#16A34A",
+        "#EA580C",
+        "#DB2777",
+        "#0891B2",
+        "#7C3AED",
+        "#DC2626"
+    ];
+
+    let hash = 0;
+
+    for (let i = 0; i < text.length; i++) {
+        hash = text.charCodeAt(i) + ((hash << 5) - hash);
+    }
+
+    return colors[Math.abs(hash) % colors.length];
+}
+
 
 // ===============================
 // MAP USER DATA
@@ -112,9 +145,34 @@ async function loadUserDashboard(user) {
     // ===============================
     // USER CARD
     // ===============================
-    const userPhoto = document.getElementById('user-photo');
-
-    userPhoto.src = userData.photo || user.photoURL || '/assets/default-user.png';
+    const avatar = document.getElementById("user-avatar");
+    const userPhoto = document.getElementById("user-photo");
+    const initials = document.getElementById("user-initials");
+    
+    const photo = userData.photo || user.photoURL;
+    
+    const name =
+        userData.name ||
+        user.displayName ||
+        user.email ||
+        "User";
+    
+    if (photo) {
+    
+        userPhoto.src = photo;
+    
+        userPhoto.classList.remove("hidden");
+        initials.classList.add("hidden");
+    
+    } else {
+    
+        userPhoto.classList.add("hidden");
+        initials.classList.remove("hidden");
+    
+        initials.textContent = getInitials(name);
+    
+        avatar.style.backgroundColor = getAvatarColor(name);
+    }
 
     document.querySelector('h3.font-h3.text-h3').textContent = userData.name || 'User';
 
@@ -122,7 +180,7 @@ async function loadUserDashboard(user) {
         userData.email || user.email;
 
     document.querySelector('.bg-secondary-fixed').textContent =
-        userData.plan || 'Free Plan';
+        (userData.subscription?.plan || 'Free').toUpperCase();
 
     const joinedDateEl = document.getElementById('joined-date');
     const documentsGeneratedEl = document.getElementById('documents-generated');
@@ -146,11 +204,15 @@ async function loadUserDashboard(user) {
     // PLAN SECTION
     // ===============================
 
-    document.getElementById('current-plan').textContent =
-        `${userData.plan || 'Free'} Tier`;
+    document.getElementById("current-plan").textContent =
+    `${(userData.subscription?.plan || "FREE")
+        .charAt(0)
+        .toUpperCase()}${(userData.subscription?.plan || "FREE")
+        .slice(1)
+        .toLowerCase()} Tier`;
 
     const totalLimit = limits.total || 0;
-    const limitUsed = usage.pdf.total + usage.docx.total || 0;
+    const limitUsed = usage.billingCycle || 0;
 
     document.querySelector('.flex.justify-between.text-label-md span:last-child').textContent =
         `${formatNumber(limitUsed)} / ${formatNumber(totalLimit)} docs`;
@@ -179,20 +241,17 @@ async function loadUserDashboard(user) {
     overviewNumbers[0].textContent =
         formatNumber(usage.total || 0);
 
-
-    // 1 → Template Analysis
+    // 1 → PDF
     overviewNumbers[1].textContent =
-        formatNumber(usage.templateAnalysis?.total || 0);
-
+        formatNumber(usage.pdf?.total || 0);
 
     // 2 → DOCX
     overviewNumbers[2].textContent =
         formatNumber(usage.docx?.total || 0);
 
-
-    // 3 → PDF
+    // 3 → Template Analysis
     overviewNumbers[3].textContent =
-        formatNumber(usage.pdf?.total || 0);
+        formatNumber(usage.templateAnalysis?.total || 0);
 
 
     // ===============================
@@ -231,7 +290,7 @@ async function loadUserDashboard(user) {
             ${formatNumber(usage.pdf?.today || 0)}
         </span>`;
 
-    
+
     hideLoader();
 
     // ===============================
@@ -350,18 +409,11 @@ async function loadApiKeys(userId) {
     const tbody = document.querySelectorAll('tbody')[0];
 
     const apiKeysRef = query(
-        collection(
-            db,
-            'users',
-            userId,
-            'apiKeys'
-        ),
-        where(
-            'status',
-            '!=',
-            'deleted'
-        )
+        collection(db, "apiKeys"),
+        where("userId", "==", userId),
+        where("status", "!=", "deleted")
     );
+
     const apiKeysSnap = await getDocs(apiKeysRef);
 
     tbody.innerHTML = '';
@@ -723,16 +775,6 @@ async function loadLogs(
             logsQuery
         );
 
-
-    console.log(
-        snap.docs.map(
-            d => ({
-                id: d.id,
-                ...d.data()
-            })
-        )
-    );
-
     tbody.innerHTML = '';
 
     if (
@@ -919,8 +961,7 @@ onAuthStateChanged(
 
             if (!user) {
 
-                // window.location.href =
-                //     '/login.html';
+                window.location.replace("/components/signup.html");
 
                 return;
 
@@ -1047,146 +1088,55 @@ function setupApiModal(
                     // ===============================
                     btn.disabled = true;
 
-                    loader.classList.remove(
-                        'hidden'
-                    );
+                    loader.classList.remove("hidden");
+                    text.textContent = "Generating...";
 
-                    text.textContent =
-                        'Generating...';
+                    const idToken = await auth.currentUser.getIdToken();
 
-
-                    const key =
-                        generateApiKey();
-
-
-                    const payload = {
-
-                        key,
-
-                        name,
-
-                        status:
-                            'active',
-
-                        userId,
-
-                        createdAt:
-                            serverTimestamp(),
-
-                        lastUsedAt:
-                            null,
-
-                        usage: {
-
-                            total: 0,
-
-                            today: 0,
-
-                            todayDate: null,
-
-                            pdf: {
-                                total: 0,
-                                today: 0
-                            },
-
-                            docx: {
-                                total: 0,
-                                today: 0
-                            },
-
-                            templateAnalysis: {
-                                total: 0,
-                                today: 0
-                            }
-
+                    const response = await fetch(`https://docgen-service-746637463346.us-central1.run.app/apikey/create`, {
+                        method: "POST",
+                        headers: {
+                            "Authorization": `Bearer ${idToken}`,
+                            "Content-Type": "application/json"
                         },
+                        body: JSON.stringify({
+                            name: name
+                        })
+                    });
 
-                        failures: {
+                    const data = await response.json();
 
-                            total: 0,
+                    if (!response.ok) {
+                        throw new Error(data.error || "Unable to generate API key");
+                    }
 
-                            today: 0,
+                    await loadApiKeys(userId);
 
-                            todayDate: null,
+                    showToast("API key generated successfully");
 
-                            pdf: {
-                                total: 0,
-                                today: 0
-                            },
+                    modal.classList.add("hidden");
+                    modal.classList.remove("flex");
 
-                            docx: {
-                                total: 0,
-                                today: 0
-                            },
-
-                            templateAnalysis: {
-                                total: 0,
-                                today: 0
-                            }
-
-                        }
-
-                    };
-
-
-                    await setDoc(
-                        doc(
-                            db,
-                            'apiKeys',
-                            key
-                        ),
-                        payload
-                    );
-
-
-                    await setDoc(
-                        doc(
-                            db,
-                            'users',
-                            userId,
-                            'apiKeys',
-                            key
-                        ),
-                        payload
-                    );
-
-
-                    await loadApiKeys(
-                        userId
-                    );
-
-                    showToast(
-                        'API key generated successfully'
-                    );
-
-
-                    modal.classList.add(
-                        'hidden'
-                    );
-
-                    modal.classList.remove(
-                        'flex'
-                    );
-
-                    input.value =
-                        '';
+                    input.value = "";
 
                 }
+                catch (error) {
 
-                finally {
+                    console.error(error);
 
-                    // ===============================
-                    // RESET BUTTON
-                    // ===============================
-                    btn.disabled =
-                        false;
-
-                    loader.classList.add(
-                        'hidden'
+                    showToast(
+                        error.message || "Unable to generate API key",
+                        "error"
                     );
 
-                    text.textContent =
-                        'Generate';
+                }
+                finally {
+
+                    btn.disabled = false;
+
+                    loader.classList.add("hidden");
+
+                    text.textContent = "Generate";
 
                 }
 
@@ -1222,7 +1172,6 @@ document.addEventListener("click", async (e) => {
         const apiKey = disableBtn.dataset.key;
 
         await updateApiKeyStatus(
-            auth.currentUser.uid,
             apiKey,
             "disabled"
         );
@@ -1256,7 +1205,6 @@ document.addEventListener("click", async (e) => {
         const apiKey = deleteBtn.dataset.key;
 
         await updateApiKeyStatus(
-            auth.currentUser.uid,
             apiKey,
             "deleted"
         );
@@ -1281,7 +1229,6 @@ document.addEventListener("click", async (e) => {
             enableBtn.dataset.key;
 
         await updateApiKeyStatus(
-            auth.currentUser.uid,
             apiKey,
             "active"
         );
@@ -1313,49 +1260,37 @@ document.addEventListener("click", async (e) => {
 
 
 async function updateApiKeyStatus(
-    userId,
     apiKey,
     status
 ) {
 
-    const batch =
-        writeBatch(db);
+    const idToken =
+        await auth.currentUser.getIdToken();
 
-    const globalRef =
-        doc(
-            db,
-            "apiKeys",
-            apiKey
-        );
+    const payload = {
+        key: apiKey,
+        status: status
+    };
 
-    const userRef =
-        doc(
-            db,
-            "users",
-            userId,
-            "apiKeys",
-            apiKey
-        );
-
-    batch.update(
-        globalRef,
+    const response = await fetch(
+        `https://docgen-service-746637463346.us-central1.run.app/apikey/status`,
         {
-            status,
-            updatedAt:
-                serverTimestamp()
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${idToken}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
         }
     );
 
-    batch.update(
-        userRef,
-        {
-            status,
-            updatedAt:
-                serverTimestamp()
-        }
-    );
+    const data = await response.json();
 
-    await batch.commit();
+    if (!response.ok) {
+        throw new Error(
+            data.error || "Unable to update API key"
+        );
+    }
 
 }
 
@@ -1392,6 +1327,11 @@ function setActiveTab(activeId) {
 const dashboardPage = document.getElementById("dashboard-page");
 const templatesPage = document.getElementById("templates-page");
 
+const transactionsPage =
+    document.getElementById("transactions-page");
+
+let transactionsLoaded = false;
+
 let templateLoaded = false;
 
 document.getElementById("templates-nav")
@@ -1402,6 +1342,7 @@ document.getElementById("templates-nav")
         setActiveTab("templates-nav");
 
         dashboardPage.classList.add("hidden");
+        transactionsPage.classList.add("hidden");
         templatesPage.classList.remove("hidden");
 
         if (!templateLoaded) {
@@ -1418,7 +1359,7 @@ document.getElementById("templates-nav")
         }
     });
 
-    document.getElementById("dashboard-nav")
+document.getElementById("dashboard-nav")
     .addEventListener("click", (e) => {
 
         e.preventDefault();
@@ -1427,4 +1368,78 @@ document.getElementById("templates-nav")
 
         templatesPage.classList.add("hidden");
         dashboardPage.classList.remove("hidden");
+        transactionsPage.classList.add("hidden");
+        dashboardPage.classList.remove("hidden");
     });
+
+
+
+document
+    .getElementById("transactions-nav")
+    .addEventListener("click", async (e) => {
+
+        e.preventDefault();
+
+        setActiveTab("transactions-nav");
+
+        dashboardPage.classList.add("hidden");
+        templatesPage.classList.add("hidden");
+
+        transactionsPage.classList.remove("hidden");
+
+        if (!transactionsLoaded) {
+
+            const res =
+                await fetch("/components/transactions.html");
+
+            transactionsPage.innerHTML =
+                await res.text();
+
+            await loadTransactions();
+
+            transactionsLoaded = true;
+        }
+
+    });
+
+
+
+const sidebar = document.getElementById("sidebar");
+const content = document.getElementById("page-content");
+const footer = document.getElementById("footer-container");
+const toggle = document.getElementById("sidebar-toggle");
+const icon = document.getElementById("sidebar-icon");
+
+toggle.addEventListener("click", () => {
+
+    const collapsed =
+        sidebar.classList.toggle("sidebar-collapsed");
+
+    if (collapsed) {
+
+        sidebar.classList.add("sidebar-collapsed");
+
+        content.classList.remove("sidebar-open");
+        content.classList.add("sidebar-closed");
+
+        footer.classList.remove("sidebar-open");
+        footer.classList.add("sidebar-closed");
+
+        icon.textContent = "chevron_right";
+
+
+    } else {
+
+        sidebar.classList.remove("sidebar-collapsed");
+
+        content.classList.remove("sidebar-closed");
+        content.classList.add("sidebar-open");
+
+        footer.classList.remove("sidebar-closed");
+        footer.classList.add("sidebar-open");
+
+        icon.textContent = "chevron_left";
+
+    }
+
+});

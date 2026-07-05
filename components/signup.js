@@ -35,8 +35,6 @@ googleBtn?.addEventListener("click", async () => {
 
     console.error(error);
 
-    console.log('-------------')
-
     showToast(
       error.message,
       "error"
@@ -95,8 +93,6 @@ signupForm?.addEventListener("submit", async (e) => {
     hideLoader();
 
     console.error(error);
-
-    console.log('-------------')
 
     showToast(
       error.message,
