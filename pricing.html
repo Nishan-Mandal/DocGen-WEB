@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>DocGen Use Cases | Automate Document Generation</title>
+    <title>EveryPapers Use Cases | Automate Document Generation</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
@@ -158,95 +158,556 @@
         .nav-link.active::after {
             width: 100%;
         }
+
+        /* ===============================
+   TOAST
+=============================== */
+
+        #toastContainer {
+
+            position: fixed;
+
+            top: 88px;
+
+            right: 24px;
+
+            z-index: 9999;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+
+        }
+
+        .toast {
+
+            opacity: 0;
+
+            transform:
+                translateX(40px);
+
+            transition:
+                all .3s ease;
+
+        }
+
+        .toast.show {
+
+            opacity: 1;
+
+            transform:
+                translateX(0);
+
+        }
+
+        .toast-inner {
+
+            position: relative;
+
+            overflow: hidden;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            min-width: 320px;
+
+            max-width: 420px;
+
+            padding: 16px 18px;
+
+            border-radius: 18px;
+
+            backdrop-filter:
+                blur(16px);
+
+            background:
+                rgba(255,
+                    255,
+                    255,
+                    0.88);
+
+            box-shadow:
+                0 12px 40px rgba(0,
+                    0,
+                    0,
+                    .08);
+
+        }
+
+        .toast-icon {
+
+            width: 42px;
+
+            height: 42px;
+
+            border-radius: 12px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+        .toast-content {
+
+            flex: 1;
+
+            font-size: 14px;
+
+            font-weight: 500;
+
+        }
+
+        .toast-progress {
+
+            position: absolute;
+
+            bottom: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 3px;
+
+            transform-origin: left;
+
+            animation:
+                shrink linear forwards;
+
+        }
+
+        /* COLORS */
+
+        .toast.success .toast-icon {
+
+            background:
+                rgba(34,
+                    197,
+                    94,
+                    .12);
+
+            color:
+                #16a34a;
+
+        }
+
+        .toast.success .toast-progress {
+
+            background:
+                #16a34a;
+
+        }
+
+        .toast.error .toast-icon {
+
+            background:
+                rgba(239,
+                    68,
+                    68,
+                    .12);
+
+            color:
+                #dc2626;
+
+        }
+
+        .toast.error .toast-progress {
+
+            background:
+                #dc2626;
+
+        }
+
+        .toast.warning .toast-icon {
+
+            background:
+                rgba(245,
+                    158,
+                    11,
+                    .12);
+
+            color:
+                #d97706;
+
+        }
+
+        .toast.warning .toast-progress {
+
+            background:
+                #d97706;
+
+        }
+
+        .toast.info .toast-icon {
+
+            background:
+                rgba(113,
+                    42,
+                    226,
+                    .12);
+
+            color:
+                #712ae2;
+
+        }
+
+        .toast.info .toast-progress {
+
+            background:
+                #712ae2;
+
+        }
+
+        @keyframes shrink {
+
+            from {
+
+                transform:
+                    scaleX(1);
+
+            }
+
+            to {
+
+                transform:
+                    scaleX(0);
+
+            }
+
+        }
     </style>
 </head>
 
 <body class="bg-background text-on-surface font-body-md antialiased overflow-x-hidden">
     <!-- TopNavBar -->
     <div id="header"></div>
-    <main class="pt-16">
-            <!-- Pricing Section -->
-    <section class="py-20">
-        <div class="max-w-7xl mx-auto px-6">
-            <h2 class="font-h2 text-h2 text-center mb-16">Simple, Scalable Pricing</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Free -->
-                <div class="glass-card p-xl rounded-2xl flex flex-col">
-                    <div class="mb-8">
-                        <span
-                            class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Free</span>
-                        <div class="flex items-baseline mt-4">
-                            <span class="text-h1 font-bold">$0</span>
-                            <span class="font-body-sm text-on-surface-variant ml-2">/month</span>
+    <main class="pt-8">
+        <!-- Pricing Section -->
+        <section class="py-20">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="font-h2 text-h2 text-center mb-16">Simple, Scalable Pricing</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Free -->
+                    <div class="glass-card p-xl rounded-2xl flex flex-col">
+                        <div class="mb-8">
+                            <span
+                                class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Free</span>
+                            <div class="flex items-baseline mt-4">
+                                <span class="text-h1 font-bold">$0</span>
+                                <span class="font-body-sm text-on-surface-variant ml-2">/month</span>
+                            </div>
                         </div>
+                        <ul class="space-y-4 mb-12 flex-1">
+                            <li class="flex gap-2 items-center text-body-sm"><span
+                                    class="material-symbols-outlined text-emerald-500">check</span> 500
+                                documents
+                            </li>
+
+                            <li class="flex gap-2 items-center text-body-sm"><span
+                                    class="material-symbols-outlined text-emerald-500">check</span> 1 API Key</li>
+                            <li class="flex gap-2 items-center text-body-sm"><span
+                                    class="material-symbols-outlined text-emerald-500">check</span> Custom Webhooks</li>
+                            <li class="flex gap-2 items-center text-body-sm"><span
+                                    class="material-symbols-outlined text-emerald-500">check</span> Email Delivery</li>
+                            <li class="flex gap-2 items-center text-body-sm"><span
+                                    class="material-symbols-outlined text-emerald-500">check</span> Unlimited Templates
+                            </li>
+                            <li class="flex gap-2 items-center text-body-sm text-on-surface-variant opacity-50"><span
+                                    class="material-symbols-outlined">close</span>Dedicated Support
+                            </li>
+                        </ul>
+                        <button onclick="window.location.href='/dashboard.html'"  class="w-full border border-outline-variant py-3 rounded-xl font-label-md">Start
+                            Free</button>
                     </div>
-                    <ul class="space-y-4 mb-12 flex-1">
-                        <li class="flex gap-2 items-center text-body-sm"><span
-                                class="material-symbols-outlined text-emerald-500">check</span> 1000 documents/mo</li>
-                        <li class="flex gap-2 items-center text-body-sm"><span
-                                class="material-symbols-outlined text-emerald-500">check</span> Public Templates</li>
-                                <li class="flex gap-2 items-center text-body-sm"><span
-                                    class="material-symbols-outlined text-emerald-500">check</span> 2 API Keys</li>
-                        <li class="flex gap-2 items-center text-body-sm text-on-surface-variant opacity-50"><span
-                                class="material-symbols-outlined">close</span> Custom Webhooks</li>
-                    </ul>
-                    <button class="w-full border border-outline-variant py-3 rounded-xl font-label-md">Start
-                        Free</button>
-                </div>
-                <!-- Pro -->
-                <div
-                    class="glass-card p-xl rounded-2xl border-secondary-container ring-2 ring-secondary-container flex flex-col relative scale-105 z-10">
+                    <!-- Starter -->
+                    <div class="glass-card p-xl rounded-2xl flex flex-col">
+                        <div class="mb-8">
+                            <span
+                                class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Starter</span>
+                            <div class="flex items-baseline mt-4">
+                                <span class="text-h1 font-bold">$14</span>
+                                <span class="font-body-sm text-on-surface-variant ml-2">/month</span>
+                            </div>
+                        </div>
+                        <ul class="space-y-4 mb-12 flex-1">
+                            <li class="flex gap-2 items-center text-body-sm"><span
+                                    class="material-symbols-outlined text-emerald-500">check</span> 1000
+                                documents/mo
+                            </li>
+
+                            <li class="flex gap-2 items-center text-body-sm"><span
+                                    class="material-symbols-outlined text-emerald-500">check</span> 3 API Keys</li>
+                            <li class="flex gap-2 items-center text-body-sm"><span
+                                    class="material-symbols-outlined text-emerald-500">check</span> Custom Webhooks</li>
+                            <li class="flex gap-2 items-center text-body-sm"><span
+                                    class="material-symbols-outlined text-emerald-500">check</span> Email Delivery</li>
+                            <li class="flex gap-2 items-center text-body-sm"><span
+                                    class="material-symbols-outlined text-emerald-500">check</span> Unlimited Templates
+                            </li>
+                            <li class="flex gap-2 items-center text-body-sm"><span
+                                    class="material-symbols-outlined text-emerald-500">check</span> Dedicated Support
+                            </li>
+                        </ul>
+                        <button id="starterPlanBtn"
+                            class="w-full border border-outline-variant py-3 rounded-xl font-label-md">
+
+                            <span class="btn-text">
+                                Get Started
+                            </span>
+
+                            <span class="loader hidden inline-flex items-center gap-2">
+                                <svg class="animate-spin h-5 w-5" viewBox="0 0 24 24" fill="none">
+
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"
+                                        opacity=".25" />
+
+                                    <path fill="currentColor" d="M22 12a10 10 0 0 1-10 10V18a6 6 0 0 0 6-6h4z" />
+
+                                </svg>
+
+                                Loading...
+
+                            </span>
+                        </button>
+                    </div>
+                    <!-- Growth -->
                     <div
-                        class="absolute -top-4 left-1/2 -translate-x-1/2 bg-secondary text-white px-4 py-1 rounded-full font-label-md">
-                        Most Popular</div>
-                    <div class="mb-8">
-                        <span class="font-label-md text-label-md text-secondary uppercase tracking-wider">Pro</span>
-                        <div class="flex items-baseline mt-4">
-                            <span class="text-h1 font-bold text-secondary">$49</span>
-                            <span class="font-body-sm text-on-surface-variant ml-2">/month</span>
+                        class="glass-card p-xl rounded-2xl border-secondary-container ring-2 ring-secondary-container flex flex-col relative scale-105 z-10">
+                        <div
+                            class="absolute -top-4 left-1/2 -translate-x-1/2 bg-secondary text-white px-4 py-1 rounded-full font-label-md">
+                            Most Popular</div>
+                        <div class="mb-8">
+                            <span
+                                class="font-label-md text-label-md text-secondary uppercase tracking-wider">Growth</span>
+                            <div class="flex items-baseline mt-4">
+                                <span class="text-h1 font-bold text-secondary">$49</span>
+                                <span class="font-body-sm text-on-surface-variant ml-2">/month</span>
+                            </div>
                         </div>
+                        <ul class="space-y-4 mb-12 flex-1">
+                            <li class="flex gap-2 items-center text-body-sm"><span
+                                    class="material-symbols-outlined text-emerald-500">check</span> 6000
+                                documents/mo
+                            </li>
+
+                            <li class="flex gap-2 items-center text-body-sm"><span
+                                    class="material-symbols-outlined text-emerald-500">check</span> 8 API Keys</li>
+                            <li class="flex gap-2 items-center text-body-sm"><span
+                                    class="material-symbols-outlined text-emerald-500">check</span> Custom Webhooks</li>
+                            <li class="flex gap-2 items-center text-body-sm"><span
+                                    class="material-symbols-outlined text-emerald-500">check</span> Email Delivery</li>
+                            <li class="flex gap-2 items-center text-body-sm"><span
+                                    class="material-symbols-outlined text-emerald-500">check</span> Unlimited Templates
+                            </li>
+                            <li class="flex gap-2 items-center text-body-sm"><span
+                                    class="material-symbols-outlined text-emerald-500">check</span> Dedicated Support
+                            </li>
+                        </ul>
+                        <button id="growthPlanBtn"
+                            class="w-full bg-secondary text-white py-3 rounded-xl font-label-md shadow-lg shadow-secondary/20">
+                            <span class="btn-text">
+                                Get Started
+                            </span>
+
+                            <span class="loader hidden inline-flex items-center gap-2">
+                                <svg class="animate-spin h-5 w-5" viewBox="0 0 24 24" fill="none">
+
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"
+                                        opacity=".25" />
+
+                                    <path fill="currentColor" d="M22 12a10 10 0 0 1-10 10V18a6 6 0 0 0 6-6h4z" />
+
+                                </svg>
+
+                                Loading...
+
+                            </span>
+                        </button>
                     </div>
-                    <ul class="space-y-4 mb-12 flex-1">
-                        <li class="flex gap-2 items-center text-body-sm"><span
-                                class="material-symbols-outlined text-secondary">check</span> 5,000 documents/mo</li>
-                        <li class="flex gap-2 items-center text-body-sm"><span
-                                class="material-symbols-outlined text-secondary">check</span> Private Templates</li>
-                        <li class="flex gap-2 items-center text-body-sm"><span
-                                class="material-symbols-outlined text-secondary">check</span> Custom Webhooks</li>
-                        <li class="flex gap-2 items-center text-body-sm"><span
-                                class="material-symbols-outlined text-secondary">check</span> Team Access</li>
-                    </ul>
-                    <button
-                        class="w-full bg-secondary text-white py-3 rounded-xl font-label-md shadow-lg shadow-secondary/20">Get
-                        Started</button>
-                </div>
-                <!-- Enterprise -->
-                <div class="glass-card p-xl rounded-2xl flex flex-col">
-                    <div class="mb-8">
-                        <span
-                            class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Enterprise</span>
-                        <div class="flex items-baseline mt-4">
-                            <span class="text-h1 font-bold">Custom</span>
+                    <!-- Enterprise -->
+                    <div class="glass-card p-xl rounded-2xl flex flex-col">
+                        <div class="mb-8">
+                            <span
+                                class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Enterprise</span>
+                            <div class="flex items-baseline mt-4">
+                                <span class="text-h1 font-bold">Custom</span>
+                            </div>
                         </div>
+                        <ul class="space-y-4 mb-12 flex-1">
+                            <li class="flex gap-2 items-center text-body-sm"><span
+                                    class="material-symbols-outlined text-emerald-500">check</span> Unlimited documents
+                            </li>
+                            <li class="flex gap-2 items-center text-body-sm"><span
+                                    class="material-symbols-outlined text-emerald-500">check</span> Unlimited API Keys
+                            </li>
+                            <li class="flex gap-2 items-center text-body-sm"><span
+                                    class="material-symbols-outlined text-emerald-500">check</span> Unlimited Templates
+                            </li>
+                            <li class="flex gap-2 items-center text-body-sm"><span
+                                    class="material-symbols-outlined text-emerald-500">check</span> Unlimited Features
+                            </li>
+                            <li class="flex gap-2 items-center text-body-sm"><span
+                                    class="material-symbols-outlined text-emerald-500">check</span> Dedicated Support
+                            </li>
+                        </ul>
+                        <button id="contactSalesBtn"
+                            class="w-full border border-outline-variant py-3 rounded-xl font-label-md">Contact
+                            Sales</button>
                     </div>
-                    <ul class="space-y-4 mb-12 flex-1">
-                        <li class="flex gap-2 items-center text-body-sm"><span
-                                class="material-symbols-outlined text-emerald-500">check</span> Unlimited documents</li>
-                        <li class="flex gap-2 items-center text-body-sm"><span
-                                class="material-symbols-outlined text-emerald-500">check</span> Dedicated Support</li>
-                        <li class="flex gap-2 items-center text-body-sm"><span
-                                class="material-symbols-outlined text-emerald-500">check</span> Custom Integration</li>
-                    </ul>
-                    <button class="w-full border border-outline-variant py-3 rounded-xl font-label-md">Contact
-                        Sales</button>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
     </main>
+    <div id="enterpriseModal"
+        class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+
+        <div class="w-full max-w-4xl bg-white rounded-3xl shadow-2xl overflow-hidden">
+
+            <!-- Header -->
+            <div class="px-8 py-6 border-b">
+
+                <h2 class="text-2xl font-bold">
+                    Contact Enterprise Sales
+                </h2>
+
+                <p class="mt-2 text-slate-500">
+                    Complete the form below and we'll contact you within one business day.
+                </p>
+
+            </div>
+
+            <!-- Body -->
+            <div class="p-8">
+
+                <div class="grid md:grid-cols-2 gap-6">
+
+                    <div>
+                        <label class="block mb-2 text-sm font-medium">
+                            Full Name <span class="text-red-500">*</span>
+                        </label>
+
+                        <input id="leadName" type="text" placeholder="John Smith" class="w-full h-12 rounded-xl border border-slate-300 px-4
+                        focus:border-secondary focus:ring-2 focus:ring-secondary/20">
+                    </div>
+
+                    <div>
+                        <label class="block mb-2 text-sm font-medium">
+                            Work Email <span class="text-red-500">*</span>
+                        </label>
+
+                        <input id="leadEmail" type="email" placeholder="john@company.com" class="w-full h-12 rounded-xl border border-slate-300 px-4
+                        focus:border-secondary focus:ring-2 focus:ring-secondary/20">
+                    </div>
+
+                    <div>
+                        <label class="block mb-2 text-sm font-medium">
+                            Company <span class="text-red-500">*</span>
+                        </label>
+
+                        <input id="leadCompany" type="text" placeholder="Acme Inc." class="w-full h-12 rounded-xl border border-slate-300 px-4
+                        focus:border-secondary focus:ring-2 focus:ring-secondary/20">
+                    </div>
+
+                    <div>
+                        <label class="block mb-2 text-sm font-medium">
+                            Monthly Documents <span class="text-red-500">*</span>
+                        </label>
+
+                        <select id="leadVolume" class="w-full h-12 rounded-xl border border-slate-300 px-4
+                        focus:border-secondary focus:ring-2 focus:ring-secondary/20">
+
+                            <option value="">Select</option>
+                            <option>10,000 - 25,000</option>
+                            <option>25,000 - 50,000</option>
+                            <option>50,000 - 100,000</option>
+                            <option>100,000+</option>
+
+                        </select>
+
+                    </div>
+                </div>
+
+                <div class="mt-6">
+
+                    <label class="block mb-2 text-sm font-medium">
+                        Tell us about your workflow
+                        <span class="text-red-500">*</span>
+                    </label>
+
+                    <textarea id="leadRequirements" rows="4"
+                        placeholder="Describe your use case, expected document volume, integrations or any other requirements..."
+                        class="w-full rounded-xl border border-slate-300 px-4 py-3 resize-none
+                    focus:border-secondary focus:ring-2 focus:ring-secondary/20"></textarea>
+
+                </div>
+
+            </div>
+
+            <!-- Footer -->
+            <div class="px-8 py-5 border-t bg-slate-50 flex items-center justify-between">
+
+                <span class="text-sm text-slate-500">
+                    We'll only use your information to contact you.
+                </span>
+
+                <div class="flex gap-3">
+
+                    <button id="closeEnterpriseModal"
+                        class="px-5 py-2.5 rounded-xl border border-slate-300 hover:bg-slate-100">
+
+                        Cancel
+
+                    </button>
+
+                    <button id="submitEnterpriseLead" class="min-w-[180px] px-6 py-2.5 rounded-xl bg-secondary text-white font-medium
+           flex items-center justify-center gap-2 hover:opacity-90 disabled:opacity-70">
+
+                        <span id="enterprise-btn-text">
+                            Request Quote
+                        </span>
+
+                        <span id="enterprise-btn-loader" class="hidden inline-flex items-center gap-2">
+
+                            <svg class="animate-spin h-5 w-5" viewBox="0 0 24 24" fill="none">
+
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" opacity=".25" />
+
+                                <path fill="currentColor" d="M22 12a10 10 0 0 1-10 10V18a6 6 0 0 0 6-6h4z" />
+
+                            </svg>
+
+                            Sending...
+
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
     <!-- Footer -->
     <div id="footer"></div>
     <script src="/components/layout.js"></script>
+
+    <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+
+    <script type="module" src="./pricing.js"></script>
+
+    <!-- Toast -->
+    <div id="toastContainer"></div>
 </body>
 
 </html>

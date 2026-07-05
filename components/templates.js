@@ -540,7 +540,6 @@ export function initializeTemplateUpload() {
 }
 
 async function uploadTemplate(file) {
-
     try {
 
         const user =
@@ -558,7 +557,8 @@ async function uploadTemplate(file) {
 
         showToast(
             "Analyzing template...",
-            "info"
+            "info",
+            4000
         );
 
         // STEP 1
@@ -584,13 +584,13 @@ async function uploadTemplate(file) {
         const storagePath =
             `users/${user.uid}/templates/${templateId}/${file.name}`;
 
+     
 
         const storageRef =
             ref(
                 storage,
                 storagePath
             );
-
         await uploadBytes(
             storageRef,
             file
@@ -617,7 +617,7 @@ async function uploadTemplate(file) {
 
             {
                 templateId,
-
+                userId: user.uid,
 
                 fileName:
                     file.name,
@@ -663,13 +663,11 @@ async function uploadTemplate(file) {
 
 async function getLatestApiKey() {
 
+    const user = auth.currentUser;
+
     const q = query(
-        collection(
-            db,
-            "users",
-            auth.currentUser.uid,
-            "apiKeys"
-        ),
+        collection(db,"apiKeys"),
+        where("userId", "==", user.uid),
         where("status", "==", "active"),
         orderBy("createdAt", "desc"),
         limit(1)
@@ -691,7 +689,6 @@ async function analyzeTemplate(file) {
     const apiKey =
         await getLatestApiKey();
 
-
     const formData =
         new FormData();
 
@@ -699,7 +696,7 @@ async function analyzeTemplate(file) {
         "file",
         file
     );
-
+    
     const response =
         await fetch(
             "https://docgen-service-746637463346.us-central1.run.app/analyze_template",
