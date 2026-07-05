@@ -1,200 +1,31 @@
-import {
-    doc,
-    getDoc,
-    setDoc,
-    serverTimestamp
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { auth } from "./firebase.js";
 
-import { db } from "./firebase.js";
+const API_BASE = "https://docgen-service-746637463346.us-central1.run.app";
 
+export async function createUserDocument() {
 
-export async function createUserDocument(user) {
+    const currentUser = auth.currentUser;
 
-    if (!user) return;
+    if (!currentUser) {
+        throw new Error("User is not logged in.");
+    }
 
-    const userRef = doc(db, "users", user.uid);
+    const idToken = await currentUser.getIdToken();
 
-    const userSnap = await getDoc(userRef);
-
-    // Prevent duplicate creation
-    if (userSnap.exists()) return;
-
-    const apiKey = generateApiKey();
-
-    // ===============================
-    // USER DOCUMENT
-    // ===============================
-
-    await setDoc(userRef, {
-        uid: user.uid,
-        name: user.displayName || "User",
-        email: user.email || "",
-        photo: user.photoURL || "",
-        provider: user.providerData?.[0]?.providerId || "password",
-        createdAt: serverTimestamp(),
-        lastUpdated: serverTimestamp(),
-        lastUsedAt: serverTimestamp(),
-        plan: "Free",
-        status: "active",
-        limits: {
-            daily: 100,
-            total: 1000,
-            apiKey: {
-                total: 5
-            },
-            pdf: {
-                daily: 50,
-                total: 500
-            },
-            docx: {
-                daily: 50,
-                total: 500
-            },
-            templateAnalysis: {
-                daily: 50,
-                total: 500
-            }
-        },
-        usage: {
-            total: 0,
-            today: 0,
-            todayDate: null,
-            pdf: {
-                total: 0,
-                today: 0
-            },
-            docx: {
-                total: 0,
-                today: 0
-            },
-            templateAnalysis: {
-                total: 0,
-                today: 0
-            }
-        },
-        failures: {
-            total: 0,
-            today: 0,
-            todayDate: null,
-            pdf: {
-                total: 0,
-                today: 0
-            },
-            docx: {
-                total: 0,
-                today: 0
-            },
-            templateAnalysis: {
-                total: 0,
-                today: 0
-            }
+    const response = await fetch(`${API_BASE}/user/create`, {
+        method: "POST",
+        headers: {
+            "Authorization": `Bearer ${idToken}`
         }
     });
 
-    console.log("User document created");
+    const data = await response.json();
 
-
-    // ===============================
-    // GLOBAL API KEY
-    // ===============================
-    await setDoc(doc(db, "apiKeys", apiKey), {
-        key: apiKey,
-        name: "New Key",
-        status: "active",
-        userId: user.uid,
-        createdAt: serverTimestamp(),
-        lastUsedAt: null,
-        usage: {
-            total: 0,
-            today: 0,
-            todayDate: null,
-            pdf: {
-                total: 0,
-                today: 0
-            },
-            docx: {
-                total: 0,
-                today: 0
-            },
-            templateAnalysis: {
-                total: 0,
-                today: 0
-            }
-        },
-        failures: {
-            total: 0,
-            today: 0,
-            todayDate: null,
-            pdf: {
-                total: 0,
-                today: 0
-            },
-            docx: {
-                total: 0,
-                today: 0
-            },
-            templateAnalysis: {
-                total: 0,
-                today: 0
-            }
-        }
+    if (!response.ok) {
+        throw new Error(data.error || "Unable to create user");
     }
-    );
 
-
-    // ===============================
-    // USER SUBCOLLECTION API KEY
-    // ===============================
-    await setDoc(
-        doc(db, "users", user.uid, "apiKeys", apiKey),
-        {
-            key: apiKey,
-            name: "New Key",
-            status: "active",
-            userId: user.uid,
-            createdAt: serverTimestamp(),
-            lastUsedAt: null,
-            totalRequest: 0,
-            usageToday: 0,
-            lastUsedDate: null,
-            usage: {
-                total: 0,
-                today: 0,
-                todayDate: null,
-                pdf: {
-                    total: 0,
-                    today: 0
-                },
-                docx: {
-                    total: 0,
-                    today: 0
-                },
-                templateAnalysis: {
-                    total: 0,
-                    today: 0
-                }
-            },
-            failures: {
-                total: 0,
-                today: 0,
-                todayDate: null,
-                pdf: {
-                    total: 0,
-                    today: 0
-                },
-                docx: {
-                    total: 0,
-                    today: 0
-                },
-                templateAnalysis: {
-                    total: 0,
-                    today: 0
-                }
-            }
-        }
-    );
-
-    console.log("User & Free API Key created");
+    return data;
 }
 
 export function generateApiKey() {

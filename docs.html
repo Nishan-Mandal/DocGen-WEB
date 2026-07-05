@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>DocGen Documentation | Developer Portal</title>
+    <title>EveryPapers Documentation | Developer Portal</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
@@ -315,7 +315,7 @@
                 <div>
                     <h1 class="font-h1 text-h1 text-primary mb-sm">Documentation</h1>
                     <p class="text-body-lg text-on-surface-variant max-w-2xl">
-                        Integrate DocGen API to programmatically create professional PDF documents from templates and
+                        Integrate EveryPapers API to programmatically create professional PDF documents from templates and
                         JSON data in seconds.
                     </p>
                 </div>
@@ -383,7 +383,7 @@
                         </button>
                     </div>
                     <div class="p-lg font-code text-code text-primary-fixed leading-relaxed">
-                        <pre><code class="language-bash">curl --location 'https://docgen-service-746637463346.us-central1.run.app/generate_document' \
+                        <pre><code class="language-bash">curl --location 'https://api.everypapers.com/v1p/generate_document' \
         --header 'x-api-key: $API_KEY' \
         --form 'template=@"/Documents/docgen-api/functions/template.docx"' \
         --form 'data="{
@@ -399,55 +399,6 @@
         --form 'document_format="pdf"'</code></pre>
                     </div>
                 </div>
-
-                <!-- Visual Flow Diagram -->
-                <section
-                    class="mb-xl mt-xl bg-surface-container-high/30 rounded-xl p-xl border border-outline-variant/20">
-                    <div class="max-w-3xl mx-auto text-center mb-xl">
-                        <h3 class="font-h3 text-h3 mb-sm">Architecture Flow</h3>
-                        <p class="text-body-md text-on-surface-variant">How DocGen processes your requests</p>
-                    </div>
-                    <div class="flex flex-col md:flex-row items-center justify-center gap-md lg:gap-xl">
-                        <div class="flex flex-col items-center gap-sm w-32">
-                            <div
-                                class="w-16 h-16 bg-surface-container-lowest border border-outline-variant/50 rounded-xl flex items-center justify-center shadow-sm">
-                                <span class="material-symbols-outlined text-secondary text-[32px]">description</span>
-                            </div>
-                            <span
-                                class="font-label-md text-xs text-on-surface-variant uppercase tracking-tight">Template</span>
-                        </div>
-                        <span class="material-symbols-outlined text-outline-variant hidden md:block">add</span>
-                        <div class="flex flex-col items-center gap-sm w-32">
-                            <div
-                                class="w-16 h-16 bg-surface-container-lowest border border-outline-variant/50 rounded-xl flex items-center justify-center shadow-sm">
-                                <span class="material-symbols-outlined text-secondary text-[32px]">data_object</span>
-                            </div>
-                            <span class="font-label-md text-xs text-on-surface-variant uppercase tracking-tight">JSON
-                                Data</span>
-                        </div>
-                        <span
-                            class="material-symbols-outlined text-secondary rotate-90 md:rotate-0">trending_flat</span>
-                        <div class="flex flex-col items-center gap-sm w-48">
-                            <div
-                                class="w-full h-16 kinetic-gradient rounded-xl flex items-center justify-center shadow-lg relative">
-                                <span class="text-on-primary font-bold">DocGen Engine</span>
-                                <div class="absolute -bottom-1 w-1/2 h-1 bg-white/20 rounded-full"></div>
-                            </div>
-                            <span
-                                class="font-label-md text-xs text-on-surface-variant uppercase tracking-tight">Processing</span>
-                        </div>
-                        <span
-                            class="material-symbols-outlined text-secondary rotate-90 md:rotate-0">trending_flat</span>
-                        <div class="flex flex-col items-center gap-sm w-32">
-                            <div
-                                class="w-16 h-16 bg-surface-container-lowest border border-outline-variant/50 rounded-xl flex items-center justify-center shadow-sm">
-                                <span class="material-symbols-outlined text-secondary text-[32px]">picture_as_pdf</span>
-                            </div>
-                            <span class="font-label-md text-xs text-on-surface-variant uppercase tracking-tight">Final
-                                Document</span>
-                        </div>
-                    </div>
-                </section>
             </section>
             <section class="mb-xl scroll-mt-24" id="design-templates">
 
@@ -697,7 +648,7 @@
             "fields": {
                 "InvoiceId": "INV-1001",
                 "date": "2026-05-09",
-                "CompanyName": "DocGen Inc.",
+                "CompanyName": "EveryPapers Inc.",
                 "CompanyAddress": "New York, USA",
                 "CustomerName": "Jane Doe",
                 "CustomerEmail": "jane@email.com",
@@ -743,7 +694,7 @@
                                         <p>Date: 2026-05-09</p>
                                     </div>
                                     <div class="text-right">
-                                        <p class="font-semibold">DocGen Inc.</p>
+                                        <p class="font-semibold">EveryPapers Inc.</p>
                                         <p>New York, USA</p>
                                     </div>
                                 </div>
@@ -830,7 +781,7 @@
                                         </div>
                                         <div class="flex-1">
                                             <p class="text-body-sm">
-                                                <code class="bg-surface-container px-1">https://docgen-service-746637463346.us-central1.run.app/analyze_template</code>
+                                                <code class="bg-surface-container px-1">https://api.everypapers.com/v1/analyze_template</code>
                                             
                                             </p>
                                         </div>
@@ -906,11 +857,10 @@
 
                                     </div>
 
-                                    <div
-                                        class="p-md font-code text-[13px] leading-relaxed text-primary-fixed h-[320px] overflow-hidden">
+                                    <div class="flex-1 min-h-0 overflow-hidden p-md font-code text-[13px] leading-relaxed text-primary-fixed">
 
                                         <!-- NODE -->
-                                        <pre data-content="node" class="code-block h-full overflow-auto thin-scrollbar"><code class="language-javascript">import axios from "axios";
+                                        <pre class="code-block h-full overflow-auto thin-scrollbar"><code class="language-javascript">import axios from "axios";
 import fs from "fs";
 import FormData from "form-data";
 
@@ -920,7 +870,7 @@ async function analyzeTemplate() {
     form.append("file", fs.createReadStream("./template.docx"));
 
     const response = await axios.post(
-        "https://docgen-service-746637463346.us-central1.run.app/analyze_template",
+        "https://api.everypapers.com/v1/analyze_template",
         form,
         {
         headers: {
@@ -944,7 +894,7 @@ analyzeTemplate();
                                         <pre data-content="python"
                                             class="code-block hidden h-full overflow-auto thin-scrollbar"><code class="language-python">import requests
 
-url = "https://docgen-service-746637463346.us-central1.run.app/analyze_template"
+url = "https://api.everypapers.com/v1/analyze_template"
 headers = {
     "x-api-key": "YOUR_API_KEY"
 }
@@ -960,7 +910,7 @@ print("Response:", response.json())
 
                                         <!-- CURL -->
                                         <pre data-content="curl"
-                                            class="code-block hidden h-full overflow-auto thin-scrollbar"><code class="language-bash">curl --location 'https://docgen-service-746637463346.us-central1.run.app/analyze_template' \
+                                            class="code-block hidden h-full overflow-auto thin-scrollbar"><code class="language-bash">curl --location 'https://api.everypapers.com/v1/analyze_template' \
 --header 'x-api-key: YOUR_API_KEY' \
 --form 'file=@template.docx'
                                             </code></pre>
@@ -1006,11 +956,7 @@ print("Response:", response.json())
                                 </div>
 
                                 <p class="text-body-sm text-on-surface-variant mb-lg">
-                                    Generate documents from a DOCX template using dynamic data. This API processes
-                                    requests asynchronously
-                                    and returns a <code class="bg-surface-container px-1">job_id</code> immediately. You
-                                    can use this ID to track
-                                    the generation status and download the final output.
+                                    Generate documents using either a previously uploaded template from your Dashboard or by uploading a DOCX template with the request. The API processes requests asynchronously and immediately returns a <code class="bg-surface-container px-1">job_id</code> that can be used to track the generation status and download the completed files.
                                 </p>
 
                                 <h5 class="font-label-md text-label-md text-on-surface uppercase tracking-widest mb-md">
@@ -1026,7 +972,7 @@ print("Response:", response.json())
                                         </div>
                                         <div class="flex-1">
                                             <p class="text-body-sm">
-                                                <code class="bg-surface-container px-1">https://docgen-service-746637463346.us-central1.run.app/generate_document</code>
+                                                <code class="bg-surface-container px-1">https://api.everypapers.com/v1/generate_document</code>
                                             
                                             </p>
                                         </div>
@@ -1039,6 +985,20 @@ print("Response:", response.json())
 
                                 <div class="space-y-sm">
 
+                                    <!-- TEMPLATE ID -->
+                                    <div class="flex items-start gap-md border-b border-outline-variant/10 pb-sm">
+                                        <div class="w-24 shrink-0">
+                                            <code class="text-secondary font-code text-[13px]">template_id</code>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-body-sm">
+                                                <span class="text-outline italic">string (required)</span> —
+                                                Recommended. ID of a template previously uploaded from the Dashboard.
+                                                <code class="bg-surface-container px-1">{{ }}</code> format.
+                                            </p>
+                                        </div>
+                                    </div>
+
                                     <!-- TEMPLATE FILE -->
                                     <div class="flex items-start gap-md border-b border-outline-variant/10 pb-sm">
                                         <div class="w-24 shrink-0">
@@ -1046,7 +1006,7 @@ print("Response:", response.json())
                                         </div>
                                         <div class="flex-1">
                                             <p class="text-body-sm">
-                                                <span class="text-outline italic">file (required)</span> —
+                                                <span class="text-outline italic">file (optional)</span> —
                                                 The DOCX template file containing placeholders in
                                                 <code class="bg-surface-container px-1">{{ }}</code> format.
                                             </p>
@@ -1073,7 +1033,7 @@ print("Response:", response.json())
                                         </div>
                                         <div class="flex-1">
                                             <p class="text-body-sm">
-                                                <span class="text-outline italic">string</span> —
+                                                <span class="text-outline italic">string (required)</span> —
                                                 Output format. Supported values:
                                                 <code class="bg-surface-container px-1">docx</code>,
                                                 <code class="bg-surface-container px-1">pdf</code>.
@@ -1089,7 +1049,7 @@ print("Response:", response.json())
                                         </div>
                                         <div class="flex-1">
                                             <p class="text-body-sm">
-                                                <span class="text-outline italic">string</span> —
+                                                <span class="text-outline italic">string (optional)</span> —
                                                 Optional email address to receive the generated ZIP file or download
                                                 link.
                                             </p>
@@ -1103,7 +1063,7 @@ print("Response:", response.json())
                                         </div>
                                         <div class="flex-1">
                                             <p class="text-body-sm">
-                                                <span class="text-outline italic">string</span> —
+                                                <span class="text-outline italic">string (optional)</span> —
                                                 Optional callback URL that will be triggered after document generation
                                                 is completed.
                                             </p>
@@ -1126,7 +1086,7 @@ print("Response:", response.json())
                                 </div>
                             </div>
                             <div class=" code-container lg:w-[400px]">
-                                <div class="bg-primary-container rounded-lg overflow-hidden relative h-full">
+                                <div class="bg-primary-container rounded-lg overflow-hidden flex flex-col max-h-[720px]">
 
                                     <div
                                         class="flex gap-md px-md py-sm bg-primary-container/80 border-b border-on-primary-fixed-variant/10">
@@ -1158,11 +1118,10 @@ print("Response:", response.json())
 
                                     </div>
 
-                                    <div
-                                        class="p-md font-code text-[13px] leading-relaxed text-primary-fixed h-[480px] overflow-hidden">
+                                    <div class="flex-1 p-md font-code text-[13px] leading-relaxed text-primary-fixed overflow-hidden flex">
 
                                         <!-- NODE -->
-                                        <pre data-content="node" class="code-block h-full overflow-auto thin-scrollbar"><code class="language-javascript">import axios from "axios";
+                                        <pre class="code-block flex-1 overflow-auto thin-scrollbar"><code class="language-javascript">import axios from "axios";
 import fs from "fs";
 import FormData from "form-data";
 
@@ -1191,7 +1150,7 @@ async function generateDocument() {
     form.append("webhook_url", "https://test-webhook-url");
 
     const response = await axios.post(
-        "https://docgen-service-746637463346.us-central1.run.app/generate_document",
+        "https://api.everypapers.com/v1/generate_document",
         form,
         {
         headers: {
@@ -1217,7 +1176,7 @@ generateDocument();
                                             class="code-block hidden h-full overflow-auto thin-scrollbar"><code class="language-python">import requests
 import json
 
-url = "https://docgen-service-746637463346.us-central1.run.app/generate_document"
+url = "https://api.everypapers.com/v1/generate_document"
 
 headers = {
     "x-api-key": "YOUR_API_KEY"
@@ -1253,7 +1212,7 @@ print("Response:", response.json())
 
                                         <!-- CURL -->
                                         <pre data-content="curl"
-                                            class="code-block hidden h-full overflow-auto thin-scrollbar"><code class="language-bash">curl --location 'https://docgen-service-746637463346.us-central1.run.app/generate_document' \
+                                            class="code-block hidden h-full overflow-auto thin-scrollbar"><code class="language-bash">curl --location 'https://api.everypapers.com/v1/generate_document' \
 --header 'x-api-key: YOUR_API_KEY' \
 --form 'template=@template.docx' \
 --form 'data={
@@ -1319,7 +1278,7 @@ print("Response:", response.json())
                                         </div>
                                         <div class="flex-1">
                                             <p class="text-body-sm">
-                                                <code class="bg-surface-container px-1">https://docgen-service-746637463346.us-central1.run.app/job_status?job_id=JOB_ID</code>
+                                                <code class="bg-surface-container px-1">https://api.everypapers.com/v1/job_status?job_id=JOB_ID</code>
                                             
                                             </p>
                                         </div>
@@ -1390,7 +1349,7 @@ print("Response:", response.json())
 async function getJobStatus() {
     try {
     const response = await axios.get(
-        "https://docgen-service-746637463346.us-central1.run.app/job_status",
+        "https://api.everypapers.com/v1/job_status",
         {
         params: {
             job_id: "YOUR_JOB_ID",
@@ -1412,7 +1371,7 @@ getJobStatus();
                                         <pre data-content="python"
                                             class="code-block hidden h-full overflow-auto thin-scrollbar"><code class="language-python">import requests
 
-url = "https://docgen-service-746637463346.us-central1.run.app/job_status"
+url = "https://api.everypapers.com/v1/job_status"
 
 params = {
     "job_id": "YOUR_JOB_ID"
@@ -1426,7 +1385,7 @@ print("Response:", response.json())
 
                                         <!-- CURL -->
                                         <pre data-content="curl"
-                                            class="code-block hidden h-full overflow-auto thin-scrollbar"><code class="language-bash">curl --location 'https://docgen-service-746637463346.us-central1.run.app/job_status?job_id=YOUR_JOB_ID'
+                                            class="code-block hidden h-full overflow-auto thin-scrollbar"><code class="language-bash">curl --location 'https://api.everypapers.com/v1/job_status?job_id=YOUR_JOB_ID'
                                                             </code></pre>
 
                                         <!-- Response -->
@@ -1491,48 +1450,6 @@ print("Response:", response.json())
                     </div>
                 </div>
             </section>
-            <!-- Examples Grid -->
-            <!-- <section class="mb-xl scroll-mt-24" id="examples">
-                <div class="flex items-center gap-sm mb-lg">
-                    <span class="material-symbols-outlined text-secondary">auto_stories</span>
-                    <h2 class="font-h2 text-h2">Use Case Examples</h2>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-lg">
-                    <div
-                        class="group relative bg-surface-container-lowest border border-outline-variant/30 rounded-xl overflow-hidden h-64 shadow-sm hover:shadow-xl transition-all">
-                        <img class="w-full h-1/2 object-cover transition-transform group-hover:scale-105"
-                            data-alt="A clean, minimalist invoice document layout with crisp typography and professional branding. The setting is a bright, high-key home office with soft natural lighting coming through a window. The color palette features neutral greys with sharp black accents and a single vibrant purple brand highlight. The style is modern, technical, and high-quality digital photography."
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnPj1ROKzQhFhVWxdxjzklvb2PtDKiArDrzDEgU8NjmIHQ6qMjrkd2hbEMkJ7g5ZvINiXWSoKMSS7-r_J-3fvh7WjM2eitEve9oYNlJTFiy3O4UeBR7KSBqHhAcEdZQJy0y2-966hfBtexmzajL3go3g_DiF4fIFZCJ74UErjKtl8_42YFSLSBce4u-VDJxmkUU3SBjcO0ScdIxZrdCZMTKMIk_KCBgXPfCeTuaFl9N0dKIFTQ6SiUJmNQ9NfSNtl-C2FX6V-F7Ms" />
-                        <div class="p-md">
-                            <h5 class="font-h3 text-[18px] mb-xs">Dynamic Invoices</h5>
-                            <p class="text-body-sm text-on-surface-variant">Automate billing with tax calculations and
-                                multi-currency support.</p>
-                        </div>
-                    </div>
-                    <div
-                        class="group relative bg-surface-container-lowest border border-outline-variant/30 rounded-xl overflow-hidden h-64 shadow-sm hover:shadow-xl transition-all">
-                        <img class="w-full h-1/2 object-cover transition-transform group-hover:scale-105"
-                            data-alt="A macro shot of a fountain pen resting on a sleek, high-end legal contract. The paper has a premium texture and clear, bold headings. The lighting is soft and cinematic, casting gentle shadows across a clean white desk surface. The aesthetic is professional, reliable, and authoritative, emphasizing a sophisticated black and white palette with subtle glass-like reflections."
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGnz2wwPgkaFsVQEUaizwyIBYFTax14B4_cBskHu-DRyBuLgwLojxHVCDh81K_NjaGjRtafv0ZQqgDAIbe456ZavDEVuFu_2UYnMNkcvdF1MeBjWBqx9-WYIpOaAyBF8l1k_m0u1RcxufVZIkHz--nrmwIIgee6L74uFotdxvSOvkxQS9knsozDqmTDVdQmnffb1vDBv8CHop3LgmbQQhP4_TLDrGQ94VAsZB40JfB4M_aFkkR-nsm1RqhhCYm_thpXXHGJk-FNFw" />
-                        <div class="p-md">
-                            <h5 class="font-h3 text-[18px] mb-xs">Legal Contracts</h5>
-                            <p class="text-body-sm text-on-surface-variant">Generate complex legal documents with
-                                conditional paragraphs.</p>
-                        </div>
-                    </div>
-                    <div
-                        class="group relative bg-surface-container-lowest border border-outline-variant/30 rounded-xl overflow-hidden h-64 shadow-sm hover:shadow-xl transition-all">
-                        <img class="w-full h-1/2 object-cover transition-transform group-hover:scale-105"
-                            data-alt="A vibrant digital dashboard showing data visualization charts and financial reports on a modern monitor. The scene is illuminated by the cool blue light of the screen in a minimalist, dimly lit workspace. The composition focuses on clarity and technical precision, using a palette of deep navy blues, bright whites, and neon purple data points to create a high-tech developer aesthetic."
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuClfzNjPzjCR_wd28KT3rt9FlxczJke_dpJcjMRizqHIealXIoOX71A1XEyCqbRWiypPyeneB0Sh1iWDBGT38CIifMRg5UDUNR2pioRBz-xe498sVg0YVuLYQbQi0KGzkfIZJyApAP2Q2VlwSkF0JNr5dmUrY9KvlhlzOk2E4430VNP2ZHWp1rwWVBfJT84EEzztddNDNJ_v3vsQ9fVSFFoxm7Gt4HJRpKZjSOTK2NTdnnPQ8gFttMEE4JD-X51WozwMT4bTIvliso" />
-                        <div class="p-md">
-                            <h5 class="font-h3 text-[18px] mb-xs">Monthly Reports</h5>
-                            <p class="text-body-sm text-on-surface-variant">Convert data dashboards into printable
-                                executive summaries.</p>
-                        </div>
-                    </div>
-                </div>
-            </section> -->
             <!-- Error Handling Table -->
             <section class="mb-xl scroll-mt-24" id="error-handling">
                 <div class="flex items-center gap-sm mb-lg">
