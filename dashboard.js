@@ -239,7 +239,7 @@ async function loadUserDashboard(user) {
 
     // 0 → API Calls
     overviewNumbers[0].textContent =
-        formatNumber(usage.total || 0);
+        formatNumber(usage.pdf?.total + usage.docx?.total || 0);
 
     // 1 → PDF
     overviewNumbers[1].textContent =
@@ -270,10 +270,10 @@ async function loadUserDashboard(user) {
         </span>`;
 
 
-    // 1 → Template Analysis Today
+    // 1 → PDF Today
     todayLabels[1].innerHTML =
         `Today: <span class="font-semibold text-primary">
-            ${formatNumber(usage.templateAnalysis?.today || 0)}
+            ${formatNumber( usage.pdf?.today || 0)}
         </span>`;
 
 
@@ -284,10 +284,10 @@ async function loadUserDashboard(user) {
         </span>`;
 
 
-    // 3 → PDF Today
+    // 3 → Template Analysis Today 
     todayLabels[3].innerHTML =
         `Today: <span class="font-semibold text-primary">
-            ${formatNumber(usage.pdf?.today || 0)}
+            ${formatNumber(usage.templateAnalysis?.today || 0)}
         </span>`;
 
 
@@ -857,12 +857,12 @@ async function loadLogs(
 
             </td>
 
-            <td
-                class="px-lg py-md text-on-surface-variant max-w-[300px] truncate">
-
-                ${data.error || 'Completed'}
-
+            <td class="px-lg py-md">
+                <div class="max-w-[300px] overflow-x-auto whitespace-nowrap">
+                    ${data.error || 'Completed'}
+                </div>
             </td>
+
 
             <td
                 class="px-lg py-md text-on-surface-variant">
