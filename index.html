@@ -637,53 +637,81 @@
                 <div class="p-8 h-[420px] overflow-auto font-code text-[14px] leading-relaxed text-indigo-300">
 
                     <!-- Node -->
-                    <pre data-content="node" class="code-block"><code class="language-javascript">const docgen = require('@docgen/sdk');
-const client = new docgen.Client('YOUR_API_KEY');
+                    <pre data-content="node" class="code-block"><code class="language-javascript">const everypapers = require("@everypapers/sdk");
 
-async function createInvoice() {
-const doc = await client.generate({
-    template: 'inv_4582',
-    format: 'pdf',
-    data: {
-    id: '#9942',
-    date: '2024-10-24',
-    items: [{ name: 'Pro Plan', price: 49.00 }]
-    }
-});
-console.log(doc.url);
+const client = new everypapers.Client("YOUR_API_KEY");
+
+async function generateDocument() {
+
+    const job = await client.generateDocument({
+
+    templateId: "YOUR_TEMPLATE_ID",
+
+    documentFormat: "pdf",
+
+    records: [
+        {
+        fileName: "invoice_001",
+
+        fields: {
+            id: "#9942",
+            date: "2026-07-12",
+            customer: "John Doe"
+        }
+        }
+    ]
+
+    });
+
+    console.log("Job ID:", job.jobId);
 }
+
+generateDocument();
                 </code></pre>
 
                     <!-- Python -->
-                    <pre data-content="python" class="code-block"><code class="language-javascript">from docgen import Client
+                    <pre data-content="python" class="code-block"><code class="language-javascript">from everypapers import Client
 
 client = Client("YOUR_API_KEY")
 
-doc = client.generate({
-    "template": "inv_4582",
-    "format": "pdf",
-    "data": {
-        "id": "#9942",
-        "date": "2024-10-24",
-        "items": [{"name": "Pro Plan", "price": 49.00}]
-    }
+job = client.generate_document({
+    # Use either templateId or template
+    "templateId": "YOUR_TEMPLATE_ID",
+    # "template": "./template.docx",
+
+    "documentFormat": "pdf",
+
+    "records": [
+        {
+            "fileName": "invoice_001",
+            "fields": {
+                "id": "#9942",
+                "date": "2026-07-12",
+                "customer": "John Doe"
+            }
+        }
+    ]
 })
 
-print(doc["url"])
+print("Job ID:", job["jobId"])
 </code></pre>
 
                     <!-- cURL -->
-                    <pre data-content="curl" class="code-block"><code class="language-javascript">curl -X POST https://api.docgen.com/v1/generate \
--H "Authorization: Bearer YOUR_API_KEY" \
--H "Content-Type: application/json" \
--d '{
-    "template": "inv_4582",
-    "format": "pdf",
-    "data": {
-    "id": "#9942",
-    "date": "2024-10-24"
+                    <pre data-content="curl" class="code-block"><code class="language-javascript">curl --location 'https://api.everypapers.com/v1/generate_document' \
+--header 'x-api-key: YOUR_API_KEY' \
+--form 'template_id=TEMPLATE_ID' \
+--form 'template=@template.docx' \
+--form 'data={
+    "records": [
+    {
+        "fileName": "invoice_001",
+        "fields": {
+            "name": "John Doe"
+        }
     }
-}'
+    ]
+}' \
+--form 'document_format=pdf'
 </code></pre>
 
                 </div>

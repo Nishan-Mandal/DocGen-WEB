@@ -148,29 +148,29 @@ async function loadUserDashboard(user) {
     const avatar = document.getElementById("user-avatar");
     const userPhoto = document.getElementById("user-photo");
     const initials = document.getElementById("user-initials");
-    
+
     const photo = userData.photo || user.photoURL;
-    
+
     const name =
         userData.name ||
         user.displayName ||
         user.email ||
         "User";
-    
+
     if (photo) {
-    
+
         userPhoto.src = photo;
-    
+
         userPhoto.classList.remove("hidden");
         initials.classList.add("hidden");
-    
+
     } else {
-    
+
         userPhoto.classList.add("hidden");
         initials.classList.remove("hidden");
-    
+
         initials.textContent = getInitials(name);
-    
+
         avatar.style.backgroundColor = getAvatarColor(name);
     }
 
@@ -205,11 +205,11 @@ async function loadUserDashboard(user) {
     // ===============================
 
     document.getElementById("current-plan").textContent =
-    `${(userData.subscription?.plan || "FREE")
-        .charAt(0)
-        .toUpperCase()}${(userData.subscription?.plan || "FREE")
-        .slice(1)
-        .toLowerCase()} Tier`;
+        `${(userData.subscription?.plan || "FREE")
+            .charAt(0)
+            .toUpperCase()}${(userData.subscription?.plan || "FREE")
+                .slice(1)
+                .toLowerCase()} Tier`;
 
     const totalLimit = limits.total || 0;
     const limitUsed = usage.billingCycle || 0;
@@ -239,7 +239,7 @@ async function loadUserDashboard(user) {
 
     // 0 → API Calls
     overviewNumbers[0].textContent =
-        formatNumber(usage.total || 0);
+        formatNumber(usage.pdf?.total + usage.docx?.total || 0);
 
     // 1 → PDF
     overviewNumbers[1].textContent =
@@ -270,10 +270,10 @@ async function loadUserDashboard(user) {
         </span>`;
 
 
-    // 1 → Template Analysis Today
+    // 1 → PDF Today
     todayLabels[1].innerHTML =
         `Today: <span class="font-semibold text-primary">
-            ${formatNumber(usage.templateAnalysis?.today || 0)}
+            ${formatNumber(usage.pdf?.today || 0)}
         </span>`;
 
 
@@ -284,10 +284,10 @@ async function loadUserDashboard(user) {
         </span>`;
 
 
-    // 3 → PDF Today
+    // 3 → Template Analysis Today 
     todayLabels[3].innerHTML =
         `Today: <span class="font-semibold text-primary">
-            ${formatNumber(usage.pdf?.today || 0)}
+            ${formatNumber(usage.templateAnalysis?.today || 0)}
         </span>`;
 
 
@@ -652,6 +652,34 @@ async function loadRecentJobs(
 
     tbody.innerHTML = '';
 
+    if (snap.empty) {
+
+        if (direction === "next") {
+            jobsPage--;
+        }
+
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="6" class="px-lg py-12 text-center text-on-surface-variant">
+                    <div class="flex flex-col items-center gap-2">
+                        <span class="material-symbols-outlined text-[42px] text-outline">
+                            work_history
+                        </span>
+                        <p class="font-semibold">No Jobs Found</p>
+                        <p class="text-sm">
+                            Your generated documents will appear here.
+                        </p>
+                    </div>
+                </td>
+            </tr>
+        `;
+
+        document.getElementById("jobs-page").textContent = `Page ${jobsPage}`;
+        document.getElementById("jobs-prev").disabled = jobsPage === 1;
+
+        return;
+    }
+
     snap.forEach((doc) => {
 
         const data =
@@ -777,20 +805,32 @@ async function loadLogs(
 
     tbody.innerHTML = '';
 
-    if (
-        snap.empty
-    ) {
+    if (snap.empty) {
 
-        if (
-            direction === 'next'
-        ) {
-
+        if (direction === "next") {
             logsPage--;
-
         }
 
-        return;
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="6" class="px-lg py-12 text-center text-on-surface-variant">
+                    <div class="flex flex-col items-center gap-2">
+                        <span class="material-symbols-outlined text-[42px] text-outline">
+                            receipt_long
+                        </span>
+                        <p class="font-semibold">No Activity Logs Found</p>
+                        <p class="text-sm">
+                            Your API activity will appear here.
+                        </p>
+                    </div>
+                </td>
+            </tr>
+        `;
 
+        document.getElementById("logs-page").textContent = `Page ${logsPage}`;
+        document.getElementById("logs-prev").disabled = logsPage === 1;
+
+        return;
     }
 
 
@@ -857,12 +897,12 @@ async function loadLogs(
 
             </td>
 
-            <td
-                class="px-lg py-md text-on-surface-variant max-w-[300px] truncate">
-
-                ${data.error || 'Completed'}
-
+            <td class="px-lg py-md">
+                <div class="max-w-[300px] overflow-x-auto whitespace-nowrap">
+                    ${data.error || 'Completed'}
+                </div>
             </td>
+
 
             <td
                 class="px-lg py-md text-on-surface-variant">

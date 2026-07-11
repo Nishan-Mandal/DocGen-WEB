@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | EveryPapers</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f6f8fb;
+            color: #222;
+            line-height: 1.7;
+            max-width: 1000px;
+            margin: auto;
+            padding: 40px;
+        }
+
+        h1,
+        h2 {
+            color: #1849d6;
+        }
+
+        section {
+            margin: 40px 0;
+        }
+
+        .notice {
+            background: #eef4ff;
+            border-left: 4px solid #2563eb;
+            padding: 16px;
+            border-radius: 6px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-top: 24px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #1849d6;
+        }
+
+        form {
+            display: grid;
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font: inherit;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            min-height: 160px;
+            resize: vertical;
+        }
+
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        footer {
+            margin-top: 60px;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Contact EveryPapers</h1>
+
+    <p><strong>We're here to help.</strong></p>
+
+    <div class="notice">
+        Whether you need help integrating our API, have billing questions, want to report an issue, or simply have
+        feedback, we'd love to hear from you.
+    </div>
+
+    <section>
+
+        <h2>Get in Touch</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Support</h3>
+                <p>
+                    1. Questions about your account, templates, API usage, or document generation.
+                </p>
+                <p>
+                    2. Need help integrating the API or troubleshooting an issue?
+                </p>
+                <p>
+                    3. Enterprise plans, partnerships, or custom solutions.
+                </p>
+
+
+                <strong>Email</strong><br>
+                hello@everypapers.com
+            </div>
+
+            <!-- <div class="card">
+                <h3>Technical Support</h3>
+
+                <p>
+                    Need help integrating the API or troubleshooting an issue?
+                </p>
+
+                <strong>Email</strong><br>
+                support@everypapers.com
+            </div>
+
+            <div class="card">
+                <h3>Business & Partnerships</h3>
+
+                <p>
+                    Enterprise plans, partnerships, or custom solutions.
+                </p>
+
+                <strong>Email</strong><br>
+                business@everypapers.com
+            </div> -->
+
+        </div>
+
+    </section>
+
+    <section>
+
+        <h2>Response Time</h2>
+
+        <p>
+            We typically respond to all inquiries within <strong>24 business hours</strong>.
+            Enterprise customers receive priority support according to their plan.
+        </p>
+
+    </section>
+
+    <section>
+
+        <h2>Send us a Message</h2>
+
+        <form id="contactForm">
+
+            <input id="name" type="text" placeholder="Your Name" required>
+
+            <input id="email" type="email" placeholder="Email Address" required>
+
+            <input id="subject" type="text" placeholder="Subject" required>
+
+            <textarea id="message" placeholder="Tell us how we can help..." required></textarea>
+
+            <button id="submitBtn" type="submit">
+                Send Message
+            </button>
+
+        </form>
+
+        <p id="statusMessage" style="margin-top:16px;"></p>
+
+    </section>
+
+    <section>
+
+        <h2>Before Contacting Support</h2>
+
+        <p>
+            To help us resolve your issue faster, please include:
+        </p>
+
+        <ul>
+            <li>Your registered email address.</li>
+            <li>API request ID or Job ID (if applicable).</li>
+            <li>Error message or screenshot.</li>
+            <li>Steps to reproduce the issue.</li>
+        </ul>
+
+    </section>
+
+    <footer>
+        © 2026 EveryPapers. All rights reserved.
+    </footer>
+    <script src="contact.js"></script>
+</body>
+
+</html>
