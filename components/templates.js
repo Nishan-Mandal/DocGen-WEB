@@ -213,7 +213,7 @@ export async function loadTemplates() {
 
                                 <span class="material-symbols-outlined">
 
-                                    sync
+                                    file_upload
 
                                 </span>
 
@@ -699,7 +699,7 @@ async function analyzeTemplate(file) {
     
     const response =
         await fetch(
-            "https://docgen-service-746637463346.us-central1.run.app/analyze_template",
+            "https://docgen-service-746637463346.us-central1.run.app/v1/analyze_template",
             {
                 method: "POST",
                 headers: {

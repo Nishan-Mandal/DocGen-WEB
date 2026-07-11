@@ -70,9 +70,11 @@
                             <button class="view-fields" data-template-id="${template.templateId}">
                                 View Fields
                             </button>
-                            <button class="update-template" data-template-id="${template.templateId}">
+                            <button
+                                class="update-template p-2 rounded-lg hover:bg-surface-container-high transition-colors"
+                                data-template-id="${template.templateId}" title="Replace Template">
                                 <span class="material-symbols-outlined">
-                                    sync
+                                    file_upload
                                 </span>
                             </button>
 
@@ -114,30 +116,26 @@
     <div id="fields-drawer" class="hidden fixed inset-0 z-50">
 
         <div class="absolute inset-0 bg-black/50"></div>
-    
+
         <div class="absolute right-0 top-0 h-full w-[500px] bg-white shadow-xl p-6 overflow-y-auto">
-    
+
             <div class="flex justify-between items-center mb-4">
-    
+
                 <h3 class="text-xl font-bold">
                     Merge Fields
                 </h3>
-    
+
                 <button onclick="document.getElementById('fields-drawer').classList.add('hidden')">
                     ✕
                 </button>
-    
+
             </div>
-    
+
             <div id="merge-fields-container"></div>
-    
+
         </div>
-    
+
     </div>
 
-    <input
-    id="update-template-file"
-    type="file"
-    accept=".docx"
-    class="hidden">
+    <input id="update-template-file" type="file" accept=".docx" class="hidden">
 </section>
