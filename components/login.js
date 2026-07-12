@@ -7,7 +7,8 @@ import { showToast } from "./util.js";
 
 import {
   signInWithPopup,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 
@@ -152,3 +153,55 @@ toggleBtn?.addEventListener(
 
     }
 );
+
+
+// ---------------- FORGOT PASSWORD ----------------
+
+const forgotPasswordLink =
+  document.getElementById("forgot-password-link");
+
+forgotPasswordLink?.addEventListener("click", async (e) => {
+
+  e.preventDefault();
+
+  const email =
+    document.getElementById("email").value.trim();
+
+  if (!email) {
+
+    showToast(
+      "Please enter your email address first.",
+      "warning"
+    );
+
+    return;
+
+  }
+
+  try {
+
+    showLoader();
+
+    await sendPasswordResetEmail(auth, email);
+
+    hideLoader();
+
+    showToast(
+      "A password reset link has been sent to your email.",
+      "success"
+    );
+
+  } catch (error) {
+
+    hideLoader();
+
+    console.error(error);
+
+    showToast(
+      error.message,
+      "error"
+    );
+
+  }
+
+});
