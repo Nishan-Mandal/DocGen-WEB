@@ -447,7 +447,7 @@
             <div class="w-full max-w-md glass-card p-xl rounded-2xl shadow-sm">
                 <header class="mb-lg">
                     <h1 class="font-h2 text-h2 text-on-surface mb-xs">Create your account</h1>
-                    <p class="font-body-sm text-body-sm text-on-surface-variant">Start your 14-day free trial. No credit
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">Start your 500 docs free trial. No credit
                         card required.</p>
                 </header>
                 <div class="space-y-lg">
@@ -508,12 +508,15 @@
                             </div>
                             <!-- Strength Indicator -->
                             <div class="mt-sm flex gap-xs">
-                                <div class="h-1 flex-1 rounded-full bg-secondary"></div>
-                                <div class="h-1 flex-1 rounded-full bg-secondary"></div>
-                                <div class="h-1 flex-1 rounded-full bg-surface-variant"></div>
-                                <div class="h-1 flex-1 rounded-full bg-surface-variant"></div>
+                                <div id="strength-bar-1" class="h-1 flex-1 rounded-full bg-surface-variant"></div>
+                                <div id="strength-bar-2" class="h-1 flex-1 rounded-full bg-surface-variant"></div>
+                                <div id="strength-bar-3" class="h-1 flex-1 rounded-full bg-surface-variant"></div>
+                                <div id="strength-bar-4" class="h-1 flex-1 rounded-full bg-surface-variant"></div>
                             </div>
-                            <p class="mt-xs font-body-sm text-[12px] text-on-surface-variant">Password strength: Medium
+                            
+                            <p id="password-strength"
+                               class="mt-xs font-body-sm text-[12px] text-on-surface-variant">
+                                Password strength: Too Weak
                             </p>
                         </div>
                         <div class="flex items-start gap-md py-sm">

@@ -80,10 +80,7 @@ signupForm?.addEventListener("submit", async (e) => {
       }
     );
 
-    await createUserDocument({
-      ...result.user,
-      displayName: name
-    });
+    await createUserDocument(name);
 
     window.location.href =
       "/dashboard.html";
@@ -166,3 +163,83 @@ toggleBtn?.addEventListener(
     }
 
   });
+
+
+
+  // ---------------- PASSWORD STRENGTH ----------------
+
+const strengthBars = [
+  document.getElementById("strength-bar-1"),
+  document.getElementById("strength-bar-2"),
+  document.getElementById("strength-bar-3"),
+  document.getElementById("strength-bar-4")
+];
+
+const strengthText =
+  document.getElementById("password-strength");
+
+passwordInput?.addEventListener("input", () => {
+
+  const password = passwordInput.value;
+
+  let score = 0;
+
+  // Minimum length
+  if (password.length >= 8) score++;
+
+  // Uppercase letter
+  if (/[A-Z]/.test(password)) score++;
+
+  // Number
+  if (/[0-9]/.test(password)) score++;
+
+  // Special character
+  if (/[^A-Za-z0-9]/.test(password)) score++;
+
+  // Reset bars
+  strengthBars.forEach(bar => {
+
+    bar.className =
+      "h-1 flex-1 rounded-full bg-surface-variant";
+
+  });
+
+  let color = "";
+  let label = "";
+
+  switch (score) {
+
+    case 0:
+    case 1:
+      color = "bg-error";
+      label = "Too Weak";
+      break;
+
+    case 2:
+      color = "bg-orange-500";
+      label = "Weak";
+      break;
+
+    case 3:
+      color = "bg-yellow-500";
+      label = "Good";
+      break;
+
+    case 4:
+      color = "bg-green-500";
+      label = "Strong";
+      break;
+
+  }
+
+  for (let i = 0; i < score; i++) {
+
+    strengthBars[i].classList.remove("bg-surface-variant");
+    strengthBars[i].classList.add(color);
+
+  }
+
+  strengthText.textContent =
+    `Password strength: ${label}`;
+
+});

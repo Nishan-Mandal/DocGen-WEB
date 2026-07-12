@@ -517,8 +517,7 @@
                                 <input
                                     class="w-full h-12 px-md pr-xl border border-outline-variant rounded-lg bg-white/50 focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all font-body-md"
                                     id="password" placeholder="••••••••" type="password" />
-                                <button
-                                    id="toggle-password-btn"
+                                <button id="toggle-password-btn"
                                     class="absolute right-md top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary"
                                     type="button">
                                     <span class="material-symbols-outlined text-[20px]"
@@ -535,8 +534,11 @@
                                     class="font-label-md text-on-surface-variant group-hover:text-primary transition-colors">Remember
                                     me</span>
                             </label>
-                            <a class="font-label-md text-secondary hover:text-on-secondary-fixed-variant transition-colors"
-                                href="#">Forgot password?</a>
+                            <a id="forgot-password-link"
+                                class="font-label-md text-secondary hover:text-on-secondary-fixed-variant transition-colors"
+                                href="#">
+                                Forgot password?
+                            </a>
                         </div>
                         <button id="google-login-btn"
                             class="w-full h-12 flex items-center justify-center gap-md bg-white border border-outline-variant rounded-lg font-label-md text-on-surface hover:bg-surface-container transition-colors active:scale-95 duration-150">
