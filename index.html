@@ -18,8 +18,7 @@
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title"
-        content="EveryPapers – Document Generation API for PDF & DOCX">
+    <meta property="og:title" content="EveryPapers – Document Generation API for PDF & DOCX">
     <meta property="og:description"
         content="Generate professional PDF and DOCX documents at scale using templates, dynamic data and a simple API.">
     <meta property="og:url" content="https://everypapers.com/">
@@ -27,14 +26,13 @@
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title"
-        content="EveryPapers – Document Generation API">
+    <meta name="twitter:title" content="EveryPapers – Document Generation API">
     <meta name="twitter:description"
         content="Automate PDF and DOCX document generation with reusable templates and a simple API.">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png"
-        href="/components/assets/favicon.png">
+    <link rel="icon" href="/components/assets/favicon.png" type="image/png">
+    <link rel="shortcut icon" href="/components/assets/favicon.png" type="image/png">
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -311,13 +309,13 @@
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="code-container rounded-xl p-4 overflow-hidden">
-                            <pre class="font-code text-code text-indigo-300 leading-relaxed"><span class="text-pink-400">POST</span> /v1/generate
+                            <pre class="font-code text-code text-indigo-300 leading-relaxed"><span class="text-pink-400">POST</span> /v1/generate_document
 {
-    <span class="text-emerald-400">"template"</span>: <span class="text-orange-300">"inv_2024"</span>,
-    <span class="text-emerald-400">"data"</span>: {
+    <span class="text-emerald-400">"template_id"</span>: <span class="text-orange-300">"TMP_ID"</span>,
+    <span class="text-emerald-400">"records"</span>: [
         <span class="text-emerald-400">"name"</span>: <span class="text-orange-300">"Jane Doe"</span>,
         <span class="text-emerald-400">"amount"</span>: <span class="text-orange-300">250.00</span>
-    }
+    ]
 }</pre>
                         </div>
                         <div class="bg-white rounded-xl border border-slate-100 p-4 shadow-inner">
@@ -698,7 +696,7 @@ async function generateDocument() {
 
     templateId: "YOUR_TEMPLATE_ID",
 
-    documentFormat: "pdf",
+    document_format: "pdf",
 
     records: [
         {
@@ -727,10 +725,9 @@ client = Client("YOUR_API_KEY")
 
 job = client.generate_document({
     # Use either templateId or template
-    "templateId": "YOUR_TEMPLATE_ID",
-    # "template": "./template.docx",
+    "template_id": "YOUR_TEMPLATE_ID",
 
-    "documentFormat": "pdf",
+    "document_format": "pdf",
 
     "records": [
         {
@@ -750,19 +747,19 @@ print("Job ID:", job["jobId"])
                     <!-- cURL -->
                     <pre data-content="curl" class="code-block"><code class="language-javascript">curl --location 'https://api.everypapers.com/v1/generate_document' \
 --header 'x-api-key: YOUR_API_KEY' \
---form 'template_id=TEMPLATE_ID' \
---form 'template=@template.docx' \
---form 'data={
+--header 'Content-Type: application/json' \
+--data '{
+    "template_id": "TEMPLATE_ID",
+    "document_format": "pdf",
     "records": [
-    {
-        "fileName": "invoice_001",
-        "fields": {
-            "name": "John Doe"
+        {
+            "fileName": "invoice_001",
+            "fields": {
+                "AccountName": "John Doe"
+            }
         }
-    }
     ]
-}' \
---form 'document_format=pdf'
+}'
 </code></pre>
 
                 </div>
@@ -1195,7 +1192,7 @@ print("Job ID:", job["jobId"])
                     </div>
                     <ul class="space-y-4 mb-12 flex-1">
                         <li class="flex gap-2 items-center text-body-sm"><span
-                                class="material-symbols-outlined text-emerald-500">check</span> 500
+                                class="material-symbols-outlined text-emerald-500">check</span> 1000
                             documents
                         </li>
 
@@ -1212,7 +1209,8 @@ print("Job ID:", job["jobId"])
                                 class="material-symbols-outlined">close</span>Dedicated Support
                         </li>
                     </ul>
-                    <button id="freePlanBtn" class="w-full border border-outline-variant py-3 rounded-xl font-label-md">Start
+                    <button id="freePlanBtn"
+                        class="w-full border border-outline-variant py-3 rounded-xl font-label-md">Start
                         Free</button>
                 </div>
                 <!-- Starter -->
@@ -1227,7 +1225,7 @@ print("Job ID:", job["jobId"])
                     </div>
                     <ul class="space-y-4 mb-12 flex-1">
                         <li class="flex gap-2 items-center text-body-sm"><span
-                                class="material-symbols-outlined text-emerald-500">check</span> 1000
+                                class="material-symbols-outlined text-emerald-500">check</span> 2000
                             documents/mo
                         </li>
 
@@ -1280,7 +1278,7 @@ print("Job ID:", job["jobId"])
                     </div>
                     <ul class="space-y-4 mb-12 flex-1">
                         <li class="flex gap-2 items-center text-body-sm"><span
-                                class="material-symbols-outlined text-emerald-500">check</span> 6000
+                                class="material-symbols-outlined text-emerald-500">check</span> 8000
                             documents/mo
                         </li>
 

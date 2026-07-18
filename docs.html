@@ -5,7 +5,19 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>EveryPapers Documentation | Developer Portal</title>
+    <title>API Documentation | EveryPapers</title>
+
+    <meta name="description"
+        content="Explore the EveryPapers API documentation and learn how to generate PDF and DOCX documents using templates, dynamic data, webhooks and REST APIs.">
+
+    <meta name="robots" content="index, follow">
+
+    <link rel="canonical" href="https://everypapers.com/docs.html">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/components/assets/favicon.png" type="image/png">
+    <link rel="shortcut icon" href="/components/assets/favicon.png" type="image/png">
+
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
@@ -341,7 +353,7 @@
                             1</div>
                         <h4 class="font-h3 text-[18px] mb-xs">Prepare Template</h4>
                         <p class="text-body-sm text-on-surface-variant">Design your DOCX template with merge fields and
-                            upload it on dashboard or pass everytime via API.</p>
+                            upload it on dashboard.</p>
                     </div>
                     <div
                         class="bg-surface-container-lowest border border-outline-variant/30 p-lg rounded-xl shadow-sm hover:shadow-md transition-shadow">
@@ -373,7 +385,8 @@
                             </div>
                             <span class="font-code text-code text-on-primary-container ml-md">Quick Request</span>
                         </div>
-                        <button class="copy-btn flex items-center gap-1 text-on-primary text-xs hover:text-white transition-colors">
+                        <button
+                            class="copy-btn flex items-center gap-1 text-on-primary text-xs hover:text-white transition-colors">
                             <span class="material-symbols-outlined text-[16px]">content_copy</span>
                             <span>Copy</span>
                         </button>
@@ -381,19 +394,19 @@
                     <div class="p-lg font-code text-code text-primary-fixed leading-relaxed">
                         <pre class="code-block"><code class="language-bash">curl --location 'https://api.everypapers.com/v1/generate_document' \
 --header 'x-api-key: YOUR_API_KEY' \
---form 'template_id=TEMPLATE_ID' \
---form 'template=@template.docx' \
---form 'data={
+--header 'Content-Type: application/json' \
+--data '{
+    "template_id": "TEMPLATE_ID",
+    "document_format": "pdf",
     "records": [
-    {
-        "fileName": "invoice_001",
-        "fields": {
-        "name": "John Doe"
+        {
+            "fileName": "invoice_001",
+            "fields": {
+                "AccountName": "John Doe"
+            }
         }
-    }
     ]
-}' \
---form 'document_format=pdf'</code></pre>
+}'</code></pre>
                     </div>
                 </div>
             </section>
@@ -750,7 +763,7 @@
                     <!-- Analyse Template-API -->
                     <div
                         class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl overflow-hidden shadow-sm hover:border-secondary/30 transition-all">
-                        <div class="p-lg flex flex-col lg:flex-row gap-lg">
+                        <div class="p-lg flex flex-col lg:flex-row gap-lg items-stretch">
                             <div class="flex-1">
                                 <div class="flex items-center gap-md mb-md">
                                     <span
@@ -845,11 +858,12 @@
 
                                 </div>
                             </div>
-                            <div class=" code-container lg:w-[400px]">
-                                <div class="bg-primary-container rounded-lg overflow-hidden relative h-full">
+                            <div class="code-container lg:w-[400px] lg:self-stretch flex">
+                                <div
+                                    class="bg-primary-container rounded-lg overflow-hidden flex flex-col w-full min-h-[500px] lg:h-full">
 
                                     <div
-                                        class="flex gap-md px-md py-sm bg-primary-container/80 border-b border-on-primary-fixed-variant/10">
+                                        class="shrink-0 flex gap-md px-md py-sm bg-primary-container/80 border-b border-on-primary-fixed-variant/10">
 
                                         <button data-tab="node"
                                             class="tab-btn text-on-primary text-xs font-bold border-b-2 border-secondary-fixed-dim">
@@ -888,10 +902,10 @@
                                     </div>
 
                                     <div
-                                        class="p-md font-code text-[13px] leading-relaxed text-primary-fixed h-[320px] overflow-hidden">
-
+                                        class="flex-1 min-h-0 p-md font-code text-[13px] leading-relaxed text-primary-fixed overflow-hidden relative">
                                         <!-- NODE -->
-                                        <pre data-content="node" class="code-block h-full overflow-auto thin-scrollbar"><code class="language-javascript">import axios from "axios";
+                                        <pre data-content="node"
+                                            class="code-block absolute inset-0 p-md overflow-auto thin-scrollbar"><code class="language-javascript block p-4">import axios from "axios";
 import fs from "fs";
 import FormData from "form-data";
 
@@ -925,7 +939,7 @@ analyzeTemplate();                         </code>
 
                                         <!-- PYTHON -->
                                         <pre data-content="python"
-                                            class="code-block hidden h-full overflow-auto thin-scrollbar"><code class="language-python">import requests
+                                            class="code-block hidden absolute inset-0 p-md overflow-auto thin-scrollbar"><code class="language-python block p-4">import requests
 
 url = "https://api.everypapers.com/v1/analyze_template"
 
@@ -958,7 +972,7 @@ print("Response:", response.json())
 
                                         <!-- CURL -->
                                         <pre data-content="curl"
-                                            class="code-block hidden h-full overflow-auto thin-scrollbar"><code class="language-bash">curl --location 'https://api.everypapers.com/v1/analyze_template' \
+                                            class="code-block hidden absolute inset-0 p-md overflow-auto thin-scrollbar"><code class="language-bash block p-4">curl --location 'https://api.everypapers.com/v1/analyze_template' \
 --header 'x-api-key: YOUR_API_KEY' \
 --form 'template_id=TEMPLATE_ID' \
 --form 'file=@template.docx'
@@ -966,7 +980,7 @@ print("Response:", response.json())
 
                                         <!-- Response -->
                                         <pre data-content="response"
-                                            class="code-block hidden h-full overflow-auto thin-scrollbar"><code class="language-bash">{
+                                            class="code-block hidden absolute inset-0 p-md overflow-auto thin-scrollbar"><code class="language-bash block p-4">{
     "fields": [
         "name",
         "address",
@@ -990,12 +1004,337 @@ print("Response:", response.json())
                     </div>
                 </div>
 
-                <!-- Generate Document-API  -->
+                <!-- Upload Template API -->
                 <div class="space-y-lg mb-10">
                     <!-- Endpoint Card -->
                     <div
                         class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl overflow-hidden shadow-sm hover:border-secondary/30 transition-all">
-                        <div class="p-lg flex flex-col lg:flex-row gap-lg">
+
+                        <div class="p-lg flex flex-col lg:flex-row gap-lg items-stretch">
+
+                            <!-- API Details -->
+                            <div class="flex-1">
+
+                                <div class="flex items-center gap-md mb-md">
+                                    <span
+                                        class="px-md py-1 bg-secondary text-on-secondary rounded text-[12px] font-bold">
+                                        POST
+                                    </span>
+
+                                    <code class="font-code text-code text-primary font-semibold">
+                        /v1/upload_template
+                    </code>
+                                </div>
+
+                                <p class="text-body-sm text-on-surface-variant mb-lg">
+                                    Upload a DOCX template to EveryPapers for reuse in future document generation
+                                    requests.
+                                    Templates can also be uploaded and managed directly from the EveryPapers Dashboard,
+                                    so using this
+                                    API is optional. The API is useful when you want to upload templates
+                                    programmatically or integrate
+                                    template management into your own application or workflow.
+                                    The template file must be Base64 encoded and passed in the
+                                    <code class="bg-surface-container px-1">content</code>
+                                    property. After a successful upload, the API returns a
+                                    <code class="bg-surface-container px-1">template_id</code>
+                                    that can be used with the
+                                    <code class="bg-surface-container px-1">/v1/generate_document</code>
+                                    endpoint.
+                                </p>
+
+
+                                <!-- Endpoint -->
+                                <h5 class="font-label-md text-label-md text-on-surface uppercase tracking-widest mb-md">
+                                    Endpoint
+                                </h5>
+
+                                <div class="space-y-sm mb-md">
+
+                                    <div class="flex items-start gap-md border-b border-outline-variant/10 pb-sm">
+                                        <div class="w-24 shrink-0">
+                                            <code class="text-secondary font-code text-[13px]">URL</code>
+                                        </div>
+
+                                        <div class="flex-1">
+                                            <p class="text-body-sm">
+                                                <code class="bg-surface-container px-1">
+                                    https://api.everypapers.com/v1/upload_template
+                                </code>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!-- Parameters -->
+                                <h5 class="font-label-md text-label-md text-on-surface uppercase tracking-widest mb-md">
+                                    Parameters
+                                </h5>
+
+                                <div class="space-y-sm">
+
+                                    <!-- TEMPLATE NAME -->
+                                    <div class="flex items-start gap-md border-b border-outline-variant/10 pb-sm">
+                                        <div class="w-32 shrink-0">
+                                            <code class="text-secondary font-code text-[13px]">
+                                template_name
+                            </code>
+                                        </div>
+
+                                        <div class="flex-1">
+                                            <p class="text-body-sm">
+                                                <span class="text-outline italic">string (required)</span> —
+                                                A descriptive name for the template.
+                                                Example:
+                                                <code class="bg-surface-container px-1">Invoice Template</code>.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- TEMPLATE DESCRIPTION -->
+                                    <div class="flex items-start gap-md border-b border-outline-variant/10 pb-sm">
+                                        <div class="w-32 shrink-0">
+                                            <code class="text-secondary font-code text-[13px]">
+                                template<wbr>_description
+                            </code>
+                                        </div>
+
+                                        <div class="flex-1">
+                                            <p class="text-body-sm">
+                                                <span class="text-outline italic">string (optional)</span> —
+                                                A short description explaining the purpose of the template.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- CONTENT -->
+                                    <div class="flex items-start gap-md border-b border-outline-variant/10 pb-sm">
+                                        <div class="w-32 shrink-0">
+                                            <code class="text-secondary font-code text-[13px]">
+                                content
+                            </code>
+                                        </div>
+
+                                        <div class="flex-1">
+                                            <p class="text-body-sm">
+                                                <span class="text-outline italic">string (required)</span> —
+                                                The DOCX template file encoded as a Base64 string.
+                                                The template can contain standard merge fields and dynamic table
+                                                placeholders.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- CONTENT TYPE -->
+                                    <div class="flex items-start gap-md border-b border-outline-variant/10 pb-sm">
+                                        <div class="w-32 shrink-0">
+                                            <code class="text-secondary font-code text-[13px]">
+                                Content-Type
+                            </code>
+                                        </div>
+
+                                        <div class="flex-1">
+                                            <p class="text-body-sm">
+                                                <span class="text-outline italic">header (required)</span> —
+                                                Must be set to
+                                                <code class="bg-surface-container px-1">application/json</code>.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- API KEY -->
+                                    <div class="flex items-start gap-md pb-sm">
+                                        <div class="w-32 shrink-0">
+                                            <code class="text-secondary font-code text-[13px]">
+                                x-api-key
+                            </code>
+                                        </div>
+
+                                        <div class="flex-1">
+                                            <p class="text-body-sm">
+                                                <span class="text-outline italic">header (required)</span> —
+                                                Your EveryPapers API key used to authenticate the request.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <!-- Code Examples -->
+                            <div class="code-container lg:w-[400px] lg:self-stretch flex">
+
+
+                                <div
+                                    class="bg-primary-container rounded-lg overflow-hidden flex flex-col w-full min-h-[500px] lg:h-full">
+
+                                    <!-- Tabs -->
+                                    <div
+                                        class="shrink-0 flex gap-md px-md py-sm bg-primary-container/80 border-b border-on-primary-fixed-variant/10">
+
+                                        <button data-tab="upload-node"
+                                            class="tab-btn text-on-primary text-xs font-bold border-b-2 border-secondary-fixed-dim">
+                                            Node.js
+                                        </button>
+
+                                        <button data-tab="upload-python"
+                                            class="tab-btn text-on-primary text-xs font-bold opacity-60">
+                                            Python
+                                        </button>
+
+                                        <button data-tab="upload-curl"
+                                            class="tab-btn text-on-primary text-xs font-bold opacity-60">
+                                            cURL
+                                        </button>
+
+                                        <button data-tab="upload-response"
+                                            class="tab-btn text-on-primary text-xs font-bold opacity-60">
+                                            Response
+                                        </button>
+
+                                        <div class="flex items-center ml-auto gap-sm">
+
+                                            <button
+                                                class="copy-btn flex items-center gap-1 text-on-primary text-xs hover:text-white transition-colors">
+                                                <span class="material-symbols-outlined text-[16px]">
+                                                    content_copy
+                                                </span>
+                                            </button>
+
+                                            <div class="flex gap-xs ml-sm">
+                                                <div class="w-2 h-2 rounded-full bg-error"></div>
+                                                <div class="w-2 h-2 rounded-full bg-secondary"></div>
+                                                <div class="w-2 h-2 rounded-full bg-on-tertiary-container"></div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <!-- Code -->
+                                    <div
+                                        class="flex-1 min-h-0 p-md font-code text-[13px] leading-relaxed text-primary-fixed overflow-hidden relative">
+
+                                        <!-- NODE -->
+                                        <pre data-content="upload-node"
+                                            class="code-block absolute inset-0 p-lg overflow-auto thin-scrollbar"><code class="language-javascript block p-4">import axios from "axios";
+import fs from "fs";
+
+async function uploadTemplate() {
+    try {
+        const templateContent = fs
+            .readFileSync("./template.docx")
+            .toString("base64");
+
+        const response = await axios.post(
+            "https://api.everypapers.com/v1/upload_template",
+            {
+                template_name: "Invoice Template",
+                template_description: "Retail invoice template",
+                content: templateContent
+            },
+            {
+                headers: {
+                    "x-api-key": "YOUR_API_KEY",
+                    "Content-Type": "application/json"
+                }
+            }
+        );
+
+        console.log("Template Uploaded:", response.data);
+
+    } catch (error) {
+        console.error(
+            "Error:",
+            error.response?.data || error.message
+        );
+    }
+}
+
+uploadTemplate();
+</code></pre>
+
+                                        <!-- PYTHON -->
+                                        <pre data-content="upload-python"
+                                            class="code-block hidden absolute inset-0 p-lg  overflow-auto thin-scrollbar"><code class="language-python block p-4">import requests
+import base64
+
+url = "https://api.everypapers.com/v1/upload_template"
+
+with open("template.docx", "rb") as file:
+    template_content = base64.b64encode(
+        file.read()
+    ).decode("utf-8")
+
+headers = {
+    "x-api-key": "YOUR_API_KEY",
+    "Content-Type": "application/json"
+}
+
+payload = {
+    "template_name": "Invoice Template",
+    "template_description": "Retail invoice template",
+    "content": template_content
+}
+
+response = requests.post(
+    url,
+    headers=headers,
+    json=payload
+)
+
+print("Status:", response.status_code)
+print("Response:", response.json())
+</code></pre>
+
+                                        <!-- CURL -->
+                                        <pre data-content="upload-curl"
+                                            class="code-block hidden absolute inset-0 p-md overflow-auto thin-scrollbar"><code class="language-bash block p-4">BASE64_CONTENT=$(base64 < template.docx | tr -d '\n')
+
+curl --location 'https://api.everypapers.com/v1/upload_template' \
+--header 'x-api-key: YOUR_API_KEY' \
+--header 'Content-Type: application/json' \
+--data "{
+    \"template_name\": \"Invoice Template\",
+    \"template_description\": \"Retail invoice template\",
+    \"content\": \"$BASE64_CONTENT\"
+}"
+</code></pre>
+
+                                        <!-- RESPONSE -->
+                                        <pre data-content="upload-response"
+                                            class="code-block hidden absolute inset-0 p-md overflow-auto thin-scrollbar"><code class="language-json block p-4">{
+    "created_at": "2026-07-18T16:42:38.970845+00:00",
+    "merge_fields": [
+        UserName,
+        UserPhone
+    ],
+    "status": "success",
+    "template_id": "TMP_F03E55CB",
+    "template_name": "Invoice Template"
+}</code></pre>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+                <!-- Generate Document API -->
+                <div class="space-y-lg mb-10">
+                    <!-- Endpoint Card -->
+                    <div
+                        class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl overflow-hidden shadow-sm hover:border-secondary/30 transition-all">
+                        <div class="p-lg flex flex-col lg:flex-row gap-lg items-stretch">
                             <div class="flex-1">
                                 <div class="flex items-center gap-md mb-md">
                                     <span
@@ -1005,11 +1344,13 @@ print("Response:", response.json())
                                 </div>
 
                                 <p class="text-body-sm text-on-surface-variant mb-lg">
-                                    Generate documents using either a previously uploaded template from your Dashboard
-                                    or by uploading a DOCX template with the request. The API processes requests
-                                    asynchronously and immediately returns a <code
-                                        class="bg-surface-container px-1">job_id</code> that can be used to track the
-                                    generation status and download the completed files.
+                                    Generate one or more documents using a template previously uploaded to your
+                                    Dashboard.
+                                    Send the template ID, output format, and record data as a JSON request. The API
+                                    processes
+                                    the request asynchronously and immediately returns a
+                                    <code class="bg-surface-container px-1">job_id</code>
+                                    that can be used to track the generation status and download the completed files.
                                 </p>
 
                                 <h5 class="font-label-md text-label-md text-on-surface uppercase tracking-widest mb-md">
@@ -1017,8 +1358,6 @@ print("Response:", response.json())
                                 </h5>
 
                                 <div class="space-y-sm mb-md">
-
-                                    <!-- FILE -->
                                     <div class="flex items-start gap-md border-b border-outline-variant/10 pb-sm">
                                         <div class="w-24 shrink-0">
                                             <code class="text-secondary font-code text-[13px]">URL</code>
@@ -1027,7 +1366,6 @@ print("Response:", response.json())
                                             <p class="text-body-sm">
                                                 <code
                                                     class="bg-surface-container px-1">https://api.everypapers.com/v1/generate_document</code>
-
                                             </p>
                                         </div>
                                     </div>
@@ -1047,51 +1385,87 @@ print("Response:", response.json())
                                         <div class="flex-1">
                                             <p class="text-body-sm">
                                                 <span class="text-outline italic">string (required)</span> —
-                                                Recommended. ID of a template previously uploaded from the Dashboard.
-                                                <code class="bg-surface-container px-1">{{ }}</code> format.
+                                                ID of a template previously uploaded to your Dashboard.
+                                                Example:
+                                                <code class="bg-surface-container px-1">TMP_MRAWMQMP</code>.
                                             </p>
                                         </div>
                                     </div>
 
-                                    <!-- TEMPLATE FILE -->
+                                    <!-- DOCUMENT FORMAT -->
                                     <div class="flex items-start gap-md border-b border-outline-variant/10 pb-sm">
                                         <div class="w-24 shrink-0">
-                                            <code class="text-secondary font-code text-[13px]">template</code>
-                                        </div>
-                                        <div class="flex-1">
-                                            <p class="text-body-sm">
-                                                <span class="text-outline italic">file (optional)</span> —
-                                                The DOCX template file containing placeholders in
-                                                <code class="bg-surface-container px-1">{{ }}</code> format.
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <!-- DATA -->
-                                    <div class="flex items-start gap-md border-b border-outline-variant/10 pb-sm">
-                                        <div class="w-24 shrink-0">
-                                            <code class="text-secondary font-code text-[13px]">data</code>
+                                            <code
+                                                class="text-secondary font-code text-[13px]">document<wbr>_format</code>
                                         </div>
                                         <div class="flex-1">
                                             <p class="text-body-sm">
                                                 <span class="text-outline italic">string (required)</span> —
-                                                JSON string containing records to populate the template.
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <!-- FORMAT -->
-                                    <div class="flex items-start gap-md border-b border-outline-variant/10 pb-sm">
-                                        <div class="w-24 shrink-0">
-                                            <code class="text-secondary font-code text-[13px]">document_format</code>
-                                        </div>
-                                        <div class="flex-1">
-                                            <p class="text-body-sm">
-                                                <span class="text-outline italic">string (required)</span> —
-                                                Output format. Supported values:
-                                                <code class="bg-surface-container px-1">docx</code>,
+                                                Output format for the generated documents. Supported values:
+                                                <code class="bg-surface-container px-1">docx</code> and
                                                 <code class="bg-surface-container px-1">pdf</code>.
-                                                Defaults to <code class="bg-surface-container px-1">docx</code>.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- RECORDS -->
+                                    <div class="flex items-start gap-md border-b border-outline-variant/10 pb-sm">
+                                        <div class="w-24 shrink-0">
+                                            <code class="text-secondary font-code text-[13px]">records</code>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-body-sm">
+                                                <span class="text-outline italic">array (required)</span> —
+                                                List of records used to generate documents. Each record contains a
+                                                <code class="bg-surface-container px-1">fileName</code>
+                                                and a
+                                                <code class="bg-surface-container px-1">fields</code>
+                                                object containing the template merge-field values.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- FILE NAME -->
+                                    <div class="flex items-start gap-md border-b border-outline-variant/10 pb-sm">
+                                        <div class="w-24 shrink-0">
+                                            <code class="text-secondary font-code text-[13px]">fileName</code>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-body-sm">
+                                                <span class="text-outline italic">string (required)</span> —
+                                                Name to use for the generated document. The file extension is determined
+                                                by <code class="bg-surface-container px-1">document_format</code>.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- FIELDS -->
+                                    <div class="flex items-start gap-md border-b border-outline-variant/10 pb-sm">
+                                        <div class="w-24 shrink-0">
+                                            <code class="text-secondary font-code text-[13px]">fields</code>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-body-sm">
+                                                <span class="text-outline italic">object (required)</span> —
+                                                Key-value pairs containing the data to merge into the template.
+                                                Field names should match the placeholders defined in your uploaded
+                                                template.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- TABLES -->
+                                    <div class="flex items-start gap-md border-b border-outline-variant/10 pb-sm">
+                                        <div class="w-24 shrink-0">
+                                            <code class="text-secondary font-code text-[13px]">tables</code>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-body-sm">
+                                                <span class="text-outline italic">object (optional)</span> —
+                                                Contains data for dynamic tables defined in the template.
+                                                Each key represents a table identifier, and its value must be
+                                                an array of row objects. The properties in each row should match
+                                                the table column placeholders defined in the template.
                                             </p>
                                         </div>
                                     </div>
@@ -1104,8 +1478,8 @@ print("Response:", response.json())
                                         <div class="flex-1">
                                             <p class="text-body-sm">
                                                 <span class="text-outline italic">string (optional)</span> —
-                                                Optional email address to receive the generated ZIP file or download
-                                                link.
+                                                Email address that will receive the generated ZIP file or a secure
+                                                download link after processing is completed.
                                             </p>
                                         </div>
                                     </div>
@@ -1118,8 +1492,22 @@ print("Response:", response.json())
                                         <div class="flex-1">
                                             <p class="text-body-sm">
                                                 <span class="text-outline italic">string (optional)</span> —
-                                                Optional callback URL that will be triggered after document generation
-                                                is completed.
+                                                Callback URL that will be triggered when document generation is
+                                                completed.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- CONTENT TYPE -->
+                                    <div class="flex items-start gap-md border-b border-outline-variant/10 pb-sm">
+                                        <div class="w-24 shrink-0">
+                                            <code class="text-secondary font-code text-[13px]">Content-Type</code>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-body-sm">
+                                                <span class="text-outline italic">header (required)</span> —
+                                                Must be set to
+                                                <code class="bg-surface-container px-1">application/json</code>.
                                             </p>
                                         </div>
                                     </div>
@@ -1132,19 +1520,20 @@ print("Response:", response.json())
                                         <div class="flex-1">
                                             <p class="text-body-sm">
                                                 <span class="text-outline italic">header (required)</span> —
-                                                Your API key for authentication.
+                                                Your EveryPapers API key used to authenticate the request.
                                             </p>
                                         </div>
                                     </div>
 
                                 </div>
                             </div>
-                            <div class=" code-container lg:w-[400px]">
+
+                            <div class="code-container lg:w-[400px] lg:self-stretch flex">
                                 <div
-                                    class="bg-primary-container rounded-lg overflow-hidden flex flex-col max-h-[720px]">
+                                    class="bg-primary-container rounded-lg overflow-hidden flex flex-col w-full min-h-[500px] lg:h-full">
 
                                     <div
-                                        class="flex gap-md px-md py-sm bg-primary-container/80 border-b border-on-primary-fixed-variant/10">
+                                        class="shrink-0 flex gap-md px-md py-sm bg-primary-container/80 border-b border-on-primary-fixed-variant/10">
 
                                         <button data-tab="node"
                                             class="tab-btn text-on-primary text-xs font-bold border-b-2 border-secondary-fixed-dim">
@@ -1165,8 +1554,8 @@ print("Response:", response.json())
                                             class="tab-btn text-on-primary text-xs font-bold opacity-60">
                                             Response
                                         </button>
-                                        <div class="flex items-center ml-auto gap-sm">
 
+                                        <div class="flex items-center ml-auto gap-sm">
                                             <button
                                                 class="copy-btn flex items-center gap-1 text-on-primary text-xs hover:text-white transition-colors">
                                                 <span class="material-symbols-outlined text-[16px]">content_copy</span>
@@ -1177,164 +1566,152 @@ print("Response:", response.json())
                                                 <div class="w-2 h-2 rounded-full bg-secondary"></div>
                                                 <div class="w-2 h-2 rounded-full bg-on-tertiary-container"></div>
                                             </div>
-
                                         </div>
 
                                     </div>
 
                                     <div
-                                        class="flex-1 p-md font-code text-[13px] leading-relaxed text-primary-fixed overflow-hidden flex">
+                                        class="flex-1 min-h-0 p-md font-code text-[13px] leading-relaxed text-primary-fixed overflow-hidden relative">
 
                                         <!-- NODE -->
-                                        <pre data-content="node" class="code-block flex-1 overflow-auto thin-scrollbar"><code class="language-javascript">import axios from "axios";
-import fs from "fs";
-import FormData from "form-data";
+                                        <pre data-content="node"
+                                            class="code-block absolute inset-0 p-md overflow-auto thin-scrollbar"><code class="language-javascript block p-4">import axios from "axios";
 
 async function generateDocument() {
     try {
-    const form = new FormData();
-
-    // Use either template_id or template
-
-    // Option 1: Generate using a previously uploaded template
-    form.append("template_id", "YOUR_TEMPLATE_ID");
-
-    // Option 2: Upload a DOCX template directly
-    // form.append("template", fs.createReadStream("./template.docx"));
-
-    form.append(
-        "data",
-        JSON.stringify({
-        records: [
+        const response = await axios.post(
+            "https://api.everypapers.com/v1/generate_document",
             {
-            fileName: "invoice_001",
-            fields: {
-                name: "John Doe",
+                template_id: "YOUR_TEMPLATE_ID",
+                document_format: "pdf",
+                records: [
+                    {
+                        fileName: "invoice_001",
+                        fields: {
+                            AccountName: "John Doe"
+                        },
+                        "tables": {
+                            "itm": [
+                                {"name": "API Plan", "qty": 1, "price": 100},
+                                {"name": "Support", "qty": 1, "price": 50}
+                            ]
+                        }
+                    }
+                ],
+                email: "test@example.com",
+                webhook_url: "https://example.com/webhook"
             },
-            },
-        ],
-        })
-    );
+            {
+                headers: {
+                    "x-api-key": "YOUR_API_KEY",
+                    "Content-Type": "application/json"
+                }
+            }
+        );
 
-    form.append("document_format", "pdf");
-    form.append("email", "test@gmail.com");
-    form.append("webhook_url", "https://test-webhook-url");
-
-    const response = await axios.post(
-        "https://api.everypapers.com/v1/generate_document",
-        form,
-        {
-        headers: {
-            ...form.getHeaders(),
-            "x-api-key": "YOUR_API_KEY",
-        },
-        }
-    );
-
-    console.log("Job Created:", response.data);
+        console.log("Job Created:", response.data);
     } catch (error) {
-    console.error("Error:", error.response?.data || error.message);
+        console.error(
+            "Error:",
+            error.response?.data || error.message
+        );
     }
 }
 
 generateDocument();
-
-                                            </code>
-                                            </pre>
+</code></pre>
 
                                         <!-- PYTHON -->
                                         <pre data-content="python"
-                                            class="code-block hidden h-full overflow-auto thin-scrollbar"><code class="language-python">import requests
-import json
+                                            class="code-block hidden absolute inset-0 p-md overflow-auto thin-scrollbar"><code class="language-python block p-4">import requests
 
 url = "https://api.everypapers.com/v1/generate_document"
 
 headers = {
-    "x-api-key": "YOUR_API_KEY"
+    "x-api-key": "YOUR_API_KEY",
+    "Content-Type": "application/json"
 }
 
 payload = {
+    "template_id": "YOUR_TEMPLATE_ID",
+    "document_format": "pdf",
     "records": [
         {
             "fileName": "invoice_001",
             "fields": {
-                "name": "John Doe"
+                "AccountName": "John Doe"
+            },
+            "tables": {
+                "itm": [
+                    {"name": "API Plan", "qty": 1, "price": 100},
+                    {"name": "Support", "qty": 1, "price": 50}
+                ]
             }
         }
-    ]
-}
-
-form_data = {
-    "data": json.dumps(payload),
-    "document_format": "pdf",
-    "email": "test@gmail.com",
-    "webhook_url": "https://test-webhook-url"
-}
-
-# Use either template_id or template
-
-# Option 1: Generate using a previously uploaded template
-form_data["template_id"] = "YOUR_TEMPLATE_ID"
-
-# Option 2: Upload a DOCX template directly
-files = {
-    # "template": open("template.docx", "rb")
+    ],
+    "email": "test@example.com",
+    "webhook_url": "https://example.com/webhook"
 }
 
 response = requests.post(
     url,
     headers=headers,
-    data=form_data,
-    files=files
+    json=payload
 )
 
 print("Status:", response.status_code)
 print("Response:", response.json())
-                                            </code></pre>
+</code></pre>
 
                                         <!-- CURL -->
                                         <pre data-content="curl"
-                                            class="code-block hidden h-full overflow-auto thin-scrollbar"><code class="language-bash">curl --location 'https://api.everypapers.com/v1/generate_document' \
+                                            class="code-block hidden absolute inset-0 p-md overflow-auto thin-scrollbar"><code class="language-bash block p-4">curl --location 'https://api.everypapers.com/v1/generate_document' \
 --header 'x-api-key: YOUR_API_KEY' \
---form 'template_id=YOUR_TEMPLATE_ID' \
---form 'template=@template.docx' \
---form 'data={
+--header 'Content-Type: application/json' \
+--data '{
+    "template_id": "YOUR_TEMPLATE_ID",
+    "document_format": "pdf",
     "records": [
-    {
-        "fileName": "invoice_001",
-        "fields": {
-        "name": "John Doe"
+        {
+            "fileName": "invoice_001",
+            "fields": {
+                "AccountName": "John Doe"
+            },
+            "tables": {
+                "itm": [
+                    {"name": "API Plan", "qty": 1, "price": 100},
+                    {"name": "Support", "qty": 1, "price": 50}
+                ]
+            }
         }
-    }
-    ]
-}' \
---form 'document_format=pdf' \
---form 'email=test@gmail.com' \
---form 'webhook_url=https://test-webhook-url'
-                                            </code></pre>
+    ],
+    "email": "test@example.com",
+    "webhook_url": "https://example.com/webhook"
+}'
+</code></pre>
 
-                                        <!-- Response -->
+                                        <!-- RESPONSE -->
                                         <pre data-content="response"
-                                            class="code-block hidden h-full overflow-auto thin-scrollbar"><code class="language-bash">{
+                                            class="code-block hidden absolute inset-0 p-md overflow-auto thin-scrollbar"><code class="language-json block p-4">{
     "job_id": "51dc3548a6c34606b7e5b5c5c9de9050",
     "status": "accepted"
 }
-                                        </code></pre>
+</code></pre>
 
                                     </div>
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Generate Document-API  -->
+
+                <!-- Job Status-API  -->
                 <div class="space-y-lg">
                     <!-- Endpoint Card -->
                     <div
                         class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl overflow-hidden shadow-sm hover:border-secondary/30 transition-all">
-                        <div class="p-lg flex flex-col lg:flex-row gap-lg">
+                        <div class="p-lg flex flex-col lg:flex-row gap-lg items-stretch">
                             <div class="flex-1">
                                 <div class="flex items-center gap-md mb-md">
                                     <span
@@ -1392,11 +1769,13 @@ print("Response:", response.json())
 
                                 </div>
                             </div>
-                            <div class=" code-container lg:w-[400px]">
-                                <div class="bg-primary-container rounded-lg overflow-hidden relative h-full">
+                            <div class="code-container lg:w-[400px] lg:self-stretch flex">
+                                <div
+                                    class="bg-primary-container rounded-lg overflow-hidden flex flex-col w-full min-h-[500px] lg:h-full">
+
 
                                     <div
-                                        class="flex gap-md px-md py-sm bg-primary-container/80 border-b border-on-primary-fixed-variant/10">
+                                        class="shrink-0 flex gap-md px-md py-sm bg-primary-container/80 border-b border-on-primary-fixed-variant/10">
 
                                         <button data-tab="node"
                                             class="tab-btn text-on-primary text-xs font-bold border-b-2 border-secondary-fixed-dim">
@@ -1435,10 +1814,11 @@ print("Response:", response.json())
                                     </div>
 
                                     <div
-                                        class="p-md font-code text-[13px] leading-relaxed text-primary-fixed h-[320px] overflow-hidden">
+                                        class="flex-1 min-h-0 p-md font-code text-[13px] leading-relaxed text-primary-fixed overflow-hidden relative">
 
                                         <!-- NODE -->
-                                        <pre data-content="node" class="code-block h-full overflow-auto thin-scrollbar"><code class="language-javascript">import axios from "axios";
+                                        <pre data-content="node"
+                                            class="code-block absolute inset-0 p-md overflow-auto thin-scrollbar"><code class="language-javascript block p-4">import axios from "axios";
 
 async function getJobStatus() {
     try {
@@ -1463,7 +1843,7 @@ getJobStatus();
 
                                         <!-- PYTHON -->
                                         <pre data-content="python"
-                                            class="code-block hidden h-full overflow-auto thin-scrollbar"><code class="language-python">import requests
+                                            class="code-block hidden absolute inset-0 p-md overflow-auto thin-scrollbar"><code class="language-python block p-4">import requests
 
 url = "https://api.everypapers.com/v1/job_status"
 
@@ -1479,12 +1859,12 @@ print("Response:", response.json())
 
                                         <!-- CURL -->
                                         <pre data-content="curl"
-                                            class="code-block hidden h-full overflow-auto thin-scrollbar"><code class="language-bash">curl --location 'https://api.everypapers.com/v1/job_status?job_id=YOUR_JOB_ID'
+                                            class="code-block hidden absolute inset-0 p-md overflow-auto thin-scrollbar"><code class="language-bash block p-4">curl --location 'https://api.everypapers.com/v1/job_status?job_id=YOUR_JOB_ID'
                                                             </code></pre>
 
                                         <!-- Response -->
                                         <pre data-content="response"
-                                            class="code-block hidden h-full overflow-auto thin-scrollbar"><code class="language-bash">{
+                                            class="code-block hidden absolute inset-0 p-md overflow-auto thin-scrollbar"><code class="language-bash block p-4">{
     "completedAt": "2026-05-10 13:25:22.550546+00:00",
     "createdAt": "2026-05-10 13:24:58.900246+00:00",
     "document_format": "pdf",
@@ -1533,13 +1913,14 @@ print("Response:", response.json())
                     <div class="bg-primary-container rounded-xl p-lg font-code text-code text-primary-fixed">
                         <div class="text-outline-variant mb-md">// Webhook Payload Example</div>
                         <pre><code>{
-  <span class="text-secondary-fixed-dim">"event"</span>: <span class="text-tertiary-fixed-dim">"document.ready"</span>,
-  <span class="text-secondary-fixed-dim">"created"</span>: <span class="text-tertiary-fixed-dim">1672531200</span>,
-  <span class="text-secondary-fixed-dim">"data"</span>: {
-    <span class="text-secondary-fixed-dim">"id"</span>: <span class="text-tertiary-fixed-dim">"doc_abc123"</span>,
-    <span class="text-secondary-fixed-dim">"url"</span>: <span class="text-tertiary-fixed-dim">"https://s3.docgen.io/..."</span>,
+    <span class="text-secondary-fixed-dim">"event"</span>: <span class="text-tertiary-fixed-dim">"document.ready"</span>,
     <span class="text-secondary-fixed-dim">"status"</span>: <span class="text-tertiary-fixed-dim">"completed"</span>
-  }
+    <span class="text-secondary-fixed-dim">"download_url"</span>: <span class="text-tertiary-fixed-dim">"https://s3.everypapers.io/..."</span>,
+    <span class="text-secondary-fixed-dim">"job_id"</span>: <span class="text-tertiary-fixed-dim">7b4f56f78213427991d9f444bf96673b</span>,
+    <span class="text-secondary-fixed-dim">"total_records"</span>: <span class="text-tertiary-fixed-dim">"10"</span>,
+    <span class="text-secondary-fixed-dim">"completed_records"</span>: <span class="text-tertiary-fixed-dim">"10"</span>,
+    <span class="text-secondary-fixed-dim">"document_format"</span>: <span class="text-tertiary-fixed-dim">"pdf"</span> 
+    <span class="text-secondary-fixed-dim">"completed_at"</span>: <span class="text-tertiary-fixed-dim">"17 May 2026 at 12:44:06 UTC+5:30"</span> 
 }</code></pre>
                     </div>
                 </div>
