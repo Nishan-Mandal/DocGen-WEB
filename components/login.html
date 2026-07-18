@@ -6,6 +6,14 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Login | EveryPapers</title>
+    <meta name="description"
+        content="Log in to your EveryPapers account to manage templates, API keys, document generation and account settings.">
+
+    <meta name="robots" content="noindex, follow">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/components/assets/favicon.png" type="image/png">
+    <link rel="shortcut icon" href="/components/assets/favicon.png" type="image/png">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
@@ -367,14 +375,20 @@
             <!-- Header Content -->
             <div class="relative z-10">
                 <div class="flex items-center gap-sm">
-                    <div class="w-8 h-8 bg-secondary rounded-lg flex items-center justify-center">
-                        <span class="material-symbols-outlined text-on-primary text-[20px]" data-icon="description"
-                            data-weight="fill" style="font-variation-settings: 'FILL' 1;">description</span>
-                    </div>
-                    <span class="font-h3 text-h3 font-black text-white tracking-tight">EveryPapers</span>
+                    <img
+                        src="/components/assets/favicon.png"
+                        alt="EveryPapers Logo"
+                        class="w-8 h-8 object-contain"
+                    >
+            
+                    <span class="font-h3 text-h3 font-black text-white tracking-tight">
+                        EveryPapers
+                    </span>
                 </div>
+            
                 <h1 class="font-h1 text-h1 text-white mt-xl max-w-lg leading-tight">
-                    Generate Documents at Scale with a Simple <span class="text-secondary-fixed-dim">API</span>
+                    Generate Documents at Scale with a Simple
+                    <span class="text-secondary-fixed-dim">API</span>
                 </h1>
             </div>
             <!-- Center Visual: Floating Previews & Code -->
