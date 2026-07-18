@@ -3,8 +3,56 @@
 <html class="light" lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EveryPapers – Document Generation API for PDF & DOCX</title>
+
+    <meta name="description"
+        content="EveryPapers is a document generation API for creating PDF and DOCX files from reusable templates and dynamic data. Automate invoices, contracts, reports, certificates and more.">
+
+    <meta name="robots" content="index, follow">
+
+    <link rel="canonical" href="https://everypapers.com/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title"
+        content="EveryPapers – Document Generation API for PDF & DOCX">
+    <meta property="og:description"
+        content="Generate professional PDF and DOCX documents at scale using templates, dynamic data and a simple API.">
+    <meta property="og:url" content="https://everypapers.com/">
+    <meta property="og:site_name" content="EveryPapers">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title"
+        content="EveryPapers – Document Generation API">
+    <meta name="twitter:description"
+        content="Automate PDF and DOCX document generation with reusable templates and a simple API.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png"
+        href="/components/assets/favicon.png">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "EveryPapers",
+        "url": "https://everypapers.com/",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Web",
+        "description": "EveryPapers is a document generation API for creating PDF and DOCX documents from reusable templates and dynamic data.",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400&amp;display=swap"
         rel="stylesheet" />
@@ -15,11 +63,13 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.css" rel="stylesheet" />
+
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-javascript.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-python.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-bash.min.js"></script>
+
 
     <script id="tailwind-config">
         tailwind.config = {
@@ -233,12 +283,13 @@
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div class="space-y-8">
                 <h1 class="font-h1 text-h1 text-on-surface leading-tight">
-                    Generate Documents at Scale with a Simple API
+                    Generate Documents at Scale with EveryPapers
                 </h1>
                 <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
-                    Automate document generation with a simple API.
-                    Upload templates, send data, and generate PDF or DOCX files with async processing and webhook-based
-                    delivery.
+                    EveryPapers is a powerful document generation API for creating
+                    PDF and DOCX files from reusable templates and dynamic data.
+                    Automate invoices, contracts, reports and thousands of personalized
+                    documents with scalable asynchronous processing.
                 </p>
                 <div class="flex flex-wrap gap-4">
                     <button id="get-api-key"
