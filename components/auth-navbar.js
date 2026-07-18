@@ -137,7 +137,7 @@ confirmLogoutBtn?.addEventListener("click", async () => {
 
         await signOut(auth);
 
-        window.location.href = "/index.html";
+        window.location.href = "/home.html";
 
     } catch (error) {
 
