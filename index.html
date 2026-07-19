@@ -398,17 +398,20 @@
                             <!-- Code -->
                             <div
                                 class="p-md font-code text-[12px] text-primary-fixed leading-tight overflow-auto flex-1 text-left">
-                                <pre class="whitespace-pre text-left m-0 text-indigo-300"><code><span class="text-pink-400">POST</span> /v1/generate
+                                <pre class="whitespace-pre text-left m-0 text-indigo-300"><code><span class="text-pink-400">POST</span> /v1/generate_document
 {
-    <span class="text-emerald-400">"template"</span>: <span class="text-orange-300"> 📄 Template</span>,
-    <span class="text-emerald-400">"format"</span>: <span class="text-orange-300">"pdf"</span>,
-    <span class="text-emerald-400">"data"</span>: {
+    <span class="text-emerald-400">"template_id"</span>: <span class="text-orange-300">"TMP_MR6C9N2Y"</span>,
+    <span class="text-emerald-400">"document_format"</span>: <span class="text-orange-300">"pdf"</span>,
+    <span class="text-emerald-400">"records"</span>: [
+    <span class="text-emerald-400">"fileName"</span>: <span class="text-orange-300">"invoice_001"</span>,
+    <span class="text-emerald-400">"fields"</span>: {
         <span class="text-emerald-400">"customer"</span>: <span class="text-orange-300">"Jane Doe"</span>,
         <span class="text-emerald-400">"access"</span>: <span class="text-orange-300">12000.00</span>,
         <span class="text-emerald-400">"subtotal"</span>: <span class="text-orange-300">15049.00</span>,
         <span class="text-emerald-400">"tax"</span>: <span class="text-orange-300">1956.38</span>,
         <span class="text-emerald-400">"total"</span>: <span class="text-orange-300">17005.38</span>
     }
+    ]
 }</code></pre>
                             </div>
 
@@ -993,7 +996,7 @@ print("Job ID:", job["jobId"])
                     </div>
                     <h3 class="font-h3 text-h3 mb-4 group-hover:text-secondary transition-colors">Template Upload</h3>
                     <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Upload your DOCX
-                        templates easily in API request and start generating documents instantly.</p>
+                        templates easily via dashboard or API request and start generating documents instantly.</p>
                 </div>
                 <!-- Card 3: High-Res PDF -->
                 <div
