@@ -25,7 +25,7 @@ googleBtn?.addEventListener("click", async () => {
     const result =
       await signInWithPopup(auth, googleProvider);
 
-    await createUserDocument(result.user);
+    await createUserDocument(result.user.displayName);
 
     window.location.href = "/dashboard.html";
 
@@ -36,7 +36,7 @@ googleBtn?.addEventListener("click", async () => {
     console.error(error);
 
     showToast(
-      error.message,
+      getErrorMessage(error),
       "error"
     );
 
@@ -92,7 +92,7 @@ signupForm?.addEventListener("submit", async (e) => {
     console.error(error);
 
     showToast(
-      error.message,
+      getErrorMessage(error),
       "error"
     );
 
@@ -243,3 +243,9 @@ passwordInput?.addEventListener("input", () => {
     `Password strength: ${label}`;
 
 });
+
+function getErrorMessage(error) {
+  return error.message
+    ?.replace(/^Firebase:\s*/i, "")
+    .trim();
+}
