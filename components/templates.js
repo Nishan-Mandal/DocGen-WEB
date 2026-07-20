@@ -16,7 +16,8 @@ import {
     getStorage,
     ref,
     uploadBytes,
-    getDownloadURL
+    getDownloadURL,
+    deleteObject
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 
 import { auth, db, storage } from "./firebase.js";
@@ -474,25 +475,72 @@ async function deleteTemplate(
             "Delete this template?"
         );
 
-    if (!confirmed)
+    if (!confirmed) {
         return;
+    }
 
-    await deleteDoc(
-        doc(
-            db,
-            "users",
-            auth.currentUser.uid,
-            "templates",
-            templateId
-        )
-    );
+    try {
 
-    showToast(
-        "Template deleted",
-        "success"
-    );
+        const template =
+            templatesMap[templateId];
 
-    await loadTemplates();
+        if (!template) {
+            throw new Error(
+                "Template not found"
+            );
+        }
+
+        // Delete actual file from Storage
+        if (template.storagePath) {
+
+            const storageRef =
+                ref(
+                    storage,
+                    template.storagePath
+                );
+
+            await deleteObject(
+                storageRef
+            );
+
+        }
+
+        // Delete Firestore record
+        await deleteDoc(
+            doc(
+                db,
+                "users",
+                auth.currentUser.uid,
+                "templates",
+                templateId
+            )
+        );
+
+        // Remove from local cache
+        delete templatesMap[templateId];
+
+        showToast(
+            "Template deleted successfully",
+            "success"
+        );
+
+        await loadTemplates();
+
+    } catch (error) {
+
+        console.error(
+            "Template deletion failed:",
+            error
+        );
+
+        showToast(
+            error.message ||
+            "Failed to delete template",
+            "error"
+        );
+
+    }
+
 }
 
 
@@ -798,80 +846,130 @@ async function updateTemplate(
 ) {
 
     const template =
-        templatesMap[
-        templateId
-        ];
+        templatesMap[templateId];
 
     if (!template) {
         return;
     }
 
-    showToast(
-        "Analyzing template...",
-        "info"
-    );
+    try {
 
+        showToast(
+            "Analyzing template...",
+            "info"
+        );
 
+        // Analyze new template
+        const analysis =
+            await analyzeTemplate(file);
 
-    // Analyze new template
-    const analysis =
-        await analyzeTemplate(
+        const mergeFields =
+            analysis.fields || [];
+
+        const tables =
+            analysis.tables || {};
+
+        showToast(
+            "Updating template...",
+            "info"
+        );
+
+        const user =
+            auth.currentUser;
+
+        // Store the old path before updating
+        const oldStoragePath =
+            template.storagePath;
+
+        // Create new path using new filename
+        const newStoragePath =
+            `users/${user.uid}/templates/${templateId}/${file.name}`;
+
+        const newStorageRef =
+            ref(
+                storage,
+                newStoragePath
+            );
+
+        // Upload new file
+        await uploadBytes(
+            newStorageRef,
             file
         );
 
-    showToast(
-        "Updating template...",
-        "info"
-    );
+        // Get new download URL
+        const fileUrl =
+            await getDownloadURL(
+                newStorageRef
+            );
 
+        // Update Firestore
+        await setDoc(
+            doc(
+                db,
+                "users",
+                user.uid,
+                "templates",
+                templateId
+            ),
+            {
+                ...template,
 
-    const mergeFields =
-        analysis.fields || [];
+                fileName:
+                    file.name,
 
-    const tables =
-        analysis.tables || {};
+                fileUrl,
 
-    // Replace storage file
-    const storageRef =
-        ref(
-            storage,
-            template.storagePath
+                storagePath:
+                    newStoragePath,
+
+                mergeFields,
+
+                tables,
+
+                updatedAt:
+                    serverTimestamp()
+            }
         );
 
-    await uploadBytes(
-        storageRef,
-        file
-    );
+        // Delete old file only when path changed
+        if (
+            oldStoragePath &&
+            oldStoragePath !== newStoragePath
+        ) {
 
-    const fileUrl =
-        await getDownloadURL(
-            storageRef
-        );
+            const oldStorageRef =
+                ref(
+                    storage,
+                    oldStoragePath
+                );
 
-    await setDoc(
-        doc(
-            db,
-            "users",
-            auth.currentUser.uid,
-            "templates",
-            templateId
-        ),
-        {
-            ...template,
-            fileName:
-                file.name,
-            fileUrl,
-            mergeFields,
-            tables,
-            updatedAt:
-                serverTimestamp()
+            await deleteObject(
+                oldStorageRef
+            );
+
         }
-    );
 
-    showToast(
-        "Template updated successfully",
-        "success"
-    );
+        showToast(
+            "Template updated successfully",
+            "success"
+        );
 
-    await loadTemplates();
+        await loadTemplates();
+
+    } catch (error) {
+
+        console.error(
+            "Template update failed:",
+            error
+        );
+
+        showToast(
+            error.message ||
+            "Template update failed",
+            "error"
+        );
+
+    }
+
 }

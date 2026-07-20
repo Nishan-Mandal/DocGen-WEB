@@ -23,7 +23,7 @@ googleBtn?.addEventListener("click", async () => {
 
     const result = await signInWithPopup(auth, googleProvider);
 
-    await createUserDocument(result.user);
+    await createUserDocument(result.user.displayName);
 
     console.log("Google Login Success:", result.user);
 
@@ -35,7 +35,7 @@ googleBtn?.addEventListener("click", async () => {
     console.error(error.message);
     hideLoader();
     showToast(
-      error.message,
+      getErrorMessage(error),
       "error"
     );
   }
@@ -63,7 +63,7 @@ loginForm?.addEventListener("submit", async (e) => {
       password
     );
 
-    await createUserDocument(result.user);
+    await createUserDocument(result.user.displayName);
 
     console.log("Login Success:", result.user);
 
@@ -76,7 +76,7 @@ loginForm?.addEventListener("submit", async (e) => {
     hideLoader();
 
     showToast(
-      error.message,
+      getErrorMessage(error),
       "error"
     );
   }
@@ -198,10 +198,16 @@ forgotPasswordLink?.addEventListener("click", async (e) => {
     console.error(error);
 
     showToast(
-      error.message,
+      getErrorMessage(error),
       "error"
     );
 
   }
 
 });
+
+function getErrorMessage(error) {
+  return error.message
+    ?.replace(/^Firebase:\s*/i, "")
+    .trim();
+}
