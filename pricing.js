@@ -4,10 +4,9 @@ import { showToast } from "./components/util.js";
 const API_BASE =
     "https://docgen-service-746637463346.us-central1.run.app";
 
-const PADDLE_TOKEN =
-    "test_6a6827ccb7c97df8ad27c026621";
+const PADDLE_TOKEN = "live_76df5e0a576a90378011cb29722";
 
-Paddle.Environment.set("sandbox");
+// Paddle.Environment.set("sandbox");
 
 Paddle.Initialize({
     token: PADDLE_TOKEN
@@ -74,9 +73,17 @@ async function subscribe(plan, button) {
             await response.json();
 
         if (!response.ok) {
+            console.error("Create checkout error:", data);
+        
+            const message =
+                typeof data.error === "string"
+                    ? data.error
+                    : data.error?.detail ||
+                        data.error?.message ||
+                        JSON.stringify(data.error);
+        
             throw new Error(
-                data.error ||
-                "Unable to create checkout."
+                message || "Unable to create checkout."
             );
         }
 
