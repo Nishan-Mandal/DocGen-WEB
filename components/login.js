@@ -3,6 +3,7 @@
 import { auth, googleProvider } from "./firebase.js";
 import { createUserDocument } from "./user-service.js";
 import { showToast } from "./util.js";
+import { ROUTES } from "../routes.js";
 
 
 import {
@@ -29,7 +30,7 @@ googleBtn?.addEventListener("click", async () => {
 
     hideLoader();
 
-    window.location.href = "/docs.html";
+    window.location.href = ROUTES.docs;
 
   } catch (error) {
     console.error(error.message);

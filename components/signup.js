@@ -3,6 +3,22 @@
 import { auth, googleProvider } from "./firebase.js";
 import { createUserDocument } from "./user-service.js";
 import { showToast } from "./util.js";
+import { ROUTES } from "../routes.js";
+
+function applyRoutes() {
+  document.querySelectorAll("[data-route]").forEach((el) => {
+    const routeKey = el.dataset.route;
+    if (routeKey && ROUTES[routeKey]) {
+      el.href = ROUTES[routeKey];
+    }
+  });
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", applyRoutes);
+} else {
+  applyRoutes();
+}
 
 
 import {

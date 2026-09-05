@@ -51,6 +51,7 @@
         }
     }
     </script>
+
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400&amp;display=swap"
         rel="stylesheet" />
@@ -294,10 +295,10 @@
                         class="bg-secondary px-8 py-3 rounded-xl text-white font-label-md text-label-md hover:opacity-90 transition-all shadow-lg shadow-secondary/20">
                         Get API Key
                     </button>
-                    <button onclick="window.location.href='/docs.html'"
+                    <a href="/docs" data-route="docs" id="docsLink"
                         class="border border-outline-variant px-8 py-3 rounded-xl text-on-surface font-label-md text-label-md hover:bg-surface-container transition-all">
                         View Docs
-                    </button>
+                </a>
                 </div>
             </div>
             <div class="relative">
@@ -1245,8 +1246,8 @@ print("Job ID:", job["jobId"])
                                 class="material-symbols-outlined text-emerald-500">check</span> Dedicated Support
                         </li>
                     </ul>
-                    <button id="starterPlanBtn" onclick="window.location.href='/pricing.html'"
-                        class="w-full border border-outline-variant py-3 rounded-xl font-label-md">
+                    <a href="/pricing" data-route="pricing" id="pricingLink"
+                        class="w-full border border-outline-variant py-3 rounded-xl font-label-md block text-center">
 
                         <span class="btn-text">
                             Get Started
@@ -1264,7 +1265,7 @@ print("Job ID:", job["jobId"])
                             Loading...
 
                         </span>
-                    </button>
+                    </a>
                 </div>
                 <!-- Growth -->
                 <div
@@ -1298,8 +1299,8 @@ print("Job ID:", job["jobId"])
                                 class="material-symbols-outlined text-emerald-500">check</span> Dedicated Support
                         </li>
                     </ul>
-                    <button id="growthPlanBtn" onclick="window.location.href='/pricing.html'"
-                        class="w-full bg-secondary text-white py-3 rounded-xl font-label-md shadow-lg shadow-secondary/20">
+                    <a href="/pricing" data-route="pricing" id="pricingLink"
+                        class="w-full bg-secondary text-white py-3 rounded-xl font-label-md shadow-lg shadow-secondary/20 block text-center">
                         <span class="btn-text">
                             Get Started
                         </span>
@@ -1316,7 +1317,7 @@ print("Job ID:", job["jobId"])
                             Loading...
 
                         </span>
-                    </button>
+                    </a>
                 </div>
                 <!-- Enterprise -->
                 <div class="glass-card p-xl rounded-2xl flex flex-col">
@@ -1344,9 +1345,9 @@ print("Job ID:", job["jobId"])
                                 class="material-symbols-outlined text-emerald-500">check</span> Dedicated Support
                         </li>
                     </ul>
-                    <button onclick="window.location.href='/pricing.html'"
-                        class="w-full border border-outline-variant py-3 rounded-xl font-label-md">Contact
-                        Sales</button>
+                    <a href="/contact" data-route="contact" id="pricingLink"
+                        class="w-full border border-outline-variant py-3 rounded-xl font-label-md block text-center">Contact
+                        Sales</a>
                 </div>
             </div>
         </div>
@@ -1364,11 +1365,15 @@ print("Job ID:", job["jobId"])
             </button>
         </div>
     </section>
+
     <!-- Footer -->
     <div id="footer"></div>
-    <script src="/components/layout.js"></script>
+    <script type="module" src="/components/layout.js"></script>
+
+
 
     <script>
+
         document.addEventListener("DOMContentLoaded", function () {
 
             document.querySelectorAll("[data-tabs]").forEach(container => {
