@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard.html
+Disallow: /components/signup.html
+Disallow: /components/login.html
+
+Sitemap: https://everypapers.com/sitemap.xml

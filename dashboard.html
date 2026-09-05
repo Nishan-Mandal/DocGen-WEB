@@ -503,13 +503,13 @@
         <div class="p-lg border-t border-outline-variant/10 space-y-xs">
 
             <a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors"
-                href="/docs.html">
+                href="/docs" data-route="docs" id="docsLink">
                 <span class="material-symbols-outlined" data-icon="description">description</span>
                 <span class="font-body-md">Documentation</span>
             </a>
 
             <a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors"
-                href="/components/pages/contact.html">
+                href="/contact" data-route="contact" id="contactLink">
                 <span class="material-symbols-outlined" data-icon="help">help</span>
                 <span class="font-body-md">Help Center</span>
             </a>
@@ -580,9 +580,9 @@
                                 <h4 class="font-label-md text-on-surface-variant uppercase">Current Plan</h4>
                                 <h3 id="current-plan" class="font-h3 text-h3 text-secondary">Free Tier</h3>
                             </div>
-                            <button onclick="window.location.href='/pricing.html'"
-                                class="bg-primary text-on-primary px-md py-sm rounded-lg font-label-md font-semibold hover:opacity-90 transition-all">Upgrade
-                                Plan</button>
+                            <a href="/pricing" data-route="pricing"
+                                class="bg-primary text-on-primary px-md py-sm rounded-lg font-label-md font-semibold hover:opacity-90 transition-all inline-block text-center">Upgrade
+                                Plan</a>
                         </div>
                         <div class="space-y-sm">
                             <div class="flex justify-between text-label-md">
@@ -977,7 +977,7 @@
         <div id="footer"></div>
     </div>
     <script type="module" src="/components/auth-navbar.js"></script>
-    <script src="/components/layout.js"></script>
+    <script type="module" src="/components/layout.js"></script>
 
     <script type="module" src="dashboard.js"></script>
 
