@@ -1008,7 +1008,7 @@ onAuthStateChanged(
 
             if (!user) {
 
-                window.location.replace("/components/signup.html");
+                window.location.replace(ROUTES.signup);
 
                 return;
 

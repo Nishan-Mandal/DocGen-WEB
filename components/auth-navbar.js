@@ -75,7 +75,7 @@ function initializeNavbar(authSection) {
                 .getElementById("profile-btn")
                 ?.addEventListener("click", () => {
 
-                    window.location.href = "/dashboard.html";
+                    window.location.href = ROUTES.dashboard;
 
                 });
 
@@ -83,12 +83,12 @@ function initializeNavbar(authSection) {
 
             authSection.innerHTML = `
 
-                <a href="/components/login.html"
+                <a href="${ROUTES.login}" data-route="login"
                     class="text-slate-600 text-sm font-medium hover:text-indigo-500">
                     Sign In
                 </a>
 
-                <a href="/components/signup.html"
+                <a href="${ROUTES.signup}" data-route="signup"
                     class="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-indigo-700">
                     Get Started
                 </a>

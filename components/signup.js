@@ -43,7 +43,7 @@ googleBtn?.addEventListener("click", async () => {
 
     await createUserDocument(result.user.displayName);
 
-    window.location.href = "/dashboard.html";
+    window.location.href = ROUTES.dashboard;
 
   } catch (error) {
 
@@ -98,8 +98,7 @@ signupForm?.addEventListener("submit", async (e) => {
 
     await createUserDocument(name);
 
-    window.location.href =
-      "/dashboard.html";
+    window.location.href = ROUTES.dashboard;
 
   } catch (error) {
 

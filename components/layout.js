@@ -121,8 +121,8 @@ document.addEventListener("click", async (e) => {
 
             window.location.href =
                 user
-                    ? "/dashboard.html"
-                    : "/components/signup.html";
+                    ? ROUTES.dashboard
+                    : ROUTES.signup;
 
         });
     }
