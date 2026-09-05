@@ -1,4 +1,5 @@
 import { auth } from "./firebase.js";
+import { ROUTES } from "../routes.js";
 
 import {
     onAuthStateChanged,
@@ -82,12 +83,12 @@ function initializeNavbar(authSection) {
 
             authSection.innerHTML = `
 
-                <a href="components/login.html"
+                <a href="/components/login.html"
                     class="text-slate-600 text-sm font-medium hover:text-indigo-500">
                     Sign In
                 </a>
 
-                <a href="components/signup.html"
+                <a href="/components/signup.html"
                     class="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-indigo-700">
                     Get Started
                 </a>
@@ -137,7 +138,7 @@ confirmLogoutBtn?.addEventListener("click", async () => {
 
         await signOut(auth);
 
-        window.location.href = "/index.html";
+        window.location.href = ROUTES.home;
 
     } catch (error) {
 

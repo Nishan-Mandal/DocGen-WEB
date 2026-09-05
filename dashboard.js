@@ -25,6 +25,8 @@ import {
     loadTransactions
 } from "./components/transactions.js";
 
+import { ROUTES } from "./routes.js";
+
 const PAGE_SIZE = 5;
 
 let jobsPage = 1;
@@ -32,6 +34,11 @@ let logsPage = 1;
 
 let jobsCursors = [];
 let logsCursors = [];
+
+const docsLinkEl = document.getElementById("docsLink");
+if (docsLinkEl) docsLinkEl.href = ROUTES.docs;
+const contactLinkEl = document.getElementById("contactLink");
+if (contactLinkEl) contactLinkEl.href = ROUTES.contact;
 
 
 // ===============================

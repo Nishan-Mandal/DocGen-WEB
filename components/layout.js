@@ -1,56 +1,100 @@
+import { ROUTES } from "../routes.js";
 
+export { ROUTES };
 
-async function loadComponent(id, file) {
+export function applyRoutes(root = document) {
+    if (!root) return;
 
-    const res = await fetch(file);
+    root.querySelectorAll("[data-route]").forEach((el) => {
+        const routeKey = el.getAttribute("data-route");
+        if (routeKey && ROUTES[routeKey]) {
+            el.href = ROUTES[routeKey];
+        }
+    });
 
-    const html = await res.text();
-
-    document.getElementById(id).innerHTML = html;
-
-    if (id === "header") {
-
-        setActiveNav();
-
-        // 👇 LOAD AUTH NAV AFTER HEADER EXISTS
-        import("./auth-navbar.js");
+    // Backward-compatibility fallback for specific IDs if present
+    const docsLink = document.getElementById("docsLink");
+    if (docsLink && !docsLink.hasAttribute("data-route")) {
+        docsLink.href = ROUTES.docs;
+    }
+    const pricingLink = document.getElementById("pricingLink");
+    if (pricingLink && !pricingLink.hasAttribute("data-route")) {
+        pricingLink.href = ROUTES.pricing;
     }
 }
 
+function normalizePath(path) {
+    if (!path) return "";
+    let clean = path.split("?")[0].split("#")[0];
+    clean = clean.replace(/^\/+|\/+$/g, "");
+    const segment = clean.split("/").pop() || "";
+    const withoutExt = segment.replace(/\.html$/, "");
+    if (withoutExt === "" || withoutExt === "index") {
+        return "home";
+    }
+    return withoutExt;
+}
+
 function setActiveNav() {
+    const currentNorm = normalizePath(window.location.pathname);
 
-    const currentPath = window.location.pathname
-        .split("/")
-        .pop()
-        .split("?")[0]
-        .split("#")[0];
+    // Target header navigation links specifically to prevent affecting sidebar tabs on other pages
+    const headerNav = document.getElementById("header");
+    const navLinks = headerNav
+        ? headerNav.querySelectorAll(".nav-link")
+        : document.querySelectorAll("nav .nav-link");
 
-    document.querySelectorAll(".nav-link").forEach(link => {
+    navLinks.forEach((link) => {
+        const href = link.getAttribute("href");
+        const routeKey = link.getAttribute("data-route");
+        let linkNorm = "";
+        if (routeKey) {
+            linkNorm = routeKey === "home" ? "home" : normalizePath(ROUTES[routeKey] || href);
+        } else if (href) {
+            linkNorm = normalizePath(href);
+        }
 
-        const href = link
-            .getAttribute("href")
-            ?.split("/")
-            .pop()
-            .split("?")[0]
-            .split("#")[0];
-
-        if (href === currentPath) {
+        if (currentNorm && linkNorm === currentNorm) {
             link.classList.add("active");
         } else {
             link.classList.remove("active");
         }
-
     });
-
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+async function loadComponent(id, file) {
+    const container = document.getElementById(id);
+    if (!container) return;
 
+    try {
+        const res = await fetch(file);
+        if (!res.ok) return;
+        const html = await res.text();
+        container.innerHTML = html;
+
+        applyRoutes(container);
+
+        if (id === "header") {
+            setActiveNav();
+            // 👇 LOAD AUTH NAV AFTER HEADER EXISTS
+            import("./auth-navbar.js");
+        }
+    } catch (error) {
+        console.error(`Failed to load component ${id}:`, error);
+    }
+}
+
+function initLayout() {
+    applyRoutes(document);
     loadComponent("header", "/components/header.html");
-
     loadComponent("footer", "/components/footer.html");
+}
 
-});
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initLayout);
+} else {
+    initLayout();
+}
 
 
 

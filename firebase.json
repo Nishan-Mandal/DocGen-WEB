@@ -22,6 +22,18 @@
       {
         "source": "/contact",
         "destination": "/components/pages/contact.html"
+      },
+      {
+        "source": "/terms",
+        "destination": "/components/pages/terms_conditions.html"
+      },
+      {
+        "source": "/privacy",
+        "destination": "/components/pages/privacy_policy.html"
+      },
+      {
+        "source": "/refund",
+        "destination": "/components/pages/refund_policy.html"
       }
     ]
   }
