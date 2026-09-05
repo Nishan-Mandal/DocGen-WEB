@@ -21,6 +21,7 @@ export const ROUTES = {
         : "/refund",
 
     // Application pages
-    dashboard: "/dashboard.html",
-    signup: "/components/signup.html"
+    dashboard: isLocal ? "/dashboard.html" : "/dashboard",
+    signup: isLocal ? "/components/signup.html" : "/signup",
+    login: isLocal ? "/components/login.html" : "/login"
 };
