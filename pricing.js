@@ -1,5 +1,6 @@
 import { auth } from "./components/firebase.js";
 import { showToast } from "./components/util.js";
+import { ROUTES } from "./routes.js";
 
 const API_BASE =
     "https://docgen-service-746637463346.us-central1.run.app";
@@ -47,7 +48,7 @@ async function subscribe(plan, button) {
         const user = auth.currentUser;
 
         if (!user) {
-            window.location.href = "/dashboard.html";
+            window.location.href = ROUTES.dashboard;
             return;
         }
 

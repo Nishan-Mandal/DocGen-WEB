@@ -34,6 +34,18 @@
       {
         "source": "/refund",
         "destination": "/components/pages/refund_policy.html"
+      },
+      {
+        "source": "/dashboard",
+        "destination": "/dashboard.html"
+      },
+      {
+        "source": "/signup",
+        "destination": "/components/signup.html"
+      },
+      {
+        "source": "/login",
+        "destination": "/components/login.html"
       }
     ]
   }
