@@ -6,5 +6,9 @@ Disallow: /signup
 Disallow: /components/signup.html
 Disallow: /login
 Disallow: /components/login.html
+Disallow: /components/templates.html
+Disallow: /components/transactions.html
+Disallow: /components/header.html
+Disallow: /components/footer.html
 
 Sitemap: https://everypapers.com/sitemap.xml

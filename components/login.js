@@ -34,22 +34,23 @@ const googleBtn = document.getElementById("google-social-btn");
 
 googleBtn?.addEventListener("click", async () => {
   try {
+    const result = await signInWithPopup(auth, googleProvider);
 
     showLoader();
 
-    const result = await signInWithPopup(auth, googleProvider);
-
-    await createUserDocument(result.user.displayName);
+    try {
+      await createUserDocument(result.user.displayName || result.user.email?.split("@")[0] || "User");
+    } catch (docErr) {
+      console.warn("User document sync note:", docErr);
+    }
 
     console.log("Google Login Success:", result.user);
 
-    hideLoader();
-
-    window.location.href = ROUTES.docs;
+    window.location.href = ROUTES.dashboard;
 
   } catch (error) {
-    console.error(error.message);
     hideLoader();
+    console.error("Google Login Error:", error);
     showToast(
       getErrorMessage(error),
       "error"
@@ -223,7 +224,20 @@ forgotPasswordLink?.addEventListener("click", async (e) => {
 });
 
 function getErrorMessage(error) {
+  if (!error) return "An unexpected error occurred.";
+  if (error.code === "auth/unauthorized-domain") {
+    return "Domain not authorized. If testing locally, open http://localhost:5500 instead of 127.0.0.1, or add 127.0.0.1 to Firebase Console > Authentication > Settings > Authorized domains.";
+  }
+  if (error.code === "auth/popup-blocked") {
+    return "Sign-in popup was blocked by your browser. Please allow popups for this site.";
+  }
+  if (error.code === "auth/popup-closed-by-user") {
+    return "Sign-in popup was closed before completing.";
+  }
+  if (error.code === "auth/cancelled-popup-request") {
+    return "Sign-in request was cancelled.";
+  }
   return error.message
     ?.replace(/^Firebase:\s*/i, "")
-    .trim();
+    .trim() || "An unexpected error occurred.";
 }
