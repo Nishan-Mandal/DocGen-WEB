@@ -16,7 +16,7 @@ import { getStorage } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-
 
 const firebaseConfig = {
   apiKey: "AIzaSyASatu0YuaLlj25WXlV7vobgRoxSDc7COU",
-  authDomain: "docgen-api-94fbd.firebaseapp.com",
+  authDomain: "auth.everypapers.com",
   projectId: "docgen-api-94fbd",
   storageBucket: "docgen-api-94fbd.firebasestorage.app",
   messagingSenderId: "746637463346",
@@ -32,4 +32,3 @@ export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const googleProvider = new GoogleAuthProvider();
 export const storage = getStorage(app);
-
