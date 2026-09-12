@@ -14,16 +14,75 @@
 
     <link rel="canonical" href="https://everypapers.com/pricing">
 
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Pricing | EveryPapers Document Generation API">
+    <meta property="og:description"
+        content="Explore EveryPapers pricing plans for automated PDF and DOCX document generation. Start free and scale with your needs.">
+    <meta property="og:url" content="https://everypapers.com/pricing">
+    <meta property="og:site_name" content="EveryPapers">
+    <meta property="og:image" content="https://everypapers.com/components/assets/og-image.png">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pricing | EveryPapers Document Generation API">
+    <meta name="twitter:description"
+        content="Explore EveryPapers pricing plans for automated PDF and DOCX document generation. Start free and scale with your needs.">
+    <meta name="twitter:image" content="https://everypapers.com/components/assets/og-image.png">
+
     <!-- Favicon -->
     <link rel="icon" href="/components/assets/favicon.png" type="image/png">
     <link rel="shortcut icon" href="/components/assets/favicon.png" type="image/png">
 
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "EveryPapers Document Generation API",
+        "description": "API for automated PDF and DOCX document generation from reusable templates and dynamic data.",
+        "brand": {
+            "@type": "Brand",
+            "name": "EveryPapers"
+        },
+        "offers": [
+            {
+                "@type": "Offer",
+                "name": "Free Plan",
+                "price": "0",
+                "priceCurrency": "USD",
+                "description": "1,000 documents per month, 1 API key, custom webhooks, email delivery, unlimited templates"
+            },
+            {
+                "@type": "Offer",
+                "name": "Starter Plan",
+                "price": "14",
+                "priceCurrency": "USD",
+                "description": "2,000 documents per month, 3 API keys, custom webhooks, email delivery, unlimited templates, dedicated support"
+            },
+            {
+                "@type": "Offer",
+                "name": "Growth Plan",
+                "price": "49",
+                "priceCurrency": "USD",
+                "description": "8,000 documents per month, 8 API keys, custom webhooks, email delivery, unlimited templates, dedicated support"
+            },
+            {
+                "@type": "Offer",
+                "name": "Enterprise Plan",
+                "price": "Custom",
+                "priceCurrency": "USD",
+                "description": "Unlimited documents, unlimited API keys, unlimited templates, dedicated support"
+            }
+        ]
+    }
+    </script>
+
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
@@ -405,7 +464,8 @@
         <!-- Pricing Section -->
         <section class="py-20">
             <div class="max-w-7xl mx-auto px-6">
-                <h2 class="font-h2 text-h2 text-center mb-16">Simple, Scalable Pricing</h2>
+                <h1 class="font-h1 text-h1 text-center mb-4">Simple, Scalable Pricing</h1>
+                <p class="text-on-surface-variant text-center max-w-2xl mx-auto mb-16 text-body-lg">Automate PDF and DOCX document generation with transparent, predictable pricing. Start free and scale seamlessly.</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     <!-- Free -->
                     <div class="glass-card p-xl rounded-2xl flex flex-col">
