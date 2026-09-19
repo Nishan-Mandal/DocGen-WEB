@@ -1,42 +1,124 @@
 <nav
-    class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md shadow-sm border-b border-slate-200 dark:border-slate-800">
-    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <div class="flex items-center gap-8">
-            <div class="flex items-center gap-12">
-                <a href="/" data-route="home" class="flex items-center gap-0">
-                    <img
-                        src="/components/assets/logo.png"
-                        alt="EveryPapers Logo"
-                        class="w-12 h-15 object-contain"
-                    />
-            
-                    <span class="text-xl font-h3 font-bold tracking-tight">
-                        <span class="text-slate-900 dark:text-white">Every</span><span class="text-[#712AE2]">Papers</span>
-                    </span>
-                </a>
-            
-                <div class="hidden md:flex items-center gap-6">
-                    <a href="/" data-route="home" class="nav-link text-sm">Product</a>
-                    <a href="/docs" data-route="docs" class="nav-link text-sm">Documentation</a>
-                    <a href="/pricing" data-route="pricing" class="nav-link text-sm">Pricing</a>
-                    <a id="dashboard-tab" href="/dashboard" data-route="dashboard" class="nav-link text-sm">Dashboard</a>
-                </div>
+    class="fixed top-0 w-full z-50 bg-white/85 dark:bg-slate-950/85 backdrop-blur-md shadow-sm border-b border-slate-200/80 dark:border-slate-800">
+    <style>
+        #header .nav-link {
+            position: relative;
+            color: #475569;
+            transition: color 0.2s ease;
+        }
+        #header .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0%;
+            height: 2px;
+            background: #712AE2;
+            transition: width 0.25s ease;
+            border-radius: 2px;
+        }
+        #header .nav-link:hover {
+            color: #712AE2;
+        }
+        #header .nav-link.active {
+            color: #712AE2;
+            font-weight: 600;
+        }
+        #header .nav-link.active::after {
+            width: 100%;
+        }
+        .dark #header .nav-link {
+            color: #94a3b8;
+        }
+        .dark #header .nav-link:hover,
+        .dark #header .nav-link.active {
+            color: #a855f7;
+        }
+        .dark #header .nav-link::after {
+            background: #a855f7;
+        }
+    </style>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+        <!-- Brand & Desktop Nav -->
+        <div class="flex items-center gap-6 lg:gap-10">
+            <a href="/" data-route="home" class="flex items-center gap-1.5 focus:outline-none">
+                <img
+                    src="/components/assets/logo.png"
+                    alt="EveryPapers Logo"
+                    class="w-9 h-9 sm:w-10 sm:h-10 object-contain"
+                />
+        
+                <span class="text-xl font-h3 font-bold tracking-tight">
+                    <span class="text-slate-900 dark:text-white">Every</span><span class="text-[#712AE2]">Papers</span>
+                </span>
+            </a>
+        
+            <div class="hidden md:flex items-center gap-6 lg:gap-8">
+                <a href="/" data-route="home" class="nav-link text-sm font-medium">Product</a>
+                <a href="/docs" data-route="docs" class="nav-link text-sm font-medium">Documentation</a>
+                <a href="/pricing" data-route="pricing" class="nav-link text-sm font-medium">Pricing</a>
+                <a id="dashboard-tab" href="/dashboard" data-route="dashboard" class="nav-link text-sm font-medium">Dashboard</a>
             </div>
         </div>
-        <div id="auth-section" class="flex items-center gap-4">
 
-            <!-- Loader -->
-            <div id="auth-loader" class="flex items-center gap-3 animate-pulse">
-        
-                <div class="hidden md:flex flex-col gap-2">
-                    <div class="h-3 w-24 bg-slate-200 rounded"></div>
-                    <div class="h-2 w-32 bg-slate-200 rounded"></div>
+        <!-- Right Side: Auth & Mobile Menu Button -->
+        <div class="flex items-center gap-2 sm:gap-4">
+            <div id="auth-section" class="flex items-center gap-3">
+                <!-- Loader -->
+                <div id="auth-loader" class="hidden md:flex items-center gap-2 sm:gap-3 animate-pulse">
+                    <div class="hidden sm:flex flex-col gap-1.5">
+                        <div class="h-3 w-16 sm:w-20 bg-slate-200 rounded"></div>
+                        <div class="h-2 w-20 sm:w-28 bg-slate-200 rounded"></div>
+                    </div>
+                    <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-slate-200"></div>
                 </div>
-        
-                <div class="w-9 h-9 rounded-full bg-slate-200"></div>
-        
             </div>
-        
+
+            <!-- Mobile Hamburger Button -->
+            <button
+                id="mobile-menu-btn"
+                type="button"
+                aria-label="Toggle navigation menu"
+                aria-expanded="false"
+                class="md:hidden inline-flex items-center justify-center p-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-[#712AE2]">
+                <span id="mobile-menu-icon-open" class="material-symbols-outlined text-2xl">menu</span>
+                <span id="mobile-menu-icon-close" class="material-symbols-outlined text-2xl hidden">close</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div
+        id="mobile-menu"
+        class="hidden md:hidden border-b border-slate-200/80 dark:border-slate-800 bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl transition-all duration-300 shadow-xl">
+        <div class="px-5 pt-3 pb-6 space-y-3">
+            <div class="space-y-1">
+                <a href="/" data-route="home" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 hover:text-[#712AE2] hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-900 transition-colors">
+                    <span class="material-symbols-outlined text-xl text-[#712AE2]">inventory_2</span>
+                    Product
+                </a>
+                <a href="/docs" data-route="docs" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 hover:text-[#712AE2] hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-900 transition-colors">
+                    <span class="material-symbols-outlined text-xl text-[#712AE2]">description</span>
+                    Documentation
+                </a>
+                <a href="/pricing" data-route="pricing" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 hover:text-[#712AE2] hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-900 transition-colors">
+                    <span class="material-symbols-outlined text-xl text-[#712AE2]">payments</span>
+                    Pricing
+                </a>
+                <a href="/dashboard" data-route="dashboard" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 hover:text-[#712AE2] hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-900 transition-colors">
+                    <span class="material-symbols-outlined text-xl text-[#712AE2]">dashboard</span>
+                    Dashboard
+                </a>
+            </div>
+
+            <div id="mobile-drawer-auth" class="pt-3 border-t border-slate-200/60 dark:border-slate-800/80 flex flex-col gap-2">
+                <a href="/components/login.html" data-route="login" class="w-full text-center py-2.5 px-4 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 text-sm font-semibold hover:bg-slate-50 dark:hover:bg-slate-900 transition-all">
+                    Sign In
+                </a>
+                <a href="/components/signup.html" data-route="signup" class="w-full text-center py-2.5 px-4 rounded-xl bg-[#712AE2] text-white text-sm font-semibold hover:opacity-90 shadow-md shadow-[#712AE2]/20 transition-all">
+                    Get Started Free
+                </a>
+            </div>
         </div>
     </div>
 </nav>

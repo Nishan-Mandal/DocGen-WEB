@@ -1,33 +1,31 @@
 <!DOCTYPE html>
-
 <html class="light" lang="en">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Pricing | EveryPapers Document Generation API</title>
+    <title>Pricing Plans | EveryPapers Document Generation API</title>
 
     <meta name="description"
-        content="Explore EveryPapers pricing plans for automated PDF and DOCX document generation. Start free and choose a plan that scales with your document generation needs.">
+        content="Transparent, predictable pricing for automated PDF and DOCX document generation. Start free with 1,000 documents per month and scale effortlessly.">
 
     <meta name="robots" content="index, follow">
-
     <link rel="canonical" href="https://everypapers.com/pricing">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Pricing | EveryPapers Document Generation API">
+    <meta property="og:title" content="Pricing Plans | EveryPapers Document Generation API">
     <meta property="og:description"
-        content="Explore EveryPapers pricing plans for automated PDF and DOCX document generation. Start free and scale with your needs.">
+        content="Transparent, predictable pricing for automated PDF and DOCX document generation. Start free with 1,000 documents per month and scale effortlessly.">
     <meta property="og:url" content="https://everypapers.com/pricing">
     <meta property="og:site_name" content="EveryPapers">
     <meta property="og:image" content="https://everypapers.com/components/assets/og-image.png">
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Pricing | EveryPapers Document Generation API">
+    <meta name="twitter:title" content="Pricing Plans | EveryPapers Document Generation API">
     <meta name="twitter:description"
-        content="Explore EveryPapers pricing plans for automated PDF and DOCX document generation. Start free and scale with your needs.">
+        content="Transparent, predictable pricing for automated PDF and DOCX document generation. Start free with 1,000 documents per month and scale effortlessly.">
     <meta name="twitter:image" content="https://everypapers.com/components/assets/og-image.png">
 
     <!-- Favicon -->
@@ -58,21 +56,21 @@
                 "name": "Starter Plan",
                 "price": "14",
                 "priceCurrency": "USD",
-                "description": "2,000 documents per month, 3 API keys, custom webhooks, email delivery, unlimited templates, dedicated support"
+                "description": "2,000 documents per month, 3 API keys, custom webhooks, email delivery, unlimited templates, community support"
             },
             {
                 "@type": "Offer",
                 "name": "Growth Plan",
                 "price": "49",
                 "priceCurrency": "USD",
-                "description": "8,000 documents per month, 8 API keys, custom webhooks, email delivery, unlimited templates, dedicated support"
+                "description": "8,000 documents per month, 8 API keys, custom webhooks, email delivery, priority processing, priority support"
             },
             {
                 "@type": "Offer",
                 "name": "Enterprise Plan",
                 "price": "Custom",
                 "priceCurrency": "USD",
-                "description": "Unlimited documents, unlimited API keys, unlimited templates, dedicated support"
+                "description": "Custom high volume documents, unlimited API keys, dedicated SLA, custom template design service"
             }
         ]
     }
@@ -82,131 +80,72 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap"
         rel="stylesheet" />
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
+
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
-                    "colors": {
-                        "outline": "#76777d",
-                        "on-secondary-container": "#fffbff",
-                        "surface-dim": "#d8dadc",
-                        "on-error-container": "#93000a",
-                        "error-container": "#ffdad6",
-                        "background": "#f7f9fb",
-                        "secondary-container": "#8a4cfc",
-                        "on-tertiary": "#ffffff",
-                        "on-primary-fixed-variant": "#3f465c",
-                        "surface": "#f7f9fb",
-                        "secondary-fixed-dim": "#d2bbff",
-                        "on-tertiary-container": "#d33de5",
-                        "on-surface": "#191c1e",
-                        "primary-fixed-dim": "#bec6e0",
-                        "inverse-primary": "#bec6e0",
-                        "on-primary-fixed": "#131b2e",
-                        "tertiary": "#000000",
-                        "surface-container-highest": "#e0e3e5",
-                        "surface-container": "#eceef0",
-                        "secondary": "#712ae2",
-                        "on-tertiary-fixed-variant": "#7d008c",
-                        "error": "#ba1a1a",
+                    colors: {
                         "primary": "#000000",
-                        "on-primary": "#ffffff",
-                        "surface-tint": "#565e74",
-                        "on-surface-variant": "#45464d",
-                        "tertiary-container": "#36003d",
-                        "surface-container-high": "#e6e8ea",
-                        "tertiary-fixed": "#ffd6fb",
-                        "tertiary-fixed-dim": "#fda9ff",
-                        "surface-container-low": "#f2f4f6",
-                        "on-secondary-fixed": "#25005a",
-                        "inverse-surface": "#2d3133",
-                        "secondary-fixed": "#eaddff",
-                        "on-secondary": "#ffffff",
-                        "on-primary-container": "#7c839b",
-                        "primary-fixed": "#dae2fd",
-                        "inverse-on-surface": "#eff1f3",
-                        "surface-bright": "#f7f9fb",
-                        "surface-variant": "#e0e3e5",
-                        "on-secondary-fixed-variant": "#5a00c6",
-                        "on-background": "#191c1e",
-                        "surface-container-lowest": "#ffffff",
-                        "on-tertiary-fixed": "#36003d",
-                        "outline-variant": "#c6c6cd",
-                        "on-error": "#ffffff",
-                        "primary-container": "#131b2e"
+                        "secondary": "#712ae2",
+                        "surface": "#f8fafc",
+                        "background": "#ffffff",
+                        "on-surface": "#0f172a",
+                        "on-surface-variant": "#475569",
+                        "outline": "#94a3b8",
+                        "outline-variant": "#cbd5e1",
+                        "secondary-container": "#7c3aed",
+                        "primary-container": "#090d16"
                     },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    "spacing": {
-                        "sm": "0.5rem",
-                        "xs": "0.25rem",
-                        "md": "1rem",
-                        "lg": "1.5rem",
-                        "gutter": "1.5rem",
-                        "xl": "2.5rem",
-                        "container-max": "1280px"
-                    },
-                    "fontFamily": {
-                        "code": ["JetBrains Mono"],
-                        "label-md": ["Inter"],
-                        "body-lg": ["Inter"],
-                        "h2": ["Inter"],
-                        "body-md": ["Inter"],
-                        "h1": ["Inter"],
-                        "body-sm": ["Inter"],
-                        "h3": ["Inter"]
-                    },
-                    "fontSize": {
-                        "code": ["14px", { "lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400" }],
-                        "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500" }],
-                        "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
-                        "h2": ["30px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
-                        "body-md": ["16px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
-                        "h1": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
-                        "body-sm": ["14px", { "lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400" }],
-                        "h3": ["24px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    fontFamily: {
+                        "sans": ["Inter", "sans-serif"],
+                        "code": ["'JetBrains Mono'", "monospace"]
                     }
-                },
-            },
-        }
+                }
+            }
+        };
     </script>
+
     <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+            scroll-behavior: smooth;
         }
 
+        .font-code,
+        code,
+        pre {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Ambient mesh gradient matching landing page */
         .mesh-gradient {
-            background-color: #f7f9fb;
-            background-image: radial-gradient(at 0% 0%, rgba(138, 76, 252, 0.1) 0px, transparent 50%),
-                radial-gradient(at 100% 0%, rgba(113, 42, 226, 0.05) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(138, 76, 252, 0.08) 0px, transparent 50%),
-                radial-gradient(at 0% 100%, rgba(113, 42, 226, 0.05) 0px, transparent 50%);
+            background-color: #f8fafc;
+            background-image:
+                radial-gradient(at 0% 0%, rgba(113, 42, 226, 0.08) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(138, 63, 252, 0.06) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(113, 42, 226, 0.04) 0px, transparent 60%);
         }
 
+        /* Glassmorphism cards matching landing page */
         .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(226, 232, 240, 0.8);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(226, 232, 240, 0.9);
         }
 
-        .cta-gradient {
-            background: linear-gradient(135deg, #712ae2 0%, #8a4cfc 100%);
-        }
-    </style>
-    <style>
+        /* Header Navigation link active underline transition */
         .nav-link {
             position: relative;
-            color: #64748b;
+            color: #475569;
             transition: color 0.2s ease;
         }
 
@@ -214,15 +153,20 @@
             content: "";
             position: absolute;
             left: 0;
-            bottom: -6px;
+            bottom: -4px;
             width: 0%;
             height: 2px;
-            background: #6366f1;
-            transition: width 0.3s ease;
+            background: #712AE2;
+            transition: width 0.25s ease;
+            border-radius: 2px;
+        }
+
+        .nav-link:hover {
+            color: #712AE2;
         }
 
         .nav-link.active {
-            color: #6366f1;
+            color: #712AE2;
             font-weight: 600;
         }
 
@@ -230,557 +174,710 @@
             width: 100%;
         }
 
-        /* ===============================
-   TOAST
-=============================== */
+        .dark .nav-link {
+            color: #94a3b8;
+        }
 
+        .dark .nav-link:hover,
+        .dark .nav-link.active {
+            color: #a855f7;
+        }
+
+        .dark .nav-link::after {
+            background: #a855f7;
+        }
+
+        /* Custom Scrollbar */
+        .thin-scrollbar::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+
+        .thin-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 999px;
+        }
+
+        /* Toast Container */
         #toastContainer {
-
             position: fixed;
-
             top: 88px;
-
             right: 24px;
-
             z-index: 9999;
-
             display: flex;
-
             flex-direction: column;
-
             gap: 12px;
-
         }
 
         .toast {
-
             opacity: 0;
-
-            transform:
-                translateX(40px);
-
-            transition:
-                all .3s ease;
-
+            transform: translateX(40px);
+            transition: all .3s ease;
         }
 
         .toast.show {
-
             opacity: 1;
-
-            transform:
-                translateX(0);
-
+            transform: translateX(0);
         }
 
         .toast-inner {
-
             position: relative;
-
             overflow: hidden;
-
             display: flex;
-
             align-items: center;
-
             gap: 14px;
-
             min-width: 320px;
-
             max-width: 420px;
-
             padding: 16px 18px;
-
             border-radius: 18px;
-
-            backdrop-filter:
-                blur(16px);
-
-            background:
-                rgba(255,
-                    255,
-                    255,
-                    0.88);
-
-            box-shadow:
-                0 12px 40px rgba(0,
-                    0,
-                    0,
-                    .08);
-
+            backdrop-filter: blur(16px);
+            background: rgba(255, 255, 255, 0.94);
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, .08);
         }
 
         .toast-icon {
-
-            width: 42px;
-
-            height: 42px;
-
+            width: 40px;
+            height: 40px;
             border-radius: 12px;
-
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
+            shrink: 0;
         }
 
         .toast-content {
-
             flex: 1;
-
             font-size: 14px;
-
             font-weight: 500;
-
+            color: #0f172a;
         }
 
         .toast-progress {
-
             position: absolute;
-
             bottom: 0;
-
             left: 0;
-
             width: 100%;
-
             height: 3px;
-
             transform-origin: left;
-
-            animation:
-                shrink linear forwards;
-
+            animation: shrink linear forwards;
         }
 
-        /* COLORS */
-
         .toast.success .toast-icon {
-
-            background:
-                rgba(34,
-                    197,
-                    94,
-                    .12);
-
-            color:
-                #16a34a;
-
+            background: rgba(16, 185, 129, 0.12);
+            color: #10b981;
         }
 
         .toast.success .toast-progress {
-
-            background:
-                #16a34a;
-
+            background: #10b981;
         }
 
         .toast.error .toast-icon {
-
-            background:
-                rgba(239,
-                    68,
-                    68,
-                    .12);
-
-            color:
-                #dc2626;
-
+            background: rgba(239, 68, 68, 0.12);
+            color: #ef4444;
         }
 
         .toast.error .toast-progress {
-
-            background:
-                #dc2626;
-
-        }
-
-        .toast.warning .toast-icon {
-
-            background:
-                rgba(245,
-                    158,
-                    11,
-                    .12);
-
-            color:
-                #d97706;
-
-        }
-
-        .toast.warning .toast-progress {
-
-            background:
-                #d97706;
-
+            background: #ef4444;
         }
 
         .toast.info .toast-icon {
-
-            background:
-                rgba(113,
-                    42,
-                    226,
-                    .12);
-
-            color:
-                #712ae2;
-
+            background: rgba(113, 42, 226, 0.12);
+            color: #712ae2;
         }
 
         .toast.info .toast-progress {
-
-            background:
-                #712ae2;
-
+            background: #712ae2;
         }
 
         @keyframes shrink {
-
             from {
-
-                transform:
-                    scaleX(1);
-
+                transform: scaleX(1);
             }
-
             to {
-
-                transform:
-                    scaleX(0);
-
+                transform: scaleX(0);
             }
-
         }
     </style>
 </head>
 
-<body class="bg-background text-on-surface font-body-md antialiased overflow-x-hidden">
-    <!-- TopNavBar -->
+<body class="bg-surface text-on-surface font-sans antialiased selection:bg-purple-100 selection:text-purple-900">
+    <!-- Header injected from layout.js -->
     <div id="header"></div>
-    <main class="pt-8">
-        <!-- Pricing Section -->
-        <section class="py-20">
-            <div class="max-w-7xl mx-auto px-6">
-                <h1 class="font-h1 text-h1 text-center mb-4">Simple, Scalable Pricing</h1>
-                <p class="text-on-surface-variant text-center max-w-2xl mx-auto mb-16 text-body-lg">Automate PDF and DOCX document generation with transparent, predictable pricing. Start free and scale seamlessly.</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <!-- Free -->
-                    <div class="glass-card p-xl rounded-2xl flex flex-col">
-                        <div class="mb-8">
-                            <span
-                                class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Free</span>
-                            <div class="flex items-baseline mt-4">
-                                <span class="text-h1 font-bold">$0</span>
-                                <span class="font-body-sm text-on-surface-variant ml-2">/month</span>
+
+    <main class="pt-16">
+        <!-- ========================================================================= -->
+        <!-- HERO & PRICING PLANS SECTION                                              -->
+        <!-- ========================================================================= -->
+        <section class="mesh-gradient pt-16 sm:pt-20 pb-20 border-b border-slate-200/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+                <!-- Heading & Billing Toggle -->
+                <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+                    <span class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold uppercase tracking-wider text-[#712AE2] bg-purple-50 px-3.5 py-1 rounded-full border border-purple-100/80 shadow-sm">
+                        <span class="material-symbols-outlined text-[16px]">verified</span>
+                        <span>Predictable & Transparent</span>
+                    </span>
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 mt-4 tracking-tight">
+                        Simple, Scalable Pricing
+                    </h1>
+                    <p class="text-base sm:text-lg text-slate-600 mt-4 max-w-2xl mx-auto leading-relaxed">
+                        Automate PDF and DOCX document generation with transparent, predictable plans. Start free with 1,000 documents every month and scale effortlessly.
+                    </p>
+
+                    <!-- Monthly / Annual Toggle Switch -->
+                    <div class="mt-8 inline-flex items-center gap-3 p-1.5 rounded-2xl bg-slate-200/80 border border-slate-300/80 shadow-inner">
+                        <button id="billing-monthly"
+                            class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-slate-900 shadow-sm">
+                            Monthly Billing
+                        </button>
+                        <button id="billing-annual"
+                            class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-slate-600 hover:text-slate-900 transition-all flex items-center gap-1.5">
+                            Annual Billing
+                            <span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-bold">Save 20%</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 4 Pricing Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 sm:gap-8 items-stretch mb-8">
+
+                    <!-- Free Plan -->
+                    <div class="glass-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                        <div>
+                            <div class="mb-6">
+                                <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Free Tier</span>
+                                <div class="flex items-baseline mt-2">
+                                    <span class="text-3xl sm:text-4xl font-extrabold text-slate-900">$0</span>
+                                    <span class="text-xs text-slate-500 ml-1.5">/forever</span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-2">Perfect for prototyping, testing, and hobby apps.</p>
+                            </div>
+
+                            <div class="border-t border-slate-100 pt-5 mb-6">
+                                <ul class="space-y-3.5 text-xs sm:text-sm text-slate-700">
+                                    <li class="flex items-center gap-2.5">
+                                        <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
+                                        <span><strong>1,000</strong> documents / month</span>
+                                    </li>
+                                    <li class="flex items-center gap-2.5">
+                                        <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
+                                        <span>1 Active API Key</span>
+                                    </li>
+                                    <li class="flex items-center gap-2.5">
+                                        <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
+                                        <span>Custom Webhook Callbacks</span>
+                                    </li>
+                                    <li class="flex items-center gap-2.5">
+                                        <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
+                                        <span>Email Notification Delivery</span>
+                                    </li>
+                                    <li class="flex items-center gap-2.5">
+                                        <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
+                                        <span>Unlimited DOCX Templates</span>
+                                    </li>
+                                    <li class="flex items-center gap-2.5 text-slate-400">
+                                        <span class="material-symbols-outlined text-base">close</span>
+                                        <span>Dedicated SLA Support</span>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
-                        <ul class="space-y-4 mb-12 flex-1">
-                            <li class="flex gap-2 items-center text-body-sm"><span
-                                    class="material-symbols-outlined text-emerald-500">check</span> 1000
-                                documents
-                            </li>
 
-                            <li class="flex gap-2 items-center text-body-sm"><span
-                                    class="material-symbols-outlined text-emerald-500">check</span> 1 API Key</li>
-                            <li class="flex gap-2 items-center text-body-sm"><span
-                                    class="material-symbols-outlined text-emerald-500">check</span> Custom Webhooks</li>
-                            <li class="flex gap-2 items-center text-body-sm"><span
-                                    class="material-symbols-outlined text-emerald-500">check</span> Email Delivery</li>
-                            <li class="flex gap-2 items-center text-body-sm"><span
-                                    class="material-symbols-outlined text-emerald-500">check</span> Unlimited Templates
-                            </li>
-                            <li class="flex gap-2 items-center text-body-sm text-on-surface-variant opacity-50"><span
-                                    class="material-symbols-outlined">close</span>Dedicated Support
-                            </li>
-                        </ul>
                         <a href="/dashboard" data-route="dashboard"
-                            class="w-full border border-outline-variant py-3 rounded-xl font-label-md block text-center">Start
-                            Free</a>
+                            class="w-full border border-slate-300 hover:border-slate-400 hover:bg-slate-50 text-slate-800 font-semibold py-3.5 rounded-xl text-sm text-center block transition-all shadow-sm">
+                            Start Free
+                        </a>
                     </div>
-                    <!-- Starter -->
-                    <div class="glass-card p-xl rounded-2xl flex flex-col">
-                        <div class="mb-8">
-                            <span
-                                class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Starter</span>
-                            <div class="flex items-baseline mt-4">
-                                <span class="text-h1 font-bold">$14</span>
-                                <span class="font-body-sm text-on-surface-variant ml-2">/month</span>
+
+                    <!-- Starter Plan -->
+                    <div class="glass-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                        <div>
+                            <div class="mb-6">
+                                <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Starter</span>
+                                <div class="flex items-baseline mt-2">
+                                    <span class="price-val text-3xl sm:text-4xl font-extrabold text-slate-900"
+                                        data-monthly="14" data-annual="11">$14</span>
+                                    <span class="price-period text-xs text-slate-500 ml-1.5">/month</span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-2">For growing products, startups, and small teams.</p>
+                            </div>
+
+                            <div class="border-t border-slate-100 pt-5 mb-6">
+                                <ul class="space-y-3.5 text-xs sm:text-sm text-slate-700">
+                                    <li class="flex items-center gap-2.5">
+                                        <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
+                                        <span><strong>2,000</strong> documents / month</span>
+                                    </li>
+                                    <li class="flex items-center gap-2.5">
+                                        <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
+                                        <span>3 Active API Keys</span>
+                                    </li>
+                                    <li class="flex items-center gap-2.5">
+                                        <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
+                                        <span>Custom Webhook Callbacks</span>
+                                    </li>
+                                    <li class="flex items-center gap-2.5">
+                                        <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
+                                        <span>Direct Email Delivery</span>
+                                    </li>
+                                    <li class="flex items-center gap-2.5">
+                                        <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
+                                        <span>Unlimited DOCX Templates</span>
+                                    </li>
+                                    <li class="flex items-center gap-2.5">
+                                        <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
+                                        <span>Community Support</span>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
-                        <ul class="space-y-4 mb-12 flex-1">
-                            <li class="flex gap-2 items-center text-body-sm"><span
-                                    class="material-symbols-outlined text-emerald-500">check</span> 2000
-                                documents/mo
-                            </li>
 
-                            <li class="flex gap-2 items-center text-body-sm"><span
-                                    class="material-symbols-outlined text-emerald-500">check</span> 3 API Keys</li>
-                            <li class="flex gap-2 items-center text-body-sm"><span
-                                    class="material-symbols-outlined text-emerald-500">check</span> Custom Webhooks</li>
-                            <li class="flex gap-2 items-center text-body-sm"><span
-                                    class="material-symbols-outlined text-emerald-500">check</span> Email Delivery</li>
-                            <li class="flex gap-2 items-center text-body-sm"><span
-                                    class="material-symbols-outlined text-emerald-500">check</span> Unlimited Templates
-                            </li>
-                            <li class="flex gap-2 items-center text-body-sm"><span
-                                    class="material-symbols-outlined text-emerald-500">check</span> Dedicated Support
-                            </li>
-                        </ul>
                         <button id="starterPlanBtn"
-                            class="w-full border border-outline-variant py-3 rounded-xl font-label-md">
-
-                            <span class="btn-text">
-                                Get Started
-                            </span>
-
-                            <span class="loader hidden inline-flex items-center gap-2">
-                                <svg class="animate-spin h-5 w-5" viewBox="0 0 24 24" fill="none">
-
-                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"
-                                        opacity=".25" />
-
+                            class="w-full border border-purple-200 text-[#712AE2] hover:bg-purple-50 font-semibold py-3.5 rounded-xl text-sm transition-all shadow-sm">
+                            <span class="btn-text">Get Started</span>
+                            <span class="loader hidden inline-flex items-center gap-2 justify-center">
+                                <svg class="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" opacity=".25" />
                                     <path fill="currentColor" d="M22 12a10 10 0 0 1-10 10V18a6 6 0 0 0 6-6h4z" />
-
-                                </svg>
-
-                                Loading...
-
+                                </svg> Loading...
                             </span>
                         </button>
                     </div>
-                    <!-- Growth -->
-                    <div
-                        class="glass-card p-xl rounded-2xl border-secondary-container ring-2 ring-secondary-container flex flex-col relative scale-105 z-10">
-                        <div
-                            class="absolute -top-4 left-1/2 -translate-x-1/2 bg-secondary text-white px-4 py-1 rounded-full font-label-md">
-                            Most Popular</div>
-                        <div class="mb-8">
-                            <span
-                                class="font-label-md text-label-md text-secondary uppercase tracking-wider">Growth</span>
-                            <div class="flex items-baseline mt-4">
-                                <span class="text-h1 font-bold text-secondary">$49</span>
-                                <span class="font-body-sm text-on-surface-variant ml-2">/month</span>
+
+                    <!-- Growth Plan (Most Popular) -->
+                    <div class="glass-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between relative shadow-2xl border-2 border-[#712AE2] bg-white ring-4 ring-purple-500/10 hover:-translate-y-1 transition-all duration-300">
+                        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#712AE2] text-white px-3.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider shadow-md">
+                            Most Popular
+                        </div>
+
+                        <div>
+                            <div class="mb-6 pt-1">
+                                <span class="text-xs font-bold uppercase tracking-wider text-[#712AE2]">Growth</span>
+                                <div class="flex items-baseline mt-2">
+                                    <span class="price-val text-3xl sm:text-4xl font-extrabold text-[#712AE2]"
+                                        data-monthly="49" data-annual="39">$49</span>
+                                    <span class="price-period text-xs text-slate-500 ml-1.5">/month</span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-2">High volume document workflows and scale-ups.</p>
+                            </div>
+
+                            <div class="border-t border-purple-100 pt-5 mb-6">
+                                <ul class="space-y-3.5 text-xs sm:text-sm text-slate-700">
+                                    <li class="flex items-center gap-2.5">
+                                        <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
+                                        <span><strong>8,000</strong> documents / month</span>
+                                    </li>
+                                    <li class="flex items-center gap-2.5">
+                                        <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
+                                        <span>8 Active API Keys</span>
+                                    </li>
+                                    <li class="flex items-center gap-2.5">
+                                        <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
+                                        <span>Priority Processing Queue</span>
+                                    </li>
+                                    <li class="flex items-center gap-2.5">
+                                        <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
+                                        <span>Custom Webhooks & Email Delivery</span>
+                                    </li>
+                                    <li class="flex items-center gap-2.5">
+                                        <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
+                                        <span>Unlimited DOCX Templates</span>
+                                    </li>
+                                    <li class="flex items-center gap-2.5">
+                                        <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
+                                        <span>Priority Developer Support</span>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
-                        <ul class="space-y-4 mb-12 flex-1">
-                            <li class="flex gap-2 items-center text-body-sm"><span
-                                    class="material-symbols-outlined text-emerald-500">check</span> 8000
-                                documents/mo
-                            </li>
 
-                            <li class="flex gap-2 items-center text-body-sm"><span
-                                    class="material-symbols-outlined text-emerald-500">check</span> 8 API Keys</li>
-                            <li class="flex gap-2 items-center text-body-sm"><span
-                                    class="material-symbols-outlined text-emerald-500">check</span> Custom Webhooks</li>
-                            <li class="flex gap-2 items-center text-body-sm"><span
-                                    class="material-symbols-outlined text-emerald-500">check</span> Email Delivery</li>
-                            <li class="flex gap-2 items-center text-body-sm"><span
-                                    class="material-symbols-outlined text-emerald-500">check</span> Unlimited Templates
-                            </li>
-                            <li class="flex gap-2 items-center text-body-sm"><span
-                                    class="material-symbols-outlined text-emerald-500">check</span> Dedicated Support
-                            </li>
-                        </ul>
                         <button id="growthPlanBtn"
-                            class="w-full bg-secondary text-white py-3 rounded-xl font-label-md shadow-lg shadow-secondary/20">
-                            <span class="btn-text">
-                                Get Started
-                            </span>
-
-                            <span class="loader hidden inline-flex items-center gap-2">
-                                <svg class="animate-spin h-5 w-5" viewBox="0 0 24 24" fill="none">
-
-                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"
-                                        opacity=".25" />
-
+                            class="w-full bg-[#712AE2] hover:bg-[#5e1ebf] text-white font-semibold py-3.5 rounded-xl text-sm transition-all shadow-lg shadow-purple-600/25">
+                            <span class="btn-text">Get Started</span>
+                            <span class="loader hidden inline-flex items-center gap-2 justify-center">
+                                <svg class="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
+                                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" opacity=".25" />
                                     <path fill="currentColor" d="M22 12a10 10 0 0 1-10 10V18a6 6 0 0 0 6-6h4z" />
-
-                                </svg>
-
-                                Loading...
-
+                                </svg> Loading...
                             </span>
                         </button>
                     </div>
-                    <!-- Enterprise -->
-                    <div class="glass-card p-xl rounded-2xl flex flex-col">
-                        <div class="mb-8">
-                            <span
-                                class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Enterprise</span>
-                            <div class="flex items-baseline mt-4">
-                                <span class="text-h1 font-bold">Custom</span>
+
+                    <!-- Enterprise Plan -->
+                    <div class="glass-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between border-slate-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                        <div>
+                            <div class="mb-6">
+                                <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Enterprise</span>
+                                <div class="flex items-baseline mt-2">
+                                    <span class="text-3xl sm:text-4xl font-extrabold text-slate-900">Custom</span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-2">Millions of documents with custom SLA & security.</p>
+                            </div>
+
+                            <div class="border-t border-slate-100 pt-5 mb-6">
+                                <ul class="space-y-3.5 text-xs sm:text-sm text-slate-700">
+                                    <li class="flex items-center gap-2.5">
+                                        <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
+                                        <span><strong>Unlimited</strong> documents / month</span>
+                                    </li>
+                                    <li class="flex items-center gap-2.5">
+                                        <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
+                                        <span>Unlimited API Keys & Teammates</span>
+                                    </li>
+                                    <li class="flex items-center gap-2.5">
+                                        <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
+                                        <span>Custom Font & Template Design Service</span>
+                                    </li>
+                                    <li class="flex items-center gap-2.5">
+                                        <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
+                                        <span>99.99% Uptime SLA Guarantee</span>
+                                    </li>
+                                    <li class="flex items-center gap-2.5">
+                                        <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
+                                        <span>Dedicated Slack Support</span>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
-                        <ul class="space-y-4 mb-12 flex-1">
-                            <li class="flex gap-2 items-center text-body-sm"><span
-                                    class="material-symbols-outlined text-emerald-500">check</span> Unlimited documents
-                            </li>
-                            <li class="flex gap-2 items-center text-body-sm"><span
-                                    class="material-symbols-outlined text-emerald-500">check</span> Unlimited API Keys
-                            </li>
-                            <li class="flex gap-2 items-center text-body-sm"><span
-                                    class="material-symbols-outlined text-emerald-500">check</span> Unlimited Templates
-                            </li>
-                            <li class="flex gap-2 items-center text-body-sm"><span
-                                    class="material-symbols-outlined text-emerald-500">check</span> Unlimited Features
-                            </li>
-                            <li class="flex gap-2 items-center text-body-sm"><span
-                                    class="material-symbols-outlined text-emerald-500">check</span> Dedicated Support
-                            </li>
-                        </ul>
+
                         <button id="contactSalesBtn"
-                            class="w-full border border-outline-variant py-3 rounded-xl font-label-md">Contact
-                            Sales</button>
+                            class="w-full border border-slate-300 hover:border-slate-400 hover:bg-slate-50 text-slate-800 font-semibold py-3.5 rounded-xl text-sm text-center block transition-all shadow-sm">
+                            Contact Enterprise Sales
+                        </button>
+                    </div>
+
+                </div>
+
+                <!-- Guarantee & Security Trust Banner -->
+                <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-10 pt-4 text-xs font-medium text-slate-500">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-emerald-600 text-[18px]">verified_user</span>
+                        <span>Secure Payments via Paddle</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-indigo-600 text-[18px]">cancel</span>
+                        <span>Cancel Anytime, No Contracts</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-purple-600 text-[18px]">bolt</span>
+                        <span>Instant Key Activation</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- ========================================================================= -->
+        <!-- FREQUENTLY ASKED QUESTIONS (FAQ ACCORDION)                                -->
+        <!-- ========================================================================= -->
+        <section class="py-16 sm:py-24 bg-surface border-b border-slate-200/80">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+                    <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#712AE2] bg-purple-50 px-3 py-1 rounded-full">
+                        FAQ
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-4 tracking-tight">
+                        Frequently Asked Questions
+                    </h2>
+                    <p class="text-sm sm:text-base text-slate-600 mt-3">
+                        Everything you need to know about billing, quotas, document limits, and enterprise support.
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Q1 -->
+                    <div class="faq-item glass-card rounded-2xl border border-slate-200 overflow-hidden transition-all shadow-sm">
+                        <button class="faq-btn w-full p-5 sm:p-6 text-left flex items-center justify-between font-bold text-slate-900 hover:text-[#712AE2] transition-colors focus:outline-none">
+                            <span class="text-sm sm:text-base">How does the Free Plan's 1,000 document quota work?</span>
+                            <span class="faq-icon material-symbols-outlined text-xl transition-transform duration-300 text-slate-400">expand_more</span>
+                        </button>
+                        <div class="faq-answer hidden px-5 sm:px-6 pb-5 sm:pb-6 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+                            The Free plan grants you 1,000 document generation requests each calendar day. Daily quotas reset automatically at 00:00 UTC. There is no credit card required to register and you can use all core features, including repeating tables, custom webhooks, and email delivery.
+                        </div>
+                    </div>
+
+                    <!-- Q2 -->
+                    <div class="faq-item glass-card rounded-2xl border border-slate-200 overflow-hidden transition-all shadow-sm">
+                        <button class="faq-btn w-full p-5 sm:p-6 text-left flex items-center justify-between font-bold text-slate-900 hover:text-[#712AE2] transition-colors focus:outline-none">
+                            <span class="text-sm sm:text-base">What happens if my application exceeds its monthly quota?</span>
+                            <span class="faq-icon material-symbols-outlined text-xl transition-transform duration-300 text-slate-400">expand_more</span>
+                        </button>
+                        <div class="faq-answer hidden px-5 sm:px-6 pb-5 sm:pb-6 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+                            When your quota is reached, the API returns an HTTP 400 error indicating <code class="font-code text-xs text-rose-600 bg-rose-50 px-1 py-0.5 rounded">Total quota exceeded</code>. You can upgrade your tier instantly from this pricing page or dashboard, and additional capacity will be provisioned immediately.
+                        </div>
+                    </div>
+
+                    <!-- Q3 -->
+                    <div class="faq-item glass-card rounded-2xl border border-slate-200 overflow-hidden transition-all shadow-sm">
+                        <button class="faq-btn w-full p-5 sm:p-6 text-left flex items-center justify-between font-bold text-slate-900 hover:text-[#712AE2] transition-colors focus:outline-none">
+                            <span class="text-sm sm:text-base">Can I switch between Monthly and Annual billing anytime?</span>
+                            <span class="faq-icon material-symbols-outlined text-xl transition-transform duration-300 text-slate-400">expand_more</span>
+                        </button>
+                        <div class="faq-answer hidden px-5 sm:px-6 pb-5 sm:pb-6 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+                            Yes. You can switch plans or upgrade at any time. When upgrading, your billing is prorated by Paddle. Annual subscriptions include a 20% discount across all paid tiers.
+                        </div>
+                    </div>
+
+                    <!-- Q4 -->
+                    <div class="faq-item glass-card rounded-2xl border border-slate-200 overflow-hidden transition-all shadow-sm">
+                        <button class="faq-btn w-full p-5 sm:p-6 text-left flex items-center justify-between font-bold text-slate-900 hover:text-[#712AE2] transition-colors focus:outline-none">
+                            <span class="text-sm sm:text-base">How does batch document generation work?</span>
+                            <span class="faq-icon material-symbols-outlined text-xl transition-transform duration-300 text-slate-400">expand_more</span>
+                        </button>
+                        <div class="faq-answer hidden px-5 sm:px-6 pb-5 sm:pb-6 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+                            You can send up to 200 records in a single <code class="font-code text-xs text-indigo-600">/v1/generate_document</code> request. EveryPapers processes each document in parallel using high-concurrency cloud workers and automatically compresses all resulting documents into a consolidated ZIP archive ready for download.
+                        </div>
+                    </div>
+
+                    <!-- Q5 -->
+                    <div class="faq-item glass-card rounded-2xl border border-slate-200 overflow-hidden transition-all shadow-sm">
+                        <button class="faq-btn w-full p-5 sm:p-6 text-left flex items-center justify-between font-bold text-slate-900 hover:text-[#712AE2] transition-colors focus:outline-none">
+                            <span class="text-sm sm:text-base">Which payment methods and currencies do you support?</span>
+                            <span class="faq-icon material-symbols-outlined text-xl transition-transform duration-300 text-slate-400">expand_more</span>
+                        </button>
+                        <div class="faq-answer hidden px-5 sm:px-6 pb-5 sm:pb-6 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+                            All checkout transactions are handled securely via Paddle as our Merchant of Record. We accept all major Credit Cards (Visa, Mastercard, American Express), PayPal, Apple Pay, and Google Pay in over 30 global currencies.
+                        </div>
+                    </div>
+
+                    <!-- Q6 -->
+                    <div class="faq-item glass-card rounded-2xl border border-slate-200 overflow-hidden transition-all shadow-sm">
+                        <button class="faq-btn w-full p-5 sm:p-6 text-left flex items-center justify-between font-bold text-slate-900 hover:text-[#712AE2] transition-colors focus:outline-none">
+                            <span class="text-sm sm:text-base">Is there any long-term contract or cancellation penalty?</span>
+                            <span class="faq-icon material-symbols-outlined text-xl transition-transform duration-300 text-slate-400">expand_more</span>
+                        </button>
+                        <div class="faq-answer hidden px-5 sm:px-6 pb-5 sm:pb-6 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+                            No. You can cancel your subscription at any time with a single click from your account. Your plan remains active until the end of the current paid billing cycle, and you will never be charged again.
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-    </main>
-    <div id="enterpriseModal"
-        class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/50 backdrop-blur-sm p-4">
 
-        <div class="w-full max-w-4xl bg-white rounded-3xl shadow-2xl overflow-hidden">
-
-            <!-- Header -->
-            <div class="px-8 py-6 border-b">
-
-                <h2 class="text-2xl font-bold">
-                    Contact Enterprise Sales
+        <!-- ========================================================================= -->
+        <!-- HIGH-CONVERTING BOTTOM CTA BANNER                                         -->
+        <!-- ========================================================================= -->
+        <section class="py-16 sm:py-20 bg-slate-900 text-white relative overflow-hidden">
+            <!-- Subtle glow background -->
+            <div class="absolute inset-0 bg-gradient-to-r from-purple-900/30 via-indigo-900/20 to-purple-900/30 pointer-events-none"></div>
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight mb-4">
+                    Ready to Automate Your Document Generation?
                 </h2>
-
-                <p class="mt-2 text-slate-500">
-                    Complete the form below and we'll contact you within one business day.
+                <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto mb-8 leading-relaxed">
+                    Create your free account today and generate your first batch of invoices, certificates, or contracts in less than 5 minutes.
                 </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="/dashboard" data-route="dashboard"
+                        class="w-full sm:w-auto px-8 py-3.5 rounded-xl font-bold bg-[#712AE2] hover:bg-[#5e1ebf] text-white transition-all shadow-lg shadow-purple-900/50">
+                        Start Free Today
+                    </a>
+                    <a href="/docs" data-route="docs"
+                        class="w-full sm:w-auto px-8 py-3.5 rounded-xl font-semibold border border-slate-700 hover:border-slate-500 hover:bg-slate-800 text-slate-200 transition-all">
+                        Read Documentation
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
 
+    <!-- ========================================================================= -->
+    <!-- ENTERPRISE CONTACT MODAL (INTEGRATED WITH PRICING.JS)                     -->
+    <!-- ========================================================================= -->
+    <div id="enterpriseModal"
+        class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+
+        <div class="w-full max-w-2xl bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-200">
+            <!-- Header -->
+            <div class="px-6 sm:px-8 py-6 border-b border-slate-100 flex items-center justify-between">
+                <div>
+                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900">
+                        Contact Enterprise Sales
+                    </h2>
+                    <p class="mt-1 text-xs sm:text-sm text-slate-500">
+                        Tell us about your volume and workflow requirements. We'll reply within one business day.
+                    </p>
+                </div>
+                <button id="closeEnterpriseModalX" class="text-slate-400 hover:text-slate-600 transition p-1">
+                    <span class="material-symbols-outlined text-[24px]">close</span>
+                </button>
             </div>
 
             <!-- Body -->
-            <div class="p-8">
-
-                <div class="grid md:grid-cols-2 gap-6">
-
+            <div class="p-6 sm:p-8 space-y-4">
+                <div class="grid sm:grid-cols-2 gap-4">
                     <div>
-                        <label class="block mb-2 text-sm font-medium">
-                            Full Name <span class="text-red-500">*</span>
+                        <label class="block mb-1.5 text-xs font-semibold text-slate-700">
+                            Full Name <span class="text-rose-500">*</span>
                         </label>
-
-                        <input id="leadName" type="text" placeholder="John Smith" class="w-full h-12 rounded-xl border border-slate-300 px-4
-                        focus:border-secondary focus:ring-2 focus:ring-secondary/20">
+                        <input id="leadName" type="text" placeholder="John Smith"
+                            class="w-full h-11 rounded-xl border border-slate-300 px-3.5 text-sm focus:border-[#712AE2] focus:ring-2 focus:ring-[#712AE2]/20 focus:outline-none transition">
                     </div>
 
                     <div>
-                        <label class="block mb-2 text-sm font-medium">
-                            Work Email <span class="text-red-500">*</span>
+                        <label class="block mb-1.5 text-xs font-semibold text-slate-700">
+                            Work Email <span class="text-rose-500">*</span>
                         </label>
+                        <input id="leadEmail" type="email" placeholder="john@company.com"
+                            class="w-full h-11 rounded-xl border border-slate-300 px-3.5 text-sm focus:border-[#712AE2] focus:ring-2 focus:ring-[#712AE2]/20 focus:outline-none transition">
+                    </div>
+                </div>
 
-                        <input id="leadEmail" type="email" placeholder="john@company.com" class="w-full h-12 rounded-xl border border-slate-300 px-4
-                        focus:border-secondary focus:ring-2 focus:ring-secondary/20">
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block mb-1.5 text-xs font-semibold text-slate-700">
+                            Company <span class="text-rose-500">*</span>
+                        </label>
+                        <input id="leadCompany" type="text" placeholder="Acme Inc."
+                            class="w-full h-11 rounded-xl border border-slate-300 px-3.5 text-sm focus:border-[#712AE2] focus:ring-2 focus:ring-[#712AE2]/20 focus:outline-none transition">
                     </div>
 
                     <div>
-                        <label class="block mb-2 text-sm font-medium">
-                            Company <span class="text-red-500">*</span>
+                        <label class="block mb-1.5 text-xs font-semibold text-slate-700">
+                            Monthly Document Volume <span class="text-rose-500">*</span>
                         </label>
-
-                        <input id="leadCompany" type="text" placeholder="Acme Inc." class="w-full h-12 rounded-xl border border-slate-300 px-4
-                        focus:border-secondary focus:ring-2 focus:ring-secondary/20">
-                    </div>
-
-                    <div>
-                        <label class="block mb-2 text-sm font-medium">
-                            Monthly Documents <span class="text-red-500">*</span>
-                        </label>
-
-                        <select id="leadVolume" class="w-full h-12 rounded-xl border border-slate-300 px-4
-                        focus:border-secondary focus:ring-2 focus:ring-secondary/20">
-
-                            <option value="">Select</option>
+                        <select id="leadVolume"
+                            class="w-full h-11 rounded-xl border border-slate-300 px-3.5 text-sm focus:border-[#712AE2] focus:ring-2 focus:ring-[#712AE2]/20 focus:outline-none transition bg-white">
+                            <option value="">Select expected volume</option>
                             <option>10,000 - 25,000</option>
                             <option>25,000 - 50,000</option>
                             <option>50,000 - 100,000</option>
                             <option>100,000+</option>
-
                         </select>
-
                     </div>
                 </div>
 
-                <div class="mt-6">
-
-                    <label class="block mb-2 text-sm font-medium">
-                        Tell us about your workflow
-                        <span class="text-red-500">*</span>
+                <div>
+                    <label class="block mb-1.5 text-xs font-semibold text-slate-700">
+                        Tell us about your workflow & requirements <span class="text-rose-500">*</span>
                     </label>
-
-                    <textarea id="leadRequirements" rows="4"
-                        placeholder="Describe your use case, expected document volume, integrations or any other requirements..."
-                        class="w-full rounded-xl border border-slate-300 px-4 py-3 resize-none
-                    focus:border-secondary focus:ring-2 focus:ring-secondary/20"></textarea>
-
+                    <textarea id="leadRequirements" rows="3"
+                        placeholder="Describe your use case, expected document volume, integrations or SLA needs..."
+                        class="w-full rounded-xl border border-slate-300 p-3 text-sm resize-none focus:border-[#712AE2] focus:ring-2 focus:ring-[#712AE2]/20 focus:outline-none transition"></textarea>
                 </div>
-
             </div>
 
             <!-- Footer -->
-            <div class="px-8 py-5 border-t bg-slate-50 flex items-center justify-between">
-
-                <span class="text-sm text-slate-500">
-                    We'll only use your information to contact you.
+            <div class="px-6 sm:px-8 py-4 border-t border-slate-100 bg-slate-50 flex items-center justify-between">
+                <span class="text-xs text-slate-500">
+                    🔒 We respect your privacy.
                 </span>
 
                 <div class="flex gap-3">
-
                     <button id="closeEnterpriseModal"
-                        class="px-5 py-2.5 rounded-xl border border-slate-300 hover:bg-slate-100">
-
+                        class="px-4 py-2 text-xs sm:text-sm font-semibold rounded-xl border border-slate-300 text-slate-700 hover:bg-slate-100 transition">
                         Cancel
-
                     </button>
 
-                    <button id="submitEnterpriseLead" class="min-w-[180px] px-6 py-2.5 rounded-xl bg-secondary text-white font-medium
-           flex items-center justify-center gap-2 hover:opacity-90 disabled:opacity-70">
-
-                        <span id="enterprise-btn-text">
-                            Request Quote
-                        </span>
-
+                    <button id="submitEnterpriseLead"
+                        class="min-w-[160px] px-5 py-2 text-xs sm:text-sm rounded-xl bg-[#712AE2] hover:bg-[#5e1ebf] text-white font-semibold flex items-center justify-center gap-2 transition disabled:opacity-70 shadow-md">
+                        <span id="enterprise-btn-text">Request Quote</span>
                         <span id="enterprise-btn-loader" class="hidden inline-flex items-center gap-2">
-
-                            <svg class="animate-spin h-5 w-5" viewBox="0 0 24 24" fill="none">
-
+                            <svg class="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
                                 <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" opacity=".25" />
-
                                 <path fill="currentColor" d="M22 12a10 10 0 0 1-10 10V18a6 6 0 0 0 6-6h4z" />
-
                             </svg>
-
                             Sending...
-
                         </span>
-
                     </button>
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
 
-    <!-- Footer -->
+    <!-- Footer injected from layout.js -->
     <div id="footer"></div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer"></div>
+
+    <!-- Scripts -->
     <script type="module" src="/components/layout.js"></script>
-
     <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
-
     <script type="module" src="./pricing.js"></script>
 
-    <!-- Toast -->
-    <div id="toastContainer"></div>
+    <!-- Interactive Toggle & FAQ Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // 1. Billing Monthly / Annual Toggle
+            const btnMonthly = document.getElementById("billing-monthly");
+            const btnAnnual = document.getElementById("billing-annual");
+            const priceVals = document.querySelectorAll(".price-val");
+            const pricePeriods = document.querySelectorAll(".price-period");
+
+            if (btnMonthly && btnAnnual) {
+                btnMonthly.addEventListener("click", () => {
+                    btnMonthly.classList.add("bg-white", "text-slate-900", "shadow-sm");
+                    btnMonthly.classList.remove("text-slate-600");
+                    btnAnnual.classList.remove("bg-white", "text-slate-900", "shadow-sm");
+                    btnAnnual.classList.add("text-slate-600");
+
+                    priceVals.forEach(el => {
+                        const monthlyPrice = el.getAttribute("data-monthly");
+                        if (monthlyPrice) {
+                            el.textContent = "$" + monthlyPrice;
+                        }
+                    });
+                    pricePeriods.forEach(el => el.textContent = "/month");
+                });
+
+                btnAnnual.addEventListener("click", () => {
+                    btnAnnual.classList.add("bg-white", "text-slate-900", "shadow-sm");
+                    btnAnnual.classList.remove("text-slate-600");
+                    btnMonthly.classList.remove("bg-white", "text-slate-900", "shadow-sm");
+                    btnMonthly.classList.add("text-slate-600");
+
+                    priceVals.forEach(el => {
+                        const annualPrice = el.getAttribute("data-annual");
+                        if (annualPrice) {
+                            el.textContent = "$" + annualPrice;
+                        }
+                    });
+                    pricePeriods.forEach(el => el.textContent = "/month (billed annually)");
+                });
+            }
+
+            // 2. FAQ Accordion Interaction
+            document.querySelectorAll(".faq-item").forEach(item => {
+                const btn = item.querySelector(".faq-btn");
+                const answer = item.querySelector(".faq-answer");
+                const icon = item.querySelector(".faq-icon");
+
+                if (btn && answer && icon) {
+                    btn.addEventListener("click", () => {
+                        const isOpen = !answer.classList.contains("hidden");
+
+                        // Close all FAQs
+                        document.querySelectorAll(".faq-item").forEach(other => {
+                            other.querySelector(".faq-answer")?.classList.add("hidden");
+                            const otherIcon = other.querySelector(".faq-icon");
+                            if (otherIcon) {
+                                otherIcon.textContent = "expand_more";
+                                otherIcon.style.transform = "rotate(0deg)";
+                            }
+                        });
+
+                        // Open clicked FAQ if was closed
+                        if (!isOpen) {
+                            answer.classList.remove("hidden");
+                            icon.textContent = "expand_less";
+                            icon.style.transform = "rotate(180deg)";
+                        }
+                    });
+                }
+            });
+
+            // 3. Optional top-right close button for modal
+            const closeX = document.getElementById("closeEnterpriseModalX");
+            const modal = document.getElementById("enterpriseModal");
+            if (closeX && modal) {
+                closeX.addEventListener("click", () => {
+                    modal.classList.add("hidden");
+                    modal.classList.remove("flex");
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
