@@ -1344,30 +1344,36 @@ async function updateApiKeyStatus(
 
 function setActiveTab(activeId) {
 
-    document.querySelectorAll(".nav-link").forEach(link => {
+    document.querySelectorAll("#sidebar .nav-link").forEach(link => {
 
         link.classList.remove(
+            "active-nav",
             "bg-secondary/10",
             "text-secondary",
             "font-bold"
         );
 
         link.classList.add(
+            "text-slate-600",
             "text-on-surface-variant"
         );
     });
 
     const active = document.getElementById(activeId);
 
-    active.classList.remove(
-        "text-on-surface-variant"
-    );
+    if (active) {
+        active.classList.remove(
+            "text-slate-600",
+            "text-on-surface-variant"
+        );
 
-    active.classList.add(
-        "bg-secondary/10",
-        "text-secondary",
-        "font-bold"
-    );
+        active.classList.add(
+            "active-nav",
+            "bg-secondary/10",
+            "text-secondary",
+            "font-bold"
+        );
+    }
 }
 
 
