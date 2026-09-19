@@ -36,6 +36,8 @@ function initializeNavbar(authSection) {
 
     onAuthStateChanged(auth, (user) => {
 
+        const mobileAuth = document.getElementById("mobile-drawer-auth");
+
         if (user) {
 
             authSection.innerHTML = `
@@ -64,7 +66,7 @@ function initializeNavbar(authSection) {
                         )}`
                     }"
                     alt="Profile"
-                    class="w-9 h-9 rounded-full border border-slate-200 object-cover"
+                    class="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-slate-200 object-cover"
                 />
             
             </button>
@@ -79,21 +81,61 @@ function initializeNavbar(authSection) {
 
                 });
 
+            if (mobileAuth) {
+                mobileAuth.innerHTML = `
+                    <div class="px-3 py-2 bg-slate-50 dark:bg-slate-900 rounded-xl flex items-center gap-3 mb-1">
+                        <img
+                            src="${
+                                user.photoURL ||
+                                `https://ui-avatars.com/api/?name=${encodeURIComponent(
+                                    user.displayName || user.email
+                                )}`
+                            }"
+                            alt="Profile"
+                            class="w-8 h-8 rounded-full border border-slate-200 object-cover"
+                        />
+                        <div class="flex flex-col text-left truncate">
+                            <span class="text-sm font-semibold text-slate-800 dark:text-white">
+                                ${user.displayName || "User"}
+                            </span>
+                            <span class="text-xs text-slate-500 truncate max-w-[180px]">
+                                ${user.email}
+                            </span>
+                        </div>
+                    </div>
+                    <a href="${ROUTES.dashboard}" data-route="dashboard"
+                        class="w-full text-center py-2.5 px-4 rounded-xl bg-[#712AE2] text-white text-sm font-semibold hover:opacity-90 transition-all">
+                        Go to Dashboard
+                    </a>
+                `;
+            }
+
         } else {
 
             authSection.innerHTML = `
 
                 <a href="${ROUTES.login}" data-route="login"
-                    class="text-slate-600 text-sm font-medium hover:text-indigo-500">
+                    class="hidden md:inline-flex text-slate-600 text-sm font-medium hover:text-indigo-500">
                     Sign In
                 </a>
 
                 <a href="${ROUTES.signup}" data-route="signup"
-                    class="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-indigo-700">
+                    class="hidden md:inline-flex bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-indigo-700">
                     Get Started
                 </a>
 
             `;
+
+            if (mobileAuth) {
+                mobileAuth.innerHTML = `
+                    <a href="${ROUTES.login}" data-route="login" class="w-full text-center py-2.5 px-4 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 text-sm font-semibold hover:bg-slate-50 dark:hover:bg-slate-900 transition-all">
+                        Sign In
+                    </a>
+                    <a href="${ROUTES.signup}" data-route="signup" class="w-full text-center py-2.5 px-4 rounded-xl bg-[#712AE2] text-white text-sm font-semibold hover:opacity-90 shadow-md shadow-[#712AE2]/20 transition-all">
+                        Get Started Free
+                    </a>
+                `;
+            }
 
         }
 

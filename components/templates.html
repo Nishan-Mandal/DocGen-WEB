@@ -1,140 +1,107 @@
 <!-- Template Table Container -->
-<section
-    class="kinetic-card bg-surface-container-lowest border border-outline-variant/30 rounded-xl overflow-hidden mb-xl">
-    <div class="p-lg border-b border-outline-variant/30 flex justify-between items-center gap-lg">
-        <h3 class="font-h3 text-h3 text-primary">All Templates</h3>
-        <div class="flex gap-md">
-            <div class="relative flex items-center w-full max-w-md group">
+<section class="glass-card rounded-2xl shadow-sm overflow-hidden mb-8">
+    <div class="p-5 sm:p-6 border-b border-slate-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div>
+            <h3 class="font-h3 text-h3 text-lg sm:text-xl font-bold text-slate-900 tracking-tight">All Templates</h3>
+            <p class="text-xs text-slate-500 mt-0.5">Manage uploaded DOCX templates, placeholders and dynamic tables</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-3 w-full sm:w-auto">
+            <div class="relative flex items-center w-full sm:w-60 md:w-72 group">
                 <span
-                    class="material-symbols-outlined absolute left-3 text-on-surface-variant group-focus-within:text-secondary transition-colors">search</span>
+                    class="material-symbols-outlined absolute left-3 text-slate-400 group-focus-within:text-secondary text-[18px] transition-colors">search</span>
                 <input type="text" placeholder="Search templates..."
-                    class="w-full bg-surface-container-low border-none rounded-lg pl-10 pr-12 py-2 text-sm focus:ring-2 focus:ring-secondary transition-all">
+                    class="w-full bg-slate-50 border border-slate-200/90 rounded-xl pl-9 pr-8 py-2 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all">
                 <button
-                    class="absolute right-2 p-1 hover:bg-surface-container-high rounded-md text-on-surface-variant transition-colors"
+                    class="absolute right-2 p-1 hover:bg-slate-200/60 rounded-md text-slate-400 hover:text-slate-700 transition-colors"
                     title="Filter">
-                    <span class="material-symbols-outlined text-sm">filter_list</span>
+                    <span class="material-symbols-outlined text-[16px]">filter_list</span>
                 </button>
             </div>
             <button id="new-template-btn"
-                class="flex items-center gap-xs px-md py-2 bg-secondary text-on-secondary rounded-lg text-sm font-bold hover:opacity-90 transition-all shadow-sm active:scale-95 whitespace-nowrap">
-                <span class="material-symbols-outlined text-sm">add</span>
-                New Template
+                class="flex items-center gap-1.5 px-3.5 py-2 bg-secondary text-white rounded-xl text-xs sm:text-sm font-semibold hover:opacity-90 transition-all shadow-sm active:scale-95 whitespace-nowrap">
+                <span class="material-symbols-outlined text-[18px]">add</span>
+                <span>New Template</span>
             </button>
             <!-- Hidden File Input -->
             <input id="template-file" type="file" accept=".docx" class="hidden">
         </div>
     </div>
-    <div class="overflow-x-auto">
-        <table class="w-full text-left">
-            <thead class="bg-surface-container-low/50 border-b border-outline-variant/20">
+
+    <!-- Table Wrapper -->
+    <div class="overflow-x-auto custom-scrollbar">
+        <table class="w-full text-left border-collapse min-w-[760px]">
+            <thead class="bg-slate-50/75 border-b border-slate-100">
                 <tr>
-                    <th class="px-lg py-4 font-label-md text-on-surface-variant">Template Name</th>
-                    <th class="px-lg py-4 font-label-md text-on-surface-variant">Template ID</th>
-                    <th class="px-lg py-4 font-label-md text-on-surface-variant">Generations</th>
-                    <th class="px-lg py-4 font-label-md text-on-surface-variant">Created Date</th>
-                    <th class="px-lg py-4 font-label-md text-on-surface-variant">Updated Date</th>
-                    <th class="px-lg py-4 font-label-md text-on-surface-variant text-center">
+                    <th class="px-5 sm:px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Template Name</th>
+                    <th class="px-5 sm:px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Template ID</th>
+                    <th class="px-5 sm:px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Generations</th>
+                    <th class="px-5 sm:px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Created Date</th>
+                    <th class="px-5 sm:px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Updated Date</th>
+                    <th class="px-5 sm:px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider text-right">
                         Actions
                     </th>
                 </tr>
             </thead>
-            <tbody id="templates-table-body" class="divide-y divide-outline-variant/10">
-                <!-- Table Row 1 -->
-                <tr class="hover:bg-surface-container-low/30 transition-colors">
-                    <td class="px-lg py-5">
-                        <div class="flex items-center gap-md">
-                            <div
-                                class="w-10 h-10 bg-indigo-50 text-secondary flex items-center justify-center rounded-lg">
-                                <span class="material-symbols-outlined"
-                                    style="font-variation-settings: 'FILL' 1;">description</span>
-                            </div>
-                            <span class="font-bold text-primary">Invoice_Premium_v2</span>
-                        </div>
-                    </td>
-                    <td class="px-lg py-5">
-                        <div class="flex items-center gap-sm bg-surface-container-low px-2 py-1 rounded w-fit">
-                            <code class="text-xs font-code">tpl_9281_af32</code>
-                            <button class="copy-template" data-template-id="${template.templateId}">
-                                <span class="material-symbols-outlined">
-                                    content_copy
-                                </span>
-                            </button>
-                        </div>
-                    </td>
-
-                    <td class="px-lg py-5 font-medium">1.2k</td>
-                    <td class="px-lg py-5 text-on-surface-variant text-sm">Oct 12, 2023</td>
-                    <td class="px-lg py-5 text-on-surface-variant text-sm">Oct 12, 2023</td>
-                    <td class="px-lg py-5">
-                        <div class="flex justify-end gap-md">
-                            <button class="view-fields" data-template-id="${template.templateId}">
-                                View Fields
-                            </button>
-                            <button
-                                class="update-template p-2 rounded-lg hover:bg-surface-container-high transition-colors"
-                                data-template-id="${template.templateId}" title="Replace Template">
-                                <span class="material-symbols-outlined">
-                                    file_upload
-                                </span>
-                            </button>
-
-                            <button class="download-template" data-template-id="${template.templateId}">
-                                <span class="material-symbols-outlined">
-                                    download
-                                </span>
-                            </button>
-                            <button class="delete-template" data-template-id="${template.templateId}">
-                                <span class="material-symbols-outlined">
-                                    delete
-                                </span>
-                            </button>
-                        </div>
-                    </td>
-                </tr>
+            <tbody id="templates-table-body" class="divide-y divide-slate-100 text-sm">
+                <!-- Populated dynamically by templates.js -->
             </tbody>
         </table>
     </div>
-    <div class="p-lg bg-surface-container-low/30 border-t border-outline-variant/10 flex justify-between items-center">
-        <p class="text-sm text-on-surface-variant">Showing 1 to 1 templates</p>
-        <div class="flex gap-xs">
+
+    <!-- Footer Controls -->
+    <div class="px-5 sm:px-6 py-3.5 bg-slate-50/50 border-t border-slate-100 flex flex-wrap justify-between items-center gap-3">
+        <p class="text-xs sm:text-sm text-slate-500">Showing templates</p>
+        <div class="flex items-center gap-1">
             <button
-                class="w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant/30 hover:bg-surface-container-high transition-all">
+                class="w-8 h-8 flex items-center justify-center rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 transition-all shadow-2xs">
                 <span class="material-symbols-outlined text-sm">chevron_left</span>
             </button>
             <button
-                class="w-8 h-8 flex items-center justify-center rounded-lg bg-primary text-on-primary text-sm font-bold">1</button>
+                class="w-8 h-8 flex items-center justify-center rounded-lg bg-secondary text-white text-xs font-bold shadow-2xs">1</button>
             <button
-                class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-container-high text-sm font-medium">2</button>
-            <button
-                class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-container-high text-sm font-medium">3</button>
-            <button
-                class="w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant/30 hover:bg-surface-container-high transition-all">
+                class="w-8 h-8 flex items-center justify-center rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 transition-all shadow-2xs">
                 <span class="material-symbols-outlined text-sm">chevron_right</span>
             </button>
         </div>
     </div>
-    <div id="fields-drawer" class="hidden fixed inset-0 z-50">
 
-        <div class="absolute inset-0 bg-black/50"></div>
+    <!-- Slide-over Fields Drawer -->
+    <div id="fields-drawer" class="hidden fixed inset-0 z-50 overflow-hidden">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-slate-900/50 backdrop-blur-xs transition-opacity"
+            onclick="document.getElementById('fields-drawer').classList.add('hidden')"></div>
 
-        <div class="absolute right-0 top-0 h-full w-[500px] bg-white shadow-xl p-6 overflow-y-auto">
+        <div class="fixed inset-y-0 right-0 max-w-full flex pl-6 sm:pl-10">
+            <div class="w-screen max-w-md md:max-w-lg bg-white dark:bg-slate-900 shadow-2xl p-5 sm:p-6 overflow-y-auto custom-scrollbar flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-[22px]">data_object</span>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900">Merge Fields & Tables</h3>
+                                <p class="text-xs text-slate-500">Detected placeholders from template</p>
+                            </div>
+                        </div>
 
-            <div class="flex justify-between items-center mb-4">
+                        <button onclick="document.getElementById('fields-drawer').classList.add('hidden')"
+                            class="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors">
+                            <span class="material-symbols-outlined text-xl">close</span>
+                        </button>
+                    </div>
 
-                <h3 class="text-xl font-bold">
-                    Merge Fields
-                </h3>
+                    <div id="merge-fields-container" class="py-4"></div>
+                </div>
 
-                <button onclick="document.getElementById('fields-drawer').classList.add('hidden')">
-                    ✕
-                </button>
-
+                <div class="pt-4 border-t border-slate-100 flex justify-end">
+                    <button onclick="document.getElementById('fields-drawer').classList.add('hidden')"
+                        class="px-4 py-2 rounded-xl border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 text-xs sm:text-sm font-semibold transition-all">
+                        Close
+                    </button>
+                </div>
             </div>
-
-            <div id="merge-fields-container"></div>
-
         </div>
-
     </div>
 
     <input id="update-template-file" type="file" accept=".docx" class="hidden">

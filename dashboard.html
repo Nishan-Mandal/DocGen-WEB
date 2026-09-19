@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html class="light" lang="en">
 
 <head>
@@ -9,978 +8,983 @@
 
     <meta name="description"
         content="Manage your EveryPapers account, document generation usage, templates and API activity.">
-
     <meta name="robots" content="noindex, nofollow">
+
     <!-- Favicon -->
     <link rel="icon" href="/components/assets/favicon.png" type="image/png">
     <link rel="shortcut icon" href="/components/assets/favicon.png" type="image/png">
 
+    <!-- Tailwind & Google Fonts -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet" />
+
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
-                    "colors": {
-                        "on-secondary-container": "#fffbff",
-                        "tertiary-container": "#36003d",
-                        "on-secondary-fixed-variant": "#5a00c6",
-                        "surface-container-highest": "#e0e3e5",
-                        "surface": "#f7f9fb",
-                        "on-tertiary": "#ffffff",
-                        "on-tertiary-fixed": "#36003d",
-                        "inverse-primary": "#bec6e0",
-                        "error-container": "#ffdad6",
+                    colors: {
+                        "primary": "#0f172a",
                         "on-primary": "#ffffff",
-                        "background": "#f7f9fb",
-                        "surface-container": "#eceef0",
-                        "on-primary-container": "#7c839b",
-                        "primary-fixed": "#dae2fd",
-                        "on-tertiary-container": "#d33de5",
-                        "primary": "#000000",
-                        "on-secondary": "#ffffff",
-                        "on-primary-fixed-variant": "#3f465c",
-                        "inverse-on-surface": "#eff1f3",
-                        "surface-variant": "#e0e3e5",
-                        "surface-bright": "#f7f9fb",
-                        "on-error-container": "#93000a",
-                        "tertiary-fixed-dim": "#fda9ff",
-                        "surface-container-lowest": "#ffffff",
-                        "primary-container": "#131b2e",
-                        "surface-tint": "#565e74",
-                        "secondary-fixed-dim": "#d2bbff",
                         "secondary": "#712ae2",
-                        "on-surface": "#191c1e",
-                        "inverse-surface": "#2d3133",
-                        "on-primary-fixed": "#131b2e",
+                        "on-secondary": "#ffffff",
                         "secondary-container": "#8a4cfc",
-                        "on-error": "#ffffff",
-                        "surface-container-low": "#f2f4f6",
-                        "tertiary": "#000000",
-                        "outline-variant": "#c6c6cd",
-                        "tertiary-fixed": "#ffd6fb",
-                        "outline": "#76777d",
-                        "on-tertiary-fixed-variant": "#7d008c",
-                        "on-secondary-fixed": "#25005a",
-                        "on-surface-variant": "#45464d",
+                        "on-secondary-container": "#fffbff",
                         "secondary-fixed": "#eaddff",
-                        "surface-container-high": "#e6e8ea",
-                        "primary-fixed-dim": "#bec6e0",
-                        "error": "#ba1a1a",
-                        "on-background": "#191c1e",
-                        "surface-dim": "#d8dadc"
+                        "on-secondary-fixed": "#25005a",
+                        "secondary-fixed-dim": "#d2bbff",
+                        "on-secondary-fixed-variant": "#5a00c6",
+                        "background": "#f8fafc",
+                        "on-background": "#0f172a",
+                        "surface": "#ffffff",
+                        "on-surface": "#0f172a",
+                        "surface-variant": "#f1f5f9",
+                        "on-surface-variant": "#64748b",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f8fafc",
+                        "surface-container": "#f1f5f9",
+                        "surface-container-high": "#e2e8f0",
+                        "surface-container-highest": "#cbd5e1",
+                        "outline": "#94a3b8",
+                        "outline-variant": "#e2e8f0",
+                        "error": "#ef4444",
+                        "error-container": "#fee2e2",
+                        "on-error-container": "#991b1b"
                     },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.75rem",
+                        "xl": "1rem",
+                        "2xl": "1.25rem",
                         "full": "9999px"
                     },
-                    "spacing": {
-                        "md": "1rem",
-                        "gutter": "1.5rem",
-                        "container-max": "1280px",
-                        "lg": "1.5rem",
+                    spacing: {
                         "xs": "0.25rem",
-                        "xl": "2.5rem",
-                        "sm": "0.5rem"
+                        "sm": "0.5rem",
+                        "md": "1rem",
+                        "lg": "1.5rem",
+                        "xl": "2rem",
+                        "gutter": "1.5rem",
+                        "container-max": "1360px"
                     },
-                    "fontFamily": {
-                        "h1": ["Inter"],
-                        "code": ["JetBrains Mono"],
-                        "body-sm": ["Inter"],
-                        "label-md": ["Inter"],
-                        "h3": ["Inter"],
-                        "body-md": ["Inter"],
-                        "body-lg": ["Inter"],
-                        "h2": ["Inter"]
+                    fontFamily: {
+                        "h1": ["Inter", "sans-serif"],
+                        "h2": ["Inter", "sans-serif"],
+                        "h3": ["Inter", "sans-serif"],
+                        "body-lg": ["Inter", "sans-serif"],
+                        "body-md": ["Inter", "sans-serif"],
+                        "body-sm": ["Inter", "sans-serif"],
+                        "label-md": ["Inter", "sans-serif"],
+                        "code": ["JetBrains Mono", "monospace"]
                     },
-                    "fontSize": {
-                        "h1": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
-                        "code": ["14px", { "lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400" }],
-                        "body-sm": ["14px", { "lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400" }],
-                        "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500" }],
-                        "h3": ["24px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }],
-                        "body-md": ["16px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
-                        "body-lg": ["18px", { "lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400" }],
-                        "h2": ["30px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    fontSize: {
+                        "h1": ["40px", { "lineHeight": "1.15", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "h2": ["28px", { "lineHeight": "1.2", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+                        "h3": ["20px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["15px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-sm": ["13px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "label-md": ["13px", { "lineHeight": "1", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "code": ["13px", { "lineHeight": "1.5", "fontWeight": "400" }]
                     }
-                },
-            },
+                }
+            }
         }
     </script>
+
     <style>
         .glass-card {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(8px);
-            border: 1px solid #E2E8F0;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.85);
+            box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.05);
+        }
+
+        .dark .glass-card {
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(30, 41, 59, 0.8);
+            box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.3);
         }
 
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
-    </style>
 
-    <style>
-        /* ===============================
-   TOAST
-=============================== */
-
-        #toastContainer {
-
-            position: fixed;
-
-            top: 88px;
-
-            right: 24px;
-
-            z-index: 9999;
-
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 12px;
-
+        /* Custom Scrollbar */
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 6px;
+            width: 6px;
         }
 
-        .toast {
-
-            opacity: 0;
-
-            transform:
-                translateX(40px);
-
-            transition:
-                all .3s ease;
-
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 9999px;
         }
 
-        .toast.show {
-
-            opacity: 1;
-
-            transform:
-                translateX(0);
-
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 9999px;
         }
 
-        .toast-inner {
-
-            position: relative;
-
-            overflow: hidden;
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 14px;
-
-            min-width: 320px;
-
-            max-width: 420px;
-
-            padding: 16px 18px;
-
-            border-radius: 18px;
-
-            backdrop-filter:
-                blur(16px);
-
-            background:
-                rgba(255,
-                    255,
-                    255,
-                    0.88);
-
-            box-shadow:
-                0 12px 40px rgba(0,
-                    0,
-                    0,
-                    .08);
-
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
         }
 
-        .toast-icon {
-
-            width: 42px;
-
-            height: 42px;
-
-            border-radius: 12px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
+        /* Scrollbar None */
+        .scrollbar-none::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-none {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
 
-        .toast-content {
-
-            flex: 1;
-
-            font-size: 14px;
-
-            font-weight: 500;
-
-        }
-
-        .toast-progress {
-
-            position: absolute;
-
-            bottom: 0;
-
-            left: 0;
-
-            width: 100%;
-
-            height: 3px;
-
-            transform-origin: left;
-
-            animation:
-                shrink linear forwards;
-
-        }
-
-        /* COLORS */
-
-        .toast.success .toast-icon {
-
-            background:
-                rgba(34,
-                    197,
-                    94,
-                    .12);
-
-            color:
-                #16a34a;
-
-        }
-
-        .toast.success .toast-progress {
-
-            background:
-                #16a34a;
-
-        }
-
-        .toast.error .toast-icon {
-
-            background:
-                rgba(239,
-                    68,
-                    68,
-                    .12);
-
-            color:
-                #dc2626;
-
-        }
-
-        .toast.error .toast-progress {
-
-            background:
-                #dc2626;
-
-        }
-
-        .toast.warning .toast-icon {
-
-            background:
-                rgba(245,
-                    158,
-                    11,
-                    .12);
-
-            color:
-                #d97706;
-
-        }
-
-        .toast.warning .toast-progress {
-
-            background:
-                #d97706;
-
-        }
-
-        .toast.info .toast-icon {
-
-            background:
-                rgba(113,
-                    42,
-                    226,
-                    .12);
-
-            color:
-                #712ae2;
-
-        }
-
-        .toast.info .toast-progress {
-
-            background:
-                #712ae2;
-
-        }
-
-        @keyframes shrink {
-
-            from {
-
-                transform:
-                    scaleX(1);
-
-            }
-
-            to {
-
-                transform:
-                    scaleX(0);
-
-            }
-
-        }
-
+        /* Sidebar & Layout Transitions */
         #sidebar {
-            transition: transform .3s ease;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         #page-content,
         #footer-container {
-            transition: margin-left .3s ease;
+            transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .sidebar-collapsed {
-            transform: translateX(calc(-100% + 20px));
+        /* Desktop Sidebar Mechanics (>= 1024px) */
+        @media (min-width: 1024px) {
+            #sidebar {
+                transform: translateX(0);
+            }
+
+            #sidebar.sidebar-collapsed {
+                transform: translateX(calc(-100% + 20px));
+            }
+
+            #page-content.sidebar-open {
+                width: calc(100% - 260px);
+                margin-left: 260px;
+                max-width: none;
+            }
+
+            #page-content.sidebar-closed {
+                width: calc(100% - 48px);
+                margin-left: 24px;
+                margin-right: 24px;
+                max-width: none;
+            }
+
+            #footer-container.sidebar-open {
+                margin-left: 260px;
+            }
+
+            #footer-container.sidebar-closed {
+                margin-left: 0;
+            }
         }
 
-        .content-expanded {
-            margin-left: 0 !important;
+        /* Mobile & Tablet Mechanics (< 1024px) */
+        @media (max-width: 1023px) {
+            #sidebar {
+                transform: translateX(-100%);
+                z-index: 50;
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            }
+
+            #sidebar.mobile-open {
+                transform: translateX(0) !important;
+            }
+
+            #sidebar-toggle {
+                display: none !important;
+            }
+
+            #page-content,
+            #page-content.sidebar-open,
+            #page-content.sidebar-closed {
+                width: 100% !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+                max-width: 100vw !important;
+            }
+
+            #footer-container,
+            #footer-container.sidebar-open,
+            #footer-container.sidebar-closed {
+                margin-left: 0 !important;
+                width: 100% !important;
+            }
         }
 
-        #page-content.sidebar-open {
-            width: calc(100% - 260px);
-            margin-left: 260px;
-            max-width: none;
-        }
-
-        #page-content.sidebar-closed {
-            width: calc(100% - 48px);
-            margin-left: 24px;
-            margin-right: 24px;
-            max-width: none;
-        }
-
-        #footer-container.sidebar-open {
-            margin-left: 260px;
-        }
-
-        #footer-container.sidebar-closed {
-            margin-left: 0;
-        }
-    </style>
-
-    <style>
-        .nav-link {
+        /* Header Navigation link active underline transition */
+        #header .nav-link {
             position: relative;
-            color: #64748b;
+            color: #475569;
             transition: color 0.2s ease;
         }
 
-        .nav-link::after {
+        #header .nav-link::after {
             content: "";
             position: absolute;
             left: 0;
-            bottom: -6px;
+            bottom: -4px;
             width: 0%;
             height: 2px;
-            background: #6366f1;
-            transition: width 0.3s ease;
+            background: #712AE2;
+            transition: width 0.25s ease;
+            border-radius: 2px;
         }
 
-        .nav-link.active {
-            color: #6366f1;
+        #header .nav-link:hover {
+            color: #712AE2;
+        }
+
+        #header .nav-link.active {
+            color: #712AE2;
             font-weight: 600;
         }
 
-        .nav-link.active::after {
+        #header .nav-link.active::after {
             width: 100%;
+        }
+
+        .dark #header .nav-link {
+            color: #94a3b8;
+        }
+
+        .dark #header .nav-link:hover,
+        .dark #header .nav-link.active {
+            color: #a855f7;
+        }
+
+        .dark #header .nav-link::after {
+            background: #a855f7;
+        }
+
+        /* Sidebar Nav links */
+        #sidebar .nav-link {
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        #sidebar .nav-link::after {
+            display: none !important;
+        }
+
+        .active-nav {
+            background-color: rgba(113, 42, 226, 0.08) !important;
+            color: #712ae2 !important;
+            font-weight: 600 !important;
+        }
+
+        /* Toast Notifications */
+        #toastContainer {
+            position: fixed;
+            top: 88px;
+            right: 20px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: calc(100vw - 40px);
+        }
+
+        .toast {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .toast-inner {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 280px;
+            max-width: 420px;
+            padding: 14px 16px;
+            border-radius: 16px;
+            backdrop-filter: blur(16px);
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+            border: 1px solid rgba(226, 232, 240, 0.9);
+        }
+
+        .toast-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .toast-content {
+            flex: 1;
+            font-size: 13px;
+            font-weight: 500;
+            color: #1e293b;
+        }
+
+        .toast-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            transform-origin: left;
+            animation: shrink linear forwards;
+        }
+
+        .toast.success .toast-icon {
+            background: rgba(34, 197, 94, .12);
+            color: #16a34a;
+        }
+
+        .toast.success .toast-progress {
+            background: #16a34a;
+        }
+
+        .toast.error .toast-icon {
+            background: rgba(239, 68, 68, .12);
+            color: #dc2626;
+        }
+
+        .toast.error .toast-progress {
+            background: #dc2626;
+        }
+
+        .toast.warning .toast-icon {
+            background: rgba(245, 158, 11, .12);
+            color: #d97706;
+        }
+
+        .toast.warning .toast-progress {
+            background: #d97706;
+        }
+
+        .toast.info .toast-icon {
+            background: rgba(113, 42, 226, .12);
+            color: #712ae2;
+        }
+
+        .toast.info .toast-progress {
+            background: #712ae2;
+        }
+
+        @keyframes shrink {
+            from {
+                transform: scaleX(1);
+            }
+            to {
+                transform: scaleX(0);
+            }
         }
     </style>
 </head>
 
-<body class="bg-background font-body-md text-on-surface">
+<body class="bg-background font-body-md text-on-surface antialiased">
 
-    <!-- TopNavBar from JSON -->
+    <!-- Top Navigation Bar from JSON -->
     <div id="header"></div>
 
-    <div id="dashboard-loader" class="fixed inset-0 z-[9999]
-           bg-white/30 backdrop-blur-md
-           flex items-center justify-center">
-
-        <div class="flex flex-col items-center gap-md glass-card px-8 py-7 rounded-2xl">
-
+    <!-- Page Loader -->
+    <div id="dashboard-loader"
+        class="fixed inset-0 z-[9999] bg-white/70 dark:bg-slate-950/70 backdrop-blur-md flex items-center justify-center transition-opacity duration-300">
+        <div class="flex flex-col items-center gap-4 glass-card px-8 py-7 rounded-2xl shadow-xl">
             <div class="w-12 h-12 border-4 border-secondary/20 border-t-secondary rounded-full animate-spin"></div>
-
-            <p class="text-on-surface font-medium">
+            <p class="text-slate-800 dark:text-slate-200 font-semibold text-sm tracking-tight">
                 Loading dashboard...
             </p>
-
         </div>
-
     </div>
-    <aside id="sidebar"
-        class="fixed top-16 left-0 h-[calc(100vh-64px)] w-[260px] bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-r border-slate-200 dark:border-slate-800 z-40 flex flex-col">
 
-
-        <button id="sidebar-toggle" class="absolute
-           -right-4
-           top-1/2
-           -translate-y-1/2
-           w-8
-           h-16
-           rounded-r-xl
-           rounded-l-none
-           bg-white
-           border
-           border-slate-200
-           shadow-lg
-           flex
-           items-center
-           justify-center
-           hover:bg-slate-50
-           transition-all
-           z-50">
-
-            <span id="sidebar-icon" class="material-symbols-outlined text-[20px]">
-
-                chevron_left
-
-            </span>
-
+    <!-- Mobile Sub-Navigation Bar (Sticky on < 1024px) -->
+    <div
+        class="lg:hidden fixed top-16 left-0 right-0 z-30 bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 px-3 py-2 flex items-center justify-between gap-2 shadow-xs">
+        <button id="mobile-sidebar-toggle"
+            class="shrink-0 flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border border-slate-200/90 bg-white dark:bg-slate-900 hover:bg-slate-50 text-slate-700 dark:text-slate-200 text-xs font-semibold shadow-2xs transition-all active:scale-95">
+            <span class="material-symbols-outlined text-[18px] text-secondary">menu</span>
+            <span class="hidden xs:inline sm:inline">Menu</span>
         </button>
 
-        <nav class="flex-1 py-lg px-md space-y-xs overflow-y-auto">
+        <div class="flex items-center gap-1 bg-slate-100 dark:bg-slate-900 p-1 rounded-xl text-xs font-medium overflow-x-auto scrollbar-none shrink max-w-[calc(100%-65px)]">
+            <button id="mobile-tab-dashboard"
+                class="mobile-tab whitespace-nowrap px-2.5 py-1 rounded-lg font-semibold bg-white text-secondary shadow-xs transition-all shrink-0">
+                Dashboard
+            </button>
+            <button id="mobile-tab-templates"
+                class="mobile-tab whitespace-nowrap px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition-all shrink-0">
+                Templates
+            </button>
+            <button id="mobile-tab-transactions"
+                class="mobile-tab whitespace-nowrap px-2.5 py-1 rounded-lg text-slate-600 hover:text-slate-900 transition-all shrink-0">
+                Transactions
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Drawer Overlay Backdrop -->
+    <div id="sidebar-backdrop"
+        class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-40 hidden transition-opacity lg:hidden"></div>
+
+    <!-- Sidebar Navigation -->
+    <aside id="sidebar"
+        class="fixed top-16 left-0 h-[calc(100vh-64px)] w-[260px] bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-r border-slate-200 dark:border-slate-800 z-40 flex flex-col shadow-xs">
+
+        <!-- Mobile Close Button inside Drawer Header -->
+        <div class="lg:hidden px-4 pt-4 pb-2 flex items-center justify-between border-b border-slate-100">
+            <div class="flex items-center gap-2">
+                <img src="/components/assets/logo.png" alt="Logo" class="w-6 h-6 object-contain" />
+                <span class="font-bold text-sm text-slate-900">Dashboard Navigation</span>
+            </div>
+            <button id="sidebar-close-btn" class="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors">
+                <span class="material-symbols-outlined text-xl">close</span>
+            </button>
+        </div>
+
+        <!-- Desktop Sidebar Collapse Toggle Button -->
+        <button id="sidebar-toggle"
+            class="absolute -right-4 top-1/2 -translate-y-1/2 w-8 h-16 rounded-r-xl rounded-l-none bg-white border border-slate-200 shadow-md flex items-center justify-center hover:bg-slate-50 text-slate-600 hover:text-slate-900 transition-all z-50">
+            <span id="sidebar-icon" class="material-symbols-outlined text-[20px]">
+                chevron_left
+            </span>
+        </button>
+
+        <!-- Primary Navigation Links -->
+        <nav class="flex-1 py-4 px-3 space-y-1 overflow-y-auto custom-scrollbar">
             <a id="dashboard-nav"
-                class="nav-link active-nav flex items-center gap-sm px-md py-sm rounded-lg bg-secondary/10 text-secondary font-bold transition-colors"
+                class="nav-link active-nav flex items-center gap-3 px-3 py-2.5 rounded-xl bg-secondary/10 text-secondary font-bold transition-all"
                 href="#">
-                <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
-                <span class="font-body-md">Dashboard</span>
+                <span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+                <span class="font-body-md text-sm">Dashboard</span>
             </a>
 
             <a id="templates-nav"
-                class="nav-link flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors"
+                class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-all"
                 href="#">
-                <span class="material-symbols-outlined" data-icon="dashboard">description</span>
-                <span class="font-body-md">Templates</span>
+                <span class="material-symbols-outlined text-[20px]" data-icon="description">description</span>
+                <span class="font-body-md text-sm">Templates</span>
             </a>
+
             <a id="transactions-nav"
-                class="nav-link flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors"
+                class="nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-all"
                 href="#">
-
-                <span class="material-symbols-outlined">
-                    receipt_long
-                </span>
-
-                <span class="font-body-md">
-                    Transactions
-                </span>
-
+                <span class="material-symbols-outlined text-[20px]">receipt_long</span>
+                <span class="font-body-md text-sm">Transactions</span>
             </a>
         </nav>
-        <div class="p-lg border-t border-outline-variant/10 space-y-xs">
 
-            <a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors"
+        <!-- Secondary / Utility Links & Logout -->
+        <div class="p-3 border-t border-slate-200/70 space-y-1">
+            <a class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-all"
                 href="/docs" data-route="docs" id="docsLink">
-                <span class="material-symbols-outlined" data-icon="description">description</span>
-                <span class="font-body-md">Documentation</span>
+                <span class="material-symbols-outlined text-[20px]" data-icon="menu_book">menu_book</span>
+                <span class="font-body-md text-sm">Documentation</span>
             </a>
 
-            <a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors"
+            <a class="flex items-center gap-3 px-3 py-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-all"
                 href="/contact" data-route="contact" id="contactLink">
-                <span class="material-symbols-outlined" data-icon="help">help</span>
-                <span class="font-body-md">Help Center</span>
+                <span class="material-symbols-outlined text-[20px]" data-icon="help">help</span>
+                <span class="font-body-md text-sm">Help Center</span>
             </a>
 
-            <!-- Logout -->
+            <!-- Logout Button -->
             <button id="sidebar-logout-btn"
-                class="w-full flex items-center gap-sm px-md py-sm rounded-lg text-red-500 hover:bg-red-50 transition-colors">
-
-                <span class="material-symbols-outlined" data-icon="logout">logout</span>
-
-                <span class="font-body-md">Logout</span>
-
+                class="w-full flex items-center gap-3 px-3 py-2 rounded-xl text-red-600 hover:bg-red-50 transition-all font-medium">
+                <span class="material-symbols-outlined text-[20px]" data-icon="logout">logout</span>
+                <span class="font-body-md text-sm">Logout</span>
             </button>
-
         </div>
     </aside>
+
     <!-- Main Content -->
-    <main id="page-content" class="pt-24 px-gutter pb-xl
-           max-w-container-max
-           w-[calc(100%-260px)]
-           ml-[260px]
-           transition-all duration-300">
+    <main id="page-content"
+        class="pt-28 lg:pt-24 px-4 sm:px-6 lg:px-8 pb-16 max-w-container-max w-[calc(100%-260px)] ml-[260px] sidebar-open transition-all duration-300">
+        
+        <!-- DASHBOARD TAB -->
         <div id="dashboard-page">
-            <div class="flex flex-col gap-xl">
-                <!-- User & Plan Header Section -->
-                <section class="grid grid-cols-1 lg:grid-cols-2 gap-xl">
-                    <!-- User Card -->
-                    <div class="glass-card rounded-xl p-lg flex items-center gap-lg">
-                        <div id="user-avatar" class="w-24 h-24 rounded-xl border-2 border-secondary-fixed
-           bg-secondary text-white flex items-center justify-center
-           overflow-hidden">
+            <div class="flex flex-col gap-6 sm:gap-8">
 
+                <!-- User Profile & Plan Header Section -->
+                <section class="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6">
+                    <!-- User Profile Card -->
+                    <div class="glass-card rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center gap-5 relative overflow-hidden">
+                        <!-- Decorative background glow -->
+                        <div class="absolute -top-12 -right-12 w-40 h-40 bg-secondary/5 rounded-full blur-2xl pointer-events-none"></div>
+
+                        <!-- User Avatar -->
+                        <div id="user-avatar"
+                            class="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl border-2 border-secondary-fixed bg-secondary text-white flex items-center justify-center overflow-hidden shadow-sm shrink-0">
                             <img id="user-photo" alt="User Photo" class="w-full h-full object-cover hidden" />
-
-                            <span id="user-initials" class="text-3xl font-bold tracking-wide">
-                            </span>
-
+                            <span id="user-initials" class="text-2xl sm:text-3xl font-bold tracking-wide"></span>
                         </div>
-                        <div class="flex-1">
-                            <div class="flex justify-between items-start">
-                                <div>
-                                    <h3 class="font-h3 text-h3">---</h3>
-                                    <p class="text-on-surface-variant font-body-md"></p>
+
+                        <!-- User Info -->
+                        <div class="flex-1 min-w-0 w-full">
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <div class="min-w-0">
+                                    <h3 class="font-h3 text-h3 text-xl sm:text-2xl font-bold text-slate-900 truncate">---</h3>
+                                    <p class="text-on-surface-variant font-body-md text-sm text-slate-500 truncate mt-0.5"></p>
                                 </div>
                                 <span
-                                    class="bg-secondary-fixed text-on-secondary-fixed px-sm py-xs rounded-lg text-label-md font-semibold">Free
-                                    Plan</span>
+                                    class="bg-secondary-fixed text-on-secondary-fixed px-3 py-1 rounded-full text-label-md text-xs font-semibold tracking-wide uppercase inline-flex items-center gap-1.5 shadow-2xs">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                                    Free Plan
+                                </span>
                             </div>
-                            <div class="mt-md flex gap-xl text-body-sm text-on-surface-variant">
 
+                            <div class="mt-4 pt-3 border-t border-slate-100 flex flex-wrap gap-x-6 gap-y-2 text-body-sm text-slate-500 text-xs sm:text-sm">
                                 <div>
-                                    <p class="font-semibold text-primary">Joined</p>
-                                    <p id="joined-date">—</p>
+                                    <span class="text-slate-400 font-medium">Joined: </span>
+                                    <span id="joined-date" class="font-semibold text-slate-800">—</span>
                                 </div>
-
                                 <div>
-                                    <p class="font-semibold text-primary">Documents Generated</p>
-                                    <p id="documents-generated">0</p>
+                                    <span class="text-slate-400 font-medium">Documents: </span>
+                                    <span id="documents-generated" class="font-semibold text-slate-800">0</span>
                                 </div>
-
                             </div>
                         </div>
                     </div>
+
                     <!-- Plan & Usage Card -->
-                    <div class="glass-card rounded-xl p-lg flex flex-col justify-between">
-                        <div class="flex justify-between items-center mb-md">
-                            <div>
-                                <h4 class="font-label-md text-on-surface-variant uppercase">Current Plan</h4>
-                                <h3 id="current-plan" class="font-h3 text-h3 text-secondary">Free Tier</h3>
+                    <div class="glass-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between relative overflow-hidden">
+                        <!-- Decorative background glow -->
+                        <div class="absolute -top-12 -right-12 w-40 h-40 bg-secondary/5 rounded-full blur-2xl pointer-events-none"></div>
+
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div>
+                                    <h4 class="font-label-md text-on-surface-variant uppercase text-xs tracking-wider text-slate-400 font-semibold">
+                                        Current Plan
+                                    </h4>
+                                    <h3 id="current-plan" class="font-h3 text-h3 text-xl sm:text-2xl font-bold text-secondary mt-0.5">
+                                        Free Tier
+                                    </h3>
+                                </div>
+                                <a href="/pricing" data-route="pricing"
+                                    class="bg-primary text-on-primary px-4 py-2 rounded-xl font-label-md text-xs sm:text-sm font-semibold hover:opacity-90 transition-all inline-flex items-center gap-1.5 shadow-sm active:scale-95">
+                                    <span>Upgrade Plan</span>
+                                    <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                                </a>
                             </div>
-                            <a href="/pricing" data-route="pricing"
-                                class="bg-primary text-on-primary px-md py-sm rounded-lg font-label-md font-semibold hover:opacity-90 transition-all inline-block text-center">Upgrade
-                                Plan</a>
-                        </div>
-                        <div class="space-y-sm">
-                            <div class="flex justify-between text-label-md">
-                                <span class="text-on-surface-variant">Monthly Usage</span>
-                                <span class="font-bold">0 / 0 docs</span>
+
+                            <!-- Quota Progress Indicator -->
+                            <div class="space-y-2 mt-4">
+                                <div class="flex justify-between text-label-md text-xs sm:text-sm font-medium">
+                                    <span class="text-slate-500 text-on-surface-variant">Monthly Usage</span>
+                                    <span class="font-bold text-slate-900">0 / 0 docs</span>
+                                </div>
+
+                                <div class="w-full bg-surface-container-high h-2.5 sm:h-3 rounded-full overflow-hidden bg-slate-100 border border-slate-200/60 p-[1px]">
+                                    <div class="bg-secondary h-full rounded-full bg-gradient-to-r from-secondary to-secondary-container transition-all duration-500" style="width: 0%"></div>
+                                </div>
+
+                                <div class="space-y-sm">
+                                    <p class="text-body-sm text-xs sm:text-sm text-slate-500 text-on-surface-variant">
+                                        0 documents remaining.
+                                    </p>
+                                </div>
                             </div>
-                            <div class="w-full bg-surface-container-high h-3 rounded-full overflow-hidden">
-                                <div class="bg-secondary h-full rounded-full" style="width: 85%"></div>
-                            </div>
-                            <p class="text-body-sm text-on-surface-variant">0 documents remaining.
-                            </p>
                         </div>
                     </div>
                 </section>
+
                 <!-- Usage Overview Grid -->
                 <section>
-                    <h2 class="font-h3 text-h3 mb-md">Usage Overview</h2>
-
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-md">
-
-                        <div
-                            class="glass-card p-lg rounded-xl shadow-sm hover:shadow-md transition-shadow border-l-4 border-secondary">
-                            <div class="flex justify-between items-start mb-md">
-                                <span class="material-symbols-outlined text-secondary text-[32px]"
-                                    data-icon="api">api</span>
-                            </div>
-                            <h4 class="font-label-md text-on-surface-variant uppercase tracking-wider">Total Documents
-                            </h4>
-                            <div class="mt-sm">
-                                <p class="font-h2 text-h2 font-bold">0</p>
-                                <p class="text-body-sm text-on-surface-variant mt-xs">Today: <span
-                                        class="font-semibold text-primary">0</span></p>
-                            </div>
-                        </div>
-
-                        <!-- Total PDFs Card -->
-                        <div class="glass-card p-lg rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                            <div class="flex justify-between items-start mb-md">
-                                <span class="material-symbols-outlined text-secondary text-[32px]"
-                                    data-icon="picture_as_pdf">picture_as_pdf</span>
-                            </div>
-                            <h4 class="font-label-md text-on-surface-variant uppercase tracking-wider">Total PDFs</h4>
-                            <div class="mt-sm">
-                                <p class="font-h2 text-h2 font-bold">0</p>
-                                <p class="text-body-sm text-on-surface-variant mt-xs">Today: <span
-                                        class="font-semibold text-primary">0</span></p>
-                            </div>
-                        </div>
-
-                        <!-- Total DOCX Card -->
-                        <div class="glass-card p-lg rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                            <div class="flex justify-between items-start mb-md">
-                                <span class="material-symbols-outlined text-secondary text-[32px]"
-                                    data-icon="description">description</span>
-                            </div>
-                            <h4 class="font-label-md text-on-surface-variant uppercase tracking-wider">Total DOCX</h4>
-                            <div class="mt-sm">
-                                <p class="font-h2 text-h2 font-bold">0</p>
-                                <p class="text-body-sm text-on-surface-variant mt-xs">Today: <span
-                                        class="font-semibold text-primary">0</span></p>
-                            </div>
-                        </div>
-
-                        <!-- Template Analysis -->
-                        <div class="glass-card p-lg rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                            <div class="flex justify-between items-start mb-md">
-                                <span class="material-symbols-outlined text-secondary text-[32px]"
-                                    data-icon="analytics">analytics</span>
-                            </div>
-                            <h4 class="font-label-md text-on-surface-variant uppercase tracking-wider">Template Analysis
-                            </h4>
-                            <div class="mt-sm">
-                                <p class="font-h2 text-h2 font-bold">0</p>
-                                <p class="text-body-sm text-on-surface-variant mt-xs">Today: <span
-                                        class="font-semibold text-primary">0</span></p>
-                            </div>
-                        </div>
-
-                    </div>
-                </section>
-                <!-- API Key Usage Section -->
-                <section class="glass-card rounded-xl shadow-sm overflow-hidden">
-                    <div class="px-lg py-md border-b border-outline-variant/30 flex justify-between items-center">
-                        <h2 class="font-h3 text-h3">API Key Usage</h2>
-                        <button id="generate-api-btn"
-                            class="text-secondary font-semibold font-label-md flex items-center gap-xs hover:underline">
-
-                            <span class="material-symbols-outlined text-[18px]">
-
-                                add
-
-                            </span>
-
-                            Generate New Key
-
-                        </button>
-                    </div>
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left border-collapse min-w-[800px]">
-                            <thead class="bg-surface-container-low">
-                                <tr>
-                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Key Name
-                                    </th>
-                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Total
-                                        Requests
-                                    </th>
-                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Requests
-                                        Today
-                                    </th>
-                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">PDFs</th>
-                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">DOCx</th>
-                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Template
-                                    </th>
-                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Status</th>
-                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Actions</th>
-
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-outline-variant/20">
-
-
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-                <!-- Recent Jobs Section -->
-                <section class="glass-card rounded-xl shadow-sm overflow-hidden">
-                    <div class="px-lg py-md border-b border-outline-variant/30">
-                        <h2 class="font-h3 text-h3">Recent Jobs</h2>
-                    </div>
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left border-collapse min-w-[800px]">
-                            <thead class="bg-surface-container-low">
-                                <tr>
-                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Job ID</th>
-                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Status</th>
-                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Doc Type
-                                    </th>
-                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Records</th>
-                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Created At
-                                    </th>
-                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">Completed At
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-outline-variant/20">
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="flex items-center justify-center gap-sm px-lg py-sm border-t border-outline-variant/20">
-
-                        <button id="jobs-prev"
-                            class="px-3 py-1.5 text-sm rounded-md bg-surface-container-high hover:bg-surface-container disabled:opacity-40 disabled:cursor-not-allowed transition-all">
-
-                            Previous
-
-                        </button>
-
-                        <span id="jobs-page" class="min-w-[64px] text-center text-sm font-medium">
-
-                            Page 1
-
-                        </span>
-
-                        <button id="jobs-next"
-                            class="px-3 py-1.5 text-sm rounded-md bg-secondary text-white hover:opacity-90 disabled:opacity-40 transition-all">
-
-                            Next
-
-                        </button>
-
-                    </div>
-                </section>
-                <!-- Logs Section -->
-                <section class="glass-card rounded-xl shadow-sm overflow-hidden">
-
-                    <div class="px-lg py-md border-b border-outline-variant/30">
-
-                        <h2 class="font-h3 text-h3">
-                            Activity Logs
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="font-h3 text-h3 text-lg sm:text-xl font-bold text-slate-900 tracking-tight">
+                            Usage Overview
                         </h2>
-
+                        <span class="text-xs text-slate-400 font-medium">Real-time statistics</span>
                     </div>
 
-                    <div class="overflow-x-auto">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-5">
+                        <!-- Total Documents Card (Card 0) -->
+                        <div class="glass-card p-5 rounded-2xl border-l-4 border-secondary hover:-translate-y-0.5 hover:shadow-md transition-all">
+                            <div class="flex justify-between items-start mb-3">
+                                <div class="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary">
+                                    <span class="material-symbols-outlined text-[24px]" data-icon="api">api</span>
+                                </div>
+                                <span class="text-[11px] font-semibold uppercase px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">All Time</span>
+                            </div>
+                            <h4 class="font-label-md text-on-surface-variant uppercase tracking-wider text-xs font-semibold text-slate-500">
+                                Total Documents
+                            </h4>
+                            <div class="mt-2">
+                                <p class="font-h2 text-h2 font-bold text-2xl sm:text-3xl text-slate-900 tracking-tight">0</p>
+                                <p class="text-body-sm text-on-surface-variant mt-xs text-xs sm:text-sm text-slate-500 mt-1">
+                                    Today: <span class="font-semibold text-primary">0</span>
+                                </p>
+                            </div>
+                        </div>
 
-                        <table class="w-full text-left border-collapse min-w-[1000px]">
+                        <!-- Total PDFs Card (Card 1) -->
+                        <div class="glass-card p-5 rounded-2xl border-l-4 border-blue-500 hover:-translate-y-0.5 hover:shadow-md transition-all">
+                            <div class="flex justify-between items-start mb-3">
+                                <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
+                                    <span class="material-symbols-outlined text-[24px]" data-icon="picture_as_pdf">picture_as_pdf</span>
+                                </div>
+                                <span class="text-[11px] font-semibold uppercase px-2 py-0.5 rounded-full bg-blue-50 text-blue-600">PDF</span>
+                            </div>
+                            <h4 class="font-label-md text-on-surface-variant uppercase tracking-wider text-xs font-semibold text-slate-500">
+                                Total PDFs
+                            </h4>
+                            <div class="mt-2">
+                                <p class="font-h2 text-h2 font-bold text-2xl sm:text-3xl text-slate-900 tracking-tight">0</p>
+                                <p class="text-body-sm text-on-surface-variant mt-xs text-xs sm:text-sm text-slate-500 mt-1">
+                                    Today: <span class="font-semibold text-primary">0</span>
+                                </p>
+                            </div>
+                        </div>
 
-                            <thead class="bg-surface-container-low">
+                        <!-- Total DOCX Card (Card 2) -->
+                        <div class="glass-card p-5 rounded-2xl border-l-4 border-emerald-500 hover:-translate-y-0.5 hover:shadow-md transition-all">
+                            <div class="flex justify-between items-start mb-3">
+                                <div class="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600">
+                                    <span class="material-symbols-outlined text-[24px]" data-icon="description">description</span>
+                                </div>
+                                <span class="text-[11px] font-semibold uppercase px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-600">DOCX</span>
+                            </div>
+                            <h4 class="font-label-md text-on-surface-variant uppercase tracking-wider text-xs font-semibold text-slate-500">
+                                Total DOCX
+                            </h4>
+                            <div class="mt-2">
+                                <p class="font-h2 text-h2 font-bold text-2xl sm:text-3xl text-slate-900 tracking-tight">0</p>
+                                <p class="text-body-sm text-on-surface-variant mt-xs text-xs sm:text-sm text-slate-500 mt-1">
+                                    Today: <span class="font-semibold text-primary">0</span>
+                                </p>
+                            </div>
+                        </div>
 
+                        <!-- Template Analysis Card (Card 3) -->
+                        <div class="glass-card p-5 rounded-2xl border-l-4 border-amber-500 hover:-translate-y-0.5 hover:shadow-md transition-all">
+                            <div class="flex justify-between items-start mb-3">
+                                <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-amber-600">
+                                    <span class="material-symbols-outlined text-[24px]" data-icon="analytics">analytics</span>
+                                </div>
+                                <span class="text-[11px] font-semibold uppercase px-2 py-0.5 rounded-full bg-amber-50 text-amber-600">Analysis</span>
+                            </div>
+                            <h4 class="font-label-md text-on-surface-variant uppercase tracking-wider text-xs font-semibold text-slate-500">
+                                Template Analysis
+                            </h4>
+                            <div class="mt-2">
+                                <p class="font-h2 text-h2 font-bold text-2xl sm:text-3xl text-slate-900 tracking-tight">0</p>
+                                <p class="text-body-sm text-on-surface-variant mt-xs text-xs sm:text-sm text-slate-500 mt-1">
+                                    Today: <span class="font-semibold text-primary">0</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- API Key Usage Section -->
+                <section class="glass-card rounded-2xl shadow-sm overflow-hidden">
+                    <div class="px-5 sm:px-6 py-4 border-b border-slate-100 flex flex-wrap justify-between items-center gap-3">
+                        <div>
+                            <h2 class="font-h3 text-h3 text-lg font-bold text-slate-900 tracking-tight">API Key Usage</h2>
+                            <p class="text-xs text-slate-500">Manage credentials and monitor API usage per key</p>
+                        </div>
+                        <button id="generate-api-btn"
+                            class="text-secondary font-semibold font-label-md text-xs sm:text-sm flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-secondary/30 bg-secondary/5 hover:bg-secondary/10 transition-all active:scale-95">
+                            <span class="material-symbols-outlined text-[18px]">add</span>
+                            <span>Generate New Key</span>
+                        </button>
+                    </div>
+
+                    <div class="overflow-x-auto custom-scrollbar">
+                        <table class="w-full text-left border-collapse min-w-[760px]">
+                            <thead class="bg-slate-50/75 border-b border-slate-100">
                                 <tr>
-
-                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">
-                                        Status
-                                    </th>
-
-                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">
-                                        Feature
-                                    </th>
-
-                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">
-                                        API Key
-                                    </th>
-
-                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">
-                                        Records
-                                    </th>
-
-                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">
-                                        Message
-                                    </th>
-
-                                    <th class="px-lg py-md font-label-md text-on-surface-variant uppercase">
-                                        Time
-                                    </th>
-
+                                    <th class="px-5 sm:px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Key Name</th>
+                                    <th class="px-5 sm:px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Requests</th>
+                                    <th class="px-5 sm:px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Requests Today</th>
+                                    <th class="px-5 sm:px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">PDFs</th>
+                                    <th class="px-5 sm:px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">DOCX</th>
+                                    <th class="px-5 sm:px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Template</th>
+                                    <th class="px-5 sm:px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Status</th>
+                                    <th class="px-5 sm:px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Actions</th>
                                 </tr>
-
                             </thead>
-
-                            <tbody id="logs-table" class="divide-y divide-outline-variant/20">
-
+                            <tbody class="divide-y divide-outline-variant/20 divide-slate-100 text-sm">
+                                <!-- Populated dynamically by dashboard.js (Index 0) -->
                             </tbody>
-
                         </table>
-
-
                     </div>
-                    <div class="flex items-center justify-center gap-sm px-lg py-sm border-t border-outline-variant/20">
+                </section>
 
-                        <button id="logs-prev"
-                            class="px-3 py-1.5 text-sm rounded-md bg-surface-container-high hover:bg-surface-container disabled:opacity-40 disabled:cursor-not-allowed transition-all">
+                <!-- Recent Jobs Section -->
+                <section class="glass-card rounded-2xl shadow-sm overflow-hidden">
+                    <div class="px-5 sm:px-6 py-4 border-b border-slate-100">
+                        <h2 class="font-h3 text-h3 text-lg font-bold text-slate-900 tracking-tight">Recent Jobs</h2>
+                        <p class="text-xs text-slate-500">Live document generation queue and download records</p>
+                    </div>
 
+                    <div class="overflow-x-auto custom-scrollbar">
+                        <table class="w-full text-left border-collapse min-w-[760px]">
+                            <thead class="bg-slate-50/75 border-b border-slate-100">
+                                <tr>
+                                    <th class="px-5 sm:px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Job ID</th>
+                                    <th class="px-5 sm:px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Status</th>
+                                    <th class="px-5 sm:px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Doc Type</th>
+                                    <th class="px-5 sm:px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Records</th>
+                                    <th class="px-5 sm:px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Created At</th>
+                                    <th class="px-5 sm:px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Completed At</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-outline-variant/20 divide-slate-100 text-sm">
+                                <!-- Populated dynamically by dashboard.js (Index 1) -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="flex items-center justify-between sm:justify-center gap-3 px-5 sm:px-6 py-3.5 border-t border-slate-100 bg-slate-50/50">
+                        <button id="jobs-prev"
+                            class="px-3.5 py-1.5 text-xs sm:text-sm font-medium rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-2xs">
                             Previous
-
                         </button>
-
-                        <span id="logs-page" class="min-w-[64px] text-center text-sm font-medium">
-
+                        <span id="jobs-page" class="min-w-[64px] text-center text-xs sm:text-sm font-semibold text-slate-700">
                             Page 1
-
                         </span>
-
-                        <button id="logs-next"
-                            class="px-3 py-1.5 text-sm rounded-md bg-secondary text-white hover:opacity-90 disabled:opacity-40 transition-all">
-
+                        <button id="jobs-next"
+                            class="px-3.5 py-1.5 text-xs sm:text-sm font-medium rounded-xl bg-secondary text-white hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-2xs">
                             Next
-
                         </button>
+                    </div>
+                </section>
 
+                <!-- Activity Logs Section -->
+                <section class="glass-card rounded-2xl shadow-sm overflow-hidden">
+                    <div class="px-5 sm:px-6 py-4 border-b border-slate-100">
+                        <h2 class="font-h3 text-h3 text-lg font-bold text-slate-900 tracking-tight">Activity Logs</h2>
+                        <p class="text-xs text-slate-500">Audit trail of API invocations and webhook notifications</p>
                     </div>
 
+                    <div class="overflow-x-auto custom-scrollbar">
+                        <table class="w-full text-left border-collapse min-w-[850px]">
+                            <thead class="bg-slate-50/75 border-b border-slate-100">
+                                <tr>
+                                    <th class="px-5 sm:px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Status</th>
+                                    <th class="px-5 sm:px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Feature</th>
+                                    <th class="px-5 sm:px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">API Key</th>
+                                    <th class="px-5 sm:px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Records</th>
+                                    <th class="px-5 sm:px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Message</th>
+                                    <th class="px-5 sm:px-6 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Time</th>
+                                </tr>
+                            </thead>
+                            <tbody id="logs-table" class="divide-y divide-outline-variant/20 divide-slate-100 text-sm">
+                                <!-- Populated dynamically by dashboard.js (Index 2) -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="flex items-center justify-between sm:justify-center gap-3 px-5 sm:px-6 py-3.5 border-t border-slate-100 bg-slate-50/50">
+                        <button id="logs-prev"
+                            class="px-3.5 py-1.5 text-xs sm:text-sm font-medium rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-2xs">
+                            Previous
+                        </button>
+                        <span id="logs-page" class="min-w-[64px] text-center text-xs sm:text-sm font-semibold text-slate-700">
+                            Page 1
+                        </span>
+                        <button id="logs-next"
+                            class="px-3.5 py-1.5 text-xs sm:text-sm font-medium rounded-xl bg-secondary text-white hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-2xs">
+                            Next
+                        </button>
+                    </div>
                 </section>
             </div>
         </div>
-        <div id="templates-page" class="hidden">
 
-        </div>
+        <!-- TEMPLATES TAB CONTAINER -->
+        <div id="templates-page" class="hidden"></div>
+
+        <!-- TRANSACTIONS TAB CONTAINER -->
         <div id="transactions-page" class="hidden"></div>
     </main>
 
     <!-- Logout Confirmation Modal -->
     <div id="logout-modal"
-        class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/40 backdrop-blur-sm">
-
+        class="fixed inset-0 z-[100] hidden items-center justify-center bg-slate-900/50 backdrop-blur-sm p-4">
         <div
-            class="w-full max-w-md mx-4 bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in zoom-in duration-200">
-
+            class="w-full max-w-md bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in zoom-in duration-200">
             <!-- Header -->
             <div class="p-6 border-b border-slate-100">
                 <div class="flex items-center gap-3">
-
-                    <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center">
-
-                        <span class="material-symbols-outlined text-red-500">
-                            logout
-                        </span>
-
+                    <div class="w-12 h-12 rounded-xl bg-red-50 text-red-600 flex items-center justify-center shrink-0">
+                        <span class="material-symbols-outlined text-[24px]">logout</span>
                     </div>
-
                     <div>
-                        <h3 class="text-lg font-semibold text-slate-900">
-                            Logout
-                        </h3>
-
-                        <p class="text-sm text-slate-500 mt-1">
-                            Are you sure you want to logout?
-                        </p>
+                        <h3 class="text-lg font-bold text-slate-900">Sign Out</h3>
+                        <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Are you sure you want to sign out of your account?</p>
                     </div>
-
                 </div>
             </div>
 
             <!-- Actions -->
-            <div class="flex items-center justify-end gap-3 p-5 bg-slate-50">
-
+            <div class="flex items-center justify-end gap-3 p-4 sm:p-5 bg-slate-50">
                 <button id="cancel-logout-btn"
-                    class="px-4 py-2 rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-100 transition-all">
-
+                    class="px-4 py-2 rounded-xl border border-slate-200 bg-white text-slate-700 hover:bg-slate-100 text-sm font-semibold transition-all">
                     Cancel
-
                 </button>
-
                 <button id="confirm-logout-btn"
-                    class="px-4 py-2 rounded-xl bg-red-500 text-white hover:bg-red-600 transition-all shadow-sm">
-
+                    class="px-4 py-2 rounded-xl bg-red-600 text-white hover:bg-red-700 text-sm font-semibold transition-all shadow-sm">
                     Logout
-
                 </button>
-
             </div>
-
         </div>
-
     </div>
 
+    <!-- API Key Generator Modal -->
     <div id="api-key-modal"
-        class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/40 backdrop-blur-sm">
-
-        <div class="w-full max-w-md mx-4 bg-white rounded-2xl shadow-2xl overflow-hidden">
-
+        class="fixed inset-0 z-[100] hidden items-center justify-center bg-slate-900/50 backdrop-blur-sm p-4">
+        <div class="w-full max-w-md bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden">
             <!-- Header -->
-            <div class="p-6 border-b">
-
-                <h3 class="text-lg font-semibold">
-
-                    Generate API Key
-
-                </h3>
-
-                <p class="text-sm text-on-surface-variant mt-1">
-
-                    Enter a name for the new API key.
-
-                </p>
-
+            <div class="p-6 border-b border-slate-100">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center shrink-0">
+                        <span class="material-symbols-outlined text-[22px]">key</span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900">Generate API Key</h3>
+                        <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Create a scoped credential for EveryPapers API</p>
+                    </div>
+                </div>
             </div>
 
             <!-- Content -->
             <div class="p-6">
-
-                <label class="block text-sm font-medium mb-2">
-
-                    API Key Name
-
+                <label class="block text-xs font-semibold uppercase text-slate-600 tracking-wider mb-2">
+                    Key Name
                 </label>
-
-                <input id="api-key-name" type="text" placeholder="Eg. Production" maxlength="50"
-                    class="w-full rounded-xl border border-outline-variant px-4 py-3 focus:outline-none focus:ring-2 focus:ring-secondary" />
-
+                <input id="api-key-name" type="text" placeholder="e.g. Production Backend" maxlength="50"
+                    class="w-full rounded-xl border border-slate-300 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-all" />
+                <p class="text-xs text-slate-400 mt-1.5">Used to differentiate environments (Staging, Prod, etc.)</p>
             </div>
-
-
 
             <!-- Footer -->
-            <div class="flex justify-end gap-3 p-5 bg-surface-container-low">
-
-                <button id="cancel-api-key" class="px-4 py-2 rounded-xl border">
-
+            <div class="flex justify-end gap-3 p-4 sm:p-5 bg-slate-50 border-t border-slate-100">
+                <button id="cancel-api-key"
+                    class="px-4 py-2 rounded-xl border border-slate-200 bg-white text-slate-700 hover:bg-slate-100 text-sm font-semibold transition-all">
                     Cancel
-
                 </button>
-
                 <button id="confirm-api-key"
-                    class="min-w-[120px] px-4 py-2 rounded-xl bg-secondary text-white flex items-center justify-center gap-2">
-
-                    <span id="generate-text">
-
-                        Generate
-
-                    </span>
-
+                    class="min-w-[120px] px-4 py-2 rounded-xl bg-secondary text-white hover:opacity-90 text-sm font-semibold flex items-center justify-center gap-2 transition-all shadow-sm">
+                    <span id="generate-text">Generate</span>
                     <div id="generate-loader"
-                        class="hidden w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin">
-
-                    </div>
-
+                        class="hidden w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
                 </button>
-
             </div>
-
         </div>
-
     </div>
 
-    <!-- Toast -->
+    <!-- Toast Notification Container -->
     <div id="toastContainer"></div>
 
     <!-- Footer from JSON -->
-    <div id="footer-container" class="ml-[260px] transition-all duration-300">
+    <div id="footer-container" class="lg:ml-[260px] sidebar-open transition-all duration-300">
         <div id="footer"></div>
     </div>
+
+    <!-- Mobile Drawer & Quick Tabs Synchronization Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileSidebarToggle = document.getElementById('mobile-sidebar-toggle');
+            const sidebarCloseBtn = document.getElementById('sidebar-close-btn');
+            const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+            const sidebar = document.getElementById('sidebar');
+
+            function openMobileSidebar() {
+                if (sidebar) sidebar.classList.add('mobile-open');
+                if (sidebarBackdrop) sidebarBackdrop.classList.remove('hidden');
+            }
+
+            function closeMobileSidebar() {
+                if (sidebar) sidebar.classList.remove('mobile-open');
+                if (sidebarBackdrop) sidebarBackdrop.classList.add('hidden');
+            }
+
+            if (mobileSidebarToggle) mobileSidebarToggle.addEventListener('click', openMobileSidebar);
+            if (sidebarCloseBtn) sidebarCloseBtn.addEventListener('click', closeMobileSidebar);
+            if (sidebarBackdrop) sidebarBackdrop.addEventListener('click', closeMobileSidebar);
+
+            // Auto-close drawer when clicking any link in sidebar on mobile
+            if (sidebar) {
+                sidebar.querySelectorAll('a, button').forEach(el => {
+                    el.addEventListener('click', () => {
+                        if (window.innerWidth < 1024 && el.id !== 'sidebar-toggle') {
+                            closeMobileSidebar();
+                        }
+                    });
+                });
+            }
+
+            // Mobile Quick Tabs Synchronization
+            const mobTabDash = document.getElementById('mobile-tab-dashboard');
+            const mobTabTpl = document.getElementById('mobile-tab-templates');
+            const mobTabTx = document.getElementById('mobile-tab-transactions');
+
+            const deskTabDash = document.getElementById('dashboard-nav');
+            const deskTabTpl = document.getElementById('templates-nav');
+            const deskTabTx = document.getElementById('transactions-nav');
+
+            function updateMobileTabs(activeNavId) {
+                [mobTabDash, mobTabTpl, mobTabTx].forEach(tab => {
+                    if (!tab) return;
+                    tab.classList.remove('bg-white', 'text-secondary', 'font-semibold', 'shadow-xs');
+                    tab.classList.add('text-slate-600');
+                });
+
+                let activeTab = mobTabDash;
+                if (activeNavId === 'templates-nav') activeTab = mobTabTpl;
+                else if (activeNavId === 'transactions-nav') activeTab = mobTabTx;
+
+                if (activeTab) {
+                    activeTab.classList.remove('text-slate-600');
+                    activeTab.classList.add('bg-white', 'text-secondary', 'font-semibold', 'shadow-xs');
+                }
+            }
+
+            if (mobTabDash && deskTabDash) {
+                mobTabDash.addEventListener('click', () => {
+                    deskTabDash.click();
+                    updateMobileTabs('dashboard-nav');
+                });
+            }
+            if (mobTabTpl && deskTabTpl) {
+                mobTabTpl.addEventListener('click', () => {
+                    deskTabTpl.click();
+                    updateMobileTabs('templates-nav');
+                });
+            }
+            if (mobTabTx && deskTabTx) {
+                mobTabTx.addEventListener('click', () => {
+                    deskTabTx.click();
+                    updateMobileTabs('transactions-nav');
+                });
+            }
+
+            if (deskTabDash) deskTabDash.addEventListener('click', () => updateMobileTabs('dashboard-nav'));
+            if (deskTabTpl) deskTabTpl.addEventListener('click', () => updateMobileTabs('templates-nav'));
+            if (deskTabTx) deskTabTx.addEventListener('click', () => updateMobileTabs('transactions-nav'));
+        });
+    </script>
+
+    <!-- Application Module Scripts -->
     <script type="module" src="/components/auth-navbar.js"></script>
     <script type="module" src="/components/layout.js"></script>
-
     <script type="module" src="dashboard.js"></script>
-
 
 </body>
 
