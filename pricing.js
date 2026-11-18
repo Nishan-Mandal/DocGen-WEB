@@ -27,6 +27,12 @@ document.addEventListener("DOMContentLoaded", () => {
             subscribe("growth", this);
         });
 
+    document
+        .getElementById("businessPlanBtn")
+        ?.addEventListener("click", function () {
+            subscribe("business", this);
+        });
+
 });
 
 async function subscribe(plan, button) {

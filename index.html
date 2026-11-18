@@ -345,7 +345,7 @@
                         </div>
                         <div class="flex items-center gap-2">
                             <span class="material-symbols-outlined text-emerald-600 text-lg">check_circle</span>
-                            <span>1,000 free docs/mo</span>
+                            <span>50 free docs/mo</span>
                         </div>
                         <div class="flex items-center gap-2">
                             <span class="material-symbols-outlined text-emerald-600 text-lg">check_circle</span>
@@ -1557,7 +1557,7 @@ print(f"Document queued successfully! Job ID: {job['jobId']}")</code></pre>
     <!-- SECTION 8: PRICING PLANS (RESPONSIVE WITH INTERACTIVE BILLING TOGGLE)     -->
     <!-- ========================================================================= -->
     <section class="py-16 sm:py-24 bg-surface border-b border-slate-200/80" id="pricing-section">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
 
             <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
                 <span
@@ -1568,7 +1568,7 @@ print(f"Document queued successfully! Job ID: {job['jobId']}")</code></pre>
                     Simple, Scalable Pricing
                 </h2>
                 <p class="text-sm sm:text-base text-slate-600 mt-3">
-                    Start free with 1,000 documents per month. Upgrade whenever your application grows.
+                    Start free with 50 documents per month. Upgrade whenever your application grows.
                 </p>
 
                 <!-- Monthly / Annual Toggle Switch -->
@@ -1583,209 +1583,338 @@ print(f"Document queued successfully! Job ID: {job['jobId']}")</code></pre>
                         Annual Billing
                         <span
                             class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-bold">Save
-                            20%</span>
+                            ~17%</span>
                     </button>
                 </div>
             </div>
 
-            <!-- 4 Pricing Cards Grid (Balanced responsiveness) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 sm:gap-8 items-stretch">
+            <!-- 5 Pricing Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 sm:gap-6 items-stretch">
 
                 <!-- Free Plan -->
                 <div
-                    class="glass-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between border-slate-200 hover:shadow-lg transition-all">
+                    class="glass-card p-5 sm:p-6 rounded-2xl flex flex-col justify-between border-slate-200 hover:shadow-lg transition-all">
                     <div>
-                        <div class="mb-6">
-                            <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Free Tier</span>
+                        <div class="mb-5">
+                            <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Free</span>
                             <div class="flex items-baseline mt-2">
                                 <span class="text-3xl sm:text-4xl font-extrabold text-slate-900">$0</span>
-                                <span class="text-xs text-slate-500 ml-1.5">/forever</span>
+                                <span class="text-xs text-slate-500 ml-1.5">/month</span>
                             </div>
-                            <p class="text-xs text-slate-500 mt-2">Perfect for prototyping, testing, and hobby apps.</p>
-                        </div>
-
-                        <div class="border-t border-slate-100 pt-5 mb-6">
-                            <ul class="space-y-3 text-xs sm:text-sm text-slate-700">
-                                <li class="flex items-center gap-2.5">
-                                    <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
-                                    <span><strong>1,000</strong> documents / month</span>
-                                </li>
-                                <li class="flex items-center gap-2.5">
-                                    <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
-                                    <span>1 Active API Key</span>
-                                </li>
-                                <li class="flex items-center gap-2.5">
-                                    <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
-                                    <span>Custom Webhook Callbacks</span>
-                                </li>
-                                <li class="flex items-center gap-2.5">
-                                    <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
-                                    <span>Unlimited Templates</span>
-                                </li>
-                                <li class="flex items-center gap-2.5 text-slate-400">
-                                    <span class="material-symbols-outlined text-base">close</span>
-                                    <span>Dedicated SLA Support</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <button id="freePlanBtn"
-                        class="w-full border border-slate-300 hover:border-slate-400 hover:bg-slate-50 text-slate-800 font-semibold py-3 rounded-xl text-sm transition-all">
-                        Start Free
-                    </button>
-                </div>
-
-                <!-- Starter Plan -->
-                <div
-                    class="glass-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between border-slate-200 hover:shadow-lg transition-all">
-                    <div>
-                        <div class="mb-6">
-                            <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Starter</span>
-                            <div class="flex items-baseline mt-2">
-                                <span class="price-val text-3xl sm:text-4xl font-extrabold text-slate-900"
-                                    data-monthly="14" data-annual="11">$14</span>
-                                <span class="price-period text-xs text-slate-500 ml-1.5">/month</span>
+                            <div
+                                class="mt-2.5 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-bold">
+                                <span class="material-symbols-outlined text-[15px] text-[#712AE2]">description</span>
+                                <span>50 docs / month</span>
                             </div>
-                            <p class="text-xs text-slate-500 mt-2">For growing products, startups, and small teams.</p>
+                            <p class="text-xs text-slate-500 mt-2.5">Perfect for prototyping, testing, and hobby apps.
+                            </p>
                         </div>
 
-                        <div class="border-t border-slate-100 pt-5 mb-6">
-                            <ul class="space-y-3 text-xs sm:text-sm text-slate-700">
-                                <li class="flex items-center gap-2.5">
-                                    <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
-                                    <span><strong>2,000</strong> documents / month</span>
+                        <div class="border-t border-slate-100 pt-4 mb-6">
+                            <ul class="space-y-2.5 text-xs text-slate-700">
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="material-symbols-outlined text-emerald-500 text-base shrink-0">check</span>
+                                    <span>DOCX and PDF generation</span>
                                 </li>
-                                <li class="flex items-center gap-2.5">
-                                    <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
-                                    <span>3 Active API Keys</span>
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="material-symbols-outlined text-emerald-500 text-base shrink-0">check</span>
+                                    <span>API access</span>
                                 </li>
-                                <li class="flex items-center gap-2.5">
-                                    <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
-                                    <span>Custom Webhooks</span>
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="material-symbols-outlined text-emerald-500 text-base shrink-0">check</span>
+                                    <span>1 API key</span>
                                 </li>
-                                <li class="flex items-center gap-2.5">
-                                    <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
-                                    <span>Direct Email Delivery</span>
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="material-symbols-outlined text-emerald-500 text-base shrink-0">check</span>
+                                    <span>Email delivery</span>
                                 </li>
-                                <li class="flex items-center gap-2.5">
-                                    <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
-                                    <span>Community Support</span>
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="material-symbols-outlined text-emerald-500 text-base shrink-0">check</span>
+                                    <span>Basic job tracking</span>
                                 </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <a href="/pricing" data-route="pricing" id="pricingLink"
-                        class="w-full border border-purple-200 text-[#712AE2] hover:bg-purple-50 font-semibold py-3 rounded-xl text-sm text-center block transition-all">
-                        <span class="btn-text">Get Started</span>
-                        <span class="loader hidden inline-flex items-center gap-2 justify-center">
-                            <svg class="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
-                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" opacity=".25" />
-                                <path fill="currentColor" d="M22 12a10 10 0 0 1-10 10V18a6 6 0 0 0 6-6h4z" />
-                            </svg> Loading...
-                        </span>
-                    </a>
-                </div>
-
-                <!-- Growth Plan (Most Popular) -->
-                <div
-                    class="glass-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between relative shadow-xl border-2 border-[#712AE2] bg-white ring-4 ring-purple-500/10">
-                    <div
-                        class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#712AE2] text-white px-3.5 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider shadow-md">
-                        Most Popular
-                    </div>
-
-                    <div>
-                        <div class="mb-6 pt-1">
-                            <span class="text-xs font-bold uppercase tracking-wider text-[#712AE2]">Growth</span>
-                            <div class="flex items-baseline mt-2">
-                                <span class="price-val text-3xl sm:text-4xl font-extrabold text-[#712AE2]"
-                                    data-monthly="49" data-annual="39">$49</span>
-                                <span class="price-period text-xs text-slate-500 ml-1.5">/month</span>
-                            </div>
-                            <p class="text-xs text-slate-500 mt-2">High volume document workflows and scale-ups.</p>
-                        </div>
-
-                        <div class="border-t border-purple-100 pt-5 mb-6">
-                            <ul class="space-y-3 text-xs sm:text-sm text-slate-700">
-                                <li class="flex items-center gap-2.5">
-                                    <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
-                                    <span><strong>8,000</strong> documents / month</span>
-                                </li>
-                                <li class="flex items-center gap-2.5">
-                                    <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
-                                    <span>8 Active API Keys</span>
-                                </li>
-                                <li class="flex items-center gap-2.5">
-                                    <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
-                                    <span>Priority Async Processing Queue</span>
-                                </li>
-                                <li class="flex items-center gap-2.5">
-                                    <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
-                                    <span>Custom Webhooks & Email Delivery</span>
-                                </li>
-                                <li class="flex items-center gap-2.5">
-                                    <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
-                                    <span>Priority Developer Support</span>
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="material-symbols-outlined text-emerald-500 text-base shrink-0">check</span>
+                                    <span>Community support</span>
                                 </li>
                             </ul>
                         </div>
                     </div>
 
                     <a href="/pricing" data-route="pricing"
-                        class="w-full bg-[#712AE2] hover:bg-[#5e1ebf] text-white font-semibold py-3 rounded-xl text-sm text-center block shadow-lg shadow-purple-600/25 transition-all">
-                        <span class="btn-text">Get Started</span>
-                        <span class="loader hidden inline-flex items-center gap-2 justify-center">
-                            <svg class="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
-                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" opacity=".25" />
-                                <path fill="currentColor" d="M22 12a10 10 0 0 1-10 10V18a6 6 0 0 0 6-6h4z" />
-                            </svg> Loading...
-                        </span>
+                        class="w-full border border-slate-300 hover:border-slate-400 hover:bg-slate-50 text-slate-800 font-semibold py-3 rounded-xl text-xs sm:text-sm text-center block transition-all shadow-sm">
+                        Start Free
                     </a>
                 </div>
 
-                <!-- Enterprise Plan -->
+                <!-- Starter Plan -->
                 <div
-                    class="glass-card p-6 sm:p-7 rounded-2xl flex flex-col justify-between border-slate-200 hover:shadow-lg transition-all">
+                    class="glass-card p-5 sm:p-6 rounded-2xl flex flex-col justify-between border-slate-200 hover:shadow-lg transition-all">
                     <div>
-                        <div class="mb-6">
-                            <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Enterprise</span>
+                        <div class="mb-5">
+                            <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Starter</span>
                             <div class="flex items-baseline mt-2">
-                                <span class="text-3xl sm:text-4xl font-extrabold text-slate-900">Custom</span>
+                                <span class="price-val text-3xl sm:text-4xl font-extrabold text-slate-900"
+                                    data-monthly="19" data-annual="190">$19</span>
+                                <span class="price-period text-xs text-slate-500 ml-1.5">/month</span>
                             </div>
-                            <p class="text-xs text-slate-500 mt-2">Millions of documents with custom SLA & security.</p>
+                            <div
+                                class="mt-2.5 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-purple-50 text-[#712AE2] text-xs font-bold border border-purple-100">
+                                <span class="material-symbols-outlined text-[15px]">description</span>
+                                <span>500 docs / month</span>
+                            </div>
+                            <p class="text-xs text-slate-500 mt-2.5">For growing products, startups, and small teams.
+                            </p>
                         </div>
 
-                        <div class="border-t border-slate-100 pt-5 mb-6">
-                            <ul class="space-y-3 text-xs sm:text-sm text-slate-700">
-                                <li class="flex items-center gap-2.5">
-                                    <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
-                                    <span><strong>Unlimited</strong> documents / month</span>
+                        <div class="border-t border-slate-100 pt-4 mb-6">
+                            <ul class="space-y-2.5 text-xs text-slate-700">
+                                <li class="flex items-center gap-2 font-medium text-slate-900">
+                                    <span
+                                        class="material-symbols-outlined text-purple-600 text-base shrink-0">add_circle</span>
+                                    <span>Everything in Free</span>
                                 </li>
-                                <li class="flex items-center gap-2.5">
-                                    <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
-                                    <span>Unlimited API Keys & Teammates</span>
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="material-symbols-outlined text-emerald-500 text-base shrink-0">check</span>
+                                    <span>3 API keys</span>
                                 </li>
-                                <li class="flex items-center gap-2.5">
-                                    <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
-                                    <span>Custom Font & Template Design Service</span>
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="material-symbols-outlined text-emerald-500 text-base shrink-0">check</span>
+                                    <span>Bulk document generation</span>
                                 </li>
-                                <li class="flex items-center gap-2.5">
-                                    <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
-                                    <span>99.99% Uptime SLA Guarantee</span>
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="material-symbols-outlined text-emerald-500 text-base shrink-0">check</span>
+                                    <span>Email delivery</span>
                                 </li>
-                                <li class="flex items-center gap-2.5">
-                                    <span class="material-symbols-outlined text-emerald-500 text-base">check</span>
-                                    <span>Dedicated Slack Channel Support</span>
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="material-symbols-outlined text-emerald-500 text-base shrink-0">check</span>
+                                    <span>Webhook notifications*</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="material-symbols-outlined text-emerald-500 text-base shrink-0">check</span>
+                                    <span>Usage dashboard</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="material-symbols-outlined text-emerald-500 text-base shrink-0">check</span>
+                                    <span>Standard support</span>
                                 </li>
                             </ul>
                         </div>
                     </div>
 
-                    <a href="/contact" data-route="contact"
-                        class="w-full border border-slate-300 hover:border-slate-400 hover:bg-slate-50 text-slate-800 font-semibold py-3 rounded-xl text-sm text-center block transition-all">
-                        Contact Enterprise Sales
+                    <a href="/pricing" data-route="pricing"
+                        class="w-full border border-purple-200 text-[#712AE2] hover:bg-purple-50 font-semibold py-3 rounded-xl text-xs sm:text-sm text-center block transition-all shadow-sm">
+                        Get Started
+                    </a>
+                </div>
+
+                <!-- Growth Plan (Most Popular) -->
+                <div
+                    class="glass-card p-5 sm:p-6 rounded-2xl flex flex-col justify-between relative shadow-xl border-2 border-[#712AE2] bg-white ring-4 ring-purple-500/10">
+                    <div
+                        class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#712AE2] text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider shadow-md whitespace-nowrap">
+                        Most Popular
+                    </div>
+
+                    <div>
+                        <div class="mb-5 pt-1">
+                            <span class="text-xs font-bold uppercase tracking-wider text-[#712AE2]">Growth</span>
+                            <div class="flex items-baseline mt-2">
+                                <span class="price-val text-3xl sm:text-4xl font-extrabold text-[#712AE2]"
+                                    data-monthly="49" data-annual="490">$49</span>
+                                <span class="price-period text-xs text-slate-500 ml-1.5">/month</span>
+                            </div>
+                            <div
+                                class="mt-2.5 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-purple-100 text-[#712AE2] text-xs font-bold border border-purple-200">
+                                <span class="material-symbols-outlined text-[15px]">description</span>
+                                <span>2,000 docs / month</span>
+                            </div>
+                            <p class="text-xs text-slate-500 mt-2.5">High volume document workflows and scale-ups.</p>
+                        </div>
+
+                        <div class="border-t border-purple-100 pt-4 mb-6">
+                            <ul class="space-y-2.5 text-xs text-slate-700">
+                                <li class="flex items-center gap-2 font-medium text-purple-900">
+                                    <span
+                                        class="material-symbols-outlined text-purple-600 text-base shrink-0">add_circle</span>
+                                    <span>Everything in Starter</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="material-symbols-outlined text-emerald-500 text-base shrink-0">check</span>
+                                    <span>10 API keys</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="material-symbols-outlined text-emerald-500 text-base shrink-0">check</span>
+                                    <span>Advanced usage analytics</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="material-symbols-outlined text-emerald-500 text-base shrink-0">check</span>
+                                    <span>Priority processing</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="material-symbols-outlined text-emerald-500 text-base shrink-0">check</span>
+                                    <span>Webhook notifications*</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="material-symbols-outlined text-emerald-500 text-base shrink-0">check</span>
+                                    <span>Priority support</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <a href="/pricing" data-route="pricing"
+                        class="w-full bg-[#712AE2] hover:bg-[#5e1ebf] text-white font-semibold py-3 rounded-xl text-xs sm:text-sm text-center block shadow-lg shadow-purple-600/25 transition-all">
+                        Get Started
+                    </a>
+                </div>
+
+                <!-- Business Plan -->
+                <div
+                    class="glass-card p-5 sm:p-6 rounded-2xl flex flex-col justify-between border-slate-200 hover:shadow-lg transition-all">
+                    <div>
+                        <div class="mb-5">
+                            <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Business</span>
+                            <div class="flex items-baseline mt-2">
+                                <span class="price-val text-3xl sm:text-4xl font-extrabold text-slate-900"
+                                    data-monthly="99" data-annual="990">$99</span>
+                                <span class="price-period text-xs text-slate-500 ml-1.5">/month</span>
+                            </div>
+                            <div
+                                class="mt-2.5 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-purple-50 text-[#712AE2] text-xs font-bold border border-purple-100">
+                                <span class="material-symbols-outlined text-[15px]">description</span>
+                                <span>10,000 docs / month</span>
+                            </div>
+                            <p class="text-xs text-slate-500 mt-2.5">For growing teams requiring concurrency and scale.
+                            </p>
+                        </div>
+
+                        <div class="border-t border-slate-100 pt-4 mb-6">
+                            <ul class="space-y-2.5 text-xs text-slate-700">
+                                <li class="flex items-center gap-2 font-medium text-slate-900">
+                                    <span
+                                        class="material-symbols-outlined text-purple-600 text-base shrink-0">add_circle</span>
+                                    <span>Everything in Growth</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="material-symbols-outlined text-emerald-500 text-base shrink-0">check</span>
+                                    <span>25 API keys</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="material-symbols-outlined text-emerald-500 text-base shrink-0">check</span>
+                                    <span>Team management*</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="material-symbols-outlined text-emerald-500 text-base shrink-0">check</span>
+                                    <span>Extended document retention*</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="material-symbols-outlined text-emerald-500 text-base shrink-0">check</span>
+                                    <span>Higher processing concurrency</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="material-symbols-outlined text-emerald-500 text-base shrink-0">check</span>
+                                    <span>Advanced integrations*</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="material-symbols-outlined text-emerald-500 text-base shrink-0">check</span>
+                                    <span>Priority technical support</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <a href="/pricing" data-route="pricing"
+                        class="w-full border border-purple-200 text-[#712AE2] hover:bg-purple-50 font-semibold py-3 rounded-xl text-xs sm:text-sm text-center block transition-all shadow-sm">
+                        Get Started
+                    </a>
+                </div>
+
+                <!-- Custom / Enterprise Plan -->
+                <div
+                    class="glass-card p-5 sm:p-6 rounded-2xl flex flex-col justify-between border-slate-200 hover:shadow-lg transition-all">
+                    <div>
+                        <div class="mb-5">
+                            <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Custom /
+                                Enterprise</span>
+                            <div class="flex items-baseline mt-2">
+                                <span class="text-2xl sm:text-3xl font-extrabold text-slate-900">Let's talk</span>
+                            </div>
+                            <div
+                                class="mt-2.5 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-bold">
+                                <span class="material-symbols-outlined text-[15px] text-[#712AE2]">description</span>
+                                <span>100,000+ docs / month</span>
+                            </div>
+                            <p class="text-xs text-slate-500 mt-2.5">Millions of documents with tailored SLA and
+                                security.</p>
+                        </div>
+
+                        <div class="border-t border-slate-100 pt-4 mb-6">
+                            <ul class="space-y-2.5 text-xs text-slate-700">
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="material-symbols-outlined text-emerald-500 text-base shrink-0">check</span>
+                                    <span>Custom document volume</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="material-symbols-outlined text-emerald-500 text-base shrink-0">check</span>
+                                    <span>Custom API rate limits</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="material-symbols-outlined text-emerald-500 text-base shrink-0">check</span>
+                                    <span>Dedicated infrastructure options</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="material-symbols-outlined text-emerald-500 text-base shrink-0">check</span>
+                                    <span>Custom integrations</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="material-symbols-outlined text-emerald-500 text-base shrink-0">check</span>
+                                    <span>SLA options</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="material-symbols-outlined text-emerald-500 text-base shrink-0">check</span>
+                                    <span>Dedicated account management</span>
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <span
+                                        class="material-symbols-outlined text-emerald-500 text-base shrink-0">check</span>
+                                    <span>Tailored security requirements</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <a href="/pricing" data-route="contact"
+                        class="w-full border border-slate-300 hover:border-slate-400 hover:bg-slate-50 text-slate-800 font-semibold py-3 rounded-xl text-xs sm:text-sm text-center block transition-all">
+                        Contact Sales
                     </a>
                 </div>
 
@@ -1945,7 +2074,7 @@ print(f"Document queued successfully! Job ID: {job['jobId']}")</code></pre>
                     </div>
 
                     <div class="text-[11px] text-purple-200/80 pt-2">
-                        1,000 free documents/month • No credit card required • Instant setup
+                        50 free documents/month • No credit card required • Instant setup
                     </div>
                 </div>
 
@@ -2088,7 +2217,7 @@ print(f"Document queued successfully! Job ID: {job['jobId']}")</code></pre>
                             el.textContent = "$" + annualPrice;
                         }
                     });
-                    pricePeriods.forEach(el => el.textContent = "/mo (billed annually)");
+                    pricePeriods.forEach(el => el.textContent = "/year");
                 });
             }
 
